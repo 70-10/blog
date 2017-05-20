@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Blog</title>
+    <link>http://blog.70-10.net/post/</link>
+    <description>Recent content in Posts on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 20 May 2017 15:04:57 +0900</lastBuildDate>
+    
+	<atom:link href="http://blog.70-10.net/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello World.</title>
+      <link>http://blog.70-10.net/2017/05/20/hello-world/</link>
+      <pubDate>Sat, 20 May 2017 15:04:57 +0900</pubDate>
+      
+      <guid>http://blog.70-10.net/2017/05/20/hello-world/</guid>
+      <description> ブログを始めてみました。
+今年の1月から、ローカル環境でHugoを使ってブログを立てて遊んでいたんですが、（『UNIXという考え方」を読んだ』はその頃にお試しで書いてみた記事です。）
+ローカルでブログ書いててもどうにもならないし、せっかくだからGitHub Pagesをブログを始めてみようと思って、今に至る次第です。
+ブログを始めるためにやったこと  blogリポジトリの用意 ドメイン(70-10.net)の取得 Route53の設定  Certificate Managerの設定
+→ 独自ドメインだとHTTPS化がうまくできず、結局利用せず  textlintの設定  ブログサービスを使わない理由 GitHub Pagesを使ってみたかったから。
+はてなブログなどのブログサービスを使う方がだいぶ楽なことには、気づかないふりをしておきます。
+TODO  CIでgh-pages更新の自動化 シンタックスハイライトの設定 HTTPS化  GitHub Pagesで独自ドメインを使っているとHTTPS化は無理？  タグ設定  </description>
+    </item>
+    
+    <item>
+      <title>「UNIXという考え方」を読んだ</title>
+      <link>http://blog.70-10.net/2017/01/29/unix-philosophy/</link>
+      <pubDate>Sun, 29 Jan 2017 18:19:49 +0900</pubDate>
+      
+      <guid>http://blog.70-10.net/2017/01/29/unix-philosophy/</guid>
+      <description>UNIXという考え方―その設計思想と哲学を読みました。
+重要な9の定理と、10の小定理からUNIXについての文化や考え方、哲学を説明している本です。
+この合計19の定理については他のサイトやブログでもまとめられているので、すべてを見たいときはそっちを確認しよう。
+驚いたこと 平成13年の2月に出版された、16年ほど前の本であること。
+「スモール・イズ・ビューティフル」ではマイクロサービスアーキテクチャを、
+「できるだけ早く試作を作成する」を読んでいるときは、アジャイルを、
+「効率より移植性」ではDockerを、
+「ソフトウェアの梃子を有効に活用する」ではGitHub(OSS)を、
+頭の中に思い浮かべながら読んだ。
+思い浮かばせたそれぞれのワードは、僕が社会人になってから今までの5年の間で生まれた/ホットになったものばかり。
+15年以上も前の思想や哲学が今現在の技術にも生きていることに驚いたし感心した。
+共感したこと  よいプログラマはよりコードを書く。偉大なプログラマはよいコードを借りてくる
+ 「第5章 これこそ梃子の効果！」に書かれていた言葉で、その通りだなあと思った。
+車輪の再発明は学習するという点においては有用だけど、それだけでしかない。
+自分で作るとそれを保守しないといけないし、すでにあるものの方が有用。何よりも再発明に使っている時間がもったいない。
+自分は車輪の再発明や独自技術症候群に陥りやすいので、この章に書かれている言葉はより深く体に染み込ませたい。
+わかっていないこと 第3章にある、「人間による三つのシステム」は一回読んでもすんなりと理解できなかった。
+この章でも、後の章でもXウィンドウについて何回も愚痴をこぼしている。 この愚痴の話が一番印象に残った。
+こう思った Go言語/Dockerは覚えるべき技術 移植性についての章では、Cよりシェルスクリプトと記されているけど、現在ではクロスコンパイルのあるGo言語がベターだろう。
+Dockerも一つの解。コンテナに包めば、Dockerが動く環境であれば簡単に移植できる。
+すでにあるアプリケーションはコンテナにし、これから作るアプリはGo言語で書く、というのはいい手なんじゃないかな。
+内容が色あせない 15年以上経っても内容が色あせないってすごい。
+また5年後にでも、その時の技術を思い浮かべながら読み返したいと思った。</description>
+    </item>
+    
+  </channel>
+</rss>
