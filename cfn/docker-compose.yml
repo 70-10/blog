@@ -1,0 +1,9 @@
+version: "2"
+services:
+  domain:
+    build: ./.docker
+    volumes:
+      - ~/.aws:/root/.aws
+      - ./stacks/domain:/tmp/src
+    environment:
+      AWS_PROFILE: ${AWS_PROFILE}

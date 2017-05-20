@@ -1,0 +1,13 @@
+languageCode = "ja-jp"
+title = "Blog"
+baseurl = "http://blog.70-10.net"
+
+[permalinks]
+  post = "/:year/:month/:day/:filename/"
+
+[author]
+  name = "70_10"
+
+[params]
+  twitter = "70_10"
+  github = "70-10"

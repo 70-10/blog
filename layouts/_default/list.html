@@ -1,0 +1,12 @@
+<li>
+  <!-- <h2 class="subtitle"> -->
+  <time pubdate datetime="{{ .Date.Format "2006-01-02" }}" title="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006/01/02" }}</time>
+  <a href="{{ .Permalink }}">
+    {{ .Title}}
+  </a>
+  <!-- </h2> -->
+  <!-- {{ with .Description }}<p>{{ . }}</p>{{ end }} -->
+  <!-- <div class="meta"> -->
+  <!-- Written By <address>{{ .Params.authorname }}</address> &mdash; -->
+  <!-- </div> -->
+</li>

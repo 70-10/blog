@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Blog at 70-10.net">
+  <meta name="author" content="70_10">
+  <title>{{ .Title }} / {{ .Site.Title }}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style media="screen">
+    html {
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero is-light is-medium" style="background-color: #fff;">
+    <div class="hero-head">
+      <header class="nav">
+        <div class="container">
+          <div class="nav-left">
+            <a class="nav-item" href="{{ .Site.BaseURL }}">
+              <h1 class="title">{{ .Site.Title }}</h1>
+            </a>
+          </div>
+          <div class="nav-right nav-menu">
+            <a class="nav-item" href="https://github.com/{{ .Site.Params.github }}" title="{{ .Site.Author.name }}" target="_blank">
+              <span class="icon"><i class="fa fa-github"></i></span>
+            </a>
+            <a class="nav-item" href="https://twitter.com/{{ .Site.Params.twitter }}" title="{{ .Site.Author.name }}" target="_blank">
+              <span class="icon"><i class="fa fa-twitter"></i></span>
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+  </section>

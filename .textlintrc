@@ -1,0 +1,17 @@
+{
+  "plugins": [],
+  "rules": {
+    "textlint-rule-no-double-negative-ja": true,
+    "textlint-rule-no-doubled-joshi": true,
+    "textlint-rule-no-mix-dearu-desumasu": true,
+    "textlint-rule-web-plus-db": false,
+    "textlint-rule-ja-no-weak-phrase": true,
+    "textlint-rule-ja-no-redundant-expression": true,
+    "textlint-rule-ja-no-abusage": true,
+    "textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet": true,
+    "textlint-rule-no-dropping-the-ra": true,
+    "textlint-rule-no-doubled-conjunctive-particle-ga": true,
+    "textlint-rule-no-doubled-conjunction": true,
+    "textlint-rule-ja-no-mixed-period": true
+  }
+}
