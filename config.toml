@@ -1,6 +1,7 @@
 languageCode = "ja-jp"
 title = "Blog"
 baseurl = "http://blog.70-10.net"
+googleAnalytics = "UA-99979822-1"
 
 [permalinks]
   post = "/:year/:month/:day/:filename/"
