@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Blog at 70-10.net">
+  <meta name="author" content="70_10">
+  <title>iOS端末にプッシュ配信するCLIツールを作った / Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="http://blog.70-10.net/css/main.css" media="all">
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-99979822-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+  <section class="hero is-light is-medium" style="background-color: #fff;">
+    <div class="hero-head">
+      <header class="nav">
+        <div class="container">
+          <div class="nav-left">
+            <a class="nav-item" href="http://blog.70-10.net">
+              <h1 class="title blog-title">Blog</h1>
+            </a>
+          </div>
+          <div class="nav-right nav-menu">
+            <a class="nav-item" href="https://github.com/70-10" title="70_10" target="_blank">
+              <span class="icon"><i class="fa fa-github"></i></span>
+            </a>
+            <a class="nav-item" href="https://twitter.com/70_10" title="70_10" target="_blank">
+              <span class="icon"><i class="fa fa-twitter"></i></span>
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+  </section>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">iOS端末にプッシュ配信するCLIツールを作った</h1>
+      <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
+        <time pubdate datetime="2017-09-03" title="2017-09-03">2017/09/03</time>
+      </h2>
+      <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;"/>
+      <div class="content is-medium">
+        
+
+<p><a href="https://github.com/70-10/pusher">pusher</a>というiOS端末にプッシュ配信を行うツールを作りました。<br />
+使い方や作った背景などをまとめます。</p>
+
+<h2 id="どういうツールなのか">どういうツールなのか</h2>
+
+<p>iOS端末にプッシュ配信をする、Go言語製のCLIツールです。<br />
+このツールでできるのは、自分で定義したpayloadを指定の端末にプッシュすることです。<br />
+証明書ファイルの生成やデバイストークンの取得など、プッシュ配信に必要なものは事前に揃えておきます。</p>
+
+<h2 id="使い方">使い方</h2>
+
+<h3 id="インストール">インストール</h3>
+
+<p><code>go get</code>でインストールします。</p>
+
+<pre><code>$ go get github.com/70-10/pusher
+</code></pre>
+
+<h3 id="configファイルの設定">configファイルの設定</h3>
+
+<p>プッシュ配信をする際に必要な設定を、<code>~/.config/pusher/config.toml</code>に設定します。</p>
+
+<p>config.tomlの設定はサブコマンドのconfigから行えます。</p>
+
+<pre><code>$ pusher config
+</code></pre>
+
+<h4 id="設定する値について">設定する値について</h4>
+
+<pre><code>p12 = &quot;/path/to/file.p12&quot;
+password = &quot;&quot;
+devicetoken = &quot;&quot;
+topic = &quot;&quot;
+payload = &quot;/Users/your_name/.config/pusher/payload.json&quot;
+env = &quot;production&quot;
+</code></pre>
+
+<h4 id="config-toml-の中身"><code>config.toml</code>の中身</h4>
+
+<table>
+<thead>
+<tr>
+<th>設定値</th>
+<th>内容</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>p12</td>
+<td>プッシュ配信を行うための証明書のパス。p12形式。</td>
+</tr>
+
+<tr>
+<td>password</td>
+<td>証明書のパスワード</td>
+</tr>
+
+<tr>
+<td>devicetoken</td>
+<td>プッシュを配信するiOS端末のデバイストークン</td>
+</tr>
+
+<tr>
+<td>topic</td>
+<td>プッシュ通知のトピック。アプリのBundle IDを設定すればOK</td>
+</tr>
+
+<tr>
+<td>payload</td>
+<td><code>payload.json</code>のパス</td>
+</tr>
+
+<tr>
+<td>env</td>
+<td>APNsの環境（Production or Sandbox）</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="payload-jsonの設定">payload.jsonの設定</h3>
+
+<p>配信する内容を<code>~/.config/pusher/payload.json</code>に設定します。<br />
+設定はサブコマンドのpayloadから行えます。</p>
+
+<pre><code>$ pusher config
+</code></pre>
+
+<p>以下のJSONがデフォルト値として設定されています。<br />
+※設定値の詳細は<a href="https://developer.apple.com/jp/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/APNsProviderAPI.html">Appleのドキュメント</a>を参照してください。</p>
+
+<pre><code>{
+  &quot;aps&quot;: {
+    &quot;alert&quot;: &quot;Alert&quot;,
+    &quot;badge&quot;: 10,
+    &quot;sound&quot;: &quot;sound-file&quot;
+  },
+  &quot;custom-key&quot;: &quot;custom-value&quot;
+}
+</code></pre>
+
+<h2 id="プッシュの配信">プッシュの配信</h2>
+
+<p>プッシュのコマンドを実行するのみです。</p>
+
+<pre><code>$ pusher push
+</code></pre>
+
+<h2 id="開発の背景">開発の背景</h2>
+
+<p>新OSの検証やアプリの動作確認をする際は、いつもプッシュサービスを使ってプッシュ配信を行っています。<br />
+プッシュ配信が届かない場合、以下のように原因切り分けで3つ目の選択肢が増えてしまいます。</p>
+
+<ol>
+<li>プッシュを受信するアプリ（または端末、OS）がおかしい</li>
+<li>APNsから端末へプッシュするところがおかしい</li>
+<li>プッシュサービスからAPNsへのリクエストがおかしい</li>
+</ol>
+
+<p>プッシュサービスが自前でない限り、ブラックボックスが2つ（プッシュサービスとAPNs）になり、問題箇所がかなり見つけづらくなります。<br />
+問題箇所が特定しづらくなるのを少しでも軽減するために、このツールを作りました。<br />
+（自分が作ったツールであれば、ツールに問題があっても調査がしやすいはず）</p>
+
+<p>また、同じpayload設定のプッシュを手軽にできるようにするというのも目的でした。<br />
+（Webからは毎回手動で項目を埋める必要がありました）</p>
+
+<h2 id="今後のこと">今後のこと</h2>
+
+<p>APNsのトークン認証やAndroidのプッシュ配信など、追加したい機能を時間を見つけて対応していこうと思います。</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="container">
+      <div class="has-text-right">
+        <a href="https://twitter.com/share" class="twitter-share-button">ツイート</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <footer class="footer" style="background-color: #fff;">
+  </footer>
+</body>
+</html>
+
