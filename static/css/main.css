@@ -13,3 +13,9 @@ body {
 .content pre {
   padding: 0;
 }
+
+.content h2:not(:first-child) {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+  font-weight: 600;
+}
