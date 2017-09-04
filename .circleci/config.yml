@@ -35,6 +35,6 @@ jobs:
           command: |
             ls -al
             git add -A
-            git commit -m "release at $(date +'%Y.%m.%d %H:%M:%S')" --allow-empty
+            git commit -m "release at $(date +'%Y.%m.%d %H:%M:%S') [ci skip]" --allow-empty
             git branch -vv
             git push -u origin gh-pages
