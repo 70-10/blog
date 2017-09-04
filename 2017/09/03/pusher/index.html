@@ -50,33 +50,35 @@ ga('send', 'pageview');
 <section class="hero">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">iOS端末にプッシュ配信するCLIツールを作った</h1>
-      <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
-        <time pubdate datetime="2017-09-03" title="2017-09-03">2017/09/03</time>
-      </h2>
-      <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;"/>
-      <div class="content is-medium">
-        
+    <div class="columns">
+      <div class="column is-three-quarters">
+          <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">iOS端末にプッシュ配信するCLIツールを作った</h1>
+          <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
+            <time pubdate datetime="2017-09-03" title="2017-09-03">2017/09/03</time>
+          </h2>
+          <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;"/>
+          <div class="content is-medium">
+            
 
 <p><a href="https://github.com/70-10/pusher">pusher</a>というiOS端末にプッシュ配信を行うツールを作りました。<br />
 使い方や作った背景などをまとめます。</p>
 
-<h2 id="どういうツールなのか">どういうツールなのか</h2>
+<h1 id="どういうツールなのか">どういうツールなのか</h1>
 
 <p>iOS端末にプッシュ配信をする、Go言語製のCLIツールです。<br />
 このツールでできるのは、自分で定義したpayloadを指定の端末にプッシュすることです。<br />
 証明書ファイルの生成やデバイストークンの取得など、プッシュ配信に必要なものは事前に揃えておきます。</p>
 
-<h2 id="使い方">使い方</h2>
+<h1 id="使い方">使い方</h1>
 
-<h3 id="インストール">インストール</h3>
+<h2 id="インストール">インストール</h2>
 
 <p><code>go get</code>でインストールします。</p>
 
 <pre><code>$ go get github.com/70-10/pusher
 </code></pre>
 
-<h3 id="configファイルの設定">configファイルの設定</h3>
+<h2 id="configファイルの設定">configファイルの設定</h2>
 
 <p>プッシュ配信をする際に必要な設定を、<code>~/.config/pusher/config.toml</code>に設定します。</p>
 
@@ -85,7 +87,7 @@ ga('send', 'pageview');
 <pre><code>$ pusher config
 </code></pre>
 
-<h4 id="設定する値について">設定する値について</h4>
+<h3 id="設定する値について">設定する値について</h3>
 
 <pre><code>p12 = &quot;/path/to/file.p12&quot;
 password = &quot;&quot;
@@ -95,7 +97,7 @@ payload = &quot;/Users/your_name/.config/pusher/payload.json&quot;
 env = &quot;production&quot;
 </code></pre>
 
-<h4 id="config-toml-の中身"><code>config.toml</code>の中身</h4>
+<h3 id="config-toml-の中身"><code>config.toml</code>の中身</h3>
 
 <table>
 <thead>
@@ -138,7 +140,7 @@ env = &quot;production&quot;
 </tbody>
 </table>
 
-<h3 id="payload-jsonの設定">payload.jsonの設定</h3>
+<h2 id="payload-jsonの設定">payload.jsonの設定</h2>
 
 <p>配信する内容を<code>~/.config/pusher/payload.json</code>に設定します。<br />
 設定はサブコマンドのpayloadから行えます。</p>
@@ -159,14 +161,14 @@ env = &quot;production&quot;
 }
 </code></pre>
 
-<h2 id="プッシュの配信">プッシュの配信</h2>
+<h1 id="プッシュの配信">プッシュの配信</h1>
 
 <p>プッシュのコマンドを実行するのみです。</p>
 
 <pre><code>$ pusher push
 </code></pre>
 
-<h2 id="開発の背景">開発の背景</h2>
+<h1 id="開発の背景">開発の背景</h1>
 
 <p>新OSの検証やアプリの動作確認をする際は、いつもプッシュサービスを使ってプッシュ配信を行っています。<br />
 プッシュ配信が届かない場合、以下のように原因切り分けで3つ目の選択肢が増えてしまいます。</p>
@@ -184,12 +186,38 @@ env = &quot;production&quot;
 <p>また、同じpayload設定のプッシュを手軽にできるようにするというのも目的でした。<br />
 （Webからは毎回手動で項目を埋める必要がありました）</p>
 
-<h2 id="今後のこと">今後のこと</h2>
+<h1 id="今後のこと">今後のこと</h1>
 
 <p>APNsのトークン認証やAndroidのプッシュ配信など、追加したい機能を時間を見つけて対応していこうと思います。</p>
 
+          </div>
+      </div>
+      <div class="column">
+        <h4 class="subtitle">目次</h4>
+        <div class="content" style="font-size: 1.15rem;">
+          <nav id="TableOfContents">
+<ul>
+<li><a href="#どういうツールなのか">どういうツールなのか</a></li>
+<li><a href="#使い方">使い方</a>
+<ul>
+<li><a href="#インストール">インストール</a></li>
+<li><a href="#configファイルの設定">configファイルの設定</a>
+<ul>
+<li><a href="#設定する値について">設定する値について</a></li>
+<li><a href="#config-toml-の中身"><code>config.toml</code>の中身</a></li>
+</ul></li>
+<li><a href="#payload-jsonの設定">payload.jsonの設定</a></li>
+</ul></li>
+<li><a href="#プッシュの配信">プッシュの配信</a></li>
+<li><a href="#開発の背景">開発の背景</a></li>
+<li><a href="#今後のこと">今後のこと</a></li>
+</ul>
+</nav>
+        </div>
       </div>
     </div>
+    </div>
+
   </div>
   <div class="hero-foot">
     <div class="container">
