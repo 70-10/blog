@@ -2,15 +2,26 @@
 <section class="hero">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">{{ .Title }}</h1>
-      <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
-        <time pubdate datetime="{{ .Date.Format "2006-01-02" }}" title="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006/01/02" }}</time>
-      </h2>
-      <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;"/>
-      <div class="content is-medium">
-        {{ .Content }}
+    <div class="columns">
+      <div class="column is-three-quarters">
+          <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">{{ .Title }}</h1>
+          <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
+            <time pubdate datetime="{{ .Date.Format "2006-01-02" }}" title="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006/01/02" }}</time>
+          </h2>
+          <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;"/>
+          <div class="content is-medium">
+            {{ .Content }}
+          </div>
+      </div>
+      <div class="column">
+        <h4 class="subtitle">目次</h4>
+        <div class="content" style="font-size: 1.15rem;">
+          {{ .TableOfContents }}
+        </div>
       </div>
     </div>
+    </div>
+
   </div>
   <div class="hero-foot">
     <div class="container">
