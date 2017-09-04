@@ -1,0 +1,40 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: felicianotech/docker-hugo:0.26
+    working_directory: /blog
+    branches:
+      only:
+        - master
+    steps:
+      - checkout
+      - run:
+          name: Setup git
+          command: |
+            git config --global user.name 'CircleCI'
+            git config --global user.email 'circleci@cureapp.jp'
+      - run:
+          name: Build Hugo
+          command: hugo
+      - run:
+          name: checkout public
+          command: git checkout -b public origin/gh-pages
+      - run:
+          name: remove old files
+          command: |
+            git rm $(git ls-files | grep -v "CNAME")
+      - run:
+          name: mv
+          command: |
+            mv public/* .
+            rm -rf public
+            ls -al
+      - run:
+          name: hoge
+          command: |
+            ls -al
+            git add -A
+            git commit -m "release at $(date +'%Y.%m.%d %H:%M:%S')" --allow-empty
+            git branch -vv
+            git push -u origin public
