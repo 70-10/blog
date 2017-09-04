@@ -10,28 +10,28 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Setup git
+          name: "Git: Setup"
           command: |
             git config --global user.name 'CircleCI'
             git config --global user.email 'circleci@cureapp.jp'
       - run:
-          name: Build Hugo
+          name: "Hugo: Build"
           command: hugo
       - run:
-          name: checkout public
+          name: "Git: Checkout public"
           command: git checkout -b public origin/gh-pages
       - run:
-          name: remove old files
+          name: "Git: Remove old files"
           command: |
             git rm $(git ls-files | grep -v "CNAME")
       - run:
-          name: mv
+          name: mv public
           command: |
             mv public/* .
             rm -rf public
             ls -al
       - run:
-          name: hoge
+          name: "Git: Push"
           command: |
             ls -al
             git add -A
