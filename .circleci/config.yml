@@ -19,7 +19,7 @@ jobs:
           command: hugo
       - run:
           name: "Git: Checkout public"
-          command: git checkout -b public origin/gh-pages
+          command: git checkout -t origin/gh-pages
       - run:
           name: "Git: Remove old files"
           command: |
@@ -37,4 +37,4 @@ jobs:
             git add -A
             git commit -m "release at $(date +'%Y.%m.%d %H:%M:%S')" --allow-empty
             git branch -vv
-            git push -u origin public
+            git push -u origin gh-pages
