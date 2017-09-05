@@ -18,14 +18,14 @@ jobs:
           name: "Hugo: Build"
           command: hugo
       - run:
-          name: "Git: Checkout public"
+          name: "Git: Checkout gh-pages"
           command: git checkout -t origin/gh-pages
       - run:
           name: "Git: Remove old files"
           command: |
             git rm $(git ls-files | grep -v "CNAME")
       - run:
-          name: mv public
+          name: "Hugo: mv public/*"
           command: |
             mv public/* .
             rm -rf public
