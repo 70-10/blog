@@ -29,11 +29,9 @@ jobs:
           command: |
             mv public/* .
             rm -rf public
-            ls -al
       - run:
           name: "Git: Push"
           command: |
-            ls -al
             git add -A
             git commit -m "release at $(date +'%Y.%m.%d %H:%M:%S') [ci skip]" --allow-empty
             git branch -vv
