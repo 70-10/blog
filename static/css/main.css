@@ -19,3 +19,9 @@ body {
   border-bottom: 1px solid #eaecef;
   font-weight: 600;
 }
+
+.button.twitter {
+  background-color: #55acee;
+  color: white;
+  border-color: transparent !important;
+}
