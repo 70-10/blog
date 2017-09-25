@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://blog.70-10.net/2017/09/25/eval-spec-maker-on-docker/</loc>
+    <lastmod>2017-09-25T22:11:43+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://blog.70-10.net/2017/09/03/pusher/</loc>
     <lastmod>2017-09-03T23:44:23+09:00</lastmod>
   </url>
@@ -19,7 +24,7 @@
   
   <url>
     <loc>http://blog.70-10.net/</loc>
-    <lastmod>2017-09-03T23:44:23+09:00</lastmod>
+    <lastmod>2017-09-25T22:11:43+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -30,7 +35,7 @@
   
   <url>
     <loc>http://blog.70-10.net/post/</loc>
-    <lastmod>2017-09-03T23:44:23+09:00</lastmod>
+    <lastmod>2017-09-25T22:11:43+09:00</lastmod>
     <priority>0</priority>
   </url>
   
