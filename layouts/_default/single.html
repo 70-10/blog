@@ -4,7 +4,7 @@
     <div class="container">
       <div class="columns">
         <div class="column is-three-quarters">
-          <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">{{ .Title }}</h1>
+          <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">{{ if .Draft }} <u style="color: red;">#Draft</u> {{ end }}{{ .Title }}</h1>
           <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
             <time pubdate datetime="{{ .Date.Format "2006-01-02" }}" title="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006/01/02" }}</time>
           </h2>
