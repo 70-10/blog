@@ -1,0 +1,10 @@
+{{ partial "header.html" . }}
+<h1>TAG</h1>
+
+{{ range .Data.Pages }}
+<li>
+  <a href="{{ .Permalink }}">{{ .Title }}</a>
+  <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+</li>
+{{ end }}
+{{ partial "footer.html" . }}
