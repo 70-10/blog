@@ -1,10 +1,22 @@
 {{ partial "header.html" . }}
-<h1>TAG</h1>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-9">
+        <h1 class="title">タグ - {{ .Title }}</h1>
+        <div class="content is-large">
+          <ul>
+            {{ range .Data.Pages }}
+              {{ if eq .Type  "post" }}
+                {{ .Render "list"}}
+              {{ end }}
+            {{ end }}
+          </ul>
+        </div>
+      </div>
 
-{{ range .Data.Pages }}
-<li>
-  <a href="{{ .Permalink }}">{{ .Title }}</a>
-  <div class="meta">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
-</li>
-{{ end }}
+      <div class="column is-3">{{ partial "menu.html" .}}</div>
+    </div>
+  </div>
+</section>
 {{ partial "footer.html" . }}

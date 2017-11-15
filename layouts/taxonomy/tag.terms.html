@@ -1,24 +1,27 @@
 {{ partial "header.html" . }}
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-9">
+        <h1 class="title">タグ</h1>
+        <div class="field is-grouped is-grouped-multiline">
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            <div class="control">
+              <div class="tags has-addons">
+                  <a href="/tags/{{ $name | urlize }}">
+                    <span class="tag is-medium">
+                    {{ $name }}
+                  </span>
+                  </a>
+                <span class="tag is-medium is-success">{{ len $taxonomy.Pages }}</span>
+              </div>
+            </div>
+            {{ end }}
+        </div>
+      </div>
 
-<ul id="all-tags">
-  {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-  <li>
-    <a href="/tags/{{ $name | urlize }}">{{ $name }}</a>
-  </li>
-  <ul>
-    {{ range $taxonomy.Pages }}
-    <li hugo-nav="{{ .RelPermalink}}">
-      <a href="{{ .Permalink}}"> {{ .LinkTitle }} </a>
-    </li>
-    {{ end }}
-  </ul>
-  {{ end }}
-</ul>
-
-<ul>
-  {{ $data := .Data }} {{ range $key, $value := .Data.Terms }}
-  <li>
-    <a href="/{{ $data.Plural }}/{{ $key | urlize }}">{{ $key }}</a> {{ len $value }}</li>
-  {{ end }}
-</ul>
+      <div class="column is-3">{{ partial "menu.html" .}}</div>
+    </div>
+  </div>
+</section>
 {{ partial "footer.html" . }}
