@@ -7,3 +7,10 @@ services:
       - ./stacks/domain:/tmp/src
     environment:
       AWS_PROFILE: ${AWS_PROFILE}
+  dns:
+    build: ./.docker
+    volumes:
+      - ~/.aws:/root/.aws
+      - ./stacks/dns:/tmp/src
+    environment:
+      AWS_PROFILE: ${AWS_PROFILE}

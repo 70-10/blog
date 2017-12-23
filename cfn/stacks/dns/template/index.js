@@ -10,12 +10,9 @@ module.exports = {
       Type: "String"
     }
   },
-  Resources: Object.assign(require("./resources/acm")),
-  Outputs: {
-    BlogDomainACM: {
-      Description: "BlogDomainACM ID",
-      Value: { Ref: "BlogDomainACM" },
-      Export: { Name: "BlogDomainACM" }
-    }
-  }
+  Resources: Object.assign(
+    require("./resources/stg-record"),
+    require("./resources/cloudfront")
+  ),
+  Outputs: {}
 };

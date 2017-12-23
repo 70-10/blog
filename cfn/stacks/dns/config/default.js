@@ -1,17 +1,17 @@
 module.exports = {
-  stackName: "Blog-domain",
+  stackName: "Blog-DNS",
   timeoutInMinutes: 30,
   tags: {
     System: "Blog",
     Stage: process.env.NODE_ENV || "DEV",
-    Component: "domain"
+    Component: "DNS"
   },
   awsOpt: {
     region: "us-east-1"
   },
 
   // custom config
-  hostedZone: {
-    domain: "70-10.net"
+  origin: {
+    domain_name: "70-10.github.io"
   }
 };

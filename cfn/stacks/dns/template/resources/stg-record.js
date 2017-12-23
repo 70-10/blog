@@ -8,9 +8,11 @@ module.exports = {
     Properties: {
       HostedZoneName: { "Fn::Join": ["", [{ Ref: "HostedZone" }, "."]] },
       Name: { "Fn::Join": ["", ["blog", ".", { Ref: "HostedZone" }, "."]] },
-      Type: "CNAME",
-      TTL: 300,
-      ResourceRecords: ["70-10.github.io"]
+      Type: "A",
+      AliasTarget: {
+        DNSName: { "Fn::GetAtt": ["BlogCloudFront", "DomainName"] },
+        HostedZoneId: "Z2FDTNDATAQYW2"
+      }
     }
   }
 };
