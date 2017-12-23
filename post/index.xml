@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Blog</title>
-    <link>http://blog.70-10.net/post/</link>
+    <link>https://blog.70-10.net/post/</link>
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 25 Sep 2017 22:11:43 +0900</lastBuildDate>
     
-	<atom:link href="http://blog.70-10.net/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.70-10.net/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>eval-spec-makerをDocker化した</title>
-      <link>http://blog.70-10.net/2017/09/25/eval-spec-maker-on-docker/</link>
+      <link>https://blog.70-10.net/2017/09/25/eval-spec-maker-on-docker/</link>
       <pubDate>Mon, 25 Sep 2017 22:11:43 +0900</pubDate>
       
-      <guid>http://blog.70-10.net/2017/09/25/eval-spec-maker-on-docker/</guid>
+      <guid>https://blog.70-10.net/2017/09/25/eval-spec-maker-on-docker/</guid>
       <description>eval-spec-makerをDocker化しました。
 eval-spec-makerがどういうものかについては、こちらの記事を参照していただくとわかります。
 使い方 インストール docker pullをするだけです。
@@ -36,10 +36,10 @@ $ docker run -it --rm -v $(pwd):/doc 7010/eval-spec-maker test.md test.xlsx  作
     
     <item>
       <title>iOS端末にプッシュ配信するCLIツールを作った</title>
-      <link>http://blog.70-10.net/2017/09/03/pusher/</link>
+      <link>https://blog.70-10.net/2017/09/03/pusher/</link>
       <pubDate>Sun, 03 Sep 2017 23:44:23 +0900</pubDate>
       
-      <guid>http://blog.70-10.net/2017/09/03/pusher/</guid>
+      <guid>https://blog.70-10.net/2017/09/03/pusher/</guid>
       <description>pusherというiOS端末にプッシュ配信を行うツールを作りました。
 使い方や作った背景などをまとめます。
 どういうツールなのか iOS端末にプッシュ配信をする、Go言語製のCLIツールです。
@@ -53,10 +53,10 @@ $ pusher config  設定する値について p12 = &amp;quot;/path/to/file.p12&a
     
     <item>
       <title>Hello World.</title>
-      <link>http://blog.70-10.net/2017/05/20/hello-world/</link>
+      <link>https://blog.70-10.net/2017/05/20/hello-world/</link>
       <pubDate>Sat, 20 May 2017 15:04:57 +0900</pubDate>
       
-      <guid>http://blog.70-10.net/2017/05/20/hello-world/</guid>
+      <guid>https://blog.70-10.net/2017/05/20/hello-world/</guid>
       <description> ブログを始めてみました。
 今年の1月から、ローカル環境でHugoを使ってブログを立てて遊んでいたんですが、（『「UNIXという考え方」を読んだ』はその頃にお試しで書いてみた記事です。）
 ローカルでブログ書いててもどうにもならないし、せっかくだからGitHub Pagesをブログを始めてみようと思って、今に至る次第です。
@@ -68,10 +68,10 @@ TODO  CIでgh-pages更新の自動化 シンタックスハイライトの設定
     
     <item>
       <title>「UNIXという考え方」を読んだ</title>
-      <link>http://blog.70-10.net/2017/01/29/unix-philosophy/</link>
+      <link>https://blog.70-10.net/2017/01/29/unix-philosophy/</link>
       <pubDate>Sun, 29 Jan 2017 18:19:49 +0900</pubDate>
       
-      <guid>http://blog.70-10.net/2017/01/29/unix-philosophy/</guid>
+      <guid>https://blog.70-10.net/2017/01/29/unix-philosophy/</guid>
       <description>UNIXという考え方―その設計思想と哲学を読みました。
 重要な9の定理と、10の小定理からUNIXについての文化や考え方、哲学を説明している本です。
 この合計19の定理については他のサイトやブログでもまとめられているので、すべてを見たいときはそっちを確認しよう。
