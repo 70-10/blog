@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Blog at 70-10.net">
+  <meta name="author" content="70_10">
+  <title>ブログをHTTPS化した / Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://blog.70-10.net/css/main.css" media="all">
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-99979822-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+  <section class="hero is-light is-medium" style="background-color: #fff;">
+    <div class="hero-head">
+      <header class="nav">
+        <div class="container">
+          <div class="nav-left">
+            <a class="nav-item" href="https://blog.70-10.net">
+              <h1 class="title blog-title">Blog</h1>
+            </a>
+          </div>
+          <div class="nav-right nav-menu">
+            <a class="nav-item" href="https://github.com/70-10" title="70_10" target="_blank">
+              <span class="icon"><i class="fa fa-github"></i></span>
+            </a>
+            <a class="nav-item" href="https://twitter.com/70_10" title="70_10" target="_blank">
+              <span class="icon" style="color: #55acee;"><i class="fa fa-twitter"></i></span>
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+  </section>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-three-quarters">
+          <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">ブログをHTTPS化した</h1>
+          <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
+            <time pubdate datetime="2017-12-24" title="2017-12-24">2017/12/24</time>
+          </h2>
+          <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;" />
+          <div class="content is-medium">
+            
+
+<p>ブログを HTTPS 化しました。これまでは、GitHub Pages にカスタムドメインを設定していました。<br />
+GitHub Pages ではカスタムドメインの HTTPS 化ができません。</p>
+
+<p>今回は、GitHub Pages の前に CloudFront ＋ ACM をおいて HTTPS 化しました。</p>
+
+<h2 id="やったこと">やったこと</h2>
+
+<ul>
+<li><p><a href="https://qiita.com/iogi/items/82618c1d56abba6b9337">すでに実践されている方の記事</a>を参考に <a href="https://github.com/70-10/blog/tree/master/cfn">CloudFormation を作成しました</a></p>
+
+<ul>
+<li>記事にある 2 つ目の方法で対応</li>
+</ul>
+
+<blockquote>
+<p>CNAME を無効にして、 <a href="https://example.github.io/reponame/">https://example.github.io/reponame/</a> でアクセスするようにし、/reponame/ を Origin のパスとして利用する</p>
+</blockquote>
+
+<ul>
+<li>CloudFormation のスタックを domain と dns の 2 つに分離したけど、ひとつにまとめても問題なさそう</li>
+</ul></li>
+
+<li><p>gh-pages ブランチで設定していた CNAME を削除しました</p></li>
+</ul>
+
+<h3 id="cloudflare-を使わなかった理由">CloudFlare を使わなかった理由</h3>
+
+<p>GitHub Pages の HTTPS 化で検索すると、真っ先に CloudFlare を利用した設定方法がヒットします。<br />
+ですが、ドメインを Route53 で管理している・すでに ACM の設定をしているということもあり、AWS サービス（CloudFront）で完結したかったため、CloudFlare は採用しませんでした。</p>
+
+<h2 id="つまずいたこと">つまずいたこと</h2>
+
+<h3 id="cloudfront-に設定できる-acm-にはリージョン制限がある">CloudFront に設定できる ACM にはリージョン制限がある</h3>
+
+<p>CloudFront への ACM 設定を行うには、ACM がリージョンがバージニア北部（us-east-1）のものでないといけません。<br />
+以前に、先に ACM の登録を東京リージョンで登録していたため、ここでかなりの時間を費やしました。</p>
+
+<h3 id="config-toml-の-baseurl-が-http-のままだった">config.toml の baseurl が http のままだった</h3>
+
+<p>なぜか css ファイルが読み込めないなと思っていたら、<a href="https://github.com/70-10/blog/blob/master/config.toml#L3">config.toml に設定している baseurl</a>が http のままでした。</p>
+
+          </div>
+
+          <hr style="height: 2px; margin-top: 6rem;" />
+          <div>
+            <a class="button twitter" href="http://twitter.com/intent/tweet?text=%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92HTTPS%e5%8c%96%e3%81%97%e3%81%9f%20%7C%20Blog%20https%3a%2f%2fblog.70-10.net%2f2017%2f12%2f24%2fhttps-blog%2f%20%4070_10">
+              <span class="icon"><i class="fa fa-twitter"></i></span>
+              <span>ツイート</span>
+            </a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </div>
+        </div>
+        <div class="column">
+          <h4 class="subtitle">目次</h4>
+          <div class="content" style="font-size: 1.15rem;">
+            <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#やったこと">やったこと</a>
+<ul>
+<li><a href="#cloudflare-を使わなかった理由">CloudFlare を使わなかった理由</a></li>
+</ul></li>
+<li><a href="#つまずいたこと">つまずいたこと</a>
+<ul>
+<li><a href="#cloudfront-に設定できる-acm-にはリージョン制限がある">CloudFront に設定できる ACM にはリージョン制限がある</a></li>
+<li><a href="#config-toml-の-baseurl-が-http-のままだった">config.toml の baseurl が http のままだった</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+  </div>
+</section>
+
+  <footer class="footer" style="background-color: #fff;">
+  </footer>
+</body>
+</html>
+

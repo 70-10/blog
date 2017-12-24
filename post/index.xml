@@ -6,10 +6,26 @@
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 25 Sep 2017 22:11:43 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 24 Dec 2017 21:07:07 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.70-10.net/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ブログをHTTPS化した</title>
+      <link>https://blog.70-10.net/2017/12/24/https-blog/</link>
+      <pubDate>Sun, 24 Dec 2017 21:07:07 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/2017/12/24/https-blog/</guid>
+      <description>ブログを HTTPS 化しました。これまでは、GitHub Pages にカスタムドメインを設定していました。
+GitHub Pages ではカスタムドメインの HTTPS 化ができません。
+今回は、GitHub Pages の前に CloudFront ＋ ACM をおいて HTTPS 化しました。
+やったこと  すでに実践されている方の記事を参考に CloudFormation を作成しました
+ 記事にある 2 つ目の方法で対応   CNAME を無効にして、 https://example.github.io/reponame/ でアクセスするようにし、/reponame/ を Origin のパスとして利用する
+  CloudFormation のスタックを domain と dns の 2 つに分離したけど、ひとつにまとめても問題なさそう  gh-pages ブランチで設定していた CNAME を削除しました
+  CloudFlare を使わなかった理由 GitHub Pages の HTTPS 化で検索すると、真っ先に CloudFlare を利用した設定方法がヒットします。
+ですが、ドメインを Route53 で管理している・すでに ACM の設定をしているということもあり、AWS サービス（CloudFront）で完結したかったため、CloudFlare は採用しませんでした。</description>
+    </item>
     
     <item>
       <title>eval-spec-makerをDocker化した</title>
