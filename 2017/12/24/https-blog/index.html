@@ -50,15 +50,13 @@ ga('send', 'pageview');
 <section class="hero">
   <div class="hero-body">
     <div class="container">
-      <div class="columns">
-        <div class="column is-three-quarters">
-          <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">ブログをHTTPS化した</h1>
-          <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
-            <time pubdate datetime="2017-12-24" title="2017-12-24">2017/12/24</time>
-          </h2>
-          <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;" />
-          <div class="content is-medium">
-            
+      <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">ブログをHTTPS化した</h1>
+      <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
+        <time pubdate datetime="2017-12-24" title="2017-12-24">2017/12/24</time>
+      </h2>
+      <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;" />
+      <div class="content is-medium">
+        
 
 <p>ブログを HTTPS 化しました。これまでは、GitHub Pages にカスタムドメインを設定していました。<br />
 GitHub Pages ではカスタムドメインの HTTPS 化ができません。</p>
@@ -101,38 +99,15 @@ GitHub Pages ではカスタムドメインの HTTPS 化ができません。</p
 
 <p>なぜか css ファイルが読み込めないなと思っていたら、<a href="https://github.com/70-10/blog/blob/master/config.toml#L3">config.toml に設定している baseurl</a>が http のままでした。</p>
 
-          </div>
+      </div>
 
-          <hr style="height: 2px; margin-top: 6rem;" />
-          <div>
-            <a class="button twitter" href="http://twitter.com/intent/tweet?text=%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92HTTPS%e5%8c%96%e3%81%97%e3%81%9f%20%7C%20Blog%20https%3a%2f%2fblog.70-10.net%2f2017%2f12%2f24%2fhttps-blog%2f%20%4070_10">
-              <span class="icon"><i class="fa fa-twitter"></i></span>
-              <span>ツイート</span>
-            </a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-          </div>
-        </div>
-        <div class="column">
-          <h4 class="subtitle">目次</h4>
-          <div class="content" style="font-size: 1.15rem;">
-            <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#やったこと">やったこと</a>
-<ul>
-<li><a href="#cloudflare-を使わなかった理由">CloudFlare を使わなかった理由</a></li>
-</ul></li>
-<li><a href="#つまずいたこと">つまずいたこと</a>
-<ul>
-<li><a href="#cloudfront-に設定できる-acm-にはリージョン制限がある">CloudFront に設定できる ACM にはリージョン制限がある</a></li>
-<li><a href="#config-toml-の-baseurl-が-http-のままだった">config.toml の baseurl が http のままだった</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
-          </div>
-        </div>
+      <hr style="height: 2px; margin-top: 6rem;" />
+      <div>
+        <a class="button twitter" href="http://twitter.com/intent/tweet?text=%e3%83%96%e3%83%ad%e3%82%b0%e3%82%92HTTPS%e5%8c%96%e3%81%97%e3%81%9f%20%7C%20Blog%20https%3a%2f%2fblog.70-10.net%2f2017%2f12%2f24%2fhttps-blog%2f%20%4070_10">
+          <span class="icon"><i class="fa fa-twitter"></i></span>
+          <span>ツイート</span>
+        </a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       </div>
     </div>
   </div>
