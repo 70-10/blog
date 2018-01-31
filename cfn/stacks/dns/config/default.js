@@ -1,6 +1,6 @@
 module.exports = {
   stackName: "Blog-DNS",
-  timeoutInMinutes: 30,
+  timeoutInMinutes: 50,
   tags: {
     System: "Blog",
     Stage: process.env.NODE_ENV || "DEV",
@@ -13,5 +13,8 @@ module.exports = {
   // custom config
   origin: {
     domain_name: "70-10.github.io"
+  },
+  hostedZone: {
+    domain: "70-10.net"
   }
 };
