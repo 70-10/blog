@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.70-10.net/2018/01/31/2018-todo/</loc>
+    <lastmod>2018-01-31T23:50:49+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/2017/12/24/https-blog/</loc>
     <lastmod>2017-12-24T21:07:07+09:00</lastmod>
   </url>
@@ -29,7 +34,7 @@
   
   <url>
     <loc>https://blog.70-10.net/</loc>
-    <lastmod>2017-12-24T21:07:07+09:00</lastmod>
+    <lastmod>2018-01-31T23:50:49+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -40,7 +45,7 @@
   
   <url>
     <loc>https://blog.70-10.net/post/</loc>
-    <lastmod>2017-12-24T21:07:07+09:00</lastmod>
+    <lastmod>2018-01-31T23:50:49+09:00</lastmod>
     <priority>0</priority>
   </url>
   
