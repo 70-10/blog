@@ -1,9 +1,8 @@
-+++
-date = "2017-05-20T15:04:57+09:00"
-draft = false
-title = "Hello World."
-
-+++
+---
+date: "2017-05-20T15:04:57+09:00"
+draft: false
+title: "Hello World."
+---
 
 ブログを始めてみました。  
 今年の1月から、ローカル環境で[Hugo](https://github.com/spf13/hugo)を使ってブログを立てて遊んでいたんですが、（[『「UNIXという考え方」を読んだ』](/2017/01/29/unix-philosophy/)はその頃にお試しで書いてみた記事です。）  
