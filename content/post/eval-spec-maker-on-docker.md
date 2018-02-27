@@ -2,6 +2,7 @@
 title: "eval-spec-makerをDocker化した"
 date: 2017-09-25T22:11:43+09:00
 draft: false
+tags: ["Docker", "テスト"]
 ---
 
 [eval-spec-maker](https://github.com/ryuta46/eval-spec-maker)を[Docker化](https://hub.docker.com/r/7010/eval-spec-maker/tags/)しました。  

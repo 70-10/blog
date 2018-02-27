@@ -6,6 +6,11 @@
       <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
         <time pubdate datetime="{{ .Date.Format "2006-01-02" }}" title="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006/01/02" }}</time>
       </h2>
+      {{ with .Params.tags }}
+        <div class="tags" style="padding-left: 1.25rem;">
+          {{ range . }} <a href="/tags/{{ lower . }}/" class="tag is-medium">{{ . }}</a>{{ end }}
+        </div>
+      {{ end }}
       <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;" />
       <div class="content is-medium">
         {{ .Content }}

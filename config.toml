@@ -12,3 +12,6 @@ googleAnalytics = "UA-99979822-1"
 [params]
   twitter = "70_10"
   github = "70-10"
+
+[taxonomies]
+  tag = "tags"

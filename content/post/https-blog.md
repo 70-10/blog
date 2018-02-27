@@ -2,6 +2,7 @@
 title: "ブログをHTTPS化した"
 date: 2017-12-24T21:07:07+09:00
 draft: false
+tags: ["AWS"]
 ---
 
 ブログを HTTPS 化しました。これまでは、GitHub Pages にカスタムドメインを設定していました。  
