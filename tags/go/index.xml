@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Go on Blog</title>
+    <link>https://blog.70-10.net/tags/go/</link>
+    <description>Recent content in Go on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sun, 03 Sep 2017 23:44:23 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.70-10.net/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>iOS端末にプッシュ配信するCLIツールを作った</title>
+      <link>https://blog.70-10.net/2017/09/03/pusher/</link>
+      <pubDate>Sun, 03 Sep 2017 23:44:23 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/2017/09/03/pusher/</guid>
+      <description>pusherというiOS端末にプッシュ配信を行うツールを作りました。
+使い方や作った背景などをまとめます。
+どういうツールなのか iOS端末にプッシュ配信をする、Go言語製のCLIツールです。
+このツールでできるのは、自分で定義したpayloadを指定の端末にプッシュすることです。
+証明書ファイルの生成やデバイストークンの取得など、プッシュ配信に必要なものは事前に揃えておきます。
+使い方 インストール go getでインストールします。
+$ go get github.com/70-10/pusher  configファイルの設定 プッシュ配信をする際に必要な設定を、~/.config/pusher/config.tomlに設定します。
+config.tomlの設定はサブコマンドのconfigから行えます。
+$ pusher config  設定する値について p12 = &amp;quot;/path/to/file.p12&amp;quot; password = &amp;quot;&amp;quot; devicetoken = &amp;quot;&amp;quot; topic = &amp;quot;&amp;quot; payload = &amp;quot;/Users/your_name/.config/pusher/payload.json&amp;quot; env = &amp;quot;production&amp;quot;  config.tomlの中身    設定値 内容     p12 プッシュ配信を行うための証明書のパス。p12形式。   password 証明書のパスワード   devicetoken プッシュを配信するiOS端末のデバイストークン   topic プッシュ通知のトピック。アプリのBundle IDを設定すればOK   payload payload.</description>
+    </item>
+    
+  </channel>
+</rss>

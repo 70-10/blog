@@ -33,13 +33,38 @@
   </url>
   
   <url>
+    <loc>https://blog.70-10.net/tags/aws/</loc>
+    <lastmod>2017-12-24T21:07:07+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/</loc>
     <lastmod>2018-01-31T23:50:49+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.70-10.net/categories/</loc>
+    <loc>https://blog.70-10.net/tags/docker/</loc>
+    <lastmod>2017-09-25T22:11:43+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/go/</loc>
+    <lastmod>2017-09-03T23:44:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/ios/</loc>
+    <lastmod>2017-09-03T23:44:23+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/notification/</loc>
+    <lastmod>2017-09-03T23:44:23+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -51,6 +76,25 @@
   
   <url>
     <loc>https://blog.70-10.net/tags/</loc>
+    <lastmod>2017-12-24T21:07:07+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/todo/</loc>
+    <lastmod>2018-01-31T23:50:49+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/%E3%83%86%E3%82%B9%E3%83%88/</loc>
+    <lastmod>2017-09-25T22:11:43+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/%E8%AA%AD%E6%9B%B8/</loc>
+    <lastmod>2017-01-29T18:19:49+09:00</lastmod>
     <priority>0</priority>
   </url>
   

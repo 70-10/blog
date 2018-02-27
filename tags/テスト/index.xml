@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>テスト on Blog</title>
+    <link>https://blog.70-10.net/tags/%E3%83%86%E3%82%B9%E3%83%88/</link>
+    <description>Recent content in テスト on Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Mon, 25 Sep 2017 22:11:43 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.70-10.net/tags/%E3%83%86%E3%82%B9%E3%83%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>eval-spec-makerをDocker化した</title>
+      <link>https://blog.70-10.net/2017/09/25/eval-spec-maker-on-docker/</link>
+      <pubDate>Mon, 25 Sep 2017 22:11:43 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/2017/09/25/eval-spec-maker-on-docker/</guid>
+      <description>eval-spec-makerをDocker化しました。
+eval-spec-makerがどういうものかについては、こちらの記事を参照していただくとわかります。
+使い方 インストール docker pullをするだけです。
+$ docker pull 7010/eval-spec-maker  実行 7010/eval-spec-makerは/docにあるMarkdownファイルを変換します。 Volumeオプションで/docを指定する必要があります。
+$ docker run -it --rm -v $(pwd):/doc 7010/eval-spec-maker test.md test.xlsx  作った背景 僕のチームではテストケースをエクセルファイルで運用しています。
+それらのファイルはGitLabで管理しており、テストケースの追加や削除などの変更履歴はマージリクエストを使って追えるようにしています。
+ですが、エクセルファイルは変更差分が全く出ないので、マージリクエストを見るだけではわかりません。レビューをしようにも変更点を一つ一つ説明してもらわないといけない状態です。
+エクセル以外のファイルにしたり、GitLab以外の管理ツールを使おうとしてみました。
+ですが、ベターな方法は見つからず、現在も変更差分のわからない管理をしています。
+そんなときにeval-spec-makerの記事を見つけました。 さっそく使ってみたところ、求めていた機能そのものでした。
+ただ、Javaでのコンパイルを1枚噛んでいたのが気になり…
+もっと簡単に導入できるようにしたいなと思いDocker化しました。
+これからチームに展開していこうという所存です。
+あとがき Dockerが便利。Javaを知らない・使っていない人でもすぐに導入できるのはとても魅力的。CIに乗せることも難なくできます。
+ネックはイメージサイズが大きいこと。alpineベースのjavaイメージにビルドし直したいところです。</description>
+    </item>
+    
+  </channel>
+</rss>

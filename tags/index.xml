@@ -6,9 +6,82 @@
     <description>Recent content in Tags on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <lastBuildDate>Sun, 24 Dec 2017 21:07:07 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.70-10.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Aws</title>
+      <link>https://blog.70-10.net/tags/aws/</link>
+      <pubDate>Sun, 24 Dec 2017 21:07:07 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://blog.70-10.net/tags/docker/</link>
+      <pubDate>Mon, 25 Sep 2017 22:11:43 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://blog.70-10.net/tags/go/</link>
+      <pubDate>Sun, 03 Sep 2017 23:44:23 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ios</title>
+      <link>https://blog.70-10.net/tags/ios/</link>
+      <pubDate>Sun, 03 Sep 2017 23:44:23 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/ios/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Notification</title>
+      <link>https://blog.70-10.net/tags/notification/</link>
+      <pubDate>Sun, 03 Sep 2017 23:44:23 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/notification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Todo</title>
+      <link>https://blog.70-10.net/tags/todo/</link>
+      <pubDate>Wed, 31 Jan 2018 23:50:49 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/todo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>テスト</title>
+      <link>https://blog.70-10.net/tags/%E3%83%86%E3%82%B9%E3%83%88/</link>
+      <pubDate>Mon, 25 Sep 2017 22:11:43 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/%E3%83%86%E3%82%B9%E3%83%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>読書</title>
+      <link>https://blog.70-10.net/tags/%E8%AA%AD%E6%9B%B8/</link>
+      <pubDate>Sun, 29 Jan 2017 18:19:49 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/%E8%AA%AD%E6%9B%B8/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
