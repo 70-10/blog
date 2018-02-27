@@ -1,8 +1,24 @@
 <nav class="level">
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">Post</p>
+      <p class="heading">記事数</p>
       <p class="title">{{ len (where .Data.Pages "Section" "post") }}</p>
     </div>
   </div>
 </nav>
+
+  <h2 class="subtitle">タグ一覧</h2>
+  <div class="field is-grouped is-grouped-multiline">
+      {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+      <div class="control">
+        <div class="tags has-addons">
+            <a href="/tags/{{ $name | urlize }}">
+              <span class="tag is-medium">
+              {{ $name }}
+            </span>
+            </a>
+          <span class="tag is-medium is-primary">{{ len $taxonomy.Pages }}</span>
+        </div>
+      </div>
+      {{ end }}
+  </div>
