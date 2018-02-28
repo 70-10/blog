@@ -23,7 +23,7 @@ jobs:
       - run:
           name: "Git: Remove old files"
           command: |
-            git rm $(git ls-files | grep -v "CNAME")
+            git rm $(git ls-files | sed -e "s/^\"//g" | sed -e "s/\"$//g")
       - run:
           name: "Hugo: mv public/*"
           command: |
