@@ -14,6 +14,7 @@ jobs:
           command: |
             git config --global user.name 'CircleCI'
             git config --global user.email 'circleci@cureapp.jp'
+            git config --global core.quotepath false
       - run:
           name: "Hugo: Build"
           command: hugo
@@ -23,7 +24,7 @@ jobs:
       - run:
           name: "Git: Remove old files"
           command: |
-            git rm $(git ls-files | sed -e "s/^\"//g" | sed -e "s/\"$//g")
+            git rm $(git ls-files)
       - run:
           name: "Hugo: mv public/*"
           command: |
