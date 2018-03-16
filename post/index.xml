@@ -19,11 +19,11 @@
       <guid>https://blog.70-10.net/2018/03/16/run-local-kinesis-lambda/</guid>
       <description>はじめに Kinesis ストリームからイベントを処理する Lambda 関数をローカルで実行する環境を構築します。
 実装する ローカルで実行するファンクションを用意する handler.js
-module.exports.putRecord = (event, context, callback) = { const { Records } = event; const records = Records.map(r = ({ data: Buffer.from(r.kinesis.data, &#34;base64&#34;).toString(&#34;ascii&#34;) })); callback(null, records); }; Kinesis ストリームから取得したレコードを返すだけのものです。
+module.exports.putRecord = (event, context, callback) =&amp;gt; { const { Records } = event; const records = Records.map(r =&amp;gt; ({ data: Buffer.from(r.kinesis.data, &amp;#34;base64&amp;#34;).toString(&amp;#34;ascii&amp;#34;) })); callback(null, records); };  Kinesis ストリームから取得したレコードを返すだけのものです。
 ローカル環境に Kinesis を立てる kinesaliteというモジュールを使って、ローカル環境に Kinesis を立てます。
 kinesalite 実行後にストリームの作成も行います。
 run-local.js
-const kinesalite = require(&#34;kinesalite&#34;); const AWS = require(&#34;aws-sdk&#34;); const { putRecord } = require(&#34;./handler&#34;); const Kinesis = new AWS.Kinesis({ endpoint: &#34;http://localhost:4567/&#34;, region: &#34;ap-northeast-1&#34;, sslEnabled: false }); function startKinesalite(port) { return new Promise((resolve, reject) = { const kinesisServer = kinesalite(); kinesisServer.</description>
+const kinesalite = require(&amp;#34;kinesalite&amp;#34;); const AWS = require(&amp;#34;aws-sdk&amp;#34;); const { putRecord } = require(&amp;#34;./handler&amp;#34;); const Kinesis = new AWS.Kinesis({ endpoint: &amp;#34;http://localhost:4567/&amp;#34;, region: &amp;#34;ap-northeast-1&amp;#34;, sslEnabled: false }); function startKinesalite(port) { return new Promise((resolve, reject) =&amp;gt; { const kinesisServer = kinesalite(); kinesisServer.</description>
     </item>
     
     <item>
