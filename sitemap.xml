@@ -44,7 +44,7 @@
   
   <url>
     <loc>https://blog.70-10.net/tags/aws/</loc>
-    <lastmod>2017-12-24T21:07:07+09:00</lastmod>
+    <lastmod>2018-03-16T22:30:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -73,6 +73,18 @@
   </url>
   
   <url>
+    <loc>https://blog.70-10.net/tags/kinesis/</loc>
+    <lastmod>2018-03-16T22:30:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/lambda/</loc>
+    <lastmod>2018-03-16T22:30:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/tags/notification/</loc>
     <lastmod>2017-09-03T23:44:23+09:00</lastmod>
     <priority>0</priority>
@@ -85,8 +97,14 @@
   </url>
   
   <url>
+    <loc>https://blog.70-10.net/tags/serverless/</loc>
+    <lastmod>2018-03-16T22:30:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/tags/</loc>
-    <lastmod>2017-12-24T21:07:07+09:00</lastmod>
+    <lastmod>2018-03-16T22:30:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   

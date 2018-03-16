@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 24 Dec 2017 21:07:07 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 16 Mar 2018 22:30:30 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.70-10.net/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Aws</title>
       <link>https://blog.70-10.net/tags/aws/</link>
-      <pubDate>Sun, 24 Dec 2017 21:07:07 +0900</pubDate>
+      <pubDate>Fri, 16 Mar 2018 22:30:30 +0900</pubDate>
       
       <guid>https://blog.70-10.net/tags/aws/</guid>
       <description></description>
@@ -48,11 +48,38 @@
     </item>
     
     <item>
+      <title>Kinesis</title>
+      <link>https://blog.70-10.net/tags/kinesis/</link>
+      <pubDate>Fri, 16 Mar 2018 22:30:30 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/kinesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lambda</title>
+      <link>https://blog.70-10.net/tags/lambda/</link>
+      <pubDate>Fri, 16 Mar 2018 22:30:30 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/lambda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Notification</title>
       <link>https://blog.70-10.net/tags/notification/</link>
       <pubDate>Sun, 03 Sep 2017 23:44:23 +0900</pubDate>
       
       <guid>https://blog.70-10.net/tags/notification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serverless</title>
+      <link>https://blog.70-10.net/tags/serverless/</link>
+      <pubDate>Fri, 16 Mar 2018 22:30:30 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/serverless/</guid>
       <description></description>
     </item>
     
