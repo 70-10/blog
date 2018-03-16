@@ -2,6 +2,7 @@
 title: "Kinesisストリームからのイベントを処理するLambdaをローカルで実行する"
 date: 2018-03-16T22:30:30+09:00
 draft: false
+tags: ["Serverless", "Kinesis", "Lambda", "AWS"]
 ---
 
 <p></p>
