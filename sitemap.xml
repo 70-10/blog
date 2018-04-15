@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.70-10.net/2018/04/15/commit_2018-0408_0414/</loc>
+    <lastmod>2018-04-15T22:36:31+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/2018/03/16/run-local-kinesis-lambda/</loc>
     <lastmod>2018-03-16T22:30:30+09:00</lastmod>
   </url>
@@ -50,13 +55,25 @@
   
   <url>
     <loc>https://blog.70-10.net/</loc>
-    <lastmod>2018-03-16T22:30:30+09:00</lastmod>
+    <lastmod>2018-04-15T22:36:31+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/cloudformation/</loc>
+    <lastmod>2018-04-15T22:36:31+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.70-10.net/tags/docker/</loc>
     <lastmod>2017-09-25T22:11:43+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/firebase/</loc>
+    <lastmod>2018-04-15T22:36:31+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -92,7 +109,7 @@
   
   <url>
     <loc>https://blog.70-10.net/post/</loc>
-    <lastmod>2018-03-16T22:30:30+09:00</lastmod>
+    <lastmod>2018-04-15T22:36:31+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -123,6 +140,12 @@
   <url>
     <loc>https://blog.70-10.net/tags/%E3%83%86%E3%82%B9%E3%83%88/</loc>
     <lastmod>2017-09-25T22:11:43+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/%E4%BB%8A%E9%80%B1%E3%81%AE%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88/</loc>
+    <lastmod>2018-04-15T22:36:31+09:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,10 +6,31 @@
     <description>Recent content in Posts on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Fri, 16 Mar 2018 22:30:30 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 15 Apr 2018 22:36:31 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.70-10.net/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>今週のコミット (0408_0414)</title>
+      <link>https://blog.70-10.net/2018/04/15/commit_2018-0408_0414/</link>
+      <pubDate>Sun, 15 Apr 2018 22:36:31 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/2018/04/15/commit_2018-0408_0414/</guid>
+      <description>はじめに 昨年の 5 月から毎日 GitHub にコミットしています。
+ただ、コードを書くだけで毎日（毎週）何をしていたのかを振り返ることがありませんでした。
+この記事では、今週一週間 (2018/04/08 ~ 2018/04/14) でやった主なコミット内容を振り返ります。
+CloudFormation の CLI を作り始めた。 CloudFormation のスタックテンプレートを作成・実行するCLIの開発を始めました。
+スタックのプロジェクトを作成するinit、スタックテンプレートのチェックをするvalidate、スタックを実行するdeployの 3 つだけ実装。
+実行中の経過を表示がまだできていないです。おそらくdescribeStackEvents メソッドあたりを使えばできそうな気がしています。
+Firebase の Authentication と Realtime Database を触ってみた。 Firebase の Authentication と Realtime Database を使って、簡単なアプリケーションを作ってみました。
+認証も、データベースへの読み書きもめちゃくちゃ簡単に実装できました。
+ちょっとしたアプリケーションなら Firebase + React でほとんどなんとかなりそうです。
+Authentication Google アカウントを使った認証がたった 2 行で実装できるのは驚きです。
+const provider = new firebase.auth.GoogleAuthProvider(); firebase.auth().signInWithRedirect(provider);  他にも GitHub や Twitter での認証も簡単に実装できますし、メール/パスワードでもできます。 Microsoft アカウントを使った認証もできると思いますが、こちらの実装には少し手間が必要そうです。
+もう少し細かくユーザー管理をしようと思うと、firebase-admin を使った API アプリを用意することになりそうです。
+Realtime Database ほぼリアルタイムでデータ更新がされるのはすごいです。</description>
+    </item>
     
     <item>
       <title>Kinesisストリームからのイベントを処理するLambdaをローカルで実行する</title>

@@ -21,11 +21,29 @@
     </item>
     
     <item>
+      <title>Cloudformation</title>
+      <link>https://blog.70-10.net/tags/cloudformation/</link>
+      <pubDate>Sun, 15 Apr 2018 22:36:31 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/cloudformation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Docker</title>
       <link>https://blog.70-10.net/tags/docker/</link>
       <pubDate>Mon, 25 Sep 2017 22:11:43 +0900</pubDate>
       
       <guid>https://blog.70-10.net/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Firebase</title>
+      <link>https://blog.70-10.net/tags/firebase/</link>
+      <pubDate>Sun, 15 Apr 2018 22:36:31 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/firebase/</guid>
       <description></description>
     </item>
     
@@ -107,6 +125,15 @@
       <pubDate>Mon, 25 Sep 2017 22:11:43 +0900</pubDate>
       
       <guid>https://blog.70-10.net/tags/%E3%83%86%E3%82%B9%E3%83%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>今週のコミット</title>
+      <link>https://blog.70-10.net/tags/%E4%BB%8A%E9%80%B1%E3%81%AE%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88/</link>
+      <pubDate>Sun, 15 Apr 2018 22:36:31 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/tags/%E4%BB%8A%E9%80%B1%E3%81%AE%E3%82%B3%E3%83%9F%E3%83%83%E3%83%88/</guid>
       <description></description>
     </item>
     
