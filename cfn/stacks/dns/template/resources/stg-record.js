@@ -8,11 +8,9 @@ module.exports = {
     Properties: {
       HostedZoneName: { "Fn::Join": ["", [{ Ref: "HostedZone" }, "."]] },
       Name: { "Fn::Join": ["", ["blog", ".", { Ref: "HostedZone" }, "."]] },
-      Type: "A",
-      AliasTarget: {
-        DNSName: { "Fn::GetAtt": ["BlogCloudFront", "DomainName"] },
-        HostedZoneId: "Z2FDTNDATAQYW2"
-      }
+      Type: "CNAME",
+      TTL: "300",
+      ResourceRecords: ["7010-blog.netlify.com"]
     }
   }
 };

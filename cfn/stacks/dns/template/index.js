@@ -10,9 +10,6 @@ module.exports = {
       Type: "String"
     }
   },
-  Resources: Object.assign(
-    require("./resources/stg-record"),
-    require("./resources/cloudfront")
-  ),
+  Resources: Object.assign(require("./resources/stg-record")),
   Outputs: {}
 };
