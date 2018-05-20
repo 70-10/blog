@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.70-10.net/2018/05/20/nature-remo-go/</loc>
+    <lastmod>2018-05-20T21:29:30+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/2018/04/15/commit_2018-0408_0414/</loc>
     <lastmod>2018-04-15T22:36:31+09:00</lastmod>
   </url>
@@ -55,7 +60,7 @@
   
   <url>
     <loc>https://blog.70-10.net/</loc>
-    <lastmod>2018-04-15T22:36:31+09:00</lastmod>
+    <lastmod>2018-05-20T21:29:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -79,7 +84,7 @@
   
   <url>
     <loc>https://blog.70-10.net/tags/go/</loc>
-    <lastmod>2017-09-03T23:44:23+09:00</lastmod>
+    <lastmod>2018-05-20T21:29:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -102,6 +107,12 @@
   </url>
   
   <url>
+    <loc>https://blog.70-10.net/tags/nature-remo/</loc>
+    <lastmod>2018-05-20T21:29:30+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/tags/notification/</loc>
     <lastmod>2017-09-03T23:44:23+09:00</lastmod>
     <priority>0</priority>
@@ -109,7 +120,7 @@
   
   <url>
     <loc>https://blog.70-10.net/post/</loc>
-    <lastmod>2018-04-15T22:36:31+09:00</lastmod>
+    <lastmod>2018-05-20T21:29:30+09:00</lastmod>
     <priority>0</priority>
   </url>
   

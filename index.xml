@@ -6,10 +6,30 @@
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 15 Apr 2018 22:36:31 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 20 May 2018 21:29:30 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.70-10.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>GoでNature Remo APIのSDKとCLIをつくっている</title>
+      <link>https://blog.70-10.net/2018/05/20/nature-remo-go/</link>
+      <pubDate>Sun, 20 May 2018 21:29:30 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/2018/05/20/nature-remo-go/</guid>
+      <description>はじめに 今年の始めにNature Remoを購入しました。
+Google Home（+IFTTT）と連携しています。いつも「OK, Google、テレビつけて」と、声でテレビを操作しています。
+Google Home との連携はとても便利ですが、例えば「テレビつけて」という指示に対しては「テレビの電源ボタンの信号を発信する」という一つの処理しかできません。
+一つの入力に対して行える処理は一つとなっています。
+「テレビをつけて」という言葉に対して「電源ボタンの信号発信＋ 8 チャンネルの信号発信」といった二つの処理を行おうと思うと自分で API を制御する必要があります。
+Nature Remo は API が公開されています。API を使えば電源ボタン＋ 8 チャンネルといった複数処理も可能になります。
+（IFTTT と連携する、二つの信号を発信する API を独自で用意する必要はありますが）
+現在、Nature Remo API の SDK と CLI を Go で実装中しています。
+今回は、そのの SDK と CLI について書きたいと思います。
+Nature Remo の API について Nature Remo はAPI が公開されています。
+Nature Remo のサイトで発行されるアクセストークンをリクエストヘッダのAuthorizationに設定することで API を利用できます。
+» curl -H &amp;quot;Authorization: Bearer &amp;lt;アクセストークン&amp;gt;&amp;quot; &amp;quot;https://api.nature.global/1/users/me&amp;quot;  開発中の SDK と CLI 現在、Go で SDK と CLI を実装しています。</description>
+    </item>
     
     <item>
       <title>今週のコミット (0408_0414)</title>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="Blog at 70-10.net">
+  <meta name="author" content="70_10">
+
+  
+  <meta itemprop="name" content="GoでNature Remo APIのSDKとCLIをつくっている">
+  <meta itemprop="description" content="Blog at 70-10.net">
+  <meta itemprop="image" content="">
+
+  
+  <meta property="og:url" content="https://blog.70-10.net/2018/05/20/nature-remo-go/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GoでNature Remo APIのSDKとCLIをつくっている">
+  <meta property="og:description" content="Blog at 70-10.net">
+  <meta property="og:image" content="">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GoでNature Remo APIのSDKとCLIをつくっている">
+  <meta name="twitter:description" content="Blog at 70-10.net">
+  <meta name="twitter:image" content="">
+
+  <title>GoでNature Remo APIのSDKとCLIをつくっている / Blog</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://blog.70-10.net/css/main.css" media="all">
+  
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-99979822-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</head>
+<body>
+  <section class="hero is-light is-medium" style="background-color: #fff;">
+    <div class="hero-head">
+      <header class="nav">
+        <div class="container">
+          <div class="nav-left">
+            <a class="nav-item" href="https://blog.70-10.net">
+              <h1 class="title blog-title">Blog</h1>
+            </a>
+          </div>
+          <div class="nav-right nav-menu">
+            <a class="nav-item" href="https://github.com/70-10" title="70_10" target="_blank">
+              <span class="icon"><i class="fa fa-github"></i></span>
+            </a>
+            <a class="nav-item" href="https://twitter.com/70_10" title="70_10" target="_blank">
+              <span class="icon" style="color: #55acee;"><i class="fa fa-twitter"></i></span>
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+  </section>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">GoでNature Remo APIのSDKとCLIをつくっている</h1>
+      <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
+        <time pubdate datetime="2018-05-20" title="2018-05-20">2018/05/20</time>
+      </h2>
+      
+        <div class="tags" style="padding-left: 1.25rem;">
+           <a href="/tags/go/" class="tag is-medium">Go</a> <a href="/tags/nature-remo/" class="tag is-medium">Nature-Remo</a>
+        </div>
+      
+      <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;" />
+      <div class="content is-medium">
+        
+
+<p></p>
+
+<h1 id="はじめに">はじめに</h1>
+
+<p>今年の始めに<a href="https://nature.global/">Nature Remo</a>を購入しました。<br />
+Google Home（+IFTTT）と連携しています。いつも「OK, Google、テレビつけて」と、声でテレビを操作しています。</p>
+
+<p>Google Home との連携はとても便利ですが、例えば「テレビつけて」という指示に対しては「テレビの電源ボタンの信号を発信する」という一つの処理しかできません。<br />
+一つの入力に対して行える処理は一つとなっています。<br />
+「テレビをつけて」という言葉に対して「電源ボタンの信号発信＋ 8 チャンネルの信号発信」といった二つの処理を行おうと思うと自分で API を制御する必要があります。</p>
+
+<p>Nature Remo は API が公開されています。API を使えば電源ボタン＋ 8 チャンネルといった複数処理も可能になります。<br />
+（IFTTT と連携する、二つの信号を発信する API を独自で用意する必要はありますが）</p>
+
+<p>現在、Nature Remo API の SDK と CLI を Go で実装中しています。<br />
+今回は、そのの SDK と CLI について書きたいと思います。</p>
+
+<h1 id="nature-remo-の-api-について">Nature Remo の API について</h1>
+
+<p>Nature Remo は<a href="http://swagger.nature.global/">API が公開されています</a>。<br />
+<a href="https://home.nature.global">Nature Remo のサイト</a>で発行されるアクセストークンをリクエストヘッダの<code>Authorization</code>に設定することで API を利用できます。</p>
+
+<pre><code>» curl -H &quot;Authorization: Bearer &lt;アクセストークン&gt;&quot; &quot;https://api.nature.global/1/users/me&quot;
+</code></pre>
+
+<h1 id="開発中の-sdk-と-cli">開発中の SDK と CLI</h1>
+
+<p>現在、Go で SDK と CLI を実装しています。</p>
+
+<ul>
+<li>SDK<br />
+<a href="https://github.com/70-10/nature-remo-go">https://github.com/70-10/nature-remo-go</a></li>
+<li>CLI<br />
+<a href="https://github.com/70-10/nature-remo-go/cmd/nature-remo">https://github.com/70-10/nature-remo-go/cmd/nature-remo</a></li>
+</ul>
+
+<h1 id="cli-を使う">CLI を使う</h1>
+
+<h2 id="インストール">インストール</h2>
+
+<pre><code>» go get -u github.com/70-10/nature-remo-go/cmd/nature-remo
+</code></pre>
+
+<h2 id="アクセストークンの設定">アクセストークンの設定</h2>
+
+<p>config ファイルにアクセストークンを設定します。 <code>~/.config/nature-remo/config.toml</code>に作成されます。</p>
+
+<pre><code>token = “**************************”
+</code></pre>
+
+<p>config ファイルは、サブコマンドの<code>config</code>から設定することもできます。</p>
+
+<pre><code>» nature-remo config
+</code></pre>
+
+<h2 id="デバイス情報を確認する">デバイス情報を確認する</h2>
+
+<p>サブコマンドの<code>devices</code>で、登録している Nature Remo のデバイス情報が取得できます。</p>
+
+<pre><code>» nature-remo devices
+ID               : ********-****-****-****-************
+Name             : デバイス名
+temperature      : 25
+humidity         : 50
+Firmware Version : Remo/1.0.62-gabbf5bd
+Created At       : 2018-01-01 00:00:00
+</code></pre>
+
+<h2 id="登録している家電を確認する">登録している家電を確認する</h2>
+
+<p>サブコマンドの<code>appliances</code>で、登録している家電の ID と名前の一覧を取得できます</p>
+
+<pre><code>» nature-remo appliances
+********-****-****-****-************ ライト
+********-****-****-****-************ テレビ
+********-****-****-****-************ エアコン
+</code></pre>
+
+<h2 id="家電のシグナルを確認する">家電のシグナルを確認する</h2>
+
+<p>サブコマンドの<code>signals</code>で、家電ごとに登録しているシグナル（リモコンボタンの信号）の一覧を取得できます</p>
+
+<pre><code>nature-remo signals -id &lt;家電のID&gt;
+********-****-****-****-************ 電源
+********-****-****-****-************ 消音
+********-****-****-****-************ 入力切替
+</code></pre>
+
+<h2 id="シグナルを実行する">シグナルを実行する</h2>
+
+<p>実際に家電の操作を行うには、サブコマンドの<code>send</code>を実行します。</p>
+
+<pre><code>» nature-remo send -id &lt;シグナルのID&gt;
+Send &lt;シグナルのID&gt;
+</code></pre>
+
+<h1 id="おわりに">おわりに</h1>
+
+<p>Nature Remo に用意されている API の SDK と CLI を開発中です。<br />
+使いたかったシグナルの実行はできるようになったので、SDK と Serverless Framework を使って IFTTT 用 API を実装したいです。<br />
+実装はまだまだ途中段階で機能追加・修正していく必要がありそうです。</p>
+
+<h2 id="todo-リスト">ToDo リスト</h2>
+
+<ul>
+<li>サブコマンドの<code>send</code>で設定する ID はオプション引数じゃなく、<code>nature-remo send &lt;シグナルのID&gt;</code>という形式にする</li>
+<li>複数のシグナル ID を渡して、複数実行できるようにする</li>
+<li>用意されている API すべてを実装する
+
+<ul>
+<li>まだ 20 エンドポイントあるうちの 5 エンドポイントしか実装できていません</li>
+</ul></li>
+</ul>
+
+      </div>
+
+      <hr style="height: 2px; margin-top: 6rem;" />
+      <div>
+        <a class="button twitter" href="http://twitter.com/intent/tweet?text=Go%e3%81%a7Nature%20Remo%20API%e3%81%aeSDK%e3%81%a8CLI%e3%82%92%e3%81%a4%e3%81%8f%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b%20%7C%20Blog%20https%3a%2f%2fblog.70-10.net%2f2018%2f05%2f20%2fnature-remo-go%2f%20%4070_10">
+          <span class="icon"><i class="fa fa-twitter"></i></span>
+          <span>ツイート</span>
+        </a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-foot">
+  </div>
+</section>
+
+  <footer class="footer" style="background-color: #fff;">
+  </footer>
+</body>
+</html>
+
