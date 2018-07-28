@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/70-10/blog#readme",
   "devDependencies": {
-    "textlint": "^10.1.4",
+    "textlint": "^11.0.0",
     "textlint-rule-ja-no-abusage": "^1.2.1",
     "textlint-rule-ja-no-mixed-period": "^2.0.0",
-    "textlint-rule-ja-no-redundant-expression": "^1.0.3",
+    "textlint-rule-ja-no-redundant-expression": "^2.0.0",
     "textlint-rule-ja-no-weak-phrase": "^1.0.4",
     "textlint-rule-no-double-negative-ja": "^1.0.5",
     "textlint-rule-no-doubled-conjunction": "^1.0.2",
