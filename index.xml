@@ -6,10 +6,24 @@
     <description>Recent content on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 20 May 2018 21:29:30 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 28 Jul 2018 15:52:03 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.70-10.net/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Goでsha256ハッシュするCLIをつくる</title>
+      <link>https://blog.70-10.net/2018/07/28/go-hash-sha256/</link>
+      <pubDate>Sat, 28 Jul 2018 15:52:03 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/2018/07/28/go-hash-sha256/</guid>
+      <description>はじめに 与えられた文字列を SHA-256 でハッシュ化する CLI がほしかったので、Go で書いてみました。
+コード package main import ( &amp;#34;crypto/sha256&amp;#34; &amp;#34;encoding/hex&amp;#34; &amp;#34;flag&amp;#34; &amp;#34;fmt&amp;#34; &amp;#34;os&amp;#34; &amp;#34;strings&amp;#34; ) func main() { flag.Parse() args := flag.Args() if len(args) &amp;lt;= 0 { os.Stderr.WriteString(&amp;#34;Please input text\n&amp;#34;) return } result := sha256.Sum256([]byte(args[0])) fmt.Println(strings.ToUpper(hex.EncodeToString(result[:]))) } 標準ライブラリに用意されているcrypto/sha256を利用するだけで OK です。
+string にキャストするとき、単純にstring(result)ではできないのでhex.EncodeTostringを使います。
+実行結果 » sha256 test 9F86D081884C7D659A2FEAA0C55AD015A3BF4F1B2B0B822CD15D6C15B0F00A08
+第一引数にハッシュ化したい文字列を与えれば、ハッシュ化した値を返してくれます。単純。
+ちなみに、Node で書くと #!/usr/bin/env node  const { sha256 } = require(&amp;#34;crypto-hash&amp;#34;); async function main() { if (process.</description>
+    </item>
     
     <item>
       <title>GoでNature Remo APIのSDKとCLIをつくっている</title>

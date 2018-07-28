@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.70-10.net/2018/07/28/go-hash-sha256/</loc>
+    <lastmod>2018-07-28T15:52:03+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/2018/05/20/nature-remo-go/</loc>
     <lastmod>2018-05-20T21:29:30+09:00</lastmod>
   </url>
@@ -60,7 +65,7 @@
   
   <url>
     <loc>https://blog.70-10.net/</loc>
-    <lastmod>2018-05-20T21:29:30+09:00</lastmod>
+    <lastmod>2018-07-28T15:52:03+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -84,7 +89,13 @@
   
   <url>
     <loc>https://blog.70-10.net/tags/go/</loc>
-    <lastmod>2018-05-20T21:29:30+09:00</lastmod>
+    <lastmod>2018-07-28T15:52:03+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.70-10.net/tags/hash/</loc>
+    <lastmod>2018-07-28T15:52:03+09:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -113,6 +124,12 @@
   </url>
   
   <url>
+    <loc>https://blog.70-10.net/tags/node.js/</loc>
+    <lastmod>2018-07-28T15:52:03+09:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.70-10.net/tags/notification/</loc>
     <lastmod>2017-09-03T23:44:23+09:00</lastmod>
     <priority>0</priority>
@@ -120,7 +137,7 @@
   
   <url>
     <loc>https://blog.70-10.net/post/</loc>
-    <lastmod>2018-05-20T21:29:30+09:00</lastmod>
+    <lastmod>2018-07-28T15:52:03+09:00</lastmod>
     <priority>0</priority>
   </url>
   
