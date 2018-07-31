@@ -6,10 +6,27 @@
     <description>Recent content in Go on Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 28 Jul 2018 15:52:03 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 31 Jul 2018 21:13:43 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.70-10.net/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Goでtime.Parseを使うときのタイムゾーンについて</title>
+      <link>https://blog.70-10.net/2018/07/31/go-time-parse/</link>
+      <pubDate>Tue, 31 Jul 2018 21:13:43 +0900</pubDate>
+      
+      <guid>https://blog.70-10.net/2018/07/31/go-time-parse/</guid>
+      <description>はじめに Go で、文字列から日時へパースする際にタイムゾーンの指定で困ったので調べました。
+結論から先に述べると、time.Parseはデフォルトで UTC を設定されるので、基本的にはロケーションが設定できるtime.ParseInLocationを利用するのが妥当だろうという見解に至りました。
+注意：本記事に記載しているコードはエラー処理を無視しています。実際に利用する場合はちゃんとエラー処理しましょう。
+time.Parseはデフォルトで UTC になる パースする文字列が2018-01-01 00:00:00のように、タイムインジケータを指定していない場合は UTC として解釈されます。
+日本時間にするには、2018-01-01 00:00:00 (JST)のようにタイムインジケータを指定する必要があります。
+// タイムインジケータがないのでUTCと解釈される // =&amp;gt; 2018-01-01 00:00:00 +0000 UTC t, _ := time.Parse(&amp;#34;2006-01-02 15:04:05&amp;#34;, &amp;#34;2018-01-01 00:00:00&amp;#34;) タイムゾーンを指定する方法 方法は下記の 2 種類あります。
+1. time.Parseでタイムインジケータを含めてパースする パース時のフォーマットにタイムインジケータを含ませることで指定できます。
+// タイムインジケータを指定すると、そのタイムゾーンで解釈される // タイムインジケータを認識させたい場合はformatに含める // =&amp;gt; 2018-01-01 00:00:00 +0900 JST t2, _ := time.Parse(&amp;#34;2006-01-02 15:04:05 (MST)&amp;#34;, &amp;#34;2018-01-01 00:00:00 (JST)&amp;#34;) 2. time.ParseInLocationでロケーションを指定する ロケーションを指定してパースするtime.ParseInLocationを使用することで、2018-01-01 00:00:00のようなタイムインジケータのない文字列もパースできるようになります。
+// 第3引数でtime.Locationを指定することで、タイムインジケータなしでタイムゾーンを指定できる // =&amp;gt; 2018-01-01 00:00:00 +0900 JST jst, _ := time.</description>
+    </item>
     
     <item>
       <title>Goでsha256ハッシュするCLIをつくる</title>
