@@ -18,16 +18,48 @@
         {{ .Content }}
       </div>
 
-      <hr style="height: 2px; margin-top: 6rem;" />
-      <div>
+      <!-- <hr style="height: 2px; margin-top: 6rem;" /> -->
+
+      <div style="padding-top: 1.5em;">
         <a class="button twitter" href="http://twitter.com/intent/tweet?text={{ .Title | safeJS }}%20%7C%20{{ .Site.Title }}%20{{ .Permalink | safeJS }}%20%40{{ .Site.Params.twitter }}">
           <span class="icon">
-            <i class="fa fa-twitter"></i>
+            <i class="fab fa-twitter"></i>
           </span>
           <span>ツイート</span>
         </a>
         <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
       </div>
+
+      <hr style="height: 2px;" />
+      <article class="media" style="margin: 0 1.5rem;">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="{{ .Site.BaseURL }}/img/icon.jpg">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              written by
+              <strong>
+                <a href="https://twitter.com/70_10" target="_blank" rel="noopener">70_10</a>
+              </strong>
+            </p>
+
+          </div>
+          <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+              <li>
+                <a href="https://github.com/70-10" target="_blank" rel="noopener">GitHub</a>
+              </li>
+              <li>
+                <a href="https://twitter.com/70_10" target="_blank" rel="noopener">Twitter</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </article>
+
     </div>
   </div>
 
