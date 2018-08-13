@@ -1,0 +1,17 @@
+// Disable the widescreen breakpoint
+$widescreen-enabled: false;
+
+// Disable the fullhd breakpoint
+$fullhd-enabled: false;
+
+@import "../../node_modules/bulma/bulma";
+
+html {
+  font-size: 13px;
+}
+
+.button.twitter {
+  background-color: #55acee;
+  color: white;
+  border-color: transparent !important;
+}

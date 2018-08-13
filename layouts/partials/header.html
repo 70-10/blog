@@ -27,12 +27,13 @@
   <meta name="twitter:image" content="">
 
   <title>{{ .Title }} / {{ .Site.Title }}</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}/css/main.css" media="all">
+  {{ $styles := resources.Get "scss/main.scss" | toCSS | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
   {{ template "_internal/google_analytics.html" . }}
 </head>
+
 <body>
   <section class="hero is-light is-medium" style="background-color: #fff;">
     <div class="hero-head">
