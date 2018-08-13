@@ -2,16 +2,18 @@
 <section class="hero">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-2 is-dark is-bold" style="padding-left: 1.25rem;">{{ if .Draft }} <u style="color: red;">#Draft</u> {{ end }}{{ .Title }}</h1>
-      <h2 class="subtitle is-4 has-text-right" style="padding-right: 1.5rem;">
-        <time pubdate datetime="{{ .Date.Format "2006-01-02" }}" title="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006/01/02" }}</time>
+      <h1 class="title is-3 is-dark is-bold">{{ if .Draft }}
+        <u style="color: red;">#Draft</u> {{ end }}{{ .Title }}</h1>
+      <h2 class="subtitle is-5 has-text-left" style="margin-top:-0.5rem;">
+        <time pubdate datetime="{{ .Date.Format " 2006-01-02 " }}" title="{{ .Date.Format " 2006-01-02 " }}">{{ .Date.Format "2006/01/02" }}</time>
       </h2>
       {{ with .Params.tags }}
-        <div class="tags" style="padding-left: 1.25rem;">
-          {{ range . }} <a href="/tags/{{ lower . }}/" class="tag is-medium">{{ . }}</a>{{ end }}
-        </div>
+      <div class="tags">
+        {{ range . }}
+        <a href="/tags/{{ lower . }}/" class="tag is-medium">{{ . }}</a>{{ end }}
+      </div>
       {{ end }}
-      <hr style="height: 2px; background-color: #4a4a4a; margin-bottom: 3rem;" />
+      <!-- <hr style="height: 2px; background-color: #4a4a4a;" /> -->
       <div class="content is-medium">
         {{ .Content }}
       </div>
@@ -19,10 +21,12 @@
       <hr style="height: 2px; margin-top: 6rem;" />
       <div>
         <a class="button twitter" href="http://twitter.com/intent/tweet?text={{ .Title | safeJS }}%20%7C%20{{ .Site.Title }}%20{{ .Permalink | safeJS }}%20%40{{ .Site.Params.twitter }}">
-          <span class="icon"><i class="fa fa-twitter"></i></span>
+          <span class="icon">
+            <i class="fa fa-twitter"></i>
+          </span>
           <span>ツイート</span>
         </a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
       </div>
     </div>
   </div>

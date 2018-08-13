@@ -1,17 +1,66 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:700");
+
+$family-sans-serif: BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic,
+  "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo,
+  sans-serif;
+
 // Disable the widescreen breakpoint
 $widescreen-enabled: false;
 
 // Disable the fullhd breakpoint
 $fullhd-enabled: false;
 
+$primary: #8fbc94;
+$white: #fffffe;
+$link: #519d9e;
+$text-strong: #393e46;
+$text: #5c636e;
+
 @import "../../node_modules/bulma/bulma";
 
 html {
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .button.twitter {
   background-color: #55acee;
   color: white;
   border-color: transparent !important;
+}
+
+pre {
+  code {
+    font-size: 1rem;
+  }
+}
+
+.content {
+  h1 {
+    border-bottom: 2px solid;
+    border-bottom-color: $text;
+    padding-bottom: 0.5rem;
+    font-size: 1.65em;
+    code {
+      padding: 0 0.5rem;
+    }
+  }
+
+  h2 {
+    font-size: 1.25em;
+    code {
+      padding: 0 0.5rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.1em;
+  }
+
+  pre {
+    font-size: 0.5rem;
+    padding: 0.75rem 1.25rem;
+  }
 }
