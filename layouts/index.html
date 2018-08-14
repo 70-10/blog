@@ -6,13 +6,9 @@
 
       <div class="column is-9">
         <div class="content is-medium">
-          <ul style="margin-top: 0;">
-            {{ range .Data.Pages }}
-              {{ if eq .Type "post" }}
-                {{ .Render "list"}}
-              {{ end }}
-            {{ end }}
-          </ul>
+          <div>
+            {{ range .Data.Pages }} {{ if eq .Type "post" }} {{ .Render "list"}} {{ end }} {{ end }}
+          </div>
         </div>
       </div>
 
