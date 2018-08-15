@@ -2,15 +2,15 @@
 <section class="hero">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-3 is-dark is-bold">{{ if .Draft }}
-        <u style="color: red;">#Draft</u> {{ end }}{{ .Title }}</h1>
-      <h2 class="subtitle is-5 has-text-left" style="margin-top:-0.5rem;">
+      <h2 class="subtitle is-5 has-text-left" style="margin-top:-1rem;">
         <time pubdate datetime="{{ .Date.Format " 2006-01-02 " }}" title="{{ .Date.Format " 2006-01-02 " }}">{{ .Date.Format "2006/01/02" }}</time>
       </h2>
-      {{ with .Params.tags }}
+      <h1 class="title is-3 is-dark is-bold">{{ if .Draft }}
+        <u style="color: red;">#Draft</u> {{ end }}{{ .Title }}</h1>
+      <hr style="margin-bottom: 1rem;"> {{ with .Params.tags }}
       <div class="tags">
         {{ range . }}
-        <a href="/tags/{{ lower . }}/" class="tag is-medium">{{ . }}</a>{{ end }}
+        <a href="/tags/{{ lower . }}/" class="tag is-warning is-medium">{{ . }}</a>{{ end }}
       </div>
       {{ end }}
       <!-- <hr style="height: 2px; background-color: #4a4a4a;" /> -->
