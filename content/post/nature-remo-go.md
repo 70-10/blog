@@ -19,8 +19,8 @@ Google Home との連携はとても便利ですが、例えば「テレビつ�
 Nature Remo は API が公開されています。API を使えば電源ボタン＋ 8 チャンネルといった複数処理も可能になります。  
 （IFTTT と連携する、二つの信号を発信する API を独自で用意する必要はありますが）
 
-現在、Nature Remo API の SDK と CLI を Go で実装中しています。  
-今回は、そのの SDK と CLI について書きたいと思います。
+現在、Nature Remo API の SDK と CLI を Go で実装しています。  
+今回は、その SDK と CLI について書きたいと思います。
 
 # Nature Remo の API について
 
