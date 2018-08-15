@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:700");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:700|Comfortaa&subset=japanese");
 
 $family-sans-serif: BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic,
   "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo,
@@ -13,16 +13,22 @@ $widescreen-enabled: false;
 // Disable the fullhd breakpoint
 $fullhd-enabled: false;
 
-$primary: #8fbc94;
 $white: #fffffe;
+$warning: #fde184;
 $link: #519d9e;
-$text-strong: #393e46;
+$primary: #8fbc94;
+$text-strong: #515761;
 $text: #5c636e;
 
 @import "../../node_modules/bulma/bulma";
 
 html {
   font-size: 15px;
+}
+
+.blog-title {
+  font-family: "Comfortaa";
+  padding-top: 0.25rem;
 }
 
 .button.twitter {
@@ -42,7 +48,7 @@ pre {
     border-bottom: 2px solid;
     border-bottom-color: $text;
     padding-bottom: 0.5rem;
-    font-size: 1.65em;
+    font-size: 1.5em;
     code {
       padding: 0 0.5rem;
     }

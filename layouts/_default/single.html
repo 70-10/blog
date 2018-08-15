@@ -5,7 +5,7 @@
       <h2 class="subtitle is-5 has-text-left" style="margin-top:-1rem;">
         <time pubdate datetime="{{ .Date.Format " 2006-01-02 " }}" title="{{ .Date.Format " 2006-01-02 " }}">{{ .Date.Format "2006/01/02" }}</time>
       </h2>
-      <h1 class="title is-3 is-dark is-bold">{{ if .Draft }}
+      <h1 class="title is-3 has-text-grey-dark">{{ if .Draft }}
         <u style="color: red;">#Draft</u> {{ end }}{{ .Title }}</h1>
       <hr style="margin-bottom: 1rem;"> {{ with .Params.tags }}
       <div class="tags">
@@ -50,10 +50,13 @@
           <nav class="breadcrumb" aria-label="breadcrumbs">
             <ul>
               <li>
+                <a href="https://twitter.com/70_10" target="_blank" rel="noopener">Twitter</a>
+              </li>
+              <li>
                 <a href="https://github.com/70-10" target="_blank" rel="noopener">GitHub</a>
               </li>
               <li>
-                <a href="https://twitter.com/70_10" target="_blank" rel="noopener">Twitter</a>
+                <a href="https://qiita.com/70_10" target="_blank" rel="noopener">Qiita</a>
               </li>
             </ul>
           </nav>

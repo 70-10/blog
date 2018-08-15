@@ -27,7 +27,7 @@
   <meta name="twitter:description" content="Blog at 70-10.net">
   <meta name="twitter:image" content="">
 
-  <title>{{ .Title }} / {{ .Site.Title }}</title>
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
 
   {{ $styles := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
   <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
@@ -40,7 +40,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="{{ .Site.BaseURL }}">
-          <h1 class="title has-text-white">{{ .Site.Title }}</h1>
+          <h1 class="title has-text-white blog-title">{{ .Site.Title }}</h1>
         </a>
       </div>
     </div>
