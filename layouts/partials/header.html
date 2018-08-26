@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -26,32 +27,21 @@
   <meta name="twitter:description" content="Blog at 70-10.net">
   <meta name="twitter:image" content="">
 
-  <title>{{ .Title }} / {{ .Site.Title }}</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto:700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}/css/main.css" media="all">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+
+  {{ $styles := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
   {{ template "_internal/google_analytics.html" . }}
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 </head>
+
 <body>
-  <section class="hero is-light is-medium" style="background-color: #fff;">
-    <div class="hero-head">
-      <header class="nav">
-        <div class="container">
-          <div class="nav-left">
-            <a class="nav-item" href="{{ .Site.BaseURL }}">
-              <h1 class="title blog-title">{{ .Site.Title }}</h1>
-            </a>
-          </div>
-          <div class="nav-right nav-menu">
-            <a class="nav-item" href="https://github.com/{{ .Site.Params.github }}" title="{{ .Site.Author.name }}" target="_blank">
-              <span class="icon"><i class="fa fa-github"></i></span>
-            </a>
-            <a class="nav-item" href="https://twitter.com/{{ .Site.Params.twitter }}" title="{{ .Site.Author.name }}" target="_blank">
-              <span class="icon" style="color: #55acee;"><i class="fa fa-twitter"></i></span>
-            </a>
-          </div>
-        </div>
-      </header>
+  <nav class="navbar is-primary">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="{{ .Site.BaseURL }}">
+          <h1 class="title has-text-white blog-title">{{ .Site.Title }}</h1>
+        </a>
+      </div>
     </div>
-  </section>
+  </nav>

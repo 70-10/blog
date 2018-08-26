@@ -32,5 +32,8 @@
     "textlint-rule-no-mix-dearu-desumasu": "^3.0.3",
     "textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet": "^1.0.1",
     "textlint-rule-web-plus-db": "^1.1.5"
+  },
+  "dependencies": {
+    "bulma": "^0.7.1"
   }
 }

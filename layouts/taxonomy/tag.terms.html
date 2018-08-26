@@ -5,18 +5,18 @@
       <div class="column is-9">
         <h1 class="title">タグ</h1>
         <div class="field is-grouped is-grouped-multiline">
-            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-            <div class="control">
+          {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+          <div class="control">
+            <a href="/tags/{{ $name | urlize }}">
               <div class="tags has-addons">
-                  <a href="/tags/{{ $name | urlize }}">
-                    <span class="tag is-medium">
-                    {{ $name }}
-                  </span>
-                  </a>
-                <span class="tag is-medium is-success">{{ len $taxonomy.Pages }}</span>
+                <span class="tag is-medium">
+                  {{ $name }}
+                </span>
+                <span class="tag is-medium is-warning">{{ len $taxonomy.Pages }}</span>
               </div>
-            </div>
-            {{ end }}
+            </a>
+          </div>
+          {{ end }}
         </div>
       </div>
     </div>

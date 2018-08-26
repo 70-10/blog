@@ -5,14 +5,10 @@
     <div class="columns">
 
       <div class="column is-9">
-        <div class="content is-large">
-          <ul>
-            {{ range .Data.Pages }}
-              {{ if eq .Type  "post" }}
-                {{ .Render "list"}}
-              {{ end }}
-            {{ end }}
-          </ul>
+        <div class="content is-medium">
+          <div>
+            {{ range .Data.Pages }} {{ if eq .Type "post" }} {{ .Render "list"}} {{ end }} {{ end }}
+          </div>
         </div>
       </div>
 
