@@ -15,3 +15,11 @@ googleAnalytics = "UA-99979822-1"
 
 [taxonomies]
   tag = "tags"
+
+[outputs]
+home = [ "HTML", "RSS" ]
+
+[outputFormats]
+[outputFormats.RSS]
+mediatype = "application/rss"
+baseName = "feed"
