@@ -1,25 +1,28 @@
 ---
-title: "redux-saga-test-planでエラーが出る"
+title: "redux-saga v1.0.0を使うとredux-saga-test-planでエラーが出る"
 date: 2019-01-23T22:14:39+09:00
 draft: true
+tags: ["React", "Redux", "redux-saga", "redux-saga-test-plan"]
 ---
 
 <p></p>
 
 # はじめに
 
-`redux-saga-test-plan` で redux-saga のテストをしようとしたときにエラーが発生したので、その内容と回避策をまとめます。
+2019/01/20 に redux-saga の[v1.0.0 がリリースされました](https://github.com/redux-saga/redux-saga/releases/tag/v1.0.0)。  
+v1.0.0 を使うと `redux-saga-test-plan` でのテストでエラーが発生したので、その内容をまとめます。
 
-## 実行環境
+# 実行環境
 
 | redux-saga | redux-saga-test-plan |
 | :--------: | :------------------: |
 |   v1.0.0   |        v3.7.0        |
 
+# エラー内容
 
-# テストを実行するとエラーが起きる
+テストを実行すると以下のエラーが発生しました。
 
-```
+{{< highlight terminal >}}
 FAIL  src/saga.test.js
  ● Test suite failed to run
 
@@ -27,41 +30,34 @@ FAIL  src/saga.test.js
 
      at Resolver.resolveModule (node_modules/jest-resolve/build/index.js:221:17)
      at Object.<anonymous> (node_modules/redux-saga-test-plan/lib/expectSaga/index.js:17:20)
-```
+{{< /highlight >}}
 
-## [関連 Issue](https://github.com/jfairbank/redux-saga-test-plan/issues/217)
+# redux-saga-test-plan の Issue を見る
 
-- `v1.0.0-beta.2`を使っていたことが原因で、`v1.0.0-beta.1`にするとエラーが発生しなくなったとのこと
-- 自分が試している環境では`^1.0.0`で指定していた
-- プロダクトでは`^0.16.0`を指定しているので、そちらに変更してみる
-  - テスト通った
+[同様のエラーが起きたと報告されている Issue](https://github.com/jfairbank/redux-saga-test-plan/issues/217)では、`v1.0.0-beta.2`を使用していることが原因と言及されています。`v1.0.0-beta.1`にダウングレードするとエラーは発生しなくなっています。  
+redux-saga-test-plan では v1.0.0-beta.1 までフォローしているようで、それ以降のバージョンはまだ対応していません。（[関連 Pull Request](https://github.com/jfairbank/redux-saga-test-plan/pull/200)）
 
-## redux-saga-test-plan のフォロー状況
+## redux-saga-test-plan の活動状況
 
-- [v1.0.0-beta.1 のフォローまではしていた様子](https://github.com/jfairbank/redux-saga-test-plan/pull/200)
-- 最後のコミットが 2018 年 5 月で止まっている
-- redux-saga の v1.0.0 に対してはフォローできていないし、それを対応する Issue や PR も見当たらない
+master ブランチのコミット履歴を見ると、2018 年の 5 月のコミットが最後でした。あまり積極的に活動が行われていないように見受けられます。
 
-**redux-saga のバージョンについて**
+### redux-saga v1.0.0 対応の Pull Request は上がっている
 
-- 現在は[v1.0.0](https://github.com/redux-saga/redux-saga/releases/tag/v1.0.0)が最新
-  - [redux-saga Release](https://github.com/redux-saga/redux-saga/releases)
-  - 3 日前（2019/01/20）にリリースされたばかり
+[早速 v1.0.0 対応をしてくれた方がいました](https://github.com/jfairbank/redux-saga-test-plan/pull/242)。早くマージされることを待つしかないようです。
 
-# インストール時をよく見たら…
+## インストール時をよく見たら…
 
-redux-saga-test-planをインストールしたときに、Warning が出ていました。
+redux-saga-test-plan のインストール時に、以下の Warning が出ていました。  
+redux-saga-test-plan としては v0.16.0 系を使いましょうとのことです。
 
-```
+{{< highlight terminal >}}
 warning " > redux-saga-test-plan@3.7.0" has unmet peer dependency "redux-saga@>= 0.15.0 < 0.17.0".
-```
+{{< /highlight >}}
 
-# 結論
+# おわりに
+
+結論としては以下の通りで、今時点では v0.16.2 を使うしかありません。
 
 - redux-saga-test-plan は redux-saga v1.0.0-beta.2 以降では動かない
-  - フォローする様子も今の所見られない
-- プロダクトでは v0.16.0（0 系の最新）を使っているので、redux-saga-test-plan が使えた
-
-# 参考記事
-
-- [参考にした Qiita の記事](https://qiita.com/yasuhiro-yamada/items/a57d286b5cfc47a22c15)
+  - すでに v1.0.0 対応の Pull Request は上がっており、マージ待ちの状態
+- 現時点では redux-saga は v0 系で最新の v0.16.2 を選ぶしかない
