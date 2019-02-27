@@ -1,6 +1,7 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
+import dayjs from "dayjs";
 
 export default ({ data: { allContentfulArticle } }) => (
   <Layout>
@@ -9,7 +10,7 @@ export default ({ data: { allContentfulArticle } }) => (
       {allContentfulArticle.edges.map(({ node }) => (
         <li>
           <Link to={`/articles/${node.slug}/`}>
-            {node.publishDate}: {node.title}
+            {dayjs(node.publishDate).format("YYYY-MM-DD")} {node.title}
           </Link>
         </li>
       ))}
