@@ -9,7 +9,11 @@ export default ({ data: { allContentfulArticle } }) => (
     <ul>
       {allContentfulArticle.edges.map(({ node }) => (
         <li>
-          <Link to={`/articles/${node.slug}/`}>
+          <Link
+            to={`/${dayjs(node.publishDate).format("YYYY/MM/DD")}/${
+              node.slug
+            }/`}
+          >
             {dayjs(node.publishDate).format("YYYY-MM-DD")} {node.title}
           </Link>
         </li>
@@ -20,7 +24,7 @@ export default ({ data: { allContentfulArticle } }) => (
 
 export const query = graphql`
   query {
-    allContentfulArticle {
+    allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
       edges {
         node {
           title
