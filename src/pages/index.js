@@ -8,7 +8,7 @@ export default ({ data: { allContentfulArticle } }) => (
     <h1 className="title blog-title">MNML</h1>
     <ul>
       {allContentfulArticle.edges.map(({ node }) => (
-        <li>
+        <li key={node.id}>
           <Link
             to={`/${dayjs(node.publishDate).format("YYYY/MM/DD")}/${
               node.slug
@@ -27,6 +27,7 @@ export const query = graphql`
     allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
       edges {
         node {
+          id
           title
           slug
           publishDate
