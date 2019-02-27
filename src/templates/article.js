@@ -1,14 +1,17 @@
 import React from "react";
 import { graphql } from "gatsby";
+import Layout from "../components/layout";
+
 export default ({ data }) => (
-  <div>
-    <h1>{data.contentfulArticle.title}</h1>
+  <Layout>
+    <h1 className="title">{data.contentfulArticle.title}</h1>
     <div
+      className="content"
       dangerouslySetInnerHTML={{
         __html: data.contentfulArticle.body.childMarkdownRemark.html
       }}
     />
-  </div>
+  </Layout>
 );
 export const query = graphql`
   query($slug: String!) {

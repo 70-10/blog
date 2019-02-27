@@ -13,9 +13,12 @@
     "dev": "gatsby develop"
   },
   "dependencies": {
+    "bulma": "^0.7.4",
     "gatsby": "^2.1.18",
+    "gatsby-plugin-sass": "^2.0.10",
     "gatsby-source-contentful": "^2.0.32",
     "gatsby-transformer-remark": "^2.3.0",
+    "node-sass": "^4.11.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   }

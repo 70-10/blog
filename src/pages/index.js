@@ -1,17 +1,20 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import Layout from "../components/layout";
 
 export default ({ data: { allContentfulArticle } }) => (
-  <div>
-    <h1>Home</h1>
+  <Layout>
+    <h1 className="title blog-title">MNML</h1>
     <ul>
       {allContentfulArticle.edges.map(({ node }) => (
         <li>
-          <Link to={`/articles/${node.slug}/`}>{node.title}</Link>
+          <Link to={`/articles/${node.slug}/`}>
+            {node.publishDate}: {node.title}
+          </Link>
         </li>
       ))}
     </ul>
-  </div>
+  </Layout>
 );
 
 export const query = graphql`
@@ -21,6 +24,7 @@ export const query = graphql`
         node {
           title
           slug
+          publishDate
         }
       }
     }
