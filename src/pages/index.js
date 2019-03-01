@@ -3,9 +3,8 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import dayjs from "dayjs";
 
-export default ({ data: { allContentfulArticle } }) => (
-  <Layout>
-    <h1 className="title blog-title">MNML</h1>
+export default ({ data: { allContentfulArticle }, location }) => (
+  <Layout location={location}>
     <ul>
       {allContentfulArticle.edges.map(({ node }) => (
         <li key={node.id}>

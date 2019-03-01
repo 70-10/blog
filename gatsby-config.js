@@ -1,5 +1,9 @@
 module.exports = {
+  siteMetadata: {
+    title: "MNML"
+  },
   plugins: [
+    "gatsby-plugin-react-helmet",
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-transformer-remark",
