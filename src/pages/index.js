@@ -1,23 +1,17 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import dayjs from "dayjs";
+import Article from "../components/article";
 
 export default ({ data: { allContentfulArticle }, location }) => (
   <Layout location={location}>
-    <ul>
-      {allContentfulArticle.edges.map(({ node }) => (
-        <li key={node.id}>
-          <Link
-            to={`/${dayjs(node.publishDate).format("YYYY/MM/DD")}/${
-              node.slug
-            }/`}
-          >
-            {dayjs(node.publishDate).format("YYYY-MM-DD")} {node.title}
-          </Link>
-        </li>
-      ))}
-    </ul>
+    <div className="columns">
+      <div className="column">
+        {allContentfulArticle.edges.map(({ node }) => (
+          <Article node={node} />
+        ))}
+      </div>
+    </div>
   </Layout>
 );
 
