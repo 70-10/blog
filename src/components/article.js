@@ -9,7 +9,7 @@ export default ({ node }) => {
   const path = `/${dateSlash}/${node.slug}/`;
 
   return (
-    <aticle className="media">
+    <article key={node.id} className="media">
       <div className="media-content">
         <div className="content">
           <span>
@@ -17,12 +17,12 @@ export default ({ node }) => {
           </span>
           <br />
           <small>
-            <time pubdate datetime={dateDash} title={dateDash}>
+            <time dateTime={dateDash} title={dateDash}>
               {dateSlash}
             </time>
           </small>
         </div>
       </div>
-    </aticle>
+    </article>
   );
 };
