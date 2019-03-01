@@ -15,6 +15,12 @@ module.exports = {
             options: {
               classPrefix: "language-"
             }
+          },
+          {
+            resolve: "gatsby-remark-images-contentful",
+            options: {
+              maxWidth: 590
+            }
           }
         ]
       }
