@@ -2,14 +2,16 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import Img from "gatsby-image";
+import Helmet from "react-helmet";
 
 export default ({
   data: {
-    contentfulArticle: { title, tags, heroImage, body }
+    contentfulArticle: { title, tags, heroImage, eyecatch, body }
   },
   location
 }) => (
   <Layout location={location}>
+    <Head location={location} title={title} eyecatch={eyecatch} />
     <div className="columns">
       <div className="column">
         <h1 className="title">{title}</h1>
@@ -41,6 +43,29 @@ const Tags = ({ tags }) => (
       </Link>
     ))}
   </div>
+);
+
+const Head = ({ location, title, eyecatch }) => (
+  <Helmet>
+    <meta itemprop="name" content={title} />
+    <meta itemprop="description" content="Blog at 70-10.net" />
+    {eyecatch ? (
+      <meta itemprop="image" content={`https:${eyecatch.file.url}`} />
+    ) : null}
+    <meta property="og:url" content={location.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    {/* <meta property="og:description" content={title} /> */}
+    {eyecatch ? (
+      <meta property="og:image" content={`https:${eyecatch.file.url}`} />
+    ) : null}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {/* <meta name="twitter:description" content={title} /> */}
+    {eyecatch ? (
+      <meta name="twitter:image" content={`https:${eyecatch.file.url}`} />
+    ) : null}
+  </Helmet>
 );
 
 const Footer = () => (
@@ -111,6 +136,11 @@ export const query = graphql`
       heroImage {
         fluid(maxWidth: 960) {
           ...GatsbyContentfulFluid_withWebp
+        }
+      }
+      eyecatch: heroImage {
+        file {
+          url
         }
       }
       body {

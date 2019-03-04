@@ -32,23 +32,6 @@ const layout = ({
       <meta name="description" content="Blog at 70-10.net" />
       <meta name="author" content="70_10" />
 
-      {/* <!-- Google / Search Engine Tags --> */}
-      <meta itemprop="name" content={siteMetadata.title} />
-      <meta itemprop="description" content="Blog at 70-10.net" />
-      <meta itemprop="image" content="" />
-
-      {/* <!-- Facebook Meta Tags -- */}
-      <meta property="og:url" content={location.href} />
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={siteMetadata.title} />
-      <meta property="og:description" content="Blog at 70-10.net" />
-      <meta property="og:image" content="" />
-
-      {/* <!-- Twitter Meta Tags --> */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={siteMetadata.title} />
-      <meta name="twitter:description" content="Blog at 70-10.net" />
-      <meta name="twitter:image" content="" />
       <title>{siteMetadata.title}</title>
     </Helmet>
     <nav className="navbar is-primary">
