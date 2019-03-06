@@ -20,10 +20,10 @@ $primary: #8fbc94;
 $text-strong: #515761;
 $text: #5c636e;
 
-@import "../../node_modules/bulma/bulma";
+@import "./node_modules/bulma/bulma";
 
 html {
-  font-size: 13px;
+  font-size: 17px;
 }
 
 .blog-title {
@@ -39,11 +39,12 @@ html {
 
 pre {
   code {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
 
 .content {
+  line-height: 30px;
   h1 {
     border-bottom: 2px solid;
     border-bottom-color: #a0a0a0;
@@ -75,5 +76,24 @@ pre {
   iframe {
     display: block;
     margin: 2rem auto !important;
+  }
+
+  blockquote {
+    padding: 0.8em 1em;
+  }
+
+  .tag,
+  .number {
+    display: inline;
+    padding: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    text-align: inherit;
+    vertical-align: inherit;
+    border-radius: inherit;
+    font-weight: inherit;
+    white-space: inherit;
+    background: inherit;
+    margin: inherit;
   }
 }
