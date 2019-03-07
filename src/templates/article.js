@@ -1,9 +1,9 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
+import ShareButtons from "../components/share-buttons";
 import Img from "gatsby-image";
 import Helmet from "react-helmet";
-import { TwitterShareButton, TwitterIcon } from "react-share";
 
 export default ({
   data: {
@@ -70,16 +70,6 @@ const Head = ({ location, title, eyecatch }) => (
       <meta name="twitter:image" content={`https:${eyecatch.file.url}`} />
     ) : null}
   </Helmet>
-);
-
-const ShareButtons = ({ title, url }) => (
-  <div className="columns">
-    <div className="column">
-      <TwitterShareButton title={title} url={url}>
-        <TwitterIcon size={32} round />
-      </TwitterShareButton>
-    </div>
-  </div>
 );
 
 const Footer = () => (
