@@ -11,7 +11,7 @@ export default ({
   },
   location
 }) => (
-  <Layout location={location}>
+  <Layout>
     <Head location={location} title={title} eyecatch={eyecatch} />
     <div className="columns">
       <div className="column">

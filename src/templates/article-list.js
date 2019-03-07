@@ -4,8 +4,8 @@ import Layout from "../components/layout";
 import Article from "../components/article";
 import Pagination from "../components/pagination";
 
-export default ({ data, location, pageContext }) => (
-  <Layout location={location}>
+export default ({ data, pageContext }) => (
+  <Layout>
     {data.allContentfulArticle.edges.map(({ node }) => (
       <Article key={node.id} node={node} />
     ))}

@@ -5,9 +5,9 @@ import dayjs from "dayjs";
 import countBy from "lodash.countby";
 import CalendarHeatmap from "../components/calendar-heatmap";
 
-export default ({ data, location }) => {
+export default ({ data }) => {
   return (
-    <Layout location={location}>
+    <Layout>
       <h1 className="title">Dashboard</h1>
       <h2 className="subtitle">
         記事数: {data.allContentfulArticle.edges.length}

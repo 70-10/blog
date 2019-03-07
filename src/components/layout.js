@@ -17,7 +17,6 @@ const layout = ({
   data: {
     site: { siteMetadata }
   },
-  location,
   children
 }) => (
   <div>
@@ -51,9 +50,6 @@ const layout = ({
   </div>
 );
 
-export default ({ location, children }) => (
-  <StaticQuery
-    query={query}
-    render={data => layout({ data, location, children })}
-  />
+export default ({ children }) => (
+  <StaticQuery query={query} render={data => layout({ data, children })} />
 );
