@@ -9,7 +9,7 @@ export default ({ node }) => {
   const path = `/${dateSlash}/${node.slug}/`;
 
   return (
-    <article key={node.id} className="media">
+    <article className="media">
       <div className="media-content">
         <div className="content">
           <span>

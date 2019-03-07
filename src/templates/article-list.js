@@ -7,7 +7,7 @@ import Pagination from "../components/pagination";
 export default ({ data, pageContext }) => (
   <Layout>
     {data.allContentfulArticle.edges.map(({ node }) => (
-      <Article key={node.id} node={node} />
+      <Article key={node.slug} node={node} />
     ))}
     <section className="section">
       <Pagination pageContext={pageContext} />
@@ -17,13 +17,6 @@ export default ({ data, pageContext }) => (
 
 export const query = graphql`
   query articleListQuery($skip: Int!, $limit: Int!) {
-    all: allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
-      edges {
-        node {
-          slug
-        }
-      }
-    }
     allContentfulArticle(
       sort: { fields: publishDate, order: DESC }
       limit: $limit

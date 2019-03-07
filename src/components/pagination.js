@@ -14,7 +14,7 @@ export default ({ pageContext: { prev, next, pages, page } }) => (
 
     <ul className="pagination-list">
       {Array.from({ length: pages }).map((_, i) => (
-        <li>
+        <li key={i}>
           <Link
             to={i === 0 ? "/" : `/articles/${i + 1}`}
             className={
