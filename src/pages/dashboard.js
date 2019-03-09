@@ -5,17 +5,55 @@ import dayjs from "dayjs";
 import countBy from "lodash.countby";
 import CalendarHeatmap from "../components/calendar-heatmap";
 
-export default ({ data }) => {
+import Moment from "moment";
+import { extendMoment } from "moment-range";
+
+const moment = extendMoment(Moment);
+
+export default ({ data: { allContentfulArticle } }) => {
   return (
     <Layout>
       <h1 className="title">Dashboard</h1>
-      <h2 className="subtitle">
-        記事数: {data.allContentfulArticle.edges.length}
-      </h2>
+
+      <nav className="level">
+        <div className="level-item has-text-centered">
+          <div>
+            <p className="heading">総記事数</p>
+            <p className="title">{allContentfulArticle.edges.length}</p>
+          </div>
+        </div>
+        {Array.from({ length: 3 }, (_, i) => {
+          const targetYear = moment()
+            .subtract(i, "year")
+            .format("YYYY");
+          return (
+            <div key={i} className="level-item has-text-centered">
+              <div>
+                <p className="heading">{targetYear}</p>
+                <p className="title">
+                  {
+                    allContentfulArticle.edges.filter(({ node }) => {
+                      const range = createRange(targetYear);
+                      return range.contains(moment(node.publishDate));
+                    }).length
+                  }
+                </p>
+              </div>
+            </div>
+          );
+        })}
+      </nav>
       <CalendarHeatmap
-        values={buildHeatmapValues(data.allContentfulArticle.edges)}
+        values={buildHeatmapValues(allContentfulArticle.edges)}
       />
     </Layout>
+  );
+};
+
+const createRange = year => {
+  return moment.range(
+    moment(`${year}-01-01 00:00:00`, "YYYY-MM-DD HH:mm:ss"),
+    moment(`${year}-12-31 23:59:59`, "YYYY-MM-DD HH:mm:ss")
   );
 };
 
