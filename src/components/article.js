@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "gatsby";
-import dayjs from "dayjs";
+import moment from "../moment";
 
 export default ({ node }) => {
-  const publishDate = dayjs(node.publishDate);
+  const publishDate = moment(node.publishDate);
   const dateSlash = publishDate.format("YYYY/MM/DD");
   const dateDash = publishDate.format("YYYY-MM-DD");
   const path = `/${dateSlash}/${node.slug}/`;

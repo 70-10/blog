@@ -1,15 +1,15 @@
 import React from "react";
-import dayjs from "dayjs";
+import moment from "../moment";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import style from "./calendar-heatmap.module.css";
 
 export default ({ values }) => (
   <CalendarHeatmap
-    startDate={dayjs()
+    startDate={moment()
       .subtract(1, "year")
       .toDate()}
-    endDate={dayjs().toDate()}
+    endDate={moment().toDate()}
     values={values}
     classForValue={value => {
       if (!value || !value.count || value.count <= 0) {

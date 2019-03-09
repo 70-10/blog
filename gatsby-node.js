@@ -1,5 +1,5 @@
 const path = require("path");
-const dayjs = require("dayjs");
+const moment = require("moment");
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const articles = result.data.allContentfulArticle.edges;
   articles.forEach(({ node }, i) => {
     createPage({
-      path: `/${dayjs(node.publishDate).format("YYYY/MM/DD")}/${node.slug}/`,
+      path: `/${moment(node.publishDate).format("YYYY/MM/DD")}/${node.slug}/`,
       component: path.resolve("./src/templates/article.js"),
       context: {
         slug: node.slug

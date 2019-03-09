@@ -1,14 +1,9 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import dayjs from "dayjs";
 import countBy from "lodash.countby";
 import CalendarHeatmap from "../components/calendar-heatmap";
-
-import Moment from "moment";
-import { extendMoment } from "moment-range";
-
-const moment = extendMoment(Moment);
+import moment from "../moment";
 
 export default ({ data: { allContentfulArticle } }) => {
   return (
@@ -59,7 +54,7 @@ const createRange = year => {
 
 function buildHeatmapValues(edges) {
   const dateObj = countBy(
-    edges.map(({ node }) => dayjs(node.publishDate).format("YYYY-MM-DD"))
+    edges.map(({ node }) => moment(node.publishDate).format("YYYY-MM-DD"))
   );
   return Object.keys(dateObj).map(date => ({
     date,
