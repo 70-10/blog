@@ -10,6 +10,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             title
             slug
             publishDate
+            tags
           }
         }
       }
@@ -17,12 +18,30 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   `);
 
   const articles = result.data.allContentfulArticle.edges;
-  articles.forEach(({ node }, i) => {
+  articles.forEach(({ node }) => {
     createPage({
       path: `/${moment(node.publishDate).format("YYYY/MM/DD")}/${node.slug}/`,
       component: path.resolve("./src/templates/article.js"),
       context: {
         slug: node.slug
+      }
+    });
+  });
+
+  const tags = [
+    ...new Set(
+      result.data.allContentfulArticle.edges
+        .map(({ node }) => node.tags)
+        .filter(tags => !!tags)
+        .flat()
+    )
+  ].sort();
+  tags.forEach(tag => {
+    createPage({
+      path: `/tags/${tag}/`,
+      component: path.resolve("./src/templates/tag.js"),
+      context: {
+        tag
       }
     });
   });
