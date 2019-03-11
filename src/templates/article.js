@@ -42,7 +42,7 @@ export default ({
 const Tags = ({ tags }) => (
   <div className="tags">
     {tags.map(tag => (
-      <Link to={`/tags/${tag}`} className="tag is-warning">
+      <Link to={`/tags/${tag}/`} className="tag is-warning">
         {tag}
       </Link>
     ))}
