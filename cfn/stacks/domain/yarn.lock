@@ -169,13 +169,13 @@ cli-width@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/cli-width/-/cli-width-2.1.0.tgz#b234ca209b29ef66fc518d9b98d5847b00edf00a"
 
-cloudformation-z@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/cloudformation-z/-/cloudformation-z-0.0.5.tgz#d746489bd9ab5d396355d4963d4092e352c87686"
+cloudformation-z@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/cloudformation-z/-/cloudformation-z-0.0.6.tgz#28af77d7d746ed32934ed0957a926e60f352978b"
   dependencies:
     aws-sdk-promise "0.0.2"
     commander "^2.9.0"
-    jsonschema "^1.0.2"
+    jsonschema "1.2.0"
     moment "^2.10.6"
     promise "^7.0.4"
 
@@ -681,9 +681,9 @@ jsonpointer@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-4.0.1.tgz#4fd92cb34e0e9db3c89c8622ecf51f9b978c6cb9"
 
-jsonschema@^1.0.2:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.1.1.tgz#3cede8e3e411d377872eefbc9fdf26383cbc3ed9"
+jsonschema@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/jsonschema/-/jsonschema-1.2.0.tgz#d6ebaf70798db7b3a20c544f6c9ef9319b077de2"
 
 leven@^2.0.0:
   version "2.1.0"
