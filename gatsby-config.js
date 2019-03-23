@@ -10,7 +10,6 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sass",
     "gatsby-plugin-twitter",
-    "gatsby-plugin-feed",
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -50,6 +49,64 @@ module.exports = {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "UA-99979822-1"
+      }
+    },
+    {
+      resolve: "gatsby-plugin-feed",
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url:siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, articles } }) => {
+              return articles.edges.map(({ node }) => ({
+                title: node.title,
+                description:
+                  node.childContentfulArticleBodyTextNode.childMarkdownRemark
+                    .excerpt,
+                url: `${site.siteMetadata.siteUrl}/${node.slug}`,
+                guid: `${site.siteMetadata.siteUrl}/${node.slug}`,
+                custom_elements: [
+                  {
+                    "content:encoded":
+                      node.childContentfulArticleBodyTextNode
+                        .childMarkdownRemark.html
+                  }
+                ]
+              }));
+            },
+            query: `
+              {
+                articles: allContentfulArticle(limit: 1000, sort: {fields: publishDate, order: DESC}) {
+                  edges {
+                    node {
+                      title
+                      slug
+                      childContentfulArticleBodyTextNode{
+                        childMarkdownRemark {
+                          html
+                          excerpt
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "MNML RSS Feed"
+          }
+        ]
       }
     }
   ]
