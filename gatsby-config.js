@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: "MNML"
+    title: "MNML",
+    description: "70-10's Tech Blog",
+    siteUrl: "https://blog.70-10.net"
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -8,6 +10,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sass",
     "gatsby-plugin-twitter",
+    "gatsby-plugin-feed",
     {
       resolve: "gatsby-transformer-remark",
       options: {
