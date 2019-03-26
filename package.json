@@ -33,9 +33,9 @@
     "moment-range": "4.0.2",
     "node-sass": "4.11.0",
     "prismjs": "1.15.0",
-    "react": "16.8.4",
+    "react": "16.8.5",
     "react-calendar-heatmap": "1.8.0",
-    "react-dom": "16.8.4",
+    "react-dom": "16.8.5",
     "react-helmet": "5.2.0",
     "react-share": "2.4.0"
   }
