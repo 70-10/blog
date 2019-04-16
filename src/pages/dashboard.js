@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import countBy from "lodash.countby";
 import CalendarHeatmap from "../components/calendar-heatmap";
@@ -12,14 +12,43 @@ export default ({
 }) => {
   return (
     <Layout>
-      <h1 className="title has-text-centered">Dashboard</h1>
+      <p>
+        <Link to="/">ブログ</Link>の統計情報をまとめたページです。
+      </p>
       <hr />
       <h2 className="subtitle">記事数</h2>
       <Level articles={edges} />
       <hr />
       <h2 className="subtitle">過去1年間のポスト数</h2>
       <CalendarHeatmap values={buildHeatmapValues(edges)} />
+      <hr />
+      <h2 className="subtitle">タグ</h2>
+      <Tags edges={edges} />
     </Layout>
+  );
+};
+
+const Tags = ({ edges }) => {
+  const tags = countBy(
+    edges
+      .map(({ node }) => node.tags)
+      .flat()
+      .sort()
+      .filter(tag => !!tag)
+  );
+  return (
+    <div className="field is-grouped is-grouped-multiline">
+      {Object.keys(tags).map(tag => (
+        <div className="control">
+          <div className="tags has-addons">
+            <Link to={`/tags/${tag}`}>
+              <span className="tag">{tag}</span>
+              <span className="tag is-warning">{tags[tag]}</span>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 
@@ -80,6 +109,7 @@ export const query = graphql`
           title
           slug
           publishDate
+          tags
         }
       }
     }
