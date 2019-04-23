@@ -1,49 +1,87 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import countBy from "lodash.countby";
 import CalendarHeatmap from "../components/calendar-heatmap";
 import moment from "../moment";
 
-export default ({ data: { allContentfulArticle } }) => {
+export default ({
+  data: {
+    allContentfulArticle: { edges }
+  }
+}) => {
   return (
     <Layout>
-      <h1 className="title">Dashboard</h1>
-
-      <nav className="level">
-        <div className="level-item has-text-centered">
-          <div>
-            <p className="heading">総記事数</p>
-            <p className="title">{allContentfulArticle.edges.length}</p>
-          </div>
-        </div>
-        {Array.from({ length: 3 }, (_, i) => {
-          const targetYear = moment()
-            .subtract(i, "year")
-            .format("YYYY");
-          return (
-            <div key={i} className="level-item has-text-centered">
-              <div>
-                <p className="heading">{targetYear}</p>
-                <p className="title">
-                  {
-                    allContentfulArticle.edges.filter(({ node }) => {
-                      const range = createRange(targetYear);
-                      return range.contains(moment(node.publishDate));
-                    }).length
-                  }
-                </p>
-              </div>
-            </div>
-          );
-        })}
-      </nav>
-      <CalendarHeatmap
-        values={buildHeatmapValues(allContentfulArticle.edges)}
-      />
+      <p>
+        <Link to="/">ブログ</Link>の統計情報をまとめたページです。
+      </p>
+      <hr />
+      <h2 className="subtitle">記事数</h2>
+      <Level articles={edges} />
+      <hr />
+      <h2 className="subtitle">過去1年間のポスト数</h2>
+      <CalendarHeatmap values={buildHeatmapValues(edges)} />
+      <hr />
+      <h2 className="subtitle">タグ</h2>
+      <Tags edges={edges} />
     </Layout>
   );
 };
+
+const Tags = ({ edges }) => {
+  const tags = countBy(
+    edges
+      .map(({ node }) => node.tags)
+      .flat()
+      .sort()
+      .filter(tag => !!tag)
+  );
+  return (
+    <div className="field is-grouped is-grouped-multiline">
+      {Object.keys(tags).map(tag => (
+        <div className="control">
+          <div className="tags has-addons">
+            <Link to={`/tags/${tag}`}>
+              <span className="tag">{tag}</span>
+              <span className="tag is-warning">{tags[tag]}</span>
+            </Link>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const Level = ({ articles }) => (
+  <nav className="level is-mobile">
+    <div className="level-item has-text-centered">
+      <div>
+        <p className="heading">総記事数</p>
+        <p className="title">{articles.length}</p>
+      </div>
+    </div>
+    {Array.from({ length: 4 }, (_, i) => {
+      const targetYear = moment()
+        .subtract(i, "year")
+        .format("YYYY");
+      return (
+        <div key={i} className="level-item has-text-centered">
+          <div>
+            <p className="heading">{targetYear}年</p>
+            <p className="title">
+              {
+                articles.filter(({ node }) => {
+                  const range = createRange(targetYear);
+                  return range.contains(moment(node.publishDate));
+                }).length
+              }
+            </p>
+          </div>
+        </div>
+      );
+    })}
+  </nav>
+);
 
 const createRange = year => {
   return moment.range(
@@ -71,6 +109,7 @@ export const query = graphql`
           title
           slug
           publishDate
+          tags
         }
       }
     }
