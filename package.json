@@ -36,7 +36,7 @@
     "react": "16.8.6",
     "react-calendar-heatmap": "1.8.0",
     "react-dom": "16.8.6",
-    "react-helmet": "5.2.0",
+    "react-helmet": "5.2.1",
     "react-share": "2.4.0"
   }
 }
