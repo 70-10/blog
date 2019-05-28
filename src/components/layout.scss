@@ -29,6 +29,7 @@ html {
 .blog-title {
   font-family: "Helvetica Neue";
   padding-top: 0.25rem;
+  color: #519d9e;
 }
 
 .button.twitter {
@@ -37,16 +38,21 @@ html {
   border-color: transparent !important;
 }
 
-.content {
-  pre {
-    code {
-      font-size: 0.8rem;
-    }
+.section {
+  &.top {
+    padding-top: 1.5rem;
   }
 }
 
 .content {
   line-height: 30px;
+
+  pre {
+    code {
+      font-size: 0.8rem;
+    }
+  }
+
   h1 {
     border-bottom: 2px solid;
     border-bottom-color: #a0a0a0;

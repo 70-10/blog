@@ -33,18 +33,16 @@ const layout = ({
 
       <title>{siteMetadata.title}</title>
     </Helmet>
-    <nav className="navbar is-primary">
+    <nav className="navbar">
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
-            <h1 className="title has-text-white blog-title">
-              {siteMetadata.title}
-            </h1>
+            <h1 className="title blog-title">{siteMetadata.title}</h1>
           </Link>
         </div>
       </div>
     </nav>
-    <section className="section">
+    <section className="section top">
       <div className="container">{children}</div>
     </section>
   </div>
