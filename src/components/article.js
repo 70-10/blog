@@ -12,15 +12,14 @@ export default ({ node }) => {
     <article className="media">
       <div className="media-content">
         <div className="content">
-          <span>
-            <Link to={path}>{node.title}</Link>
-          </span>
-          <br />
           <small>
             <time dateTime={dateDash} title={dateDash}>
               {dateSlash}
             </time>
           </small>
+          <p>
+            <Link to={path}>{node.title}</Link>
+          </p>
         </div>
       </div>
     </article>
