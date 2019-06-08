@@ -23,6 +23,7 @@
     "gatsby-plugin-sharp": "2.0.37",
     "gatsby-plugin-twitter": "2.0.13",
     "gatsby-remark-autolink-headers": "2.0.16",
+    "gatsby-remark-embed-spotify": "github:70-10/gatsby-remark-embed-spotify",
     "gatsby-remark-images-contentful": "2.0.11",
     "gatsby-remark-prismjs": "3.2.9",
     "gatsby-source-contentful": "2.0.61",
