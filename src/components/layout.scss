@@ -47,6 +47,16 @@ html {
 .content {
   line-height: 30px;
 
+  p {
+    code {
+      background-color: whitesmoke;
+      color: #ff3860;
+      font-size: 0.875em;
+      font-weight: normal;
+      padding: 0.25em 0.5em 0.25em !important;
+    }
+  }
+
   pre {
     code {
       font-size: 0.8rem;
