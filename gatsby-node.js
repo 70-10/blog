@@ -21,7 +21,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   articles.forEach(({ node }) => {
     createPage({
       path: `/${moment(node.publishDate).format("YYYY/MM/DD")}/${node.slug}/`,
-      component: path.resolve("./src/templates/article.js"),
+      component: path.resolve("./src/templates/article.tsx"),
       context: {
         slug: node.slug
       }
@@ -39,7 +39,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   tags.forEach(tag => {
     createPage({
       path: `/tags/${tag}/`,
-      component: path.resolve("./src/templates/tag.js"),
+      component: path.resolve("./src/templates/tag.tsx"),
       context: {
         tag
       }
@@ -51,7 +51,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? "/" : `/articles/${i + 1}/`,
-      component: path.resolve("./src/templates/article-list.js"),
+      component: path.resolve("./src/templates/article-list.tsx"),
       context: {
         limit: perPage,
         skip: i * perPage,

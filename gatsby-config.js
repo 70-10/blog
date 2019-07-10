@@ -5,6 +5,7 @@ module.exports = {
     siteUrl: "https://blog.70-10.net"
   },
   plugins: [
+    "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
