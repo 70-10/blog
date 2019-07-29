@@ -4,10 +4,11 @@ import Layout from "../components/layout";
 import ShareButtons from "../components/share-buttons";
 import Img from "gatsby-image";
 import Helmet from "react-helmet";
+import moment from "../moment";
 
 export default ({
   data: {
-    contentfulArticle: { title, tags, heroImage, eyecatch, body }
+    contentfulArticle: { title, tags, heroImage, eyecatch, body, publishDate }
   },
   location
 }) => (
@@ -15,6 +16,9 @@ export default ({
     <Head location={location} title={title} eyecatch={eyecatch} />
     <div className="columns">
       <div className="column">
+        <h2 className="subtitle is-size-6">
+          {moment(publishDate).format("YYYY/MM/DD")}
+        </h2>
         <h1 className="title">{title}</h1>
         {tags ? <Tags tags={tags} /> : null}
       </div>
