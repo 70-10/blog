@@ -39,7 +39,7 @@
     "react-calendar-heatmap": "1.8.1",
     "react-dom": "16.10.2",
     "react-helmet": "5.2.1",
-    "react-share": "3.0.0"
+    "react-share": "3.0.1"
   },
   "devDependencies": {
     "@types/node": "12.12.7",
