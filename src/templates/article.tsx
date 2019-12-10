@@ -8,12 +8,17 @@ import moment from "../moment";
 
 export default ({
   data: {
+    site: { siteMetadata },
     contentfulArticle: { title, tags, heroImage, eyecatch, body, publishDate }
   },
   location
 }) => (
   <Layout>
-    <Head location={location} title={title} eyecatch={eyecatch} />
+    <Head
+      location={location}
+      title={`${title} | ${siteMetadata.title}`}
+      eyecatch={eyecatch}
+    />
     <div className="columns">
       <div className="column">
         <h2 className="subtitle is-size-6">
@@ -73,6 +78,7 @@ const Head = ({ location, title, eyecatch }) => (
     {eyecatch ? (
       <meta name="twitter:image" content={`https:${eyecatch.file.url}`} />
     ) : null}
+    <title>{title}</title>
   </Helmet>
 );
 
@@ -137,6 +143,11 @@ const Footer = () => (
 
 export const query = graphql`
   query($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     contentfulArticle(slug: { eq: $slug }) {
       title
       tags
