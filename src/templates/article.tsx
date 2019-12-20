@@ -1,62 +1,89 @@
-import React from "react";
-import { graphql, Link } from "gatsby";
+import React, { SFC } from "react";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import ShareButtons from "../components/share-buttons";
-import Img from "gatsby-image";
+import Img, { FluidObject } from "gatsby-image";
 import Helmet from "react-helmet";
 import moment from "../moment";
+import Tags from "../components/tags";
+import Footer from "../components/footer";
 
-export default ({
+type Data = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+  contentfulArticle: {
+    title: string;
+    tags: string[];
+    publishDate: string;
+    heroImage: {
+      fluid: FluidObject;
+    };
+    eyecatch: {
+      file: {
+        url: string;
+      };
+    };
+    body: {
+      childMarkdownRemark: {
+        html: string;
+      };
+    };
+  };
+};
+
+type Props = {
+  data: Data;
+  location: {
+    href: string;
+  };
+};
+
+const Article: SFC<Props> = ({
   data: {
     site: { siteMetadata },
     contentfulArticle: { title, tags, heroImage, eyecatch, body, publishDate }
   },
   location
 }) => (
-  <Layout>
-    <Head
-      location={location}
-      title={`${title} | ${siteMetadata.title}`}
-      eyecatch={eyecatch}
-    />
-    <div className="columns">
-      <div className="column">
-        <h2 className="subtitle is-size-6">
-          {moment(publishDate).format("YYYY/MM/DD")}
-        </h2>
-        <h1 className="title">{title}</h1>
-        {tags ? <Tags tags={tags} /> : null}
-      </div>
-    </div>
-    {heroImage ? (
+  <>
+    <Layout>
+      <Head
+        location={location}
+        title={`${title} | ${siteMetadata.title}`}
+        eyecatch={eyecatch}
+      />
       <div className="columns">
         <div className="column">
-          <Img fluid={heroImage.fluid} />
+          <h2 className="subtitle is-size-6">
+            {moment(publishDate).format("YYYY/MM/DD")}
+          </h2>
+          <h1 className="title">{title}</h1>
+          {tags ? <Tags tags={tags} /> : null}
         </div>
       </div>
-    ) : null}
-    <div
-      className="content"
-      dangerouslySetInnerHTML={{
-        __html: body.childMarkdownRemark.html
-      }}
-    />
+      {heroImage ? (
+        <div className="columns">
+          <div className="column">
+            <Img fluid={heroImage.fluid} />
+          </div>
+        </div>
+      ) : null}
+      <div
+        className="content"
+        dangerouslySetInnerHTML={{
+          __html: body.childMarkdownRemark.html
+        }}
+      />
 
-    <ShareButtons title={title} url={location.href} />
-
+      <ShareButtons title={title} url={location.href} />
+    </Layout>
     <Footer />
-  </Layout>
+  </>
 );
-
-const Tags = ({ tags }) => (
-  <div className="tags">
-    {tags.map(tag => (
-      <Link to={`/tags/${tag}/`} className="tag is-warning">
-        {tag}
-      </Link>
-    ))}
-  </div>
-);
+export default Article;
 
 const Head = ({ location, title, eyecatch }) => (
   <Helmet>
@@ -80,65 +107,6 @@ const Head = ({ location, title, eyecatch }) => (
     ) : null}
     <title>{title}</title>
   </Helmet>
-);
-
-const Footer = () => (
-  <footer className="footer">
-    <article className="media">
-      <figure className="media-left">
-        <p className="image is-64x64">
-          <img src="/icon.jpg" alt="Icon" />
-        </p>
-      </figure>
-      <div className="media-content">
-        <div className="content">
-          <p>
-            written by{" "}
-            <strong>
-              <a
-                href="https://twitter.com/70_10"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                70_10
-              </a>
-            </strong>
-          </p>
-        </div>
-        <nav className="breadcrumb" aria-label="breadcrumbs">
-          <ul>
-            <li>
-              <a
-                href="https://twitter.com/70_10"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/70-10"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://qiita.com/70_10"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Qiita
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </article>
-  </footer>
 );
 
 export const query = graphql`

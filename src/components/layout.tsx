@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SFC } from "react";
 import Helmet from "react-helmet";
 import { graphql, StaticQuery, Link } from "gatsby";
 import "./layout.scss";
@@ -13,7 +13,19 @@ const query = graphql`
   }
 `;
 
-const layout = ({
+type Data = {
+  site: {
+    siteMetadata: {
+      title: string;
+    };
+  };
+};
+
+type Props = {
+  data: Data;
+};
+
+const layout: SFC<Props> = ({
   data: {
     site: { siteMetadata }
   },
@@ -48,6 +60,8 @@ const layout = ({
   </div>
 );
 
-export default ({ children }) => (
+const DefaultLayout: SFC = ({ children }) => (
   <StaticQuery query={query} render={data => layout({ data, children })} />
 );
+
+export default DefaultLayout;

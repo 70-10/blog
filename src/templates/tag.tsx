@@ -1,9 +1,31 @@
-import React from "react";
+import React, { SFC } from "react";
 import Layout from "../components/layout";
 import { graphql } from "gatsby";
 import Article from "../components/article";
 
-export default ({ data, pageContext }) => (
+type Data = {
+  allContentfulArticle: {
+    edges: {
+      node: {
+        title: string;
+        slug: string;
+        publishDate: string;
+        tags: string[];
+      };
+    }[];
+  };
+};
+
+type Context = {
+  tag: string;
+};
+
+type Props = {
+  data: Data;
+  pageContext: Context;
+};
+
+const Tag: SFC<Props> = ({ data, pageContext }) => (
   <Layout>
     <span className="title tag is-warning is-medium">{pageContext.tag}</span>
 
@@ -14,6 +36,8 @@ export default ({ data, pageContext }) => (
       ))}
   </Layout>
 );
+
+export default Tag;
 
 export const query = graphql`
   query {
