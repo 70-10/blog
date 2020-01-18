@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Layout from "../components/layout";
+import Layout from "../layouts/defaultLayout";
 import { graphql } from "gatsby";
 import Article from "../components/article";
 

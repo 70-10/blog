@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/layout";
+import Layout from "../layouts/defaultLayout";
 import ShareButtons from "../components/share-buttons";
 import Img, { FluidObject } from "gatsby-image";
 import Helmet from "react-helmet";
