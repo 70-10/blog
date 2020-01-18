@@ -87,10 +87,10 @@ export default Article;
 
 const Head = ({ location, title, eyecatch }) => (
   <Helmet>
-    <meta itemprop="name" content={title} />
-    <meta itemprop="description" content="Blog at 70-10.net" />
+    <meta itemProp="name" content={title} />
+    <meta itemProp="description" content="Blog at 70-10.net" />
     {eyecatch ? (
-      <meta itemprop="image" content={`https:${eyecatch.file.url}`} />
+      <meta itemProp="image" content={`https:${eyecatch.file.url}`} />
     ) : null}
     <meta property="og:url" content={location.href} />
     <meta property="og:type" content="website" />
