@@ -1,4 +1,4 @@
-import React, { SFC } from "react";
+import React, { FC } from "react";
 import Layout from "../components/layout";
 import { graphql } from "gatsby";
 import Article from "../components/article";
@@ -25,7 +25,7 @@ type Props = {
   pageContext: Context;
 };
 
-const Tag: SFC<Props> = ({ data, pageContext }) => (
+const Tag: FC<Props> = ({ data, pageContext }) => (
   <Layout>
     <span className="title tag is-warning is-medium">{pageContext.tag}</span>
 

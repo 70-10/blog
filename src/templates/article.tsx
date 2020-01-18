@@ -1,4 +1,4 @@
-import React, { SFC } from "react";
+import React, { FC } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import ShareButtons from "../components/share-buttons";
@@ -41,7 +41,7 @@ type Props = {
   };
 };
 
-const Article: SFC<Props> = ({
+const Article: FC<Props> = ({
   data: {
     site: { siteMetadata },
     contentfulArticle: { title, tags, heroImage, eyecatch, body, publishDate }

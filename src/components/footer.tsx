@@ -1,6 +1,6 @@
-import React, { SFC } from "react";
+import React, { FC } from "react";
 
-const Footer: SFC = () => (
+const Footer: FC = () => (
   <footer className="footer">
     <div className="container">
       <article className="media">

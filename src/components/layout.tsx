@@ -1,4 +1,4 @@
-import React, { SFC } from "react";
+import React, { FC } from "react";
 import Helmet from "react-helmet";
 import { graphql, StaticQuery, Link } from "gatsby";
 import "./layout.scss";
@@ -25,7 +25,7 @@ type Props = {
   data: Data;
 };
 
-const layout: SFC<Props> = ({
+const layout: FC<Props> = ({
   data: {
     site: { siteMetadata }
   },

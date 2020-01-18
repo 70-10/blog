@@ -1,4 +1,4 @@
-import React, { SFC } from "react";
+import React, { FC } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Article from "../components/article";
@@ -31,7 +31,7 @@ type Props = {
   pageContext: Context;
 };
 
-const ArticleList: SFC<Props> = ({ data, pageContext }) => (
+const ArticleList: FC<Props> = ({ data, pageContext }) => (
   <>
     <Layout>
       {data.allContentfulArticle.edges.map(({ node }) => (
