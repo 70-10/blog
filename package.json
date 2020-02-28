@@ -44,6 +44,6 @@
   },
   "devDependencies": {
     "@types/react-helmet": "5.0.15",
-    "typescript": "3.8.2"
+    "typescript": "3.8.3"
   }
 }
