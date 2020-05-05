@@ -34,7 +34,7 @@
     "lodash.countby": "4.6.0",
     "moment": "2.24.0",
     "moment-range": "4.0.2",
-    "node-sass": "4.13.1",
+    "node-sass": "4.14.1",
     "prismjs": "1.20.0",
     "react": "16.13.1",
     "react-calendar-heatmap": "1.8.1",
