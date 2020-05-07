@@ -1,10 +1,10 @@
 import React, { FC } from "react";
-import Helmet from "react-helmet";
+import { Helmet } from "react-helmet";
 import { graphql, StaticQuery, Link } from "gatsby";
 import "./layout.scss";
 
 const query = graphql`
-  query {
+  query DefaultLayout {
     site {
       siteMetadata {
         title
@@ -42,11 +42,11 @@ const Head: FC<{ title: string }> = ({ title }) => {
 
 const Navbar: FC<{ title: string }> = ({ title }) => {
   return (
-    <nav className="navbar">
+    <nav className="navbar is-link">
       <div className="container">
         <div className="navbar-brand">
           <Link to="/" className="navbar-item">
-            <h1 className="title blog-title">{title}</h1>
+            <h1 className="title blog-title has-text-white">{title}</h1>
           </Link>
         </div>
       </div>
@@ -56,9 +56,9 @@ const Navbar: FC<{ title: string }> = ({ title }) => {
 
 const Layout: FC<Props> = ({
   data: {
-    site: { siteMetadata }
+    site: { siteMetadata },
   },
-  children
+  children,
 }) => {
   return (
     <>
@@ -72,7 +72,7 @@ const Layout: FC<Props> = ({
 };
 
 const DefaultLayout: FC = ({ children }) => (
-  <StaticQuery query={query} render={data => Layout({ data, children })} />
+  <StaticQuery query={query} render={(data) => Layout({ data, children })} />
 );
 
 export default DefaultLayout;
