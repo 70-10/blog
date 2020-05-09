@@ -1,32 +1,29 @@
 import React, { FC } from "react";
-import { Helmet } from "react-helmet";
 import { graphql, StaticQuery, Link } from "gatsby";
+import { Helmet } from "react-helmet";
 import "./layout.scss";
+import { DefaultLayoutQuery } from "../../types/graphql-types";
 
-const query = graphql`
-  query DefaultLayout {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
+import Footer from "../components/footer";
 
-type Query = {
-  site: {
-    siteMetadata: {
-      title: string;
-    };
-  };
-};
+const Navbar: FC<{ title?: string }> = ({ title }) => (
+  <nav className="navbar is-link">
+    <div className="container">
+      <div className="navbar-brand">
+        <Link to="/" className="navbar-item">
+          <h1 className="title has-text-white">{title}</h1>
+        </Link>
+      </div>
+    </div>
+  </nav>
+);
 
 type Props = {
-  data: Query;
+  data: DefaultLayoutQuery;
 };
 
-const Head: FC<{ title: string }> = ({ title }) => {
-  return (
+const Component: FC<Props> = ({ data, children }) => (
+  <>
     <Helmet htmlAttributes={{ lang: "ja" }}>
       <meta http-equiv="content-type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,44 +32,27 @@ const Head: FC<{ title: string }> = ({ title }) => {
       <meta name="description" content="Blog at 70-10.net" />
       <meta name="author" content="70_10" />
 
-      <title>{title}</title>
+      <title>{data.site?.siteMetadata?.title}</title>
     </Helmet>
-  );
-};
-
-const Navbar: FC<{ title: string }> = ({ title }) => {
-  return (
-    <nav className="navbar is-link">
-      <div className="container">
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item">
-            <h1 className="title blog-title has-text-white">{title}</h1>
-          </Link>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-const Layout: FC<Props> = ({
-  data: {
-    site: { siteMetadata },
-  },
-  children,
-}) => {
-  return (
-    <>
-      <Head title={siteMetadata.title} />
-      <Navbar title={siteMetadata.title} />
-      <section className="section top">
-        <div className="container">{children}</div>
-      </section>
-    </>
-  );
-};
-
-const DefaultLayout: FC = ({ children }) => (
-  <StaticQuery query={query} render={(data) => Layout({ data, children })} />
+    <Navbar title={data.site?.siteMetadata?.title!} />
+    {children}
+    <Footer />
+  </>
 );
 
-export default DefaultLayout;
+const Container: FC = ({ children }) => (
+  <StaticQuery
+    query={graphql`
+      query DefaultLayout {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `}
+    render={(data) => <Component data={data} children={children} />}
+  />
+);
+
+export default Container;

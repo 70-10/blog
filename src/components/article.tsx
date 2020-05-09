@@ -1,8 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "gatsby";
 import moment from "../moment";
+import { ContentfulArticle } from "../../types/graphql-types";
 
-export default ({ node }) => {
+type Props = {
+  node: Pick<ContentfulArticle, "title" | "slug" | "publishDate">;
+};
+
+const Container: FC<Props> = ({ node }) => {
   const publishDate = moment(node.publishDate);
   const dateSlash = publishDate.format("YYYY/MM/DD");
   const dateDash = publishDate.format("YYYY-MM-DD");
@@ -10,18 +15,20 @@ export default ({ node }) => {
 
   return (
     <article className="media">
-      <div className="media-content">
-        <div className="content">
-          <small>
-            <time dateTime={dateDash} title={dateDash}>
-              {dateSlash}
-            </time>
-          </small>
-          <p>
-            <Link to={path}>{node.title}</Link>
-          </p>
+      <Link to={path}>
+        <div className="media-content">
+          <p className="is-size-5 has-text-weight-semibold">{node.title}</p>
+          <time
+            dateTime={dateDash}
+            title={dateDash}
+            className="is-size-6 has-text-grey"
+          >
+            {dateSlash}
+          </time>
         </div>
-      </div>
+      </Link>
     </article>
   );
 };
+
+export default Container;

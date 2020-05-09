@@ -27,13 +27,25 @@ type Props = {
 
 const Tag: FC<Props> = ({ data, pageContext }) => (
   <Layout>
-    <span className="title tag is-warning is-medium">{pageContext.tag}</span>
+    <section className="hero">
+      <div className="hero-body">
+        <div className="columns">
+          <div className="column is-8 is-offset-2">
+            <span className="title tag is-warning is-medium">
+              #{pageContext.tag}
+            </span>
 
-    {data.allContentfulArticle.edges
-      .filter(({ node }) => !!node.tags && node.tags.includes(pageContext.tag))
-      .map(({ node }) => (
-        <Article key={node.slug} node={node} />
-      ))}
+            {data.allContentfulArticle.edges
+              .filter(
+                ({ node }) => !!node.tags && node.tags.includes(pageContext.tag)
+              )
+              .map(({ node }) => (
+                <Article key={node.slug} node={node} />
+              ))}
+          </div>
+        </div>
+      </div>
+    </section>
   </Layout>
 );
 
