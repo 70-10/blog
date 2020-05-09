@@ -3,19 +3,7 @@ import { graphql } from "gatsby";
 import Layout from "../layouts/defaultLayout";
 import Article from "../components/article";
 import Pagination from "../components/pagination";
-import Footer from "../components/footer";
-
-type Data = {
-  allContentfulArticle: {
-    edges: {
-      node: {
-        title: string;
-        slug: string;
-        publishDate: string;
-      };
-    }[];
-  };
-};
+import { ArticleListQuery } from "../../types/graphql-types";
 
 type Context = {
   limit: number;
@@ -27,28 +15,37 @@ type Context = {
 };
 
 type Props = {
-  data: Data;
+  data: ArticleListQuery;
   pageContext: Context;
 };
 
 const ArticleList: FC<Props> = ({ data, pageContext }) => (
-  <>
-    <Layout>
-      {data.allContentfulArticle.edges.map(({ node }) => (
-        <Article key={node.slug} node={node} />
-      ))}
-      <section className="section">
-        <Pagination pageContext={pageContext} />
-      </section>
-    </Layout>
-    <Footer />
-  </>
+  <Layout>
+    <section className="hero">
+      <div className="hero-body">
+        <div className="columns">
+          <div className="column is-8 is-offset-2">
+            {data.allContentfulArticle.edges.map(({ node }) => (
+              <Article key={node.slug!} node={node} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+    <section className="section">
+      <div className="columns">
+        <div className="column is-8 is-offset-2">
+          <Pagination pageContext={pageContext} />
+        </div>
+      </div>
+    </section>
+  </Layout>
 );
 
 export default ArticleList;
 
 export const query = graphql`
-  query articleListQuery($skip: Int!, $limit: Int!) {
+  query ArticleList($skip: Int!, $limit: Int!) {
     allContentfulArticle(
       sort: { fields: publishDate, order: DESC }
       limit: $limit

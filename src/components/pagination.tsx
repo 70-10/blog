@@ -10,7 +10,11 @@ export default ({ pageContext: { prev, next, pages, page } }) => (
       >
         {"<"}
       </Link>
-    ) : null}
+    ) : (
+      <button className="pagination-previous is-link" disabled>
+        {"<"}
+      </button>
+    )}
 
     <ul className="pagination-list">
       {Array.from({ length: pages }).map((_, i) => (
@@ -30,6 +34,10 @@ export default ({ pageContext: { prev, next, pages, page } }) => (
       <Link to={`/articles/${next}`} className="pagination-next">
         {">"}
       </Link>
-    ) : null}
+    ) : (
+      <button className="pagination-next is-link" disabled>
+        {">"}
+      </button>
+    )}
   </nav>
 );
