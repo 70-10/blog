@@ -44,7 +44,7 @@
     "react-share": "4.1.0"
   },
   "devDependencies": {
-    "@types/react-helmet": "5.0.15",
+    "@types/react-helmet": "5.0.16",
     "typescript": "3.8.3"
   }
 }
