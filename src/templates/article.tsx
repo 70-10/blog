@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { graphql } from "gatsby";
 import Layout from "../layouts/defaultLayout";
 import ShareButtons from "../components/share-buttons";
-import Img, { FluidObject } from "gatsby-image";
+import Img from "gatsby-image";
 import Helmet from "react-helmet";
 import moment from "../moment";
 import Tags from "../components/tags";
@@ -55,20 +55,28 @@ const Article: FC<Props> = ({ data, location }) => {
           <div className="hero-body">
             <div className="columns">
               <div className="column is-6 is-offset-3">
-                <h2 className="subtitle is-size-6">
-                  {moment(publishDate).format("YYYY/MM/DD")}
-                </h2>
                 <h1 className="title">{title}</h1>
-                {tags ? <Tags tags={tags} /> : null}
               </div>
             </div>
-            {heroImage ? (
+            <div className="columns">
+              <div className="column is-6 is-offset-3">
+                <div className="subtitle">
+                  <p className="is-size-6">
+                    最終更新日時：{" "}
+                    {moment(publishDate).format("YYYY/MM/DD HH:mm")}
+                  </p>
+                </div>
+                {tags ? <Tags tags={tags} /> : null}
+                <hr />
+              </div>
+            </div>
+            {heroImage && (
               <div className="columns">
                 <div className="column is-6 is-offset-3">
                   <Img fluid={heroImage.fluid} />
                 </div>
               </div>
-            ) : null}
+            )}
             <div className="columns">
               <div className="column is-6 is-offset-3">
                 <div
