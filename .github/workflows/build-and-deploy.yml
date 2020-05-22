@@ -1,7 +1,7 @@
 name: Build
 
 on:
-  pull_request:
+  push:
     branches:
       - master
 
@@ -29,3 +29,10 @@ jobs:
         env:
           GATSBY_SPACE_ID: ${{ secrets.GATSBY_SPACE_ID }}
           GATSBY_ACCESS_TOKEN: ${{ secrets.GATSBY_ACCESS_TOKEN }}
+      - name: Publish
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=public --prod
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
