@@ -1,4 +1,4 @@
-name: Build
+name: Build and preview
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-preview:
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,3 +29,16 @@ jobs:
         env:
           GATSBY_SPACE_ID: ${{ secrets.GATSBY_SPACE_ID }}
           GATSBY_ACCESS_TOKEN: ${{ secrets.GATSBY_ACCESS_TOKEN }}
+      - name: Publish preview
+        id: preview
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=public
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - name: Comment preview URL
+        uses: thollander/actions-comment-pull-request@master
+        with:
+          message: "Preview URL: ${{ steps.preview.outputs.NETLIFY_URL }}"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
