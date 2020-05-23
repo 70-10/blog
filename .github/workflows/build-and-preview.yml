@@ -39,5 +39,5 @@ jobs:
       - name: Comment preview URL
         uses: thollander/actions-comment-pull-request@master
         with:
-          message: "Preview URL: ${{ env.NETLIFY_LIVE_URL }}"
+          message: "Preview URL: ${{ env.NETLIFY_URL }}"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
