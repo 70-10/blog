@@ -1,6 +1,9 @@
 name: Deploy
 
 on:
+  repository_dispatch:
+    types:
+      - post-article
   push:
     branches:
       - master
