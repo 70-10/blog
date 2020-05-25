@@ -8,6 +8,12 @@ import moment from "../moment";
 import Tags from "../components/tags";
 import { ArticleQuery } from "../../types/graphql-types";
 
+const Column: FC = ({ children }) => (
+  <div className="columns is-centered">
+    <div className="column is-8">{children}</div>
+  </div>
+);
+
 type Props = {
   data: ArticleQuery;
   location: {
@@ -53,44 +59,40 @@ const Article: FC<Props> = ({ data, location }) => {
 
         <section className="hero">
           <div className="hero-body">
-            <div className="columns">
-              <div className="column is-6 is-offset-3">
-                <h1 className="title">{title}</h1>
+            <Column>
+              <h1 className="title">{title}</h1>
+            </Column>
+            <Column>
+              <div className="subtitle">
+                <p className="is-size-6">
+                  最終更新日時：{" "}
+                  {moment(publishDate).format("YYYY/MM/DD HH:mm")}
+                </p>
               </div>
-            </div>
-            <div className="columns">
-              <div className="column is-6 is-offset-3">
-                <div className="subtitle">
-                  <p className="is-size-6">
-                    最終更新日時：{" "}
-                    {moment(publishDate).format("YYYY/MM/DD HH:mm")}
-                  </p>
-                </div>
-                {tags ? <Tags tags={tags} /> : null}
-                <hr />
-              </div>
-            </div>
+              {tags ? <Tags tags={tags} /> : null}
+              <hr />
+            </Column>
+
             {heroImage && (
-              <div className="columns">
-                <div className="column is-6 is-offset-3">
-                  <Img fluid={heroImage.fluid} />
-                </div>
-              </div>
+              <Column>
+                <Img fluid={heroImage.fluid} />
+              </Column>
             )}
-            <div className="columns">
-              <div className="column is-6 is-offset-3">
-                <div
-                  className="content"
-                  dangerouslySetInnerHTML={{
-                    __html: body?.childMarkdownRemark?.html!,
-                  }}
-                />
-              </div>
-            </div>
+
+            <Column>
+              <div
+                className="content"
+                dangerouslySetInnerHTML={{
+                  __html: body?.childMarkdownRemark?.html!,
+                }}
+              />
+            </Column>
           </div>
         </section>
         <section className="section">
-          <ShareButtons title={title} url={location.href} />
+          <Column>
+            <ShareButtons title={title} url={location.href} />
+          </Column>
         </section>
       </Layout>
     </>
