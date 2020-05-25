@@ -90,7 +90,9 @@ const Article: FC<Props> = ({ data, location }) => {
           </div>
         </section>
         <section className="section">
-          <ShareButtons title={title} url={location.href} />
+          <Column>
+            <ShareButtons title={title} url={location.href} />
+          </Column>
         </section>
       </Layout>
     </>
