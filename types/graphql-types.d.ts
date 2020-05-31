@@ -467,11 +467,11 @@ export type ContentfulArticleFieldsEnum =
   | 'contentful_id'
   | 'createdAt'
   | 'updatedAt'
-  | 'sys___revision'
   | 'sys___contentType___sys___type'
   | 'sys___contentType___sys___linkType'
   | 'sys___contentType___sys___id'
   | 'sys___contentType___sys___contentful_id'
+  | 'sys___revision'
   | 'node_locale'
   | 'heroImage___id'
   | 'heroImage___parent___id'
@@ -663,8 +663,8 @@ export type ContentfulArticleSortInput = {
 };
 
 export type ContentfulArticleSys = {
-  revision?: Maybe<Scalars['Int']>;
   contentType?: Maybe<ContentfulArticleSysContentType>;
+  revision?: Maybe<Scalars['Int']>;
 };
 
 export type ContentfulArticleSysContentType = {
@@ -690,8 +690,8 @@ export type ContentfulArticleSysContentTypeSysFilterInput = {
 };
 
 export type ContentfulArticleSysFilterInput = {
-  revision?: Maybe<IntQueryOperatorInput>;
   contentType?: Maybe<ContentfulArticleSysContentTypeFilterInput>;
+  revision?: Maybe<IntQueryOperatorInput>;
 };
 
 export type ContentfulAsset = Node & {
