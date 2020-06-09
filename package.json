@@ -40,11 +40,11 @@
     "react": "16.13.1",
     "react-calendar-heatmap": "1.8.1",
     "react-dom": "16.13.1",
-    "react-helmet": "5.2.1",
+    "react-helmet": "6.1.0",
     "react-share": "4.2.0"
   },
   "devDependencies": {
-    "@types/react-helmet": "5.0.16",
+    "@types/react-helmet": "6.0.0",
     "typescript": "3.9.5"
   }
 }
