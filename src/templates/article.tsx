@@ -29,6 +29,7 @@ const Article: FC<Props> = ({ data, location }) => {
     eyecatch,
     body,
     publishDate,
+    updatedAt,
   } = data.contentfulArticle!;
 
   return (
@@ -65,8 +66,11 @@ const Article: FC<Props> = ({ data, location }) => {
             <Column>
               <div className="subtitle">
                 <p className="is-size-6">
-                  最終更新日時：{" "}
+                  記事作成日時：{" "}
                   {moment(publishDate).format("YYYY/MM/DD HH:mm")}
+                </p>
+                <p className="is-size-6">
+                  最終更新日時： {moment(updatedAt).format("YYYY/MM/DD HH:mm")}
                 </p>
               </div>
               {tags ? <Tags tags={tags} /> : null}
@@ -110,6 +114,7 @@ export const query = graphql`
     contentfulArticle(slug: { eq: $slug }) {
       title
       tags
+      updatedAt
       publishDate
       heroImage {
         fluid(maxWidth: 960) {
