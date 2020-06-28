@@ -467,11 +467,11 @@ export type ContentfulArticleFieldsEnum =
   | 'contentful_id'
   | 'createdAt'
   | 'updatedAt'
+  | 'sys___revision'
   | 'sys___contentType___sys___type'
   | 'sys___contentType___sys___linkType'
   | 'sys___contentType___sys___id'
   | 'sys___contentType___sys___contentful_id'
-  | 'sys___revision'
   | 'node_locale'
   | 'heroImage___id'
   | 'heroImage___parent___id'
@@ -663,8 +663,8 @@ export type ContentfulArticleSortInput = {
 };
 
 export type ContentfulArticleSys = {
-  contentType?: Maybe<ContentfulArticleSysContentType>;
   revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulArticleSysContentType>;
 };
 
 export type ContentfulArticleSysContentType = {
@@ -690,8 +690,8 @@ export type ContentfulArticleSysContentTypeSysFilterInput = {
 };
 
 export type ContentfulArticleSysFilterInput = {
-  contentType?: Maybe<ContentfulArticleSysContentTypeFilterInput>;
   revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulArticleSysContentTypeFilterInput>;
 };
 
 export type ContentfulAsset = Node & {
@@ -3002,6 +3002,8 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<DateQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3203,6 +3205,8 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Date']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -3213,6 +3217,14 @@ export type Site = Node & {
 
 
 export type SiteBuildTimeArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type SitePortArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -3405,6 +3417,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -3497,6 +3511,8 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<DateQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3742,7 +3758,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___offsetY'
   | 'pluginCreator___pluginOptions___icon'
   | 'pluginCreator___pluginOptions___className'
-  | 'pluginCreator___pluginOptions___host'
   | 'pluginCreator___pluginOptions___spaceId'
   | 'pluginCreator___pluginOptions___accessToken'
   | 'pluginCreator___pluginOptions___trackingId'
@@ -3973,7 +3988,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___offsetY'
   | 'pluginOptions___icon'
   | 'pluginOptions___className'
-  | 'pluginOptions___host'
   | 'pluginOptions___spaceId'
   | 'pluginOptions___accessToken'
   | 'pluginOptions___trackingId'
@@ -4113,7 +4127,6 @@ export type SitePluginPluginOptions = {
   offsetY?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
-  host?: Maybe<Scalars['String']>;
   spaceId?: Maybe<Scalars['String']>;
   accessToken?: Maybe<Scalars['String']>;
   trackingId?: Maybe<Scalars['String']>;
@@ -4154,7 +4167,6 @@ export type SitePluginPluginOptionsFilterInput = {
   offsetY?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
   className?: Maybe<StringQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   accessToken?: Maybe<StringQueryOperatorInput>;
   trackingId?: Maybe<StringQueryOperatorInput>;

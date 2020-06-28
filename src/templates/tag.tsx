@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import Layout from "../layouts/defaultLayout";
 import { graphql } from "gatsby";
 import Article from "../components/article";
+import { display } from "../tag-helper";
 
 type Data = {
   allContentfulArticle: {
@@ -32,7 +33,7 @@ const Tag: FC<Props> = ({ data, pageContext }) => (
         <div className="columns">
           <div className="column is-8 is-offset-2">
             <span className="title tag is-warning is-medium">
-              #{pageContext.tag}
+              {display(pageContext.tag)}
             </span>
 
             {data.allContentfulArticle.edges
