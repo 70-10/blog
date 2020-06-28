@@ -4,45 +4,59 @@ import Layout from "../layouts/defaultLayout";
 import countBy from "lodash.countby";
 import CalendarHeatmap from "../components/calendar-heatmap";
 import moment from "../moment";
+import { display } from "../tag-helper";
 
 export default ({
   data: {
-    allContentfulArticle: { edges }
-  }
+    allContentfulArticle: { edges },
+  },
 }) => {
   return (
     <Layout>
-      <p>
-        <Link to="/">ブログ</Link>の統計情報をまとめたページです。
-      </p>
-      <hr />
-      <h2 className="subtitle">記事数</h2>
-      <Level articles={edges} />
-      <hr />
-      <h2 className="subtitle">過去1年間のポスト数</h2>
-      <CalendarHeatmap values={buildHeatmapValues(edges)} />
-      <hr />
-      <h2 className="subtitle">タグ</h2>
-      <Tags edges={edges} />
+      <div className="columns is-centered">
+        <div className="column is-8">
+          <br />
+          <p>
+            <Link to="/">ブログ</Link>の統計情報をまとめたページです。
+          </p>
+          <hr />
+          <h2 className="subtitle">記事数</h2>
+          <Level articles={edges} />
+          <hr />
+          <h2 className="subtitle">過去1年間のポスト数</h2>
+          <CalendarHeatmap values={buildHeatmapValues(edges)} />
+          <hr />
+          <h2 className="subtitle">タグ</h2>
+          <Tags edges={edges} />
+        </div>
+      </div>
     </Layout>
   );
 };
 
 const Tags = ({ edges }) => {
-  const tags = countBy(
-    edges
-      .map(({ node }) => node.tags)
-      .flat()
-      .sort()
-      .filter(tag => !!tag)
+  const tags = Object.assign(
+    {},
+    ...Object.entries(
+      countBy(
+        edges
+          .map(({ node }) => node.tags)
+          .flat()
+          .sort()
+          .filter((tag) => !!tag)
+      )
+    )
+      .sort((a, b) => Number(b[1]) - Number(a[1]))
+      .map(([x, y]) => ({ [x]: y }))
   );
+
   return (
     <div className="field is-grouped is-grouped-multiline">
-      {Object.keys(tags).map(tag => (
-        <div className="control">
+      {Object.keys(tags).map((tag) => (
+        <div key={tag} className="control">
           <div className="tags has-addons">
             <Link to={`/tags/${tag}`}>
-              <span className="tag">{tag}</span>
+              <span className="tag">{display(tag)}</span>
               <span className="tag is-warning">{tags[tag]}</span>
             </Link>
           </div>
@@ -61,9 +75,7 @@ const Level = ({ articles }) => (
       </div>
     </div>
     {Array.from({ length: 4 }, (_, i) => {
-      const targetYear = moment()
-        .subtract(i, "year")
-        .format("YYYY");
+      const targetYear = moment().subtract(i, "year").format("YYYY");
       return (
         <div key={i} className="level-item has-text-centered">
           <div>
@@ -83,7 +95,7 @@ const Level = ({ articles }) => (
   </nav>
 );
 
-const createRange = year => {
+const createRange = (year) => {
   return moment.range(
     moment(`${year}-01-01 00:00:00`, "YYYY-MM-DD HH:mm:ss"),
     moment(`${year}-12-31 23:59:59`, "YYYY-MM-DD HH:mm:ss")
@@ -94,9 +106,9 @@ function buildHeatmapValues(edges) {
   const dateObj = countBy(
     edges.map(({ node }) => moment(node.publishDate).format("YYYY-MM-DD"))
   );
-  return Object.keys(dateObj).map(date => ({
+  return Object.keys(dateObj).map((date) => ({
     date,
-    count: dateObj[date]
+    count: dateObj[date],
   }));
 }
 
