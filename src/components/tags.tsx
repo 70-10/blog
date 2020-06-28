@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Link } from "gatsby";
 import { Maybe } from "../../types/graphql-types";
+import { display } from "../tag-helper";
 
 type Props = {
   tags: Maybe<string>[];
@@ -14,7 +15,7 @@ const Tags: FC<Props> = ({ tags }) => (
         to={`/tags/${tag}`}
         className="tag is-warning has-text-weight-bold"
       >
-        {`#${tag}`}
+        {`#${display(tag!)}`}
       </Link>
     ))}
   </div>
