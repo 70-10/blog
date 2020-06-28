@@ -3,26 +3,14 @@ import Layout from "../layouts/defaultLayout";
 import { graphql } from "gatsby";
 import Article from "../components/article";
 import { display } from "../tag-helper";
-
-type Data = {
-  allContentfulArticle: {
-    edges: {
-      node: {
-        title: string;
-        slug: string;
-        publishDate: string;
-        tags: string[];
-      };
-    }[];
-  };
-};
+import { TagQuery } from "../../types/graphql-types";
 
 type Context = {
   tag: string;
 };
 
 type Props = {
-  data: Data;
+  data: TagQuery;
   pageContext: Context;
 };
 
@@ -41,7 +29,7 @@ const Tag: FC<Props> = ({ data, pageContext }) => (
                 ({ node }) => !!node.tags && node.tags.includes(pageContext.tag)
               )
               .map(({ node }) => (
-                <Article key={node.slug} node={node} />
+                <Article key={node.slug!} node={node} />
               ))}
           </div>
         </div>
@@ -53,7 +41,7 @@ const Tag: FC<Props> = ({ data, pageContext }) => (
 export default Tag;
 
 export const query = graphql`
-  query {
+  query Tag {
     allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
       edges {
         node {

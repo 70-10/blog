@@ -4296,10 +4296,10 @@ export type ArticleQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMe
     & { heroImage?: Maybe<{ fluid?: Maybe<GatsbyContentfulFluid_WithWebpFragment> }>, eyecatch?: Maybe<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>> }>, body?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
   )> };
 
-export type Unnamed_2_QueryVariables = {};
+export type TagQueryVariables = {};
 
 
-export type Unnamed_2_Query = { allContentfulArticle: { edges: Array<{ node: Pick<ContentfulArticle, 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
+export type TagQuery = { allContentfulArticle: { edges: Array<{ node: Pick<ContentfulArticle, 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
