@@ -121,5 +121,11 @@ module.exports = {
         fileName: `types/graphql-types.d.ts`,
       },
     },
+    {
+      resolve: "gatsby-plugin-purgecss",
+      options: {
+        printRejected: false,
+      },
+    },
   ],
 };
