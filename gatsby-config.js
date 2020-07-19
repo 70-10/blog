@@ -125,6 +125,8 @@ module.exports = {
       resolve: "gatsby-plugin-purgecss",
       options: {
         printRejected: false,
+        ignore: ["custom.scss", "prismjs/"],
+        whitelist: ["table", "thead", "tbody", "tr", "th", "td"],
       },
     },
   ],
