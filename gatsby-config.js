@@ -121,5 +121,13 @@ module.exports = {
         fileName: `types/graphql-types.d.ts`,
       },
     },
+    {
+      resolve: "gatsby-plugin-purgecss",
+      options: {
+        printRejected: false,
+        ignore: ["custom.scss", "prismjs/"],
+        whitelist: ["table", "thead", "tbody", "tr", "th", "td"],
+      },
+    },
   ],
 };
