@@ -34,7 +34,7 @@
     "gatsby-transformer-remark": "2.8.35",
     "gatsby-transformer-sharp": "2.5.15",
     "lodash.countby": "4.6.0",
-    "moment": "2.27.0",
+    "moment": "2.29.1",
     "moment-range": "4.0.2",
     "node-sass": "4.14.1",
     "prismjs": "1.21.0",
