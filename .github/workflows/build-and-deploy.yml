@@ -6,7 +6,7 @@ on:
       - post-article
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
