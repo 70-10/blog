@@ -23,8 +23,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       path: `/${moment(node.publishDate).format("YYYY/MM/DD")}/${node.slug}/`,
       component: path.resolve("./src/templates/article.tsx"),
       context: {
-        slug: node.slug
-      }
+        slug: node.slug,
+      },
     });
   });
 
@@ -32,17 +32,17 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     ...new Set(
       result.data.allContentfulArticle.edges
         .map(({ node }) => node.tags)
-        .filter(tags => !!tags)
+        .filter((tags) => !!tags)
         .flat()
-    )
+    ),
   ].sort();
-  tags.forEach(tag => {
+  tags.forEach((tag) => {
     createPage({
       path: `/tags/${tag}/`,
       component: path.resolve("./src/templates/tag.tsx"),
       context: {
-        tag
-      }
+        tag,
+      },
     });
   });
 
@@ -58,8 +58,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         page: i + 1,
         next: i + 2,
         prev: i,
-        pages: numPages
-      }
+        pages: numPages,
+      },
     });
   });
 };

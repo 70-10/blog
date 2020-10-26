@@ -36,20 +36,20 @@ const Article: FC<Props> = ({ data, location }) => {
     <>
       <Layout>
         <Helmet>
-          <meta itemProp="name" content={title} />
+          <meta itemProp="name" content={title || ""} />
           <meta itemProp="description" content="Blog at 70-10.net" />
           {eyecatch?.file?.url ? (
             <meta itemProp="image" content={`https:${eyecatch.file.url}`} />
           ) : null}
           <meta property="og:url" content={location.href} />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content={title} />
+          <meta property="og:title" content={title || ""} />
           {eyecatch?.file?.url && (
             <meta property="og:image" content={`https:${eyecatch.file.url}`} />
           )}
           {/* <meta property="og:description" content={title} /> */}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={title} />
+          <meta name="twitter:title" content={title || ""} />
           {eyecatch?.file?.url && (
             <meta name="twitter:image" content={`https:${eyecatch.file.url}`} />
           )}
@@ -87,7 +87,7 @@ const Article: FC<Props> = ({ data, location }) => {
               <div
                 className="content"
                 dangerouslySetInnerHTML={{
-                  __html: body?.childMarkdownRemark?.html!,
+                  __html: body?.childMarkdownRemark?.html || "",
                 }}
               />
             </Column>
@@ -95,7 +95,7 @@ const Article: FC<Props> = ({ data, location }) => {
         </section>
         <section className="section">
           <Column>
-            <ShareButtons title={title} url={location.href} />
+            <ShareButtons title={title || ""} url={location.href} />
           </Column>
         </section>
       </Layout>

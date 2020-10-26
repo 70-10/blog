@@ -25,9 +25,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install and build
+      - name: Install
         run: |
           yarn --frozen-lockfile
+      - name: Lint
+        run: |
+          yarn lint
+      - name: Build
+        run: |
           yarn build
         env:
           GATSBY_SPACE_ID: ${{ secrets.GATSBY_SPACE_ID }}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../layouts/defaultLayout";
 import countBy from "lodash.countby";
@@ -6,7 +6,7 @@ import CalendarHeatmap from "../components/calendar-heatmap";
 import moment from "../moment";
 import { display } from "../tag-helper";
 
-export default ({
+const DashboardPage: FC = ({
   data: {
     allContentfulArticle: { edges },
   },
@@ -33,6 +33,8 @@ export default ({
     </Layout>
   );
 };
+
+export default DashboardPage;
 
 const Tags = ({ edges }) => {
   const tags = Object.assign(
