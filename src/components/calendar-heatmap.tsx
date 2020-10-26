@@ -1,17 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import moment from "../moment";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import style from "./calendar-heatmap.module.css";
 
-export default ({ values }) => (
+const Component: FC = ({ values }) => (
   <CalendarHeatmap
-    startDate={moment()
-      .subtract(1, "year")
-      .toDate()}
+    startDate={moment().subtract(1, "year").toDate()}
     endDate={moment().toDate()}
     values={values}
-    classForValue={value => {
+    classForValue={(value) => {
       if (!value || !value.count || value.count <= 0) {
         return style.colorEmpty;
       }
@@ -28,3 +26,5 @@ export default ({ values }) => (
     }}
   />
 );
+
+export default Component;
