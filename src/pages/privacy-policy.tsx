@@ -17,6 +17,7 @@ const PrivacyPolicyPage: FC = () => {
                   <a
                     href="http://www.google.com/analytics/terms/jp.html"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Googleアナリティクスサービス利用規約のページ
                   </a>
@@ -24,6 +25,7 @@ const PrivacyPolicyPage: FC = () => {
                   <a
                     href="http://www.google.co.jp/policies/technologies/ads/"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     Googleポリシーと規約ページ
                   </a>

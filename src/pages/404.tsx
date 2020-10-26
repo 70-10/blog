@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import Layout from "../layouts/defaultLayout";
 
-export default () => (
+const NotFoundPage: FC = () => (
   <Layout>
     <div className="has-text-centered">
       <h1 className="title">404</h1>
@@ -9,3 +9,5 @@ export default () => (
     </div>
   </Layout>
 );
+
+export default NotFoundPage;

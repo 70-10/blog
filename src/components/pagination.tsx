@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "gatsby";
 
-export default ({ pageContext: { prev, next, pages, page } }) => (
+const Pagination: FC = ({ pageContext: { prev, next, pages, page } }) => (
   <nav className="pagination is-centered">
     {prev > 0 ? (
       <Link
@@ -41,3 +41,5 @@ export default ({ pageContext: { prev, next, pages, page } }) => (
     )}
   </nav>
 );
+
+export default Pagination;
