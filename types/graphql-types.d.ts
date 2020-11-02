@@ -1,4 +1,5 @@
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -82,6 +83,7 @@ export type ContentfulArticleBodyTextNode = Node & {
   children: Array<Node>;
   internal: Internal;
   body?: Maybe<Scalars['String']>;
+  sys?: Maybe<ContentfulArticleBodyTextNodeSys>;
   childMarkdownRemark?: Maybe<MarkdownRemark>;
 };
 
@@ -200,6 +202,7 @@ export type ContentfulArticleBodyTextNodeFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'body'
+  | 'sys___type'
   | 'childMarkdownRemark___id'
   | 'childMarkdownRemark___frontmatter___title'
   | 'childMarkdownRemark___excerpt'
@@ -260,6 +263,7 @@ export type ContentfulArticleBodyTextNodeFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   body?: Maybe<StringQueryOperatorInput>;
+  sys?: Maybe<ContentfulArticleBodyTextNodeSysFilterInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
@@ -275,6 +279,14 @@ export type ContentfulArticleBodyTextNodeGroupConnection = {
 export type ContentfulArticleBodyTextNodeSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulArticleBodyTextNodeFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type ContentfulArticleBodyTextNodeSys = {
+  type?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulArticleBodyTextNodeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ContentfulArticleConnection = {
@@ -434,6 +446,7 @@ export type ContentfulArticleFieldsEnum =
   | 'body___internal___owner'
   | 'body___internal___type'
   | 'body___body'
+  | 'body___sys___type'
   | 'body___childMarkdownRemark___id'
   | 'body___childMarkdownRemark___frontmatter___title'
   | 'body___childMarkdownRemark___excerpt'
@@ -467,6 +480,7 @@ export type ContentfulArticleFieldsEnum =
   | 'contentful_id'
   | 'createdAt'
   | 'updatedAt'
+  | 'sys___type'
   | 'sys___revision'
   | 'sys___contentType___sys___type'
   | 'sys___contentType___sys___linkType'
@@ -512,6 +526,9 @@ export type ContentfulArticleFieldsEnum =
   | 'heroImage___internal___owner'
   | 'heroImage___internal___type'
   | 'heroImage___contentful_id'
+  | 'heroImage___spaceId'
+  | 'heroImage___createdAt'
+  | 'heroImage___updatedAt'
   | 'heroImage___file___url'
   | 'heroImage___file___details___size'
   | 'heroImage___file___fileName'
@@ -519,6 +536,8 @@ export type ContentfulArticleFieldsEnum =
   | 'heroImage___title'
   | 'heroImage___description'
   | 'heroImage___node_locale'
+  | 'heroImage___sys___type'
+  | 'heroImage___sys___revision'
   | 'heroImage___fixed___base64'
   | 'heroImage___fixed___tracedSVG'
   | 'heroImage___fixed___aspectRatio'
@@ -598,6 +617,7 @@ export type ContentfulArticleFieldsEnum =
   | 'childContentfulArticleBodyTextNode___internal___owner'
   | 'childContentfulArticleBodyTextNode___internal___type'
   | 'childContentfulArticleBodyTextNode___body'
+  | 'childContentfulArticleBodyTextNode___sys___type'
   | 'childContentfulArticleBodyTextNode___childMarkdownRemark___id'
   | 'childContentfulArticleBodyTextNode___childMarkdownRemark___frontmatter___title'
   | 'childContentfulArticleBodyTextNode___childMarkdownRemark___excerpt'
@@ -663,6 +683,7 @@ export type ContentfulArticleSortInput = {
 };
 
 export type ContentfulArticleSys = {
+  type?: Maybe<Scalars['String']>;
   revision?: Maybe<Scalars['Int']>;
   contentType?: Maybe<ContentfulArticleSysContentType>;
 };
@@ -690,6 +711,7 @@ export type ContentfulArticleSysContentTypeSysFilterInput = {
 };
 
 export type ContentfulArticleSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
   revision?: Maybe<IntQueryOperatorInput>;
   contentType?: Maybe<ContentfulArticleSysContentTypeFilterInput>;
 };
@@ -700,10 +722,14 @@ export type ContentfulAsset = Node & {
   children: Array<Node>;
   internal: Internal;
   contentful_id?: Maybe<Scalars['String']>;
+  spaceId?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  updatedAt?: Maybe<Scalars['Date']>;
   file?: Maybe<ContentfulAssetFile>;
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   node_locale?: Maybe<Scalars['String']>;
+  sys?: Maybe<ContentfulAssetSys>;
   fixed?: Maybe<ContentfulFixed>;
   /** @deprecated Resolutions was deprecated in Gatsby v2. It's been renamed to "fixed" https://example.com/write-docs-and-fix-this-example-link */
   resolutions?: Maybe<ContentfulResolutions>;
@@ -711,6 +737,22 @@ export type ContentfulAsset = Node & {
   /** @deprecated Sizes was deprecated in Gatsby v2. It's been renamed to "fluid" https://example.com/write-docs-and-fix-this-example-link */
   sizes?: Maybe<ContentfulSizes>;
   resize?: Maybe<ContentfulResize>;
+};
+
+
+export type ContentfulAssetCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+
+export type ContentfulAssetUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
 };
 
 
@@ -886,6 +928,9 @@ export type ContentfulAssetFieldsEnum =
   | 'internal___owner'
   | 'internal___type'
   | 'contentful_id'
+  | 'spaceId'
+  | 'createdAt'
+  | 'updatedAt'
   | 'file___url'
   | 'file___details___size'
   | 'file___details___image___width'
@@ -895,6 +940,8 @@ export type ContentfulAssetFieldsEnum =
   | 'title'
   | 'description'
   | 'node_locale'
+  | 'sys___type'
+  | 'sys___revision'
   | 'fixed___base64'
   | 'fixed___tracedSVG'
   | 'fixed___aspectRatio'
@@ -976,10 +1023,14 @@ export type ContentfulAssetFilterInput = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
   file?: Maybe<ContentfulAssetFileFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
+  sys?: Maybe<ContentfulAssetSysFilterInput>;
   fixed?: Maybe<ContentfulFixedFilterInput>;
   resolutions?: Maybe<ContentfulResolutionsFilterInput>;
   fluid?: Maybe<ContentfulFluidFilterInput>;
@@ -1001,6 +1052,16 @@ export type ContentfulAssetSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+export type ContentfulAssetSys = {
+  type?: Maybe<Scalars['String']>;
+  revision?: Maybe<Scalars['Int']>;
+};
+
+export type ContentfulAssetSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
+  revision?: Maybe<IntQueryOperatorInput>;
+};
+
 export type ContentfulContentType = Node & {
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -1009,6 +1070,7 @@ export type ContentfulContentType = Node & {
   name?: Maybe<Scalars['String']>;
   displayField?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
+  sys?: Maybe<ContentfulContentTypeSys>;
 };
 
 export type ContentfulContentTypeConnection = {
@@ -1127,7 +1189,8 @@ export type ContentfulContentTypeFieldsEnum =
   | 'internal___type'
   | 'name'
   | 'displayField'
-  | 'description';
+  | 'description'
+  | 'sys___type';
 
 export type ContentfulContentTypeFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -1137,6 +1200,7 @@ export type ContentfulContentTypeFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
   displayField?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  sys?: Maybe<ContentfulContentTypeSysFilterInput>;
 };
 
 export type ContentfulContentTypeGroupConnection = {
@@ -1151,6 +1215,14 @@ export type ContentfulContentTypeGroupConnection = {
 export type ContentfulContentTypeSortInput = {
   fields?: Maybe<Array<Maybe<ContentfulContentTypeFieldsEnum>>>;
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+export type ContentfulContentTypeSys = {
+  type?: Maybe<Scalars['String']>;
+};
+
+export type ContentfulContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ContentfulFixed = {
@@ -2855,10 +2927,10 @@ export type Query = {
   allFile: FileConnection;
   directory?: Maybe<Directory>;
   allDirectory: DirectoryConnection;
-  sitePage?: Maybe<SitePage>;
-  allSitePage: SitePageConnection;
   site?: Maybe<Site>;
   allSite: SiteConnection;
+  sitePage?: Maybe<SitePage>;
+  allSitePage: SitePageConnection;
   imageSharp?: Maybe<ImageSharp>;
   allImageSharp: ImageSharpConnection;
   markdownRemark?: Maybe<MarkdownRemark>;
@@ -2973,6 +3045,26 @@ export type QueryAllDirectoryArgs = {
 };
 
 
+export type QuerySiteArgs = {
+  buildTime?: Maybe<DateQueryOperatorInput>;
+  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  polyfill?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+};
+
+
+export type QueryAllSiteArgs = {
+  filter?: Maybe<SiteFilterInput>;
+  sort?: Maybe<SiteSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
+
+
 export type QuerySitePageArgs = {
   path?: Maybe<StringQueryOperatorInput>;
   component?: Maybe<StringQueryOperatorInput>;
@@ -2994,26 +3086,6 @@ export type QuerySitePageArgs = {
 export type QueryAllSitePageArgs = {
   filter?: Maybe<SitePageFilterInput>;
   sort?: Maybe<SitePageSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
-
-export type QuerySiteArgs = {
-  buildTime?: Maybe<DateQueryOperatorInput>;
-  siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  polyfill?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-};
-
-
-export type QueryAllSiteArgs = {
-  filter?: Maybe<SiteFilterInput>;
-  sort?: Maybe<SiteSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
@@ -3073,10 +3145,14 @@ export type QueryContentfulAssetArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   contentful_id?: Maybe<StringQueryOperatorInput>;
+  spaceId?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  updatedAt?: Maybe<DateQueryOperatorInput>;
   file?: Maybe<ContentfulAssetFileFilterInput>;
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
+  sys?: Maybe<ContentfulAssetSysFilterInput>;
   fixed?: Maybe<ContentfulFixedFilterInput>;
   resolutions?: Maybe<ContentfulResolutionsFilterInput>;
   fluid?: Maybe<ContentfulFluidFilterInput>;
@@ -3099,6 +3175,7 @@ export type QueryContentfulArticleBodyTextNodeArgs = {
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
   body?: Maybe<StringQueryOperatorInput>;
+  sys?: Maybe<ContentfulArticleBodyTextNodeSysFilterInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
@@ -3148,6 +3225,7 @@ export type QueryContentfulContentTypeArgs = {
   name?: Maybe<StringQueryOperatorInput>;
   displayField?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
+  sys?: Maybe<ContentfulContentTypeSysFilterInput>;
 };
 
 
@@ -3735,6 +3813,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___offsetY'
   | 'pluginCreator___pluginOptions___icon'
   | 'pluginCreator___pluginOptions___className'
+  | 'pluginCreator___pluginOptions___host'
   | 'pluginCreator___pluginOptions___spaceId'
   | 'pluginCreator___pluginOptions___accessToken'
   | 'pluginCreator___pluginOptions___trackingId'
@@ -3954,6 +4033,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___offsetY'
   | 'pluginOptions___icon'
   | 'pluginOptions___className'
+  | 'pluginOptions___host'
   | 'pluginOptions___spaceId'
   | 'pluginOptions___accessToken'
   | 'pluginOptions___trackingId'
@@ -4089,6 +4169,7 @@ export type SitePluginPluginOptions = {
   offsetY?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
+  host?: Maybe<Scalars['String']>;
   spaceId?: Maybe<Scalars['String']>;
   accessToken?: Maybe<Scalars['String']>;
   trackingId?: Maybe<Scalars['String']>;
@@ -4125,6 +4206,7 @@ export type SitePluginPluginOptionsFilterInput = {
   offsetY?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
   className?: Maybe<StringQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   spaceId?: Maybe<StringQueryOperatorInput>;
   accessToken?: Maybe<StringQueryOperatorInput>;
   trackingId?: Maybe<StringQueryOperatorInput>;
@@ -4215,27 +4297,27 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type DefaultLayoutQueryVariables = {};
+export type DefaultLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type DefaultLayoutQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-export type Unnamed_1_QueryVariables = {};
+export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type Unnamed_1_Query = { allContentfulArticle: { edges: Array<{ node: Pick<ContentfulArticle, 'id' | 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
 
-export type ArticleListQueryVariables = {
+export type ArticleListQueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
-};
+}>;
 
 
 export type ArticleListQuery = { allContentfulArticle: { edges: Array<{ node: Pick<ContentfulArticle, 'title' | 'slug' | 'publishDate'> }> } };
 
-export type ArticleQueryVariables = {
+export type ArticleQueryVariables = Exact<{
   slug: Scalars['String'];
-};
+}>;
 
 
 export type ArticleQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, contentfulArticle?: Maybe<(
@@ -4243,7 +4325,7 @@ export type ArticleQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMe
     & { heroImage?: Maybe<{ fluid?: Maybe<GatsbyContentfulFluid_WithWebpFragment> }>, eyecatch?: Maybe<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>> }>, body?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
   )> };
 
-export type TagQueryVariables = {};
+export type TagQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type TagQuery = { allContentfulArticle: { edges: Array<{ node: Pick<ContentfulArticle, 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
