@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import { graphql, StaticQuery, Link } from "gatsby";
 import { Helmet } from "react-helmet";
-import "./layout.scss";
-import "./custom.scss";
 import { DefaultLayoutQuery } from "../../types/graphql-types";
 
 import Footer from "../components/footer";

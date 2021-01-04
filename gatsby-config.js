@@ -10,7 +10,6 @@ module.exports = {
     "gatsby-plugin-catch-links",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-plugin-sass",
     "gatsby-plugin-twitter",
     {
       resolve: "gatsby-transformer-remark",

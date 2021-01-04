@@ -19,7 +19,6 @@
     "lint:prettier": "prettier . --check"
   },
   "dependencies": {
-    "bulma": "0.9.0",
     "gatsby": "2.27.4",
     "gatsby-image": "2.6.0",
     "gatsby-plugin-catch-links": "2.5.0",
@@ -28,7 +27,6 @@
     "gatsby-plugin-graphql-codegen": "2.7.1",
     "gatsby-plugin-purgecss": "5.0.0",
     "gatsby-plugin-react-helmet": "3.5.0",
-    "gatsby-plugin-sass": "2.6.0",
     "gatsby-plugin-sharp": "2.9.1",
     "gatsby-plugin-twitter": "2.5.0",
     "gatsby-plugin-typescript": "2.7.0",
@@ -42,7 +40,6 @@
     "lodash.countby": "4.6.0",
     "moment": "2.27.0",
     "moment-range": "4.0.2",
-    "node-sass": "4.14.1",
     "prismjs": "1.21.0",
     "react": "16.13.1",
     "react-calendar-heatmap": "1.8.1",
