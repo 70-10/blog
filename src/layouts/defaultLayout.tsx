@@ -2,20 +2,9 @@ import React, { FC } from "react";
 import { graphql, StaticQuery, Link } from "gatsby";
 import { Helmet } from "react-helmet";
 import { DefaultLayoutQuery } from "../../types/graphql-types";
-import Footer from "../components/footer";
 import styles from "./defaultLayout.module.css";
-
-const Navbar: FC<{ title: string | null | undefined }> = ({ title }) => (
-  <nav className="navbar is-link">
-    <div className="container">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          <h1 className="title has-text-white">{title}</h1>
-        </Link>
-      </div>
-    </div>
-  </nav>
-);
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 type Props = {
   data: DefaultLayoutQuery;
