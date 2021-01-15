@@ -27,7 +27,7 @@ const Component: FC<Props> = ({ data, children }) => (
         <Navbar title={data.site?.siteMetadata?.title} />
       </header>
       <main className={styles.col_center}>{children}</main>
-      <footer className={styles.col_center}>
+      <footer className={styles.footer}>
         <Footer />
       </footer>
     </div>

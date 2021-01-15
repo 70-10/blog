@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Navbar: FC<Props> = ({ title }) => (
-  <nav>
+  <nav className={styles.navbar}>
     <Link to="/" className={styles.title}>
       {title}
     </Link>
