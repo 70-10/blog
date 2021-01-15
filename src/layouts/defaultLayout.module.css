@@ -1,0 +1,8 @@
+.grid_content {
+  @apply grid grid-cols-6;
+}
+
+.col_center {
+  @apply col-start-2 col-end-6;
+  @apply mt-6;
+}

@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import { graphql, StaticQuery, Link } from "gatsby";
 import { Helmet } from "react-helmet";
 import { DefaultLayoutQuery } from "../../types/graphql-types";
-
 import Footer from "../components/footer";
+import styles from "./defaultLayout.module.css";
 
 const Navbar: FC<{ title: string | null | undefined }> = ({ title }) => (
   <nav className="navbar is-link">
@@ -33,9 +33,15 @@ const Component: FC<Props> = ({ data, children }) => (
 
       <title>{data.site?.siteMetadata?.title}</title>
     </Helmet>
-    <Navbar title={data.site?.siteMetadata?.title} />
-    {children}
-    <Footer />
+    <div className={styles.grid_content}>
+      <header className={styles.col_center}>
+        <Navbar title={data.site?.siteMetadata?.title} />
+      </header>
+      <main className={styles.col_center}>{children}</main>
+      <footer className={styles.col_center}>
+        <Footer />
+      </footer>
+    </div>
   </>
 );
 
