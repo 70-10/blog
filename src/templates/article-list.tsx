@@ -4,6 +4,7 @@ import Layout from "../layouts/defaultLayout";
 import Article from "../components/article";
 import Pagination from "../components/pagination";
 import { ArticleListQuery } from "../../types/graphql-types";
+import styles from "./article-list.module.css";
 
 type Context = {
   limit: number;
@@ -21,24 +22,18 @@ type Props = {
 
 const ArticleList: FC<Props> = ({ data, pageContext }) => (
   <Layout>
-    <section className="hero">
-      <div className="hero-body">
-        <div className="columns">
-          <div className="column is-8 is-offset-2">
-            {data.allContentfulArticle.edges.map(({ node }) => (
-              <Article key={node.slug!} node={node} />
-            ))}
+    <div className={styles.container}>
+      <div className={styles.articles}>
+        {data.allContentfulArticle.edges.map(({ node }) => (
+          <div className={styles.article} key={node.slug!}>
+            <Article node={node} />
           </div>
-        </div>
+        ))}
       </div>
-    </section>
-    <section className="section">
-      <div className="columns">
-        <div className="column is-8 is-offset-2">
-          <Pagination pageContext={pageContext} />
-        </div>
+      <div className={styles.pagination}>
+        <Pagination pageContext={pageContext} />
       </div>
-    </section>
+    </div>
   </Layout>
 );
 
