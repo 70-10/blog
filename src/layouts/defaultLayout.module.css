@@ -1,10 +1,11 @@
 .grid_content {
   @apply grid grid-cols-12 gap-y-6;
+  @apply container mx-auto;
 }
 
 .col_center {
   @apply col-start-2 col-end-12;
-  @apply md:col-start-4 md:col-end-10;
+  @apply md:col-start-3 md:col-end-11;
 }
 
 .footer {
