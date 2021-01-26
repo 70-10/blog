@@ -1,0 +1,23 @@
+.container {
+  @apply grid grid-cols-12 gap-y-6;
+}
+
+.section_title {
+  @apply col-span-12;
+}
+
+.section_articles {
+  @apply col-span-12;
+  @apply grid grid-cols-6 gap-y-4;
+}
+
+.article {
+  @apply col-span-6;
+}
+
+.tag {
+  @apply px-3 py-1;
+  @apply font-bold text-white text-center;
+  @apply bg-yellow-400;
+  @apply rounded-2xl;
+}
