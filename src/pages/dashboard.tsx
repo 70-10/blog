@@ -1,38 +1,52 @@
-import React, { FC } from "react";
 import { graphql, Link } from "gatsby";
-import Layout from "../layouts/defaultLayout";
 import countBy from "lodash.countby";
+import React, { FC } from "react";
+import { DashboardQuery } from "../../types/graphql-types";
 import CalendarHeatmap from "../components/calendar-heatmap";
+import Level from "../components/level";
+import Layout from "../layouts/defaultLayout";
 import moment from "../moment";
 import { display } from "../tag-helper";
+import styles from "./dashboard.module.css";
 
-const DashboardPage: FC = ({
+type Props = {
+  data: DashboardQuery;
+};
+
+const DashboardPage: FC<Props> = ({
   data: {
     allContentfulArticle: { edges },
   },
 }) => {
   return (
     <Layout>
-      <div className="columns is-centered">
-        <div className="column is-8">
-          <br />
-          <p>
-            <Link to="/">ブログ</Link>の統計情報をまとめたページです。
-          </p>
-          <hr />
-          <h2 className="subtitle">記事数</h2>
-          <Level articles={edges} />
-          <hr />
-          <h2 className="subtitle">過去1年間のポスト数</h2>
-          <CalendarHeatmap values={buildHeatmapValues(edges)} />
-          <hr />
-          <h2 className="subtitle">タグ</h2>
-          <Tags edges={edges} />
-        </div>
-      </div>
+      <p className={styles.title}>
+        <Link to="/">ブログ</Link>の統計情報をまとめたページです
+      </p>
+      <Line />
+      <Contents title="記事数">
+        <Level articles={edges} />
+      </Contents>
+      <Line />
+      <Contents title="過去1年間のポスト状況">
+        <CalendarHeatmap values={buildHeatmapValues(edges)} />
+      </Contents>
+      <Line />
+      <Contents title="タグ一覧">
+        <Tags edges={edges} />
+      </Contents>
     </Layout>
   );
 };
+
+const Line: FC = () => <hr className={styles.line} />;
+
+const Contents: FC<{ title: string }> = ({ title, children }) => (
+  <section className={styles.content}>
+    <h2 className={styles.subtitle}>{title}</h2>
+    <div className={styles.column}>{children}</div>
+  </section>
+);
 
 export default DashboardPage;
 
@@ -53,54 +67,16 @@ const Tags = ({ edges }) => {
   );
 
   return (
-    <div className="field is-grouped is-grouped-multiline">
+    <div>
       {Object.keys(tags).map((tag) => (
-        <div key={tag} className="control">
-          <div className="tags has-addons">
-            <Link to={`/tags/${tag}`}>
-              <span className="tag">{display(tag)}</span>
-              <span className="tag is-warning">{tags[tag]}</span>
-            </Link>
-          </div>
+        <div key={tag} className={styles.tag}>
+          <Link to={`/tags/${tag}`} className={styles.tag_content}>
+            <span className={styles.tag_name}>{display(tag)}</span>
+            <span className={styles.tag_count}>{tags[tag]}</span>
+          </Link>
         </div>
       ))}
     </div>
-  );
-};
-
-const Level = ({ articles }) => (
-  <nav className="level is-mobile">
-    <div className="level-item has-text-centered">
-      <div>
-        <p className="heading">総記事数</p>
-        <p className="title">{articles.length}</p>
-      </div>
-    </div>
-    {Array.from({ length: 4 }, (_, i) => {
-      const targetYear = moment().subtract(i, "year").format("YYYY");
-      return (
-        <div key={i} className="level-item has-text-centered">
-          <div>
-            <p className="heading">{targetYear}年</p>
-            <p className="title">
-              {
-                articles.filter(({ node }) => {
-                  const range = createRange(targetYear);
-                  return range.contains(moment(node.publishDate));
-                }).length
-              }
-            </p>
-          </div>
-        </div>
-      );
-    })}
-  </nav>
-);
-
-const createRange = (year) => {
-  return moment.range(
-    moment(`${year}-01-01 00:00:00`, "YYYY-MM-DD HH:mm:ss"),
-    moment(`${year}-12-31 23:59:59`, "YYYY-MM-DD HH:mm:ss")
   );
 };
 
@@ -115,7 +91,7 @@ function buildHeatmapValues(edges) {
 }
 
 export const query = graphql`
-  query {
+  query Dashboard {
     allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
       edges {
         node {

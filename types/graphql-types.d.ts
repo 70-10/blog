@@ -4429,10 +4429,10 @@ export type DefaultLayoutQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type DefaultLayoutQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+export type DashboardQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Query = { allContentfulArticle: { edges: Array<{ node: Pick<ContentfulArticle, 'id' | 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
+export type DashboardQuery = { allContentfulArticle: { edges: Array<{ node: Pick<ContentfulArticle, 'id' | 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
 
 export type ArticleListQueryVariables = Exact<{
   skip: Scalars['Int'];
