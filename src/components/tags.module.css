@@ -1,0 +1,8 @@
+.tag {
+  @apply text-sm font-semibold text-green-500;
+  @apply inline-flex items-center;
+  @apply rounded-full border-green-500 border;
+  @apply hover:text-white hover:bg-green-500;
+  @apply px-3 py-1;
+  @apply mr-1 mt-1;
+}

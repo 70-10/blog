@@ -1,24 +1,21 @@
-import React, { FC } from "react";
 import { Link } from "gatsby";
+import React, { FC } from "react";
 import { Maybe } from "../../types/graphql-types";
 import { display } from "../tag-helper";
+import styles from "./tags.module.css";
 
 type Props = {
   tags: Maybe<string>[];
 };
 
 const Tags: FC<Props> = ({ tags }) => (
-  <div className="tags">
+  <>
     {tags.map((tag) => (
-      <Link
-        key={tag!}
-        to={`/tags/${tag}`}
-        className="tag is-warning has-text-weight-bold"
-      >
+      <Link key={tag!} to={`/tags/${tag}`} className={styles.tag}>
         {`#${display(tag!)}`}
       </Link>
     ))}
-  </div>
+  </>
 );
 
 export default Tags;
