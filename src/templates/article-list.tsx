@@ -25,7 +25,7 @@ const ArticleList: FC<Props> = ({ data, pageContext }) => (
     <div className={styles.container}>
       <div className={styles.articles}>
         {data.allContentfulArticle.edges.map(({ node }) => (
-          <div className={styles.article} key={node.slug!}>
+          <div className={styles.article} key={node.slug}>
             <Article node={node} />
           </div>
         ))}

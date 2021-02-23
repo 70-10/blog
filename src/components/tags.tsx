@@ -1,3 +1,4 @@
+import assert from "assert";
 import { Link } from "gatsby";
 import React, { FC } from "react";
 import { Maybe } from "../../types/graphql-types";
@@ -10,11 +11,14 @@ type Props = {
 
 const Tags: FC<Props> = ({ tags }) => (
   <>
-    {tags.map((tag) => (
-      <Link key={tag!} to={`/tags/${tag}`} className={styles.tag}>
-        {`#${display(tag!)}`}
-      </Link>
-    ))}
+    {tags.map((tag) => {
+      assert(tag);
+      return (
+        <Link key={tag} to={`/tags/${tag}`} className={styles.tag}>
+          {`#${display(tag)}`}
+        </Link>
+      );
+    })}
   </>
 );
 
