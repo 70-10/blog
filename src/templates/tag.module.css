@@ -18,6 +18,6 @@
 .tag {
   @apply px-3 py-1;
   @apply font-bold text-white text-center;
-  @apply bg-yellow-400;
+  @apply bg-green-500;
   @apply rounded-2xl;
 }
