@@ -83,6 +83,7 @@ module.exports = {
             },
             "code.language-text": {
               fontSize: ".9em",
+              fontWeight: 100,
               padding: ".2em",
               paddingRight: ".3em",
               paddingLeft: ".3em",
