@@ -81,12 +81,11 @@ module.exports = {
             ".gatsby-highlight": {
               fontSize: ".85em",
             },
-            "code.language-text": {
+            code: {
+              color: "#ccc",
               fontSize: ".825em",
               fontWeight: 100,
-              padding: ".15em",
-              paddingLeft: ".5em",
-              paddingRight: ".5em",
+              padding: ".15em .5em",
             },
             "code::before": {
               content: '""',
