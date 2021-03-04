@@ -19,14 +19,19 @@ module.exports = {
             h1: {
               fontSize: "1.5rem",
               marginTop: "1em",
-              marginBottom: ".5em",
+              marginBottom: ".6em",
               textDecoration: "underline",
               color: theme("colors.gray.700"),
             },
             h2: {
               fontSize: "1.25rem",
               marginTop: "1em",
-              marginBottom: ".5em",
+              marginBottom: ".6em",
+              color: theme("colors.gray.600"),
+            },
+            h3: {
+              fontSize: "1.05em",
+              marginTop: "1em",
               color: theme("colors.gray.600"),
             },
             p: {
