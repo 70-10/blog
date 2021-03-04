@@ -43,7 +43,7 @@
     "moment": "2.27.0",
     "moment-range": "4.0.2",
     "postcss": "8.2.4",
-    "prismjs": "1.21.0",
+    "prismjs": "1.23.0",
     "react": "16.13.1",
     "react-calendar-heatmap": "1.8.1",
     "react-dom": "16.13.1",
