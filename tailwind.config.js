@@ -82,11 +82,11 @@ module.exports = {
               fontSize: ".85em",
             },
             "code.language-text": {
-              fontSize: ".9em",
+              fontSize: ".825em",
               fontWeight: 100,
-              padding: ".2em",
-              paddingRight: ".3em",
-              paddingLeft: ".3em",
+              padding: ".15em",
+              paddingLeft: ".5em",
+              paddingRight: ".5em",
             },
             "code::before": {
               content: '""',
