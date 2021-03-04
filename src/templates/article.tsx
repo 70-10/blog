@@ -76,7 +76,7 @@ const Article: FC<Props> = ({ data, location }) => {
         </section>
 
         <div
-          className="prose prose-green max-w-none mt-6"
+          className={styles.article}
           dangerouslySetInnerHTML={{
             __html: body?.childMarkdownRemark?.html || "",
           }}

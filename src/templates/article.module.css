@@ -22,3 +22,8 @@
 .buttons {
   @apply mt-5;
 }
+
+.article {
+  @apply prose prose-green max-w-none;
+  @apply mt-6;
+}
