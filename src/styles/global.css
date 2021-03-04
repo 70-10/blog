@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:not(pre) > code[class*="language-"] {
+  padding: 0.15em 0.5em;
+}

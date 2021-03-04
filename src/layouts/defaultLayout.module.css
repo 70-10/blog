@@ -1,0 +1,14 @@
+.grid_content {
+  @apply grid grid-cols-12 gap-y-6;
+}
+
+.col_center {
+  @apply col-start-2 col-end-12;
+  @apply md:col-start-4 md:col-end-10;
+}
+
+.footer {
+  @apply col-span-12;
+  @apply bg-gray-100;
+  @apply pt-5;
+}

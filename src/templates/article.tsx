@@ -1,18 +1,14 @@
-import React, { FC } from "react";
+import assert from "assert";
 import { graphql } from "gatsby";
-import Layout from "../layouts/defaultLayout";
-import ShareButtons from "../components/share-buttons";
 import Img from "gatsby-image";
+import React, { FC } from "react";
 import Helmet from "react-helmet";
-import moment from "../moment";
-import Tags from "../components/tags";
 import { ArticleQuery } from "../../types/graphql-types";
-
-const Column: FC = ({ children }) => (
-  <div className="columns is-centered">
-    <div className="column is-8">{children}</div>
-  </div>
-);
+import ShareButtons from "../components/share-buttons";
+import Tags from "../components/tags";
+import Layout from "../layouts/defaultLayout";
+import moment from "../moment";
+import styles from "./article.module.css";
 
 type Props = {
   data: ArticleQuery;
@@ -22,6 +18,8 @@ type Props = {
 };
 
 const Article: FC<Props> = ({ data, location }) => {
+  assert(data.contentfulArticle);
+
   const {
     title,
     tags,
@@ -30,7 +28,7 @@ const Article: FC<Props> = ({ data, location }) => {
     body,
     publishDate,
     updatedAt,
-  } = data.contentfulArticle!;
+  } = data.contentfulArticle;
 
   return (
     <>
@@ -58,46 +56,34 @@ const Article: FC<Props> = ({ data, location }) => {
           <title>{title}</title>
         </Helmet>
 
-        <section className="hero">
-          <div className="hero-body">
-            <Column>
-              <h1 className="title">{title}</h1>
-            </Column>
-            <Column>
-              <div className="subtitle">
-                <p className="is-size-6">
-                  記事作成日時：{" "}
-                  {moment(publishDate).format("YYYY/MM/DD HH:mm")}
-                </p>
-                <p className="is-size-6">
-                  最終更新日時： {moment(updatedAt).format("YYYY/MM/DD HH:mm")}
-                </p>
-              </div>
-              {tags ? <Tags tags={tags} /> : null}
-              <hr />
-            </Column>
-
-            {heroImage && (
-              <Column>
-                <Img fluid={heroImage.fluid} />
-              </Column>
-            )}
-
-            <Column>
-              <div
-                className="content"
-                dangerouslySetInnerHTML={{
-                  __html: body?.childMarkdownRemark?.html || "",
-                }}
-              />
-            </Column>
+        <section>
+          <h1 className={styles.title}>{title}</h1>
+          <div className={styles.head}>
+            <p className={styles.head_text}>
+              記事作成日時： {moment(publishDate).format("YYYY/MM/DD HH:mm")}
+            </p>
+            <p className={styles.head_text}>
+              最終更新日時： {moment(updatedAt).format("YYYY/MM/DD HH:mm")}
+            </p>
+            <div> {tags ? <Tags tags={tags} /> : null}</div>
           </div>
+          <hr className={styles.head_line} />
+          {heroImage && (
+            <div className={styles.head_hero}>
+              <Img fluid={heroImage.fluid} />
+            </div>
+          )}
         </section>
-        <section className="section">
-          <Column>
-            <ShareButtons title={title || ""} url={location.href} />
-          </Column>
-        </section>
+
+        <div
+          className={styles.article}
+          dangerouslySetInnerHTML={{
+            __html: body?.childMarkdownRemark?.html || "",
+          }}
+        />
+        <div className={styles.buttons}>
+          <ShareButtons title={title || ""} url={location.href} />
+        </div>
       </Layout>
     </>
   );

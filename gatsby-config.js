@@ -5,12 +5,12 @@ module.exports = {
     siteUrl: "https://blog.70-10.net",
   },
   plugins: [
+    "gatsby-plugin-postcss",
     "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-catch-links",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-plugin-sass",
     "gatsby-plugin-twitter",
     {
       resolve: "gatsby-transformer-remark",
@@ -119,14 +119,6 @@ module.exports = {
       resolve: "gatsby-plugin-graphql-codegen",
       options: {
         fileName: `types/graphql-types.d.ts`,
-      },
-    },
-    {
-      resolve: "gatsby-plugin-purgecss",
-      options: {
-        printRejected: false,
-        ignore: ["custom.scss", "prismjs/"],
-        whitelist: ["table", "thead", "tbody", "tr", "th", "td"],
       },
     },
   ],

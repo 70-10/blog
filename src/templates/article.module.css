@@ -1,0 +1,29 @@
+.title {
+  @apply text-xl md:text-3xl text-gray-700;
+  @apply font-semibold;
+}
+
+.head {
+  @apply flex flex-col gap-y-1;
+}
+
+.head_text {
+  @apply text-sm md:text-base;
+}
+
+.head_line {
+  @apply mt-2;
+}
+
+.head_hero {
+  @apply mt-3;
+}
+
+.buttons {
+  @apply mt-5;
+}
+
+.article {
+  @apply prose prose-green max-w-none;
+  @apply mt-6;
+}

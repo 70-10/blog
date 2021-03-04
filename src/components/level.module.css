@@ -1,0 +1,18 @@
+.section {
+  @apply grid grid-cols-12 gap-x-2;
+}
+
+.item {
+  @apply col-span-2;
+  @apply self-center justify-self-center;
+  @apply font-extralight;
+}
+
+.year {
+  @apply text-sm text-center;
+}
+
+.article_count {
+  @apply text-3xl text-center;
+  @apply md:text-4xl;
+}

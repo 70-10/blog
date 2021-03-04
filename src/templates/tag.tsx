@@ -4,35 +4,35 @@ import { graphql } from "gatsby";
 import Article from "../components/article";
 import { display } from "../tag-helper";
 import { TagQuery } from "../../types/graphql-types";
-
-type Context = {
-  tag: string;
-};
+import styles from "./tag.module.css";
+import assert from "assert";
 
 type Props = {
   data: TagQuery;
-  pageContext: Context;
+  pageContext: {
+    tag: string;
+  };
 };
 
 const Tag: FC<Props> = ({ data, pageContext }) => (
   <Layout>
-    <section className="hero">
-      <div className="hero-body">
-        <div className="columns">
-          <div className="column is-8 is-offset-2">
-            <span className="title tag is-warning is-medium">
-              {display(pageContext.tag)}
-            </span>
-
-            {data.allContentfulArticle.edges
-              .filter(
-                ({ node }) => !!node.tags && node.tags.includes(pageContext.tag)
-              )
-              .map(({ node }) => (
-                <Article key={node.slug!} node={node} />
-              ))}
-          </div>
-        </div>
+    <section className={styles.container}>
+      <div className={styles.section_title}>
+        <span className={styles.tag}>{display(pageContext.tag)}</span>
+      </div>
+      <div className={styles.section_articles}>
+        {data.allContentfulArticle.edges
+          .filter(
+            ({ node }) => !!node.tags && node.tags.includes(pageContext.tag)
+          )
+          .map(({ node }) => {
+            assert(node.slug);
+            return (
+              <div className={styles.article} key={node.slug}>
+                <Article node={node} />
+              </div>
+            );
+          })}
       </div>
     </section>
   </Layout>

@@ -1,23 +1,10 @@
 import React, { FC } from "react";
-import { graphql, StaticQuery, Link } from "gatsby";
+import { graphql, StaticQuery } from "gatsby";
 import { Helmet } from "react-helmet";
-import "./layout.scss";
-import "./custom.scss";
 import { DefaultLayoutQuery } from "../../types/graphql-types";
-
+import styles from "./defaultLayout.module.css";
+import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-
-const Navbar: FC<{ title: string | null | undefined }> = ({ title }) => (
-  <nav className="navbar is-link">
-    <div className="container">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          <h1 className="title has-text-white">{title}</h1>
-        </Link>
-      </div>
-    </div>
-  </nav>
-);
 
 type Props = {
   data: DefaultLayoutQuery;
@@ -35,9 +22,15 @@ const Component: FC<Props> = ({ data, children }) => (
 
       <title>{data.site?.siteMetadata?.title}</title>
     </Helmet>
-    <Navbar title={data.site?.siteMetadata?.title} />
-    {children}
-    <Footer />
+    <div className={styles.grid_content}>
+      <header className={styles.col_center}>
+        <Navbar title={data.site?.siteMetadata?.title} />
+      </header>
+      <main className={styles.col_center}>{children}</main>
+      <footer className={styles.footer}>
+        <Footer />
+      </footer>
+    </div>
   </>
 );
 
