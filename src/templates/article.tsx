@@ -14,17 +14,26 @@ type Props = {
   data: ArticleQuery;
   location: {
     href: string;
+    origin: string;
+  };
+  pageContext: {
+    ogImage: {
+      path: string;
+      size: {
+        width: number;
+        height: number;
+      };
+    };
   };
 };
 
-const Article: FC<Props> = ({ data, location }) => {
+const Article: FC<Props> = ({ data, location, pageContext }) => {
   assert(data.contentfulArticle);
 
   const {
     title,
     tags,
     heroImage,
-    eyecatch,
     body,
     publishDate,
     updatedAt,
@@ -35,22 +44,23 @@ const Article: FC<Props> = ({ data, location }) => {
       <Layout>
         <Helmet>
           <meta itemProp="name" content={title || ""} />
-          <meta itemProp="description" content="Blog at 70-10.net" />
-          {eyecatch?.file?.url ? (
+          <meta property="og:description" content="Blog at 70-10.net" />
+          {/* {eyecatch?.file?.url ? (
             <meta itemProp="image" content={`https:${eyecatch.file.url}`} />
-          ) : null}
+          ) : null} */}
           <meta property="og:url" content={location.href} />
-          <meta property="og:type" content="website" />
+          <meta property="og:type" content="article" />
           <meta property="og:title" content={title || ""} />
-          {eyecatch?.file?.url && (
-            <meta property="og:image" content={`https:${eyecatch.file.url}`} />
-          )}
+          <meta
+            property="og:image"
+            content={location.origin + pageContext.ogImage.path}
+          />
           {/* <meta property="og:description" content={title} /> */}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={title || ""} />
-          {eyecatch?.file?.url && (
+          {/* <meta name="twitter:title" content={title || ""} /> */}
+          {/* {eyecatch?.file?.url && (
             <meta name="twitter:image" content={`https:${eyecatch.file.url}`} />
-          )}
+          )} */}
           {/* <meta name="twitter:description" content={title} /> */}
 
           <title>{title}</title>
@@ -95,6 +105,7 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     contentfulArticle(slug: { eq: $slug }) {

@@ -11,6 +11,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
+    "clean": "gatsby clean",
     "fix": "run-s fix:eslint fix:prettier",
     "fix:eslint": "yarn lint:eslint --fix",
     "fix:prettier": "yarn lint:prettier --write",
@@ -27,6 +28,7 @@
     "gatsby-plugin-feed": "2.13.1",
     "gatsby-plugin-google-analytics": "2.11.0",
     "gatsby-plugin-graphql-codegen": "2.7.1",
+    "gatsby-plugin-open-graph-images": "^0.1.7",
     "gatsby-plugin-postcss": "3.7.0",
     "gatsby-plugin-react-helmet": "3.10.0",
     "gatsby-plugin-sharp": "2.14.3",

@@ -26,6 +26,12 @@ export type Scalars = {
 
 
 
+export type AvifOptions = {
+  quality?: Maybe<Scalars['Int']>;
+  lossless?: Maybe<Scalars['Boolean']>;
+  speed?: Maybe<Scalars['Int']>;
+};
+
 export type BlurredOptions = {
   /** Width of the generated low-res preview. Default is 20px */
   width?: Maybe<Scalars['Int']>;
@@ -60,6 +66,12 @@ export type ContentfulArticle = Node & {
   sys?: Maybe<ContentfulArticleSys>;
   node_locale?: Maybe<Scalars['String']>;
   heroImage?: Maybe<ContentfulAsset>;
+  /** Returns all children nodes filtered by type contentfulArticleBodyTextNode */
+  childrenContentfulArticleBodyTextNode?: Maybe<Array<Maybe<ContentfulArticleBodyTextNode>>>;
+  /**
+   * Returns the first child node of type contentfulArticleBodyTextNode or null if
+   * there are no children of given type on this node
+   */
   childContentfulArticleBodyTextNode?: Maybe<ContentfulArticleBodyTextNode>;
 };
 
@@ -94,6 +106,9 @@ export type ContentfulArticleBodyTextNode = Node & {
   internal: Internal;
   body?: Maybe<Scalars['String']>;
   sys?: Maybe<ContentfulArticleBodyTextNodeSys>;
+  /** Returns all children nodes filtered by type MarkdownRemark */
+  childrenMarkdownRemark?: Maybe<Array<Maybe<MarkdownRemark>>>;
+  /** Returns the first child node of type MarkdownRemark or null if there are no children of given type on this node */
   childMarkdownRemark?: Maybe<MarkdownRemark>;
 };
 
@@ -213,6 +228,60 @@ export type ContentfulArticleBodyTextNodeFieldsEnum =
   | 'internal___type'
   | 'body'
   | 'sys___type'
+  | 'childrenMarkdownRemark'
+  | 'childrenMarkdownRemark___id'
+  | 'childrenMarkdownRemark___frontmatter___title'
+  | 'childrenMarkdownRemark___excerpt'
+  | 'childrenMarkdownRemark___rawMarkdownBody'
+  | 'childrenMarkdownRemark___html'
+  | 'childrenMarkdownRemark___htmlAst'
+  | 'childrenMarkdownRemark___excerptAst'
+  | 'childrenMarkdownRemark___headings'
+  | 'childrenMarkdownRemark___headings___id'
+  | 'childrenMarkdownRemark___headings___value'
+  | 'childrenMarkdownRemark___headings___depth'
+  | 'childrenMarkdownRemark___timeToRead'
+  | 'childrenMarkdownRemark___tableOfContents'
+  | 'childrenMarkdownRemark___wordCount___paragraphs'
+  | 'childrenMarkdownRemark___wordCount___sentences'
+  | 'childrenMarkdownRemark___wordCount___words'
+  | 'childrenMarkdownRemark___parent___id'
+  | 'childrenMarkdownRemark___parent___parent___id'
+  | 'childrenMarkdownRemark___parent___parent___children'
+  | 'childrenMarkdownRemark___parent___children'
+  | 'childrenMarkdownRemark___parent___children___id'
+  | 'childrenMarkdownRemark___parent___children___children'
+  | 'childrenMarkdownRemark___parent___internal___content'
+  | 'childrenMarkdownRemark___parent___internal___contentDigest'
+  | 'childrenMarkdownRemark___parent___internal___description'
+  | 'childrenMarkdownRemark___parent___internal___fieldOwners'
+  | 'childrenMarkdownRemark___parent___internal___ignoreType'
+  | 'childrenMarkdownRemark___parent___internal___mediaType'
+  | 'childrenMarkdownRemark___parent___internal___owner'
+  | 'childrenMarkdownRemark___parent___internal___type'
+  | 'childrenMarkdownRemark___children'
+  | 'childrenMarkdownRemark___children___id'
+  | 'childrenMarkdownRemark___children___parent___id'
+  | 'childrenMarkdownRemark___children___parent___children'
+  | 'childrenMarkdownRemark___children___children'
+  | 'childrenMarkdownRemark___children___children___id'
+  | 'childrenMarkdownRemark___children___children___children'
+  | 'childrenMarkdownRemark___children___internal___content'
+  | 'childrenMarkdownRemark___children___internal___contentDigest'
+  | 'childrenMarkdownRemark___children___internal___description'
+  | 'childrenMarkdownRemark___children___internal___fieldOwners'
+  | 'childrenMarkdownRemark___children___internal___ignoreType'
+  | 'childrenMarkdownRemark___children___internal___mediaType'
+  | 'childrenMarkdownRemark___children___internal___owner'
+  | 'childrenMarkdownRemark___children___internal___type'
+  | 'childrenMarkdownRemark___internal___content'
+  | 'childrenMarkdownRemark___internal___contentDigest'
+  | 'childrenMarkdownRemark___internal___description'
+  | 'childrenMarkdownRemark___internal___fieldOwners'
+  | 'childrenMarkdownRemark___internal___ignoreType'
+  | 'childrenMarkdownRemark___internal___mediaType'
+  | 'childrenMarkdownRemark___internal___owner'
+  | 'childrenMarkdownRemark___internal___type'
   | 'childMarkdownRemark___id'
   | 'childMarkdownRemark___frontmatter___title'
   | 'childMarkdownRemark___excerpt'
@@ -274,7 +343,12 @@ export type ContentfulArticleBodyTextNodeFilterInput = {
   internal?: Maybe<InternalFilterInput>;
   body?: Maybe<StringQueryOperatorInput>;
   sys?: Maybe<ContentfulArticleBodyTextNodeSysFilterInput>;
+  childrenMarkdownRemark?: Maybe<MarkdownRemarkFilterListInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
+};
+
+export type ContentfulArticleBodyTextNodeFilterListInput = {
+  elemMatch?: Maybe<ContentfulArticleBodyTextNodeFilterInput>;
 };
 
 export type ContentfulArticleBodyTextNodeGroupConnection = {
@@ -457,6 +531,36 @@ export type ContentfulArticleFieldsEnum =
   | 'body___internal___type'
   | 'body___body'
   | 'body___sys___type'
+  | 'body___childrenMarkdownRemark'
+  | 'body___childrenMarkdownRemark___id'
+  | 'body___childrenMarkdownRemark___frontmatter___title'
+  | 'body___childrenMarkdownRemark___excerpt'
+  | 'body___childrenMarkdownRemark___rawMarkdownBody'
+  | 'body___childrenMarkdownRemark___html'
+  | 'body___childrenMarkdownRemark___htmlAst'
+  | 'body___childrenMarkdownRemark___excerptAst'
+  | 'body___childrenMarkdownRemark___headings'
+  | 'body___childrenMarkdownRemark___headings___id'
+  | 'body___childrenMarkdownRemark___headings___value'
+  | 'body___childrenMarkdownRemark___headings___depth'
+  | 'body___childrenMarkdownRemark___timeToRead'
+  | 'body___childrenMarkdownRemark___tableOfContents'
+  | 'body___childrenMarkdownRemark___wordCount___paragraphs'
+  | 'body___childrenMarkdownRemark___wordCount___sentences'
+  | 'body___childrenMarkdownRemark___wordCount___words'
+  | 'body___childrenMarkdownRemark___parent___id'
+  | 'body___childrenMarkdownRemark___parent___children'
+  | 'body___childrenMarkdownRemark___children'
+  | 'body___childrenMarkdownRemark___children___id'
+  | 'body___childrenMarkdownRemark___children___children'
+  | 'body___childrenMarkdownRemark___internal___content'
+  | 'body___childrenMarkdownRemark___internal___contentDigest'
+  | 'body___childrenMarkdownRemark___internal___description'
+  | 'body___childrenMarkdownRemark___internal___fieldOwners'
+  | 'body___childrenMarkdownRemark___internal___ignoreType'
+  | 'body___childrenMarkdownRemark___internal___mediaType'
+  | 'body___childrenMarkdownRemark___internal___owner'
+  | 'body___childrenMarkdownRemark___internal___type'
   | 'body___childMarkdownRemark___id'
   | 'body___childMarkdownRemark___frontmatter___title'
   | 'body___childMarkdownRemark___excerpt'
@@ -491,11 +595,11 @@ export type ContentfulArticleFieldsEnum =
   | 'createdAt'
   | 'updatedAt'
   | 'sys___type'
+  | 'sys___revision'
   | 'sys___contentType___sys___type'
   | 'sys___contentType___sys___linkType'
   | 'sys___contentType___sys___id'
   | 'sys___contentType___sys___contentful_id'
-  | 'sys___revision'
   | 'node_locale'
   | 'heroImage___id'
   | 'heroImage___parent___id'
@@ -588,6 +692,106 @@ export type ContentfulArticleFieldsEnum =
   | 'heroImage___resize___width'
   | 'heroImage___resize___height'
   | 'heroImage___resize___aspectRatio'
+  | 'childrenContentfulArticleBodyTextNode'
+  | 'childrenContentfulArticleBodyTextNode___id'
+  | 'childrenContentfulArticleBodyTextNode___parent___id'
+  | 'childrenContentfulArticleBodyTextNode___parent___parent___id'
+  | 'childrenContentfulArticleBodyTextNode___parent___parent___children'
+  | 'childrenContentfulArticleBodyTextNode___parent___children'
+  | 'childrenContentfulArticleBodyTextNode___parent___children___id'
+  | 'childrenContentfulArticleBodyTextNode___parent___children___children'
+  | 'childrenContentfulArticleBodyTextNode___parent___internal___content'
+  | 'childrenContentfulArticleBodyTextNode___parent___internal___contentDigest'
+  | 'childrenContentfulArticleBodyTextNode___parent___internal___description'
+  | 'childrenContentfulArticleBodyTextNode___parent___internal___fieldOwners'
+  | 'childrenContentfulArticleBodyTextNode___parent___internal___ignoreType'
+  | 'childrenContentfulArticleBodyTextNode___parent___internal___mediaType'
+  | 'childrenContentfulArticleBodyTextNode___parent___internal___owner'
+  | 'childrenContentfulArticleBodyTextNode___parent___internal___type'
+  | 'childrenContentfulArticleBodyTextNode___children'
+  | 'childrenContentfulArticleBodyTextNode___children___id'
+  | 'childrenContentfulArticleBodyTextNode___children___parent___id'
+  | 'childrenContentfulArticleBodyTextNode___children___parent___children'
+  | 'childrenContentfulArticleBodyTextNode___children___children'
+  | 'childrenContentfulArticleBodyTextNode___children___children___id'
+  | 'childrenContentfulArticleBodyTextNode___children___children___children'
+  | 'childrenContentfulArticleBodyTextNode___children___internal___content'
+  | 'childrenContentfulArticleBodyTextNode___children___internal___contentDigest'
+  | 'childrenContentfulArticleBodyTextNode___children___internal___description'
+  | 'childrenContentfulArticleBodyTextNode___children___internal___fieldOwners'
+  | 'childrenContentfulArticleBodyTextNode___children___internal___ignoreType'
+  | 'childrenContentfulArticleBodyTextNode___children___internal___mediaType'
+  | 'childrenContentfulArticleBodyTextNode___children___internal___owner'
+  | 'childrenContentfulArticleBodyTextNode___children___internal___type'
+  | 'childrenContentfulArticleBodyTextNode___internal___content'
+  | 'childrenContentfulArticleBodyTextNode___internal___contentDigest'
+  | 'childrenContentfulArticleBodyTextNode___internal___description'
+  | 'childrenContentfulArticleBodyTextNode___internal___fieldOwners'
+  | 'childrenContentfulArticleBodyTextNode___internal___ignoreType'
+  | 'childrenContentfulArticleBodyTextNode___internal___mediaType'
+  | 'childrenContentfulArticleBodyTextNode___internal___owner'
+  | 'childrenContentfulArticleBodyTextNode___internal___type'
+  | 'childrenContentfulArticleBodyTextNode___body'
+  | 'childrenContentfulArticleBodyTextNode___sys___type'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___id'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___frontmatter___title'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___excerpt'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___rawMarkdownBody'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___html'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___htmlAst'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___excerptAst'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___headings'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___headings___id'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___headings___value'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___headings___depth'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___timeToRead'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___tableOfContents'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___wordCount___paragraphs'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___wordCount___sentences'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___wordCount___words'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___parent___id'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___parent___children'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___children'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___children___id'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___children___children'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___content'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___contentDigest'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___description'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___fieldOwners'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___ignoreType'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___mediaType'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___owner'
+  | 'childrenContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___type'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___id'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___frontmatter___title'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___excerpt'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___rawMarkdownBody'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___html'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___htmlAst'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___excerptAst'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___headings'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___headings___id'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___headings___value'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___headings___depth'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___timeToRead'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___tableOfContents'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___wordCount___paragraphs'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___wordCount___sentences'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___wordCount___words'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___parent___id'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___parent___children'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___children'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___children___id'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___children___children'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___internal___content'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___internal___contentDigest'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___internal___description'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___internal___fieldOwners'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___internal___ignoreType'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___internal___mediaType'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___internal___owner'
+  | 'childrenContentfulArticleBodyTextNode___childMarkdownRemark___internal___type'
   | 'childContentfulArticleBodyTextNode___id'
   | 'childContentfulArticleBodyTextNode___parent___id'
   | 'childContentfulArticleBodyTextNode___parent___parent___id'
@@ -628,6 +832,36 @@ export type ContentfulArticleFieldsEnum =
   | 'childContentfulArticleBodyTextNode___internal___type'
   | 'childContentfulArticleBodyTextNode___body'
   | 'childContentfulArticleBodyTextNode___sys___type'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___id'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___frontmatter___title'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___excerpt'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___rawMarkdownBody'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___html'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___htmlAst'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___excerptAst'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___headings'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___headings___id'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___headings___value'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___headings___depth'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___timeToRead'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___tableOfContents'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___wordCount___paragraphs'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___wordCount___sentences'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___wordCount___words'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___parent___id'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___parent___children'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___children'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___children___id'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___children___children'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___content'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___contentDigest'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___description'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___fieldOwners'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___ignoreType'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___mediaType'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___owner'
+  | 'childContentfulArticleBodyTextNode___childrenMarkdownRemark___internal___type'
   | 'childContentfulArticleBodyTextNode___childMarkdownRemark___id'
   | 'childContentfulArticleBodyTextNode___childMarkdownRemark___frontmatter___title'
   | 'childContentfulArticleBodyTextNode___childMarkdownRemark___excerpt'
@@ -675,6 +909,7 @@ export type ContentfulArticleFilterInput = {
   sys?: Maybe<ContentfulArticleSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
   heroImage?: Maybe<ContentfulAssetFilterInput>;
+  childrenContentfulArticleBodyTextNode?: Maybe<ContentfulArticleBodyTextNodeFilterListInput>;
   childContentfulArticleBodyTextNode?: Maybe<ContentfulArticleBodyTextNodeFilterInput>;
 };
 
@@ -694,8 +929,8 @@ export type ContentfulArticleSortInput = {
 
 export type ContentfulArticleSys = {
   type?: Maybe<Scalars['String']>;
-  contentType?: Maybe<ContentfulArticleSysContentType>;
   revision?: Maybe<Scalars['Int']>;
+  contentType?: Maybe<ContentfulArticleSysContentType>;
 };
 
 export type ContentfulArticleSysContentType = {
@@ -722,8 +957,8 @@ export type ContentfulArticleSysContentTypeSysFilterInput = {
 
 export type ContentfulArticleSysFilterInput = {
   type?: Maybe<StringQueryOperatorInput>;
-  contentType?: Maybe<ContentfulArticleSysContentTypeFilterInput>;
   revision?: Maybe<IntQueryOperatorInput>;
+  contentType?: Maybe<ContentfulArticleSysContentTypeFilterInput>;
 };
 
 export type ContentfulAsset = Node & {
@@ -1710,6 +1945,9 @@ export type File = Node & {
   birthtime?: Maybe<Scalars['Date']>;
   /** @deprecated Use `birthTime` instead */
   birthtimeMs?: Maybe<Scalars['Float']>;
+  /** Returns all children nodes filtered by type ImageSharp */
+  childrenImageSharp?: Maybe<Array<Maybe<ImageSharp>>>;
+  /** Returns the first child node of type ImageSharp or null if there are no children of given type on this node */
   childImageSharp?: Maybe<ImageSharp>;
   id: Scalars['ID'];
   parent?: Maybe<Node>;
@@ -1832,6 +2070,99 @@ export type FileFieldsEnum =
   | 'ctime'
   | 'birthtime'
   | 'birthtimeMs'
+  | 'childrenImageSharp'
+  | 'childrenImageSharp___fixed___base64'
+  | 'childrenImageSharp___fixed___tracedSVG'
+  | 'childrenImageSharp___fixed___aspectRatio'
+  | 'childrenImageSharp___fixed___width'
+  | 'childrenImageSharp___fixed___height'
+  | 'childrenImageSharp___fixed___src'
+  | 'childrenImageSharp___fixed___srcSet'
+  | 'childrenImageSharp___fixed___srcWebp'
+  | 'childrenImageSharp___fixed___srcSetWebp'
+  | 'childrenImageSharp___fixed___originalName'
+  | 'childrenImageSharp___resolutions___base64'
+  | 'childrenImageSharp___resolutions___tracedSVG'
+  | 'childrenImageSharp___resolutions___aspectRatio'
+  | 'childrenImageSharp___resolutions___width'
+  | 'childrenImageSharp___resolutions___height'
+  | 'childrenImageSharp___resolutions___src'
+  | 'childrenImageSharp___resolutions___srcSet'
+  | 'childrenImageSharp___resolutions___srcWebp'
+  | 'childrenImageSharp___resolutions___srcSetWebp'
+  | 'childrenImageSharp___resolutions___originalName'
+  | 'childrenImageSharp___fluid___base64'
+  | 'childrenImageSharp___fluid___tracedSVG'
+  | 'childrenImageSharp___fluid___aspectRatio'
+  | 'childrenImageSharp___fluid___src'
+  | 'childrenImageSharp___fluid___srcSet'
+  | 'childrenImageSharp___fluid___srcWebp'
+  | 'childrenImageSharp___fluid___srcSetWebp'
+  | 'childrenImageSharp___fluid___sizes'
+  | 'childrenImageSharp___fluid___originalImg'
+  | 'childrenImageSharp___fluid___originalName'
+  | 'childrenImageSharp___fluid___presentationWidth'
+  | 'childrenImageSharp___fluid___presentationHeight'
+  | 'childrenImageSharp___sizes___base64'
+  | 'childrenImageSharp___sizes___tracedSVG'
+  | 'childrenImageSharp___sizes___aspectRatio'
+  | 'childrenImageSharp___sizes___src'
+  | 'childrenImageSharp___sizes___srcSet'
+  | 'childrenImageSharp___sizes___srcWebp'
+  | 'childrenImageSharp___sizes___srcSetWebp'
+  | 'childrenImageSharp___sizes___sizes'
+  | 'childrenImageSharp___sizes___originalImg'
+  | 'childrenImageSharp___sizes___originalName'
+  | 'childrenImageSharp___sizes___presentationWidth'
+  | 'childrenImageSharp___sizes___presentationHeight'
+  | 'childrenImageSharp___gatsbyImageData'
+  | 'childrenImageSharp___original___width'
+  | 'childrenImageSharp___original___height'
+  | 'childrenImageSharp___original___src'
+  | 'childrenImageSharp___resize___src'
+  | 'childrenImageSharp___resize___tracedSVG'
+  | 'childrenImageSharp___resize___width'
+  | 'childrenImageSharp___resize___height'
+  | 'childrenImageSharp___resize___aspectRatio'
+  | 'childrenImageSharp___resize___originalName'
+  | 'childrenImageSharp___id'
+  | 'childrenImageSharp___parent___id'
+  | 'childrenImageSharp___parent___parent___id'
+  | 'childrenImageSharp___parent___parent___children'
+  | 'childrenImageSharp___parent___children'
+  | 'childrenImageSharp___parent___children___id'
+  | 'childrenImageSharp___parent___children___children'
+  | 'childrenImageSharp___parent___internal___content'
+  | 'childrenImageSharp___parent___internal___contentDigest'
+  | 'childrenImageSharp___parent___internal___description'
+  | 'childrenImageSharp___parent___internal___fieldOwners'
+  | 'childrenImageSharp___parent___internal___ignoreType'
+  | 'childrenImageSharp___parent___internal___mediaType'
+  | 'childrenImageSharp___parent___internal___owner'
+  | 'childrenImageSharp___parent___internal___type'
+  | 'childrenImageSharp___children'
+  | 'childrenImageSharp___children___id'
+  | 'childrenImageSharp___children___parent___id'
+  | 'childrenImageSharp___children___parent___children'
+  | 'childrenImageSharp___children___children'
+  | 'childrenImageSharp___children___children___id'
+  | 'childrenImageSharp___children___children___children'
+  | 'childrenImageSharp___children___internal___content'
+  | 'childrenImageSharp___children___internal___contentDigest'
+  | 'childrenImageSharp___children___internal___description'
+  | 'childrenImageSharp___children___internal___fieldOwners'
+  | 'childrenImageSharp___children___internal___ignoreType'
+  | 'childrenImageSharp___children___internal___mediaType'
+  | 'childrenImageSharp___children___internal___owner'
+  | 'childrenImageSharp___children___internal___type'
+  | 'childrenImageSharp___internal___content'
+  | 'childrenImageSharp___internal___contentDigest'
+  | 'childrenImageSharp___internal___description'
+  | 'childrenImageSharp___internal___fieldOwners'
+  | 'childrenImageSharp___internal___ignoreType'
+  | 'childrenImageSharp___internal___mediaType'
+  | 'childrenImageSharp___internal___owner'
+  | 'childrenImageSharp___internal___type'
   | 'childImageSharp___fixed___base64'
   | 'childImageSharp___fixed___tracedSVG'
   | 'childImageSharp___fixed___aspectRatio'
@@ -2043,6 +2374,7 @@ export type FileFilterInput = {
   ctime?: Maybe<DateQueryOperatorInput>;
   birthtime?: Maybe<DateQueryOperatorInput>;
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
+  childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -2100,11 +2432,12 @@ export type ImageFormat =
   | 'AUTO'
   | 'JPG'
   | 'PNG'
-  | 'WEBP';
+  | 'WEBP'
+  | 'AVIF';
 
 export type ImageLayout = 
   | 'FIXED'
-  | 'FLUID'
+  | 'FULL_WIDTH'
   | 'CONSTRAINED';
 
 export type ImagePlaceholder = 
@@ -2244,22 +2577,23 @@ export type ImageSharpSizesArgs = {
 
 export type ImageSharpGatsbyImageDataArgs = {
   layout?: Maybe<ImageLayout>;
-  maxWidth?: Maybe<Scalars['Int']>;
-  maxHeight?: Maybe<Scalars['Int']>;
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
+  aspectRatio?: Maybe<Scalars['Float']>;
   placeholder?: Maybe<ImagePlaceholder>;
   blurredOptions?: Maybe<BlurredOptions>;
   tracedSVGOptions?: Maybe<Potrace>;
   formats?: Maybe<Array<Maybe<ImageFormat>>>;
   outputPixelDensities?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  breakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
   sizes?: Maybe<Scalars['String']>;
   quality?: Maybe<Scalars['Int']>;
   jpgOptions?: Maybe<JpgOptions>;
   pngOptions?: Maybe<PngOptions>;
   webpOptions?: Maybe<WebPOptions>;
+  avifOptions?: Maybe<AvifOptions>;
   transformOptions?: Maybe<TransformOptions>;
-  background?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
 };
 
 
@@ -2466,6 +2800,10 @@ export type ImageSharpFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
+};
+
+export type ImageSharpFilterListInput = {
+  elemMatch?: Maybe<ImageSharpFilterInput>;
 };
 
 export type ImageSharpFixed = {
@@ -2891,6 +3229,10 @@ export type MarkdownRemarkFilterInput = {
   internal?: Maybe<InternalFilterInput>;
 };
 
+export type MarkdownRemarkFilterListInput = {
+  elemMatch?: Maybe<MarkdownRemarkFilterInput>;
+};
+
 export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>;
 };
@@ -3039,6 +3381,7 @@ export type QueryFileArgs = {
   ctime?: Maybe<DateQueryOperatorInput>;
   birthtime?: Maybe<DateQueryOperatorInput>;
   birthtimeMs?: Maybe<FloatQueryOperatorInput>;
+  childrenImageSharp?: Maybe<ImageSharpFilterListInput>;
   childImageSharp?: Maybe<ImageSharpFilterInput>;
   id?: Maybe<StringQueryOperatorInput>;
   parent?: Maybe<NodeFilterInput>;
@@ -3105,8 +3448,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3236,6 +3577,7 @@ export type QueryContentfulArticleBodyTextNodeArgs = {
   internal?: Maybe<InternalFilterInput>;
   body?: Maybe<StringQueryOperatorInput>;
   sys?: Maybe<ContentfulArticleBodyTextNodeSysFilterInput>;
+  childrenMarkdownRemark?: Maybe<MarkdownRemarkFilterListInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
 };
 
@@ -3265,6 +3607,7 @@ export type QueryContentfulArticleArgs = {
   sys?: Maybe<ContentfulArticleSysFilterInput>;
   node_locale?: Maybe<StringQueryOperatorInput>;
   heroImage?: Maybe<ContentfulAssetFilterInput>;
+  childrenContentfulArticleBodyTextNode?: Maybe<ContentfulArticleBodyTextNodeFilterListInput>;
   childContentfulArticleBodyTextNode?: Maybe<ContentfulArticleBodyTextNodeFilterInput>;
 };
 
@@ -3341,8 +3684,6 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Int']>;
-  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -3545,8 +3886,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___siteUrl'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -3639,8 +3978,6 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<IntQueryOperatorInput>;
-  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3698,6 +4035,7 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   slug?: Maybe<Scalars['String']>;
+  ogImage?: Maybe<SitePageContextOgImage>;
   tag?: Maybe<Scalars['String']>;
   limit?: Maybe<Scalars['Int']>;
   skip?: Maybe<Scalars['Int']>;
@@ -3709,6 +4047,7 @@ export type SitePageContext = {
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>;
+  ogImage?: Maybe<SitePageContextOgImageFilterInput>;
   tag?: Maybe<StringQueryOperatorInput>;
   limit?: Maybe<IntQueryOperatorInput>;
   skip?: Maybe<IntQueryOperatorInput>;
@@ -3716,6 +4055,50 @@ export type SitePageContextFilterInput = {
   next?: Maybe<IntQueryOperatorInput>;
   prev?: Maybe<IntQueryOperatorInput>;
   pages?: Maybe<IntQueryOperatorInput>;
+};
+
+export type SitePageContextOgImage = {
+  path?: Maybe<Scalars['String']>;
+  size?: Maybe<SitePageContextOgImageSize>;
+  _xogImageGenerationContext?: Maybe<SitePageContextOgImage_XogImageGenerationContext>;
+};
+
+export type SitePageContextOgImage_XogImageGenerationContext = {
+  componentPath?: Maybe<Scalars['String']>;
+  imgPath?: Maybe<Scalars['String']>;
+  size?: Maybe<SitePageContextOgImage_XogImageGenerationContextSize>;
+};
+
+export type SitePageContextOgImage_XogImageGenerationContextFilterInput = {
+  componentPath?: Maybe<StringQueryOperatorInput>;
+  imgPath?: Maybe<StringQueryOperatorInput>;
+  size?: Maybe<SitePageContextOgImage_XogImageGenerationContextSizeFilterInput>;
+};
+
+export type SitePageContextOgImage_XogImageGenerationContextSize = {
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+};
+
+export type SitePageContextOgImage_XogImageGenerationContextSizeFilterInput = {
+  width?: Maybe<IntQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
+};
+
+export type SitePageContextOgImageFilterInput = {
+  path?: Maybe<StringQueryOperatorInput>;
+  size?: Maybe<SitePageContextOgImageSizeFilterInput>;
+  _xogImageGenerationContext?: Maybe<SitePageContextOgImage_XogImageGenerationContextFilterInput>;
+};
+
+export type SitePageContextOgImageSize = {
+  width?: Maybe<Scalars['Int']>;
+  height?: Maybe<Scalars['Int']>;
+};
+
+export type SitePageContextOgImageSizeFilterInput = {
+  width?: Maybe<IntQueryOperatorInput>;
+  height?: Maybe<IntQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -3818,6 +4201,11 @@ export type SitePageFieldsEnum =
   | 'internal___type'
   | 'isCreatedByStatefulCreatePages'
   | 'context___slug'
+  | 'context___ogImage___path'
+  | 'context___ogImage___size___width'
+  | 'context___ogImage___size___height'
+  | 'context___ogImage____xogImageGenerationContext___componentPath'
+  | 'context___ogImage____xogImageGenerationContext___imgPath'
   | 'context___tag'
   | 'context___limit'
   | 'context___skip'
@@ -4435,10 +4823,17 @@ export type ArticleQueryVariables = Exact<{
 }>;
 
 
-export type ArticleQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, contentfulArticle?: Maybe<(
+export type ArticleQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'siteUrl'>> }>, contentfulArticle?: Maybe<(
     Pick<ContentfulArticle, 'title' | 'tags' | 'updatedAt' | 'publishDate'>
     & { heroImage?: Maybe<{ fluid?: Maybe<GatsbyContentfulFluid_WithWebpFragment> }>, eyecatch?: Maybe<{ file?: Maybe<Pick<ContentfulAssetFile, 'url'>> }>, body?: Maybe<{ childMarkdownRemark?: Maybe<Pick<MarkdownRemark, 'html'>> }> }
   )> };
+
+export type ArticleOgImageQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type ArticleOgImageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, contentfulArticle?: Maybe<Pick<ContentfulArticle, 'title' | 'publishDate'>> };
 
 export type TagQueryVariables = Exact<{ [key: string]: never; }>;
 
