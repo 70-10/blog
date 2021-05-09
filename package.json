@@ -42,7 +42,7 @@
     "lodash.countby": "4.6.0",
     "moment": "2.27.0",
     "moment-range": "4.0.2",
-    "postcss": "8.2.7",
+    "postcss": "8.2.14",
     "prismjs": "1.23.0",
     "react": "16.13.1",
     "react-calendar-heatmap": "1.8.1",
