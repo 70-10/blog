@@ -52,7 +52,7 @@
     "tailwindcss": "2.0.3"
   },
   "devDependencies": {
-    "@types/react-helmet": "6.1.0",
+    "@types/react-helmet": "6.1.2",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
     "eslint": "7.21.0",
