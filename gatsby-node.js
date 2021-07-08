@@ -1,5 +1,6 @@
 const path = require("path");
 const moment = require("moment");
+const { createOpenGraphImage } = require("gatsby-plugin-open-graph-images");
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
@@ -24,6 +25,15 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       component: path.resolve("./src/templates/article.tsx"),
       context: {
         slug: node.slug,
+        ogImage: createOpenGraphImage(createPage, {
+          path: `/og-image/article/${moment(node.publishDate).format(
+            "YYYY/MM/DD"
+          )}/${node.slug}.png`,
+          component: path.resolve("src/templates/og-image.tsx"),
+          context: {
+            slug: node.slug,
+          },
+        }),
       },
     });
   });
