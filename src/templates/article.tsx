@@ -20,15 +20,8 @@ type Props = {
 const Article: FC<Props> = ({ data, location }) => {
   assert(data.contentfulArticle);
 
-  const {
-    title,
-    tags,
-    heroImage,
-    eyecatch,
-    body,
-    publishDate,
-    updatedAt,
-  } = data.contentfulArticle;
+  const { title, tags, heroImage, eyecatch, body, publishDate, updatedAt } =
+    data.contentfulArticle;
 
   return (
     <>
