@@ -1,11 +1,11 @@
-import React, { FC } from "react";
-import Layout from "../layouts/defaultLayout";
-import { graphql } from "gatsby";
-import Article from "../components/article";
-import { display } from "../tag-helper";
-import { TagQuery } from "../../types/graphql-types";
-import styles from "./tag.module.css";
 import assert from "assert";
+import { graphql } from "gatsby";
+import React, { FC } from "react";
+import { TagQuery } from "../../types/graphql-types";
+import Article from "../components/article";
+import Layout from "../layouts/defaultLayout";
+import { display } from "../tag-helper";
+import styles from "./tag.module.css";
 
 type Props = {
   data: TagQuery;

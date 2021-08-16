@@ -1,10 +1,10 @@
-import React, { FC } from "react";
 import { graphql, StaticQuery } from "gatsby";
+import React, { FC } from "react";
 import { Helmet } from "react-helmet";
 import { DefaultLayoutQuery } from "../../types/graphql-types";
-import styles from "./defaultLayout.module.css";
-import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import Navbar from "../components/navbar";
+import styles from "./defaultLayout.module.css";
 
 type Props = {
   data: DefaultLayoutQuery;

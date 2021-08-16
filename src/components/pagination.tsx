@@ -1,5 +1,5 @@
-import React, { FC } from "react";
 import { Link } from "gatsby";
+import React, { FC } from "react";
 import styles from "./pagination.module.css";
 
 const Prev: FC = () => (

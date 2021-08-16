@@ -1,9 +1,9 @@
-import React, { FC } from "react";
 import { graphql } from "gatsby";
-import Layout from "../layouts/defaultLayout";
+import React, { FC } from "react";
+import { ArticleListQuery } from "../../types/graphql-types";
 import Article from "../components/article";
 import Pagination from "../components/pagination";
-import { ArticleListQuery } from "../../types/graphql-types";
+import Layout from "../layouts/defaultLayout";
 import styles from "./article-list.module.css";
 
 type Context = {

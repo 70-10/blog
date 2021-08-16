@@ -18,8 +18,26 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ["react", "@typescript-eslint", "import", "unused-imports"],
   rules: {
     "react/prop-types": "off",
+    "sort-imports": "off",
+    "import/order": [
+      "warn",
+      {
+        groups: ["builtin", "external", "internal"],
+        alphabetize: { order: "asc" },
+      },
+    ],
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        vars: "all",
+        varsIgnorePattern: "^_",
+        args: "after-used",
+        argsIgnorePattern: "^_",
+      },
+    ],
   },
 };

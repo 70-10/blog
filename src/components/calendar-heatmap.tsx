@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import moment from "../moment";
 import CalendarHeatmap from "react-calendar-heatmap";
+import moment from "../moment";
 import "react-calendar-heatmap/dist/styles.css";
 import style from "./calendar-heatmap.module.css";
 
