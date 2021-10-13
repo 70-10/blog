@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import React, { FC } from "react";
-import styles from "./navbar.module.css";
+import * as styles from "./navbar.module.css";
 
 type Props = {
   title: string | null | undefined;

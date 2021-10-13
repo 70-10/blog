@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { ContentfulArticle } from "../../types/graphql-types";
 import moment from "../moment";
-import styles from "./level.module.css";
+import * as styles from "./level.module.css";
 
 type Props = {
   articles: {

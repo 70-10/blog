@@ -5,7 +5,3 @@
 .line {
   @apply my-2;
 }
-
-.content {
-  @apply prose prose-green;
-}

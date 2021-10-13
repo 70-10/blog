@@ -7,7 +7,7 @@ import Level from "../components/level";
 import Layout from "../layouts/defaultLayout";
 import moment from "../moment";
 import { display } from "../tag-helper";
-import styles from "./dashboard.module.css";
+import * as styles from "./dashboard.module.css";
 
 type Props = {
   data: DashboardQuery;
