@@ -4,7 +4,7 @@ import { ArticleListQuery } from "../../types/graphql-types";
 import Article from "../components/article";
 import Pagination from "../components/pagination";
 import Layout from "../layouts/defaultLayout";
-import styles from "./article-list.module.css";
+import * as styles from "./article-list.module.css";
 
 type Context = {
   limit: number;

@@ -1,4 +1,3 @@
-import assert from "assert";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import React, { FC } from "react";
@@ -8,7 +7,7 @@ import ShareButtons from "../components/share-buttons";
 import Tags from "../components/tags";
 import Layout from "../layouts/defaultLayout";
 import moment from "../moment";
-import styles from "./article.module.css";
+import * as styles from "./article.module.css";
 
 type Props = {
   data: ArticleQuery;
@@ -18,8 +17,6 @@ type Props = {
 };
 
 const Article: FC<Props> = ({ data, location }) => {
-  assert(data.contentfulArticle);
-
   const { title, tags, heroImage, eyecatch, body, publishDate, updatedAt } =
     data.contentfulArticle;
 
@@ -69,7 +66,7 @@ const Article: FC<Props> = ({ data, location }) => {
         </section>
 
         <div
-          className={styles.article}
+          className="prose prose-green max-w-none mt-6"
           dangerouslySetInnerHTML={{
             __html: body?.childMarkdownRemark?.html || "",
           }}

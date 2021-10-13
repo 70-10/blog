@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { DefaultLayoutQuery } from "../../types/graphql-types";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import styles from "./defaultLayout.module.css";
+import * as styles from "./defaultLayout.module.css";
 
 type Props = {
   data: DefaultLayoutQuery;

@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
-import moment from "../moment";
 import "react-calendar-heatmap/dist/styles.css";
-import style from "./calendar-heatmap.module.css";
+import moment from "../moment";
+import * as style from "./calendar-heatmap.module.css";
 
 const Component: FC = ({ values }) => (
   <CalendarHeatmap

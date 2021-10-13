@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import Layout from "../layouts/defaultLayout";
-import styles from "./privacy-policy.module.css";
+import * as styles from "./privacy-policy.module.css";
 
 const PrivacyPolicyPage: FC = () => {
   return (
     <Layout>
       <h1 className={styles.title}>プライバシーポリシー</h1>
       <hr className={styles.line} />
-      <article className={styles.content}>
+      <article className="prose prose-green">
         <h3>アクセス解析について</h3>
         <p>
           当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。
