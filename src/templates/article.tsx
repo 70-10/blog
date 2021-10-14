@@ -2,7 +2,6 @@ import { graphql } from "gatsby";
 import Img from "gatsby-image";
 import React, { FC } from "react";
 import Helmet from "react-helmet";
-import { ArticleQuery } from "../../types/graphql-types";
 import ShareButtons from "../components/share-buttons";
 import Tags from "../components/tags";
 import Layout from "../layouts/defaultLayout";
@@ -10,7 +9,7 @@ import moment from "../moment";
 import * as styles from "./article.module.css";
 
 type Props = {
-  data: ArticleQuery;
+  data: GatsbyTypes.ArticleQuery;
   location: {
     href: string;
   };
