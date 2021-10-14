@@ -1,11 +1,10 @@
 import { Link } from "gatsby";
 import React, { FC } from "react";
-import { Maybe } from "../../types/graphql-types";
 import { display } from "../tag-helper";
 import * as styles from "./tags.module.css";
 
 type Props = {
-  tags: Maybe<string>[];
+  tags: string[];
 };
 
 const Tags: FC<Props> = ({ tags }) => (

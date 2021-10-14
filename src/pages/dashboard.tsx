@@ -1,7 +1,6 @@
 import { graphql, Link } from "gatsby";
 import countBy from "lodash.countby";
 import React, { FC } from "react";
-import { DashboardQuery } from "../../types/graphql-types";
 import CalendarHeatmap from "../components/calendar-heatmap";
 import Level from "../components/level";
 import Layout from "../layouts/defaultLayout";
@@ -10,7 +9,7 @@ import { display } from "../tag-helper";
 import * as styles from "./dashboard.module.css";
 
 type Props = {
-  data: DashboardQuery;
+  data: GatsbyTypes.DashboardQuery;
 };
 
 const DashboardPage: FC<Props> = ({

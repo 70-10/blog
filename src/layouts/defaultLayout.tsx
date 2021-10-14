@@ -1,13 +1,12 @@
 import { graphql, StaticQuery } from "gatsby";
 import React, { FC } from "react";
 import { Helmet } from "react-helmet";
-import { DefaultLayoutQuery } from "../../types/graphql-types";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import * as styles from "./defaultLayout.module.css";
 
 type Props = {
-  data: DefaultLayoutQuery;
+  data: GatsbyTypes.DefaultLayoutQuery;
 };
 
 const Component: FC<Props> = ({ data, children }) => (
@@ -35,7 +34,7 @@ const Component: FC<Props> = ({ data, children }) => (
 );
 
 const Container: FC = ({ children }) => (
-  <StaticQuery
+  <StaticQuery<GatsbyTypes.DefaultLayoutQuery>
     query={graphql`
       query DefaultLayout {
         site {

@@ -1,6 +1,5 @@
 import { graphql } from "gatsby";
 import React, { FC } from "react";
-import { ArticleListQuery } from "../../types/graphql-types";
 import Article from "../components/article";
 import Pagination from "../components/pagination";
 import Layout from "../layouts/defaultLayout";
@@ -16,7 +15,7 @@ type Context = {
 };
 
 type Props = {
-  data: ArticleListQuery;
+  data: GatsbyTypes.ArticleListQuery;
   pageContext: Context;
 };
 

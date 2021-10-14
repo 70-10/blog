@@ -1,11 +1,10 @@
 import { Link } from "gatsby";
 import React, { FC } from "react";
-import { ContentfulArticle } from "../../types/graphql-types";
 import moment from "../moment";
 import * as styles from "./article.module.css";
 
 type Props = {
-  node: Pick<ContentfulArticle, "title" | "slug" | "publishDate">;
+  node: Pick<GatsbyTypes.ContentfulArticle, "title" | "slug" | "publishDate">;
 };
 
 const Container: FC<Props> = ({ node }) => {

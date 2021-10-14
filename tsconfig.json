@@ -16,5 +16,5 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["src", "types/css-types.d.ts"]
+  "include": ["src", "types"]
 }
