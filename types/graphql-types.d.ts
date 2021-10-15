@@ -5598,7 +5598,7 @@ type ArticleQueryVariables = Exact<{
 
 type ArticleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly contentfulArticle: Maybe<(
     Pick<ContentfulArticle, 'title' | 'tags' | 'updatedAt' | 'publishDate'>
-    & { readonly heroImage: Maybe<{ readonly fluid: Maybe<GatsbyContentfulFluid_withWebpFragment> }>, readonly eyecatch: Maybe<{ readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }>, readonly body: Maybe<{ readonly childMarkdownRemark: Maybe<Pick<MarkdownRemark, 'html'>> }> }
+    & { readonly heroImage: Maybe<{ readonly fluid: Maybe<GatsbyContentfulFluid_withWebpFragment> }>, readonly eyecatch: Maybe<{ readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }>, readonly body: Maybe<{ readonly childMarkdownRemark: Maybe<Pick<MarkdownRemark, 'html' | 'tableOfContents'>> }> }
   )> };
 
 type TagQueryVariables = Exact<{ [key: string]: never; }>;

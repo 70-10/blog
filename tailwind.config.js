@@ -20,7 +20,6 @@ module.exports = {
               fontSize: "1.5rem",
               marginTop: "1em",
               marginBottom: ".6em",
-              textDecoration: "underline",
               color: theme("colors.gray.700"),
             },
             h2: {
