@@ -1,7 +1,6 @@
 .title {
   @apply text-green-600 hover:text-gray-700;
   @apply font-semibold text-lg;
-  @apply md:font-bold md:text-xl;
 }
 
 .date {
