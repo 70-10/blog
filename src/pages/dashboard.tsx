@@ -1,10 +1,8 @@
 import { graphql, Link } from "gatsby";
 import countBy from "lodash.countby";
 import React, { FC } from "react";
-import CalendarHeatmap from "../components/calendar-heatmap";
 import Level from "../components/level";
 import Layout from "../layouts/defaultLayout";
-import moment from "../moment";
 import { display } from "../tag-helper";
 import * as styles from "./dashboard.module.css";
 
@@ -25,10 +23,6 @@ const DashboardPage: FC<Props> = ({
       <Line />
       <Contents title="記事数">
         <Level articles={edges} />
-      </Contents>
-      <Line />
-      <Contents title="過去1年間のポスト状況">
-        <CalendarHeatmap values={buildHeatmapValues(edges)} />
       </Contents>
       <Line />
       <Contents title="タグ一覧">
@@ -78,16 +72,6 @@ const Tags = ({ edges }) => {
     </div>
   );
 };
-
-function buildHeatmapValues(edges) {
-  const dateObj = countBy(
-    edges.map(({ node }) => moment(node.publishDate).format("YYYY-MM-DD"))
-  );
-  return Object.keys(dateObj).map((date) => ({
-    date,
-    count: dateObj[date],
-  }));
-}
 
 export const query = graphql`
   query Dashboard {
