@@ -5,6 +5,7 @@ module.exports = {
     siteUrl: "https://blog.70-10.net",
   },
   plugins: [
+    "gatsby-plugin-image",
     "gatsby-plugin-postcss",
     "gatsby-plugin-typescript",
     "gatsby-plugin-react-helmet",

@@ -1,5 +1,4 @@
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
 import React, { FC } from "react";
 import Helmet from "react-helmet";
 import ShareButtons from "../components/share-buttons";
@@ -16,8 +15,7 @@ type Props = {
 };
 
 const Article: FC<Props> = ({ data, location }) => {
-  const { title, tags, heroImage, eyecatch, body, publishDate, updatedAt } =
-    data.contentfulArticle;
+  const { title, tags, body, publishDate, updatedAt } = data.contentfulArticle;
 
   return (
     <>
@@ -25,21 +23,12 @@ const Article: FC<Props> = ({ data, location }) => {
         <Helmet>
           <meta itemProp="name" content={title || ""} />
           <meta itemProp="description" content="Blog at 70-10.net" />
-          {eyecatch?.file?.url ? (
-            <meta itemProp="image" content={`https:${eyecatch.file.url}`} />
-          ) : null}
           <meta property="og:url" content={location.href} />
           <meta property="og:type" content="website" />
           <meta property="og:title" content={title || ""} />
-          {eyecatch?.file?.url && (
-            <meta property="og:image" content={`https:${eyecatch.file.url}`} />
-          )}
           {/* <meta property="og:description" content={title} /> */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title || ""} />
-          {eyecatch?.file?.url && (
-            <meta name="twitter:image" content={`https:${eyecatch.file.url}`} />
-          )}
           {/* <meta name="twitter:description" content={title} /> */}
 
           <title>{title}</title>
@@ -57,11 +46,6 @@ const Article: FC<Props> = ({ data, location }) => {
             <div> {tags ? <Tags tags={tags} /> : null}</div>
           </div>
           <hr className={styles.head_line} />
-          {heroImage && (
-            <div className={styles.head_hero}>
-              <Img fluid={heroImage.fluid} />
-            </div>
-          )}
         </section>
 
         <section className={styles.article_section}>
@@ -105,16 +89,6 @@ export const query = graphql`
       tags
       updatedAt
       publishDate
-      heroImage {
-        fluid(maxWidth: 960) {
-          ...GatsbyContentfulFluid_withWebp
-        }
-      }
-      eyecatch: heroImage {
-        file {
-          url
-        }
-      }
       body {
         childMarkdownRemark {
           html
