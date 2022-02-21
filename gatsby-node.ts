@@ -1,7 +1,7 @@
-const path = require("path");
-const moment = require("moment");
+import path from "path";
+import moment from "moment";
 
-exports.createPages = async ({ graphql, actions: { createPage } }) => {
+export const createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
     {
       allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
