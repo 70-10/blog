@@ -41,7 +41,6 @@
     "gatsby-source-contentful": "7.8.2",
     "gatsby-transformer-remark": "5.10.2",
     "gatsby-transformer-sharp": "4.10.0",
-    "github-markdown-css": "5.1.0",
     "lodash.countby": "4.6.0",
     "moment": "2.29.1",
     "moment-range": "4.0.2",
