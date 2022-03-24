@@ -692,9 +692,10 @@ type ContentfulReference = {
   readonly id: Scalars['ID'];
 };
 
-type ContentfulAsset = ContentfulReference & Node & {
+type ContentfulAsset = ContentfulReference & Node & RemoteFile & {
   readonly contentful_id: Scalars['String'];
   readonly id: Scalars['ID'];
+  readonly gatsbyImageData: Maybe<Scalars['JSON']>;
   readonly spaceId: Maybe<Scalars['String']>;
   readonly createdAt: Maybe<Scalars['Date']>;
   readonly updatedAt: Maybe<Scalars['Date']>;
@@ -703,26 +704,20 @@ type ContentfulAsset = ContentfulReference & Node & {
   readonly description: Maybe<Scalars['String']>;
   readonly node_locale: Maybe<Scalars['String']>;
   readonly sys: Maybe<ContentfulAssetSys>;
-  readonly gatsbyImageData: Maybe<Scalars['JSON']>;
+  readonly url: Maybe<Scalars['String']>;
+  readonly placeholderUrl: Maybe<Scalars['String']>;
+  readonly mimeType: Scalars['String'];
+  readonly filename: Scalars['String'];
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
-};
-
-
-type ContentfulAsset_createdAtArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
-};
-
-
-type ContentfulAsset_updatedAtArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
+  readonly filesize: Maybe<Scalars['Int']>;
+  readonly publicUrl: Scalars['String'];
+  readonly resize: Maybe<RemoteFileResize>;
+  /** Data used in the <GatsbyImage /> component. See https://gatsby.dev/img for more info. */
+  readonly gatsbyImage: Maybe<Scalars['JSON']>;
 };
 
 
@@ -744,27 +739,130 @@ type ContentfulAsset_gatsbyImageDataArgs = {
   quality?: Maybe<Scalars['Int']>;
 };
 
-type ContentfulAssetFile = {
-  readonly url: Maybe<Scalars['String']>;
-  readonly details: Maybe<ContentfulAssetFileDetails>;
-  readonly fileName: Maybe<Scalars['String']>;
-  readonly contentType: Maybe<Scalars['String']>;
+
+type ContentfulAsset_createdAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
 };
 
-type ContentfulAssetFileDetails = {
-  readonly size: Maybe<Scalars['Int']>;
-  readonly image: Maybe<ContentfulAssetFileDetailsImage>;
+
+type ContentfulAsset_updatedAtArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
 };
 
-type ContentfulAssetFileDetailsImage = {
+
+type ContentfulAsset_resizeArgs = {
+  width: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+  fit?: Maybe<RemoteFileFit>;
+  format?: Maybe<RemoteFileFormat>;
+  cropFocus: Maybe<ReadonlyArray<Maybe<RemoteFileCropFocus>>>;
+  quality?: Maybe<Scalars['Int']>;
+};
+
+
+type ContentfulAsset_gatsbyImageArgs = {
+  layout?: Maybe<RemoteFileLayout>;
+  width: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+  placeholder?: Maybe<RemoteFilePlaceholder>;
+  aspectRatio: Maybe<Scalars['Float']>;
+  formats?: Maybe<ReadonlyArray<RemoteFileFormat>>;
+  outputPixelDensities?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  breakpoints?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  sizes: Maybe<Scalars['String']>;
+  backgroundColor: Maybe<Scalars['String']>;
+  fit?: Maybe<RemoteFileFit>;
+  cropFocus: Maybe<ReadonlyArray<Maybe<RemoteFileCropFocus>>>;
+  quality?: Maybe<Scalars['Int']>;
+};
+
+/** Remote Interface */
+type RemoteFile = {
+  readonly id: Scalars['ID'];
+  readonly mimeType: Scalars['String'];
+  readonly filename: Scalars['String'];
+  readonly filesize: Maybe<Scalars['Int']>;
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly publicUrl: Scalars['String'];
+  readonly resize: Maybe<RemoteFileResize>;
+  /** Data used in the <GatsbyImage /> component. See https://gatsby.dev/img for more info. */
+  readonly gatsbyImage: Maybe<Scalars['JSON']>;
 };
 
-type ContentfulAssetSys = {
-  readonly type: Maybe<Scalars['String']>;
-  readonly revision: Maybe<Scalars['Int']>;
+
+/** Remote Interface */
+type RemoteFile_resizeArgs = {
+  width: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+  fit?: Maybe<RemoteFileFit>;
+  format?: Maybe<RemoteFileFormat>;
+  cropFocus: Maybe<ReadonlyArray<Maybe<RemoteFileCropFocus>>>;
+  quality?: Maybe<Scalars['Int']>;
 };
+
+
+/** Remote Interface */
+type RemoteFile_gatsbyImageArgs = {
+  layout?: Maybe<RemoteFileLayout>;
+  width: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+  placeholder?: Maybe<RemoteFilePlaceholder>;
+  aspectRatio: Maybe<Scalars['Float']>;
+  formats?: Maybe<ReadonlyArray<RemoteFileFormat>>;
+  outputPixelDensities?: Maybe<ReadonlyArray<Maybe<Scalars['Float']>>>;
+  breakpoints?: Maybe<ReadonlyArray<Maybe<Scalars['Int']>>>;
+  sizes: Maybe<Scalars['String']>;
+  backgroundColor: Maybe<Scalars['String']>;
+  fit?: Maybe<RemoteFileFit>;
+  cropFocus: Maybe<ReadonlyArray<Maybe<RemoteFileCropFocus>>>;
+  quality?: Maybe<Scalars['Int']>;
+};
+
+type RemoteFileResize = {
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+  readonly src: Maybe<Scalars['String']>;
+};
+
+type RemoteFileFit =
+  | 'cover'
+  | 'fill'
+  | 'outside'
+  | 'contain';
+
+type RemoteFileFormat =
+  | 'auto'
+  | 'jpg'
+  | 'png'
+  | 'webp'
+  | 'avif';
+
+type RemoteFileCropFocus =
+  | 'center'
+  | 'top'
+  | 'right'
+  | 'bottom'
+  | 'left'
+  | 'entropy'
+  | 'edges'
+  | 'faces';
+
+type RemoteFileLayout =
+  | 'fixed'
+  | 'fullWidth'
+  | 'constrained';
+
+type RemoteFilePlaceholder =
+  | 'dominantColor'
+  | 'blurred'
+  | 'none';
 
 type ImageResizingBehavior =
   | 'NO_CHANGE'
@@ -791,6 +889,28 @@ type ContentfulImageCropFocus =
   | 'face'
   | 'faces'
   | 'center';
+
+type ContentfulAssetFile = {
+  readonly url: Maybe<Scalars['String']>;
+  readonly details: Maybe<ContentfulAssetFileDetails>;
+  readonly fileName: Maybe<Scalars['String']>;
+  readonly contentType: Maybe<Scalars['String']>;
+};
+
+type ContentfulAssetFileDetails = {
+  readonly size: Maybe<Scalars['Int']>;
+  readonly image: Maybe<ContentfulAssetFileDetailsImage>;
+};
+
+type ContentfulAssetFileDetailsImage = {
+  readonly width: Maybe<Scalars['Int']>;
+  readonly height: Maybe<Scalars['Int']>;
+};
+
+type ContentfulAssetSys = {
+  readonly type: Maybe<Scalars['String']>;
+  readonly revision: Maybe<Scalars['Int']>;
+};
 
 type ContentfulArticle = ContentfulReference & ContentfulEntry & Node & {
   readonly contentful_id: Scalars['String'];
@@ -1195,6 +1315,7 @@ type Query_allContentfulEntryArgs = {
 type Query_contentfulAssetArgs = {
   contentful_id: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
+  gatsbyImageData: Maybe<JSONQueryOperatorInput>;
   spaceId: Maybe<StringQueryOperatorInput>;
   createdAt: Maybe<DateQueryOperatorInput>;
   updatedAt: Maybe<DateQueryOperatorInput>;
@@ -1203,10 +1324,19 @@ type Query_contentfulAssetArgs = {
   description: Maybe<StringQueryOperatorInput>;
   node_locale: Maybe<StringQueryOperatorInput>;
   sys: Maybe<ContentfulAssetSysFilterInput>;
-  gatsbyImageData: Maybe<JSONQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
+  placeholderUrl: Maybe<StringQueryOperatorInput>;
+  mimeType: Maybe<StringQueryOperatorInput>;
+  filename: Maybe<StringQueryOperatorInput>;
+  width: Maybe<IntQueryOperatorInput>;
+  height: Maybe<IntQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
+  filesize: Maybe<IntQueryOperatorInput>;
+  publicUrl: Maybe<StringQueryOperatorInput>;
+  resize: Maybe<RemoteFileResizeFilterInput>;
+  gatsbyImage: Maybe<JSONQueryOperatorInput>;
 };
 
 
@@ -3781,6 +3911,12 @@ type ContentfulAssetSysFilterInput = {
   readonly revision: Maybe<IntQueryOperatorInput>;
 };
 
+type RemoteFileResizeFilterInput = {
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
+  readonly src: Maybe<StringQueryOperatorInput>;
+};
+
 type ContentfulAssetConnection = {
   readonly totalCount: Scalars['Int'];
   readonly edges: ReadonlyArray<ContentfulAssetEdge>;
@@ -3829,6 +3965,7 @@ type ContentfulAssetEdge = {
 type ContentfulAssetFieldsEnum =
   | 'contentful_id'
   | 'id'
+  | 'gatsbyImageData'
   | 'spaceId'
   | 'createdAt'
   | 'updatedAt'
@@ -3843,7 +3980,12 @@ type ContentfulAssetFieldsEnum =
   | 'node_locale'
   | 'sys.type'
   | 'sys.revision'
-  | 'gatsbyImageData'
+  | 'url'
+  | 'placeholderUrl'
+  | 'mimeType'
+  | 'filename'
+  | 'width'
+  | 'height'
   | 'parent.id'
   | 'parent.parent.id'
   | 'parent.parent.parent.id'
@@ -3928,7 +4070,13 @@ type ContentfulAssetFieldsEnum =
   | 'internal.ignoreType'
   | 'internal.mediaType'
   | 'internal.owner'
-  | 'internal.type';
+  | 'internal.type'
+  | 'filesize'
+  | 'publicUrl'
+  | 'resize.width'
+  | 'resize.height'
+  | 'resize.src'
+  | 'gatsbyImage';
 
 type ContentfulAssetGroupConnection = {
   readonly totalCount: Scalars['Int'];
@@ -3974,6 +4122,7 @@ type ContentfulAssetGroupConnection_groupArgs = {
 type ContentfulAssetFilterInput = {
   readonly contentful_id: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
+  readonly gatsbyImageData: Maybe<JSONQueryOperatorInput>;
   readonly spaceId: Maybe<StringQueryOperatorInput>;
   readonly createdAt: Maybe<DateQueryOperatorInput>;
   readonly updatedAt: Maybe<DateQueryOperatorInput>;
@@ -3982,10 +4131,19 @@ type ContentfulAssetFilterInput = {
   readonly description: Maybe<StringQueryOperatorInput>;
   readonly node_locale: Maybe<StringQueryOperatorInput>;
   readonly sys: Maybe<ContentfulAssetSysFilterInput>;
-  readonly gatsbyImageData: Maybe<JSONQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly placeholderUrl: Maybe<StringQueryOperatorInput>;
+  readonly mimeType: Maybe<StringQueryOperatorInput>;
+  readonly filename: Maybe<StringQueryOperatorInput>;
+  readonly width: Maybe<IntQueryOperatorInput>;
+  readonly height: Maybe<IntQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
   readonly internal: Maybe<InternalFilterInput>;
+  readonly filesize: Maybe<IntQueryOperatorInput>;
+  readonly publicUrl: Maybe<StringQueryOperatorInput>;
+  readonly resize: Maybe<RemoteFileResizeFilterInput>;
+  readonly gatsbyImage: Maybe<JSONQueryOperatorInput>;
 };
 
 type ContentfulAssetSortInput = {
@@ -4194,6 +4352,7 @@ type ContentfulArticleFieldsEnum =
   | 'sys.contentType.sys.id'
   | 'heroImage.contentful_id'
   | 'heroImage.id'
+  | 'heroImage.gatsbyImageData'
   | 'heroImage.spaceId'
   | 'heroImage.createdAt'
   | 'heroImage.updatedAt'
@@ -4206,7 +4365,12 @@ type ContentfulArticleFieldsEnum =
   | 'heroImage.node_locale'
   | 'heroImage.sys.type'
   | 'heroImage.sys.revision'
-  | 'heroImage.gatsbyImageData'
+  | 'heroImage.url'
+  | 'heroImage.placeholderUrl'
+  | 'heroImage.mimeType'
+  | 'heroImage.filename'
+  | 'heroImage.width'
+  | 'heroImage.height'
   | 'heroImage.parent.id'
   | 'heroImage.parent.parent.id'
   | 'heroImage.parent.parent.children'
@@ -4244,6 +4408,12 @@ type ContentfulArticleFieldsEnum =
   | 'heroImage.internal.mediaType'
   | 'heroImage.internal.owner'
   | 'heroImage.internal.type'
+  | 'heroImage.filesize'
+  | 'heroImage.publicUrl'
+  | 'heroImage.resize.width'
+  | 'heroImage.resize.height'
+  | 'heroImage.resize.src'
+  | 'heroImage.gatsbyImage'
   | 'childrenContentfulArticleBodyTextNode'
   | 'childrenContentfulArticleBodyTextNode.id'
   | 'childrenContentfulArticleBodyTextNode.parent.id'

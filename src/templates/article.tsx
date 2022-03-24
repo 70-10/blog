@@ -1,6 +1,7 @@
 import { graphql } from "gatsby";
 import React, { FC } from "react";
 import Helmet from "react-helmet";
+import ArticleMarkdown from "../components/article-markdown";
 import ShareButtons from "../components/share-buttons";
 import Tags from "../components/tags";
 import Layout from "../layouts/defaultLayout";
@@ -49,26 +50,9 @@ const Article: FC<Props> = ({ data, location }) => {
         </section>
 
         <section className={styles.article_section}>
-          <div className={styles.article}>
-            <div
-              className="prose prose-green max-w-none mt-6"
-              dangerouslySetInnerHTML={{
-                __html: body?.childMarkdownRemark?.html || "",
-              }}
-            />
-            <div className={styles.buttons}>
-              <ShareButtons title={title || ""} url={location.href} />
-            </div>
-          </div>
-          <div className={styles.toc}>
-            {body.childMarkdownRemark.tableOfContents && (
-              <div
-                className="prose max-w-none border-2 p-6 rounded-md text-sm"
-                dangerouslySetInnerHTML={{
-                  __html: body.childMarkdownRemark.tableOfContents,
-                }}
-              />
-            )}
+          <ArticleMarkdown __html={body?.childMarkdownRemark?.html || ""} />
+          <div className={styles.buttons}>
+            <ShareButtons title={title || ""} url={location.href} />
           </div>
         </section>
       </Layout>

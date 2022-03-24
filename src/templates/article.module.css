@@ -24,16 +24,5 @@
 }
 
 .article_section {
-  @apply grid grid-cols-7 gap-y-6;
-}
-
-.article {
-  @apply col-span-7;
-  @apply md:col-span-5;
-}
-
-.toc {
-  @apply col-span-7 hidden;
-  @apply md:col-span-2 md:block;
-  @apply p-5;
+  @apply mt-5;
 }
