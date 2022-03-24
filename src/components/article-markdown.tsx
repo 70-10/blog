@@ -1,5 +1,3 @@
-import "github-markdown-css";
-import "prismjs/themes/prism.css";
 import React, { FC } from "react";
 import "./article-markdown.css";
 
