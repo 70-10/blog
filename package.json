@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "0.5.2",
-    "autoprefixer": "10.4.2",
+    "autoprefixer": "10.4.4",
     "gatsby": "4.10.3",
     "gatsby-image": "3.11.0",
     "gatsby-plugin-catch-links": "4.10.0",
