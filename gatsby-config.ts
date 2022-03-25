@@ -19,6 +19,7 @@ const config: GatsbyConfig = {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
+          "gatsby-remark-prismjs-title",
           {
             resolve: "gatsby-remark-prismjs",
             options: {
