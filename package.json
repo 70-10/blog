@@ -38,6 +38,7 @@
     "gatsby-remark-embed-spotify": "github:70-10/gatsby-remark-embed-spotify",
     "gatsby-remark-images-contentful": "5.10.0",
     "gatsby-remark-prismjs": "6.10.0",
+    "gatsby-remark-prismjs-title": "1.0.0",
     "gatsby-source-contentful": "7.8.2",
     "gatsby-transformer-remark": "5.10.2",
     "gatsby-transformer-sharp": "4.10.0",

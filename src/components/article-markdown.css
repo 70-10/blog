@@ -1020,3 +1020,30 @@ ul ul ul ul {
 .markdown-body ::-webkit-calendar-picker-indicator {
   filter: invert(50%);
 }
+
+.gatsby-code-title {
+  display: block;
+  position: relative;
+  background: #f6f8fa;
+  width: 100%;
+  top: 10px;
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  margin-bottom: 0.3rem;
+}
+
+.gatsby-code-title span {
+  display: inline;
+  position: relative;
+  font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+    Liberation Mono, monospace;
+  font-size: 0.9rem;
+  background: #f5f2f0;
+  border-top-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  top: 1px;
+}
