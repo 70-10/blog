@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: "MNML",
-    description: "70-10's Tech Blog",
+    description: "70_10's Tech Blog",
     siteUrl: "https://blog.70-10.net",
   },
   plugins: [
