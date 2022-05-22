@@ -251,8 +251,6 @@ type Directory_ctimeArgs = {
 type Site = Node & {
   readonly buildTime: Maybe<Scalars['Date']>;
   readonly siteMetadata: Maybe<SiteSiteMetadata>;
-  readonly port: Maybe<Scalars['Int']>;
-  readonly host: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly jsxRuntime: Maybe<Scalars['String']>;
@@ -710,6 +708,7 @@ type ContentfulAsset = ContentfulReference & Node & RemoteFile & {
   readonly filename: Scalars['String'];
   readonly width: Maybe<Scalars['Int']>;
   readonly height: Maybe<Scalars['Int']>;
+  readonly size: Maybe<Scalars['Int']>;
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
   readonly internal: Internal;
@@ -759,6 +758,7 @@ type ContentfulAsset_updatedAtArgs = {
 type ContentfulAsset_resizeArgs = {
   width: Maybe<Scalars['Int']>;
   height: Maybe<Scalars['Int']>;
+  aspectRatio: Maybe<Scalars['Float']>;
   fit?: Maybe<RemoteFileFit>;
   format?: Maybe<RemoteFileFormat>;
   cropFocus: Maybe<ReadonlyArray<Maybe<RemoteFileCropFocus>>>;
@@ -801,6 +801,7 @@ type RemoteFile = {
 type RemoteFile_resizeArgs = {
   width: Maybe<Scalars['Int']>;
   height: Maybe<Scalars['Int']>;
+  aspectRatio: Maybe<Scalars['Float']>;
   fit?: Maybe<RemoteFileFit>;
   format?: Maybe<RemoteFileFormat>;
   cropFocus: Maybe<ReadonlyArray<Maybe<RemoteFileCropFocus>>>;
@@ -862,6 +863,7 @@ type RemoteFileLayout =
 type RemoteFilePlaceholder =
   | 'dominantColor'
   | 'blurred'
+  | 'tracedSVG'
   | 'none';
 
 type ImageResizingBehavior =
@@ -1138,8 +1140,6 @@ type Query_allDirectoryArgs = {
 type Query_siteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
   jsxRuntime: Maybe<StringQueryOperatorInput>;
@@ -1330,6 +1330,7 @@ type Query_contentfulAssetArgs = {
   filename: Maybe<StringQueryOperatorInput>;
   width: Maybe<IntQueryOperatorInput>;
   height: Maybe<IntQueryOperatorInput>;
+  size: Maybe<IntQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
@@ -2265,8 +2266,6 @@ type SiteFieldsEnum =
   | 'siteMetadata.title'
   | 'siteMetadata.description'
   | 'siteMetadata.siteUrl'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2402,8 +2401,6 @@ type SiteGroupConnection_groupArgs = {
 type SiteFilterInput = {
   readonly buildTime: Maybe<DateQueryOperatorInput>;
   readonly siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  readonly port: Maybe<IntQueryOperatorInput>;
-  readonly host: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
   readonly jsxRuntime: Maybe<StringQueryOperatorInput>;
@@ -3986,6 +3983,7 @@ type ContentfulAssetFieldsEnum =
   | 'filename'
   | 'width'
   | 'height'
+  | 'size'
   | 'parent.id'
   | 'parent.parent.id'
   | 'parent.parent.parent.id'
@@ -4137,6 +4135,7 @@ type ContentfulAssetFilterInput = {
   readonly filename: Maybe<StringQueryOperatorInput>;
   readonly width: Maybe<IntQueryOperatorInput>;
   readonly height: Maybe<IntQueryOperatorInput>;
+  readonly size: Maybe<IntQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
   readonly internal: Maybe<InternalFilterInput>;
@@ -4371,6 +4370,7 @@ type ContentfulArticleFieldsEnum =
   | 'heroImage.filename'
   | 'heroImage.width'
   | 'heroImage.height'
+  | 'heroImage.size'
   | 'heroImage.parent.id'
   | 'heroImage.parent.parent.id'
   | 'heroImage.parent.parent.children'
@@ -5252,21 +5252,6 @@ type ContentfulContentTypeSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type ArticleQueryVariables = Exact<{
-  slug: Scalars['String'];
-}>;
-
-
-type ArticleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly contentfulArticle: Maybe<(
-    Pick<ContentfulArticle, 'title' | 'tags' | 'updatedAt' | 'publishDate'>
-    & { readonly body: Maybe<{ readonly childMarkdownRemark: Maybe<Pick<MarkdownRemark, 'html' | 'tableOfContents'>> }> }
-  )> };
-
-type TagQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type TagQuery = { readonly allContentfulArticle: { readonly edges: ReadonlyArray<{ readonly node: Pick<ContentfulArticle, 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
-
 type ArticleListQueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
@@ -5274,21 +5259,6 @@ type ArticleListQueryVariables = Exact<{
 
 
 type ArticleListQuery = { readonly allContentfulArticle: { readonly edges: ReadonlyArray<{ readonly node: Pick<ContentfulArticle, 'title' | 'slug' | 'publishDate'> }> } };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
-type DashboardQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type DashboardQuery = { readonly allContentfulArticle: { readonly edges: ReadonlyArray<{ readonly node: Pick<ContentfulArticle, 'id' | 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
-
-type DefaultLayoutQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type DefaultLayoutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -5315,5 +5285,30 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type ArticleQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+type ArticleQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, readonly contentfulArticle: Maybe<(
+    Pick<ContentfulArticle, 'title' | 'tags' | 'updatedAt' | 'publishDate'>
+    & { readonly body: Maybe<{ readonly childMarkdownRemark: Maybe<Pick<MarkdownRemark, 'html' | 'tableOfContents'>> }> }
+  )> };
+
+type DashboardQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type DashboardQuery = { readonly allContentfulArticle: { readonly edges: ReadonlyArray<{ readonly node: Pick<ContentfulArticle, 'id' | 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
+
+type TagQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type TagQuery = { readonly allContentfulArticle: { readonly edges: ReadonlyArray<{ readonly node: Pick<ContentfulArticle, 'title' | 'slug' | 'publishDate' | 'tags'> }> } };
+
+type DefaultLayoutQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type DefaultLayoutQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 }
