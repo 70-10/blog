@@ -32,7 +32,7 @@
     "gatsby-plugin-react-helmet": "5.14.0",
     "gatsby-plugin-sharp": "4.14.1",
     "gatsby-plugin-twitter": "4.14.0",
-    "gatsby-plugin-typegen": "2.2.4",
+    "gatsby-plugin-typegen": "3.0.0",
     "gatsby-plugin-typescript": "4.14.0",
     "gatsby-remark-autolink-headers": "5.14.0",
     "gatsby-remark-embed-spotify": "github:70-10/gatsby-remark-embed-spotify",
