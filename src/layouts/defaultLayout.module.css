@@ -1,10 +1,11 @@
 .grid_content {
-  @apply grid grid-cols-12 gap-y-6;
+  @apply grid grid-cols-10 gap-y-6;
 }
 
 .col_center {
-  @apply col-start-2 col-end-12;
-  @apply md:col-start-3 md:col-end-11;
+  @apply col-start-2 col-span-8;
+  @apply md:col-start-3 md:col-span-6;
+  @apply lg:col-start-4 lg:col-span-4;
 }
 
 .footer {
