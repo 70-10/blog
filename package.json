@@ -45,7 +45,7 @@
     "lodash.countby": "4.6.0",
     "moment": "2.29.4",
     "moment-range": "4.0.2",
-    "postcss": "8.4.14",
+    "postcss": "8.4.16",
     "prismjs": "1.28.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
