@@ -75,7 +75,7 @@ const Tags = ({ edges }) => {
 
 export const query = graphql`
   query Dashboard {
-    allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
+    allContentfulArticle(sort: { publishDate: DESC }) {
       edges {
         node {
           id

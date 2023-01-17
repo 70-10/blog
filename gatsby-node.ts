@@ -4,7 +4,7 @@ import moment from "moment";
 export const createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
     {
-      allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
+      allContentfulArticle(sort: { publishDate: DESC }) {
         edges {
           node {
             title

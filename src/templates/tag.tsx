@@ -39,7 +39,7 @@ export default Tag;
 
 export const query = graphql`
   query Tag {
-    allContentfulArticle(sort: { fields: publishDate, order: DESC }) {
+    allContentfulArticle(sort: { publishDate: DESC }) {
       edges {
         node {
           title
