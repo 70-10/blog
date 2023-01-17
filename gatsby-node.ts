@@ -1,5 +1,5 @@
+import { cdate } from "cdate";
 import path from "path";
-import moment from "moment";
 
 export const createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
@@ -20,7 +20,7 @@ export const createPages = async ({ graphql, actions: { createPage } }) => {
   const articles = result.data.allContentfulArticle.edges;
   articles.forEach(({ node }) => {
     createPage({
-      path: `/${moment(node.publishDate).format("YYYY/MM/DD")}/${node.slug}/`,
+      path: `/${cdate(node.publishDate).format("YYYY/MM/DD")}/${node.slug}/`,
       component: path.resolve("./src/templates/article.tsx"),
       context: {
         slug: node.slug,
