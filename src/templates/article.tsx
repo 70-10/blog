@@ -1,12 +1,12 @@
+import { cdate } from "cdate";
 import { graphql } from "gatsby";
-import React, { FC } from "react";
+import React from "react";
 import Helmet from "react-helmet";
-import * as styles from "./article.module.css";
 import ArticleMarkdown from "../components/article-markdown";
 import ShareButtons from "../components/share-buttons";
 import Tags from "../components/tags";
 import Layout from "../layouts/defaultLayout";
-import moment from "../moment";
+import * as styles from "./article.module.css";
 
 type Props = {
   data: GatsbyTypes.ArticleQuery;
@@ -15,7 +15,7 @@ type Props = {
   };
 };
 
-const Article: FC<Props> = ({ data, location }) => {
+const Article: React.FC<Props> = ({ data, location }) => {
   const { title, tags, body, publishDate, updatedAt } = data.contentfulArticle;
 
   return (
@@ -39,10 +39,10 @@ const Article: FC<Props> = ({ data, location }) => {
           <h1 className={styles.title}>{title}</h1>
           <div className={styles.head}>
             <p className={styles.head_text}>
-              記事作成日時： {moment(publishDate).format("YYYY/MM/DD HH:mm")}
+              記事作成日時： {cdate(publishDate).format("YYYY/MM/DD HH:mm")}
             </p>
             <p className={styles.head_text}>
-              最終更新日時： {moment(updatedAt).format("YYYY/MM/DD HH:mm")}
+              最終更新日時： {cdate(updatedAt).format("YYYY/MM/DD HH:mm")}
             </p>
             <div> {tags ? <Tags tags={tags} /> : null}</div>
           </div>
