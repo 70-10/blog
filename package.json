@@ -20,7 +20,7 @@
     "lint:prettier": "prettier . --check"
   },
   "dependencies": {
-    "autoprefixer": "10.4.8",
+    "autoprefixer": "10.4.13",
     "gatsby": "4.24.8",
     "gatsby-image": "3.11.0",
     "gatsby-plugin-catch-links": "4.24.0",
