@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import moment from "../moment";
 import * as styles from "./level.module.css";
+import moment from "../moment";
 
 type Props = {
   articles: {

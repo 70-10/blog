@@ -1,9 +1,9 @@
 import { graphql, StaticQuery } from "gatsby";
 import React, { FC } from "react";
 import { Helmet } from "react-helmet";
+import * as styles from "./defaultLayout.module.css";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import * as styles from "./defaultLayout.module.css";
 
 type Props = {
   data: GatsbyTypes.DefaultLayoutQuery;

@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React, { FC } from "react";
-import { display } from "../tag-helper";
 import * as styles from "./tags.module.css";
+import { display } from "../tag-helper";
 
 type Props = {
   tags: string[];

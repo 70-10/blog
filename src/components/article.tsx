@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React, { FC } from "react";
-import moment from "../moment";
 import * as styles from "./article.module.css";
+import moment from "../moment";
 
 type Props = {
   node: Pick<GatsbyTypes.ContentfulArticle, "title" | "slug" | "publishDate">;
