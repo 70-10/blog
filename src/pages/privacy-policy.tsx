@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import Layout from "../layouts/defaultLayout";
 import * as styles from "./privacy-policy.module.css";
+import Layout from "../layouts/defaultLayout";
 
 const PrivacyPolicyPage: FC = () => {
   return (

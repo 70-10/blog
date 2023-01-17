@@ -1,10 +1,10 @@
 import { graphql, Link } from "gatsby";
 import countBy from "lodash.countby";
 import React, { FC } from "react";
+import * as styles from "./dashboard.module.css";
 import Level from "../components/level";
 import Layout from "../layouts/defaultLayout";
 import { display } from "../tag-helper";
-import * as styles from "./dashboard.module.css";
 
 type Props = {
   data: GatsbyTypes.DashboardQuery;

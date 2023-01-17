@@ -1,9 +1,9 @@
 import { graphql } from "gatsby";
 import React, { FC } from "react";
+import * as styles from "./article-list.module.css";
 import Article from "../components/article";
 import Pagination from "../components/pagination";
 import Layout from "../layouts/defaultLayout";
-import * as styles from "./article-list.module.css";
 
 type Context = {
   limit: number;

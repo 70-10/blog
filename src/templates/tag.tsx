@@ -1,9 +1,9 @@
 import { graphql } from "gatsby";
 import React, { FC } from "react";
+import * as styles from "./tag.module.css";
 import Article from "../components/article";
 import Layout from "../layouts/defaultLayout";
 import { display } from "../tag-helper";
-import * as styles from "./tag.module.css";
 
 type Props = {
   data: GatsbyTypes.TagQuery;

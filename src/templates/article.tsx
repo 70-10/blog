@@ -1,12 +1,12 @@
 import { graphql } from "gatsby";
 import React, { FC } from "react";
 import Helmet from "react-helmet";
+import * as styles from "./article.module.css";
 import ArticleMarkdown from "../components/article-markdown";
 import ShareButtons from "../components/share-buttons";
 import Tags from "../components/tags";
 import Layout from "../layouts/defaultLayout";
 import moment from "../moment";
-import * as styles from "./article.module.css";
 
 type Props = {
   data: GatsbyTypes.ArticleQuery;
