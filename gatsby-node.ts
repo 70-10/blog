@@ -1,5 +1,5 @@
-import moment from "moment";
 import path from "path";
+import moment from "moment";
 
 export const createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
