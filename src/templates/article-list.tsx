@@ -41,8 +41,8 @@ export default ArticleList;
 export const query = graphql`
   query ArticleList($skip: Int!, $limit: Int!) {
     allContentfulArticle(
-      sort: { fields: publishDate, order: DESC }
-      limit: $limit
+      sort: { publishDate: DESC },
+      limit: $limit,
       skip: $skip
     ) {
       edges {

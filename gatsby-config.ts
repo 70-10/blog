@@ -96,12 +96,12 @@ const config: GatsbyConfig = {
             },
             query: `
               {
-                articles: allContentfulArticle(limit: 1000, sort: {fields: publishDate, order: DESC}) {
+                articles: allContentfulArticle(limit: 1000, sort: { publishDate: DESC }) {
                   edges {
                     node {
                       title
                       slug
-                      childContentfulArticleBodyTextNode{
+                      childContentfulArticleBodyTextNode {
                         childMarkdownRemark {
                           html
                           excerpt
