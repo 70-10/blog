@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import "../styles/markdown-body.css";
 
 export interface Props {
   title: string;
@@ -20,9 +21,27 @@ const { title } = Astro.props;
   </head>
   <body>
     <Header />
-
-    <slot />
+    <main class="base">
+      <section class="content">
+        <article class="markdown-body">
+          <slot />
+        </article>
+      </section>
+    </main>
 
     <Footer />
   </body>
 </html>
+
+<style>
+  .base {
+    @apply grid grid-cols-10 gap-y-6;
+    @apply mt-5;
+  }
+
+  .content {
+    @apply col-start-2 col-span-8;
+    @apply md:col-start-3 md:col-span-6;
+    @apply lg:col-start-4 lg:col-span-4;
+  }
+</style>

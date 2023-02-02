@@ -1,0 +1,52 @@
+---
+import { cdate } from "cdate";
+import path from "path";
+import Layout from "../../../../layouts/Layout.astro";
+import "../../../../styles/markdown-body.css";
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob("../../../../posts/**/*.md");
+
+  return posts.map((post) => {
+    const publishDate = cdate(post.frontmatter.publishDate);
+    return {
+      params: {
+        year: publishDate.format("YYYY"),
+        month: publishDate.format("MM"),
+        day: publishDate.format("DD"),
+        slug: path.basename(post.file, ".md"),
+      },
+      props: {
+        title: post.frontmatter.title,
+        content: post.compiledContent(),
+        publishAt: publishDate.format("YYYY/MM/DD"),
+      },
+    };
+  });
+}
+
+const { title, content, publishAt } = Astro.props;
+---
+
+<Layout title={title}>
+  <main class="base">
+    <section class="content">
+      <h1 class="text-4xl font-extrabold">{title}</h1>
+      <time class="text-lg">{publishAt}</time>
+      <article class="markdown-body" set:html={content} />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .base {
+    @apply grid grid-cols-10 gap-y-6;
+    @apply mt-5;
+  }
+
+  .content {
+    @apply col-start-2 col-span-8;
+    @apply md:col-start-3 md:col-span-6;
+    @apply lg:col-start-4 lg:col-span-4;
+  }
+</style>

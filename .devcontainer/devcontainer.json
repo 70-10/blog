@@ -9,6 +9,11 @@
       "astro": "html"
     }
   },
-  "extensions": ["astro-build.astro-vscode", "esbenp.prettier-vscode"],
+  "extensions": [
+    "astro-build.astro-vscode",
+    "esbenp.prettier-vscode",
+    "bierner.markdown-preview-github-styles",
+    "yzhang.markdown-all-in-one"
+  ],
   "remoteUser": "node"
 }
