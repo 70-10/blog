@@ -9,6 +9,7 @@ export async function getStaticPaths() {
 
   return posts.map((post) => {
     const publishDate = cdate(post.frontmatter.publishDate);
+
     return {
       params: {
         year: publishDate.format("YYYY"),
@@ -33,8 +34,11 @@ const { title, content, publishAt } = Astro.props;
     <section class="content">
       <h1 class="text-4xl font-extrabold">{title}</h1>
       <time class="text-lg">{publishAt}</time>
-      <article class="markdown-body" set:html={content} />
     </section>
+
+    <seciton class="content">
+      <article class="markdown-body" set:html={content} />
+    </seciton>
   </main>
 </Layout>
 
