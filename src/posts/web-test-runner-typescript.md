@@ -29,7 +29,7 @@ function some(a, b) {
 
 次に、sum関数をテストする`sum.test.js`を作成します。
 
-```js:title=tests/sum.test.js
+```js:tests/sum.test.js
 import { expect } from "@esm-bundle/chai";
 import { sum } from "../src/sum";
 
@@ -45,7 +45,7 @@ it("sums up 2 numbers", () => {
 
 テストを実行するために、package.jsonのscriptsに`test`を定義します。
 
-```json:title=package.json
+```json:package.json
 {
   .
   .
@@ -80,7 +80,7 @@ package.jsonの`test`でテスト対象ファイル等を指定していまし�
 
 ## 4-1. web-test-runner.config.jsを作成する
 
-```js:title=web-test-runner.config.js
+```js:web-test-runner.config.js
 module.exports = {
   files: "./tests/**/*.test.ts",
   nodeResolve: true,
@@ -92,7 +92,7 @@ module.exports = {
 
 package.jsonの`test`を`web-test-runner`のみにします。
 
-```json:title=package.json
+```json:package.json
 {
   .
   .
@@ -139,7 +139,7 @@ npm install -D @web/dev-server-esbuild
 
 ### 5-2-3. web-test-runner.config.jsにpluginsを追加する
 
-```js:title=web-test-runner.config.js
+```js:web-test-runner.config.js
 const { esbuildPlugin } = require("@web/dev-server-esbuild");
 
 module.exports = {

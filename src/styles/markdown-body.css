@@ -1020,3 +1020,22 @@ ul ul ul ul {
 .markdown-body ::-webkit-calendar-picker-indicator {
   filter: invert(50%);
 }
+
+.remark-code-title {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  top: 4px;
+  display: inline-block;
+  padding: 3px 10px;
+  padding-bottom: 7px;
+  background-color: #272822;
+  color: #fff;
+  font-size: 85%;
+  line-height: 1.5;
+  margin-bottom: -5px;
+}
