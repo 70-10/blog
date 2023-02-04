@@ -6,7 +6,7 @@ tags: ["Docker", "Python"]
 
 ローカル環境を汚したくない人のための、MeCab、Word2VecをDocker環境で実行するためのDockerfileまとめ
 
-```dockerfile
+```docker
 FROM python:3-alpine
 
 ENV LANG ja_JP.UTF-8

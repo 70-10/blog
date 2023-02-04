@@ -14,9 +14,7 @@ serverless-offlineとserverless-webpackを使用しているプロジェクト�
 serverless-webpackでビルドした状態で、serverless offlineを実行しても`NODE_ENV`が正しく設定できませんでした。  
 serverless.ymlで以下のように`NODE_ENV=DEV`を指定しているにもかかわらず、 `NODE_ENV=Development`と設定されてしまいました。
 
-## serverless.yml
-
-```yaml
+```yaml:serverless.yml
 .
 .
 .
@@ -49,7 +47,7 @@ Lambdaファンクション実行時は`NODE_ENV=DEV`となりますが、ビル
 ビルド時にNODE_ENVの値を設定することで解決できました。  
 webpack.config.jsでEnvironmentPluginで設定が可能です。
 
-```js
+```js:webpack.config.js
 const webpack = require("webpack");
 module.exports = {
   .

@@ -140,7 +140,7 @@ npm test
 
 正しくテストが通ると以下のように結果が出力されます。
 
-```console
+```
  ✓ hello-world.test.ts (1)
 
 Test Files  1 passed (1)

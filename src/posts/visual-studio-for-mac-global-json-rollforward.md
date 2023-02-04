@@ -16,7 +16,7 @@ tags: [".NET Core", "Visual Studio"]
 
 `3.1.*`を実現するためには以下のように設定する。
 
-```json
+```json:global.json
 {
   "sdk": {
     "version": "3.1.102",
