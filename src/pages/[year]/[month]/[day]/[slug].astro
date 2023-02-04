@@ -1,11 +1,15 @@
 ---
 import { cdate } from "cdate";
 import path from "path";
+import CalendarIcon from "../../../../components/CalendarIcon.astro";
 import Layout from "../../../../layouts/Layout.astro";
+import type { Frontmatter } from "../../../../models/frontmatter";
 import "../../../../styles/markdown-body.css";
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob("../../../../posts/**/*.md");
+  const posts = (
+    await Astro.glob<Frontmatter>("../../../../posts/**/*.md")
+  ).filter((post) => !post.frontmatter.draft);
 
   return posts.map((post) => {
     const publishDate = cdate(post.frontmatter.publishDate);
@@ -21,19 +25,37 @@ export async function getStaticPaths() {
         title: post.frontmatter.title,
         content: post.compiledContent(),
         publishAt: publishDate.format("YYYY/MM/DD"),
+        tags: post.frontmatter.tags,
       },
     };
   });
 }
 
-const { title, content, publishAt } = Astro.props;
+const { title, content, publishAt, tags } = Astro.props;
 ---
 
 <Layout title={title}>
   <main class="base">
     <section class="content">
-      <h1 class="text-4xl font-extrabold">{title}</h1>
-      <time class="text-lg">{publishAt}</time>
+      <div class="flex items-center">
+        <div class="min-w-0 flex-1">
+          <h1 class="title">{title}</h1>
+          <div class="subtitle-section">
+            <div class="publish-at">
+              <CalendarIcon />
+              <time>{publishAt}</time>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tags">
+        {
+          tags &&
+            tags.map((tag) => (
+              <a href={`/tags/${encodeURI(tag)}`} class="tag">{`#${tag}`}</a>
+            ))
+        }
+      </div>
     </section>
 
     <seciton class="content">
@@ -44,13 +66,40 @@ const { title, content, publishAt } = Astro.props;
 
 <style>
   .base {
-    @apply grid grid-cols-10 gap-y-6;
+    @apply grid grid-cols-10 gap-y-10;
     @apply mt-5;
   }
 
   .content {
     @apply col-start-2 col-span-8;
     @apply md:col-start-3 md:col-span-6;
-    @apply lg:col-start-4 lg:col-span-4;
+  }
+
+  .title {
+    @apply text-4xl font-extrabold leading-tight;
+  }
+
+  .subtitle-section {
+    @apply mt-1;
+    @apply flex flex-col;
+  }
+
+  .publish-at {
+    @apply mt-2;
+    @apply flex items-center;
+    @apply text-sm text-gray-500;
+  }
+
+  .tags {
+    @apply mt-2;
+  }
+
+  .tag {
+    @apply inline-block;
+    @apply border rounded-xl border-blue-500 bg-blue-500;
+    @apply text-white text-sm;
+    @apply m-1;
+    @apply px-2.5 py-0.5;
+    @apply hover:border-blue-400 hover:bg-blue-400;
   }
 </style>

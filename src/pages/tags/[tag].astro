@@ -1,21 +1,48 @@
 ---
 import { cdate } from "cdate";
 import path from "path";
-import Layout from "../layouts/Layout.astro";
-import type { Frontmatter } from "../models/frontmatter";
+import Layout from "../../layouts/Layout.astro";
+import type { Frontmatter } from "../../models/frontmatter";
 
-const posts = (await Astro.glob<Frontmatter>("../posts/**/*.md")).filter(
-  (post) => !post.frontmatter.draft
-);
-const tags = Array.from(
-  new Set(posts.map((post) => post.frontmatter.tags).flat())
-).sort();
+export async function getStaticPaths() {
+  const posts = (await Astro.glob<Frontmatter>("../../posts/**/*.md")).filter(
+    (post) => !post.frontmatter.draft
+  );
+  const tags = Array.from(
+    new Set(
+      posts
+        .filter(
+          ({ frontmatter }) => frontmatter.tags && frontmatter.tags.length > 0
+        )
+        .map((post) => post.frontmatter.tags)
+        .flat()
+    )
+  );
+
+  return tags.map((tag) => {
+    return {
+      params: {
+        tag,
+      },
+      props: {
+        tag,
+        posts: posts.filter(
+          ({ frontmatter }) =>
+            frontmatter.tags && frontmatter.tags.includes(tag)
+        ),
+      },
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
 ---
 
-<Layout title="Blog">
+<Layout title={`Tag: ${tag}`}>
   <main class="base">
     <section class="content">
-      <ul>
+      <h1 class="text-xl font-bold">{tag}</h1>
+      <ul class="mt-3">
         {
           posts
             .sort((a, b) => {
@@ -42,33 +69,19 @@ const tags = Array.from(
         }
       </ul>
     </section>
-
-    <section class="content">
-      <h1 class="text-xl mb-3 font-bold">Tags</h1>
-      <div>
-        {
-          tags
-            .filter((tag) => !!tag)
-            .map((tag) => (
-              <a href={`/tags/${encodeURI(tag)}`} class="tag">
-                {tag}
-              </a>
-            ))
-        }
-      </div>
-    </section>
   </main>
 </Layout>
 
 <style>
   .base {
-    @apply grid grid-cols-10 gap-y-6;
+    @apply grid grid-cols-10 gap-y-10;
     @apply mt-5;
   }
 
   .content {
     @apply col-start-2 col-span-8;
     @apply md:col-start-3 md:col-span-6;
+    /* @apply lg:col-start-4 lg:col-span-4; */
   }
 
   .link {
@@ -77,14 +90,5 @@ const tags = Array.from(
 
   .list {
     @apply my-1;
-  }
-
-  .tag {
-    @apply inline-block;
-    @apply border rounded-xl border-blue-500 bg-blue-500;
-    @apply text-white text-sm;
-    @apply m-1;
-    @apply px-2.5 py-0.5;
-    @apply hover:border-blue-400 hover:bg-blue-400;
   }
 </style>

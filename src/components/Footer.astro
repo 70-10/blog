@@ -1,18 +1,25 @@
 <footer class="base">
   <section class="content">
-    <a href="/privacy-policy">プライバシーポリシー</a>
+    <div class="flex flex-col gap-y-2 items-center justify-between">
+      <a href="/privacy-policy" class="link">プライバシーポリシー</a>
+      <a href="https://github.com/70-10/blog" class="link">GitHub</a>
+    </div>
   </section>
 </footer>
 
 <style>
   .base {
+    @apply bg-gray-100;
     @apply grid grid-cols-10 gap-y-6;
-    @apply mt-5;
+    @apply mt-5 py-3;
   }
 
   .content {
     @apply col-start-2 col-span-8;
     @apply md:col-start-3 md:col-span-6;
-    @apply lg:col-start-4 lg:col-span-4;
+  }
+
+  .link {
+    @apply text-blue-600 hover:text-gray-700;
   }
 </style>
