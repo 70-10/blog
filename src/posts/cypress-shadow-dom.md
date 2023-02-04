@@ -1,7 +1,7 @@
 ---
 title: CypressでShadow DOMにアクセスする
 publishDate: 2023-01-25T12:06+09:00
-tags: ["Test", "E2E", "Cypress", "Web Components"]
+tags: ["Test", "E2E", "Web Components"]
 ---
 
 # Cypressで入れ子のWeb Componentsをテストしたい

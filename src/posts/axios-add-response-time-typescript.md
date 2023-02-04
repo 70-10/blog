@@ -1,7 +1,7 @@
 ---
 title: axiosでレスポンスタイムを計測する （TypeScript編）
 publishDate: 2019-11-29T20:00+09:00
-tags: ["TypeScript", "axios"]
+tags: ["TypeScript", "Web Frontend"]
 ---
 
 # はじめに
@@ -12,8 +12,7 @@ axiosで、リクエストからレスポンスまでの時間を計測する必
 # `AxiosInstance.interceptors`でレスポンスタイムを追加する
 [この記事](https://note.mu/masio/n/n003cb3aca3fa)に書かれているように、axiosインスタンスにある`interceptors`でレスポンスタイムを追加します。
 
-```js
-// axios.js
+```js:axios.js
 import axios from 'axios'
 const instance = axios.create()
 

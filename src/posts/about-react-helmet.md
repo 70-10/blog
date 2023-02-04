@@ -1,7 +1,7 @@
 ---
 title: react-helmetについて
 publishDate: 2019-03-06T19:00+09:00
-tags: ["React", "react-helmet"]
+tags: ["React", "Web Frontend"]
 ---
 
 # はじめに

@@ -1,7 +1,7 @@
 ---
 title: Jestを導入するためのワンライナーコマンド
 publishDate: 2022-03-25T14:30+09:00
-tags: ["Node.js", "Jest"]
+tags: ["Node.js", "Test"]
 ---
 
 Jestを触りたいときに、すぐに環境を用意するためのワンライナーコマンド。  

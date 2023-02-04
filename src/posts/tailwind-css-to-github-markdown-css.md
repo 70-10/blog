@@ -1,7 +1,7 @@
 ---
 title: tailwindcss-typographyからgithub-markdown-cssに乗り換えた
 publishDate: 2022-03-24T12:29+09:00
-tags: ["CSS", "Tailwind CSS"]
+tags: ["CSS"]
 ---
 
 以前TailwindCSSに乗り換えたタイミングで、tailwindcss-typogphyを採用した。  

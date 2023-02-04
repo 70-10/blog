@@ -1,7 +1,7 @@
 ---
 title: Serverless Frameworkでリソースポリシーを使ってホワイトリスト・ブラックリストを設定する
 publishDate: 2018-09-04T10:00+09:00
-tags: ["AWS", "Serverless Framework", "API Gateway"]
+tags: ["AWS", "Serverless Framework"]
 ---
 
 # はじめに

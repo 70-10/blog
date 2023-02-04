@@ -1,7 +1,7 @@
 ---
 title: Web Test RunnerでTypeScriptコードをテストする
 publishDate: 2022-03-16T10:18+09:00
-tags: ["web-test-runner"]
+tags: ["Test"]
 ---
 
 # この記事のゴール

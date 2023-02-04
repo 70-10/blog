@@ -1,7 +1,7 @@
 ---
 title: Netlify Forms 実装パターンまとめ
 publishDate: 2018-12-28T23:30+09:00
-tags: ["Netlify"]
+tags: ["Netlify", "Web Frontend"]
 ---
 
 # はじめに

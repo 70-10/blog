@@ -1,7 +1,7 @@
 ---
 title: QRコードジェネレーターを作った
 publishDate: 2019-12-12T22:20+09:00
-tags: ["React", "GatsbyJS"]
+tags: ["Web Frontend", "React", "GatsbyJS"]
 ---
 
 フロントエンドでQRコードを生成する処理が業務で必要だったので、調査がてらQRコードジェネレーターを作成しました。

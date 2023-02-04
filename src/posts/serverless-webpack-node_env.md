@@ -1,7 +1,7 @@
 ---
 title: serverless-webpackでNODE_ENVを設定する
 publishDate: 2019-06-20T22:16+09:00
-tags: ["Serverless Framework", "serverless-webpack"]
+tags: ["Serverless Framework"]
 ---
 
 # はじめに

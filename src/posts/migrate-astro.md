@@ -2,6 +2,7 @@
 title: "GatsbyからAstroに移行する"
 draft: true
 publishDate: 2023/02/02
+tags: ["Web Frontend"]
 ---
 
 # きっかけ

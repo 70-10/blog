@@ -1,7 +1,7 @@
 ---
 title: Kinesisストリームからのイベントを処理するLambdaをローカルで実行する
 publishDate: 2018-03-16T22:30+09:00
-tags: ["Serverless", "AWS", "Kinesis", "Lambda"]
+tags: ["AWS"]
 ---
 
 # はじめに
@@ -12,9 +12,7 @@ Kinesis ストリームからイベントを処理する Lambda 関数をロー�
 
 ## ローカルで実行するファンクションを用意する
 
-**handler.js**
-
-```javascript
+```javascript:handler.js
 module.exports.putRecord = (event, context, callback) => {
   const { Records } = event;
 
@@ -33,9 +31,7 @@ Kinesis ストリームから取得したレコードを返すだけのもので
 [kinesalite](https://github.com/mhart/kinesalite)というモジュールを使って、ローカル環境に Kinesis を立てます。  
 kinesalite 実行後にストリームの作成も行います。
 
-**run-local.js**
-
-```javascript
+```javascript:run-local.js
 const kinesalite = require("kinesalite");
 const AWS = require("aws-sdk");
 const { putRecord } = require("./handler");
@@ -74,8 +70,6 @@ main().catch(console.error);
 [@rabblerouser/local-kinesis-lambda-runner](https://github.com/rabblerouser/local-kinesis-lambda-runner)を使います。  
 このモジュールに、実行する Lambda ファンクションを引数に渡して実行するだけでローカル実行ができます。
 
-**サンプル**
-
 ```javascript
 const run = require('@rabblerouser/local-kinesis-lambda-runner');
 const lambda = require('./index').handler;
@@ -87,9 +81,7 @@ run(lambda);
 
 ### run-local.js に local-kinesis-lambda-runner を組み込む
 
-**run-local.js**
-
-```javascript
+```javascript:run-local.js
 const PORT = 4567;
 process.env.KINESIS_ENDPOINT = `http://localhost:${PORT}/`;
 process.env.STREAM_NAME = "sample-stream";
@@ -139,8 +131,6 @@ Kinesalite start http://localhost:4567/
 Found sample-stream!
 Polling kinesis for events...
 ```
-
-**ローカル Kinesis にレコードを PUT するスクリプト**
 
 ```javascript
 const AWS = require("aws-sdk");

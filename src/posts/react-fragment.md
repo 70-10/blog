@@ -1,7 +1,7 @@
 ---
 title: React.FragmentでDOMの構成を正しく保つ
 publishDate: 2019-04-19T14:14+09:00
-tags: ["React"]
+tags: ["Web Frontend", "React"]
 ---
 
 # 課題: 正しいDOM構成のままコンポーネントを分離したい

@@ -1,7 +1,7 @@
 ---
 title: LitのコンポーネントテストはVitestで決まりかもしれない
 publishDate: 2022-07-15T11:00+09:00
-tags: ["Test", "Vitest", "Web Frontend", "Web Components", "Lit"]
+tags: ["Test", "Web Frontend", "Web Components", "Lit"]
 ---
 
 # 結論：コンポーネントテストはVitestが最適解（かもしれない）

@@ -1,7 +1,7 @@
 ---
 title: iOS端末にプッシュ配信するCLIツールを作った
 publishDate: 2017-09-03T23:44+09:00
-tags: ["iOS", "Go", "Notification"]
+tags: ["iOS", "Go"]
 ---
 
 [pusher](https://github.com/70-10/pusher)というiOS端末にプッシュ配信を行うツールを作りました。  

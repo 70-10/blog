@@ -1,7 +1,6 @@
 ---
 title: Hello World.
 publishDate: 2017-05-20T15:04+09:00
-tags: ["undefined"]
 ---
 
 ブログを始めてみました。  

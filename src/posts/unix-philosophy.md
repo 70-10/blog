@@ -1,7 +1,7 @@
 ---
 title: 「UNIXという考え方」を読んだ
 publishDate: 2017-01-29T18:19+09:00
-tags: ["読書", "Unix"]
+tags: ["読書"]
 ---
 
 [UNIX という考え方―その設計思想と哲学](https://www.amazon.co.jp/UNIX%E3%81%A8%E3%81%84%E3%81%86%E8%80%83%E3%81%88%E6%96%B9%E2%80%95%E3%81%9D%E3%81%AE%E8%A8%AD%E8%A8%88%E6%80%9D%E6%83%B3%E3%81%A8%E5%93%B2%E5%AD%A6-Mike-Gancarz/dp/4274064069)を読みました。  

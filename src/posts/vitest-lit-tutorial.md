@@ -1,7 +1,7 @@
 ---
 title: VitestでLitコンポーネントをテストするためのチュートリアル
 publishDate: 2022-08-02T12:45+09:00
-tags: ["Vitest", "Lit", "Test"]
+tags: ["Web Frontend", "Lit", "Test"]
 ---
 
 VitestでLitのコンポーネントをテストするまでのチュートリアルです。
