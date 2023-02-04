@@ -14,7 +14,8 @@
     "build": "astro build",
     "dev": "astro dev",
     "preview": "astro preview",
-    "start": "astro dev"
+    "start": "astro dev",
+    "lint": "echo 'do it later'"
   },
   "dependencies": {
     "@astrojs/tailwind": "^3.0.1",
