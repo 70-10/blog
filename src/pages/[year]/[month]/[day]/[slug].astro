@@ -2,6 +2,7 @@
 import { cdate } from "cdate";
 import path from "path";
 import CalendarIcon from "../../../../components/CalendarIcon.astro";
+import Tag from "../../../../components/Tag.astro";
 import Layout from "../../../../layouts/Layout.astro";
 import type { Frontmatter } from "../../../../models/frontmatter";
 import "../../../../styles/markdown-body.css";
@@ -49,12 +50,7 @@ const { title, content, publishAt, tags } = Astro.props;
         </div>
       </div>
       <div class="tags">
-        {
-          tags &&
-            tags.map((tag) => (
-              <a href={`/tags/${encodeURI(tag)}`} class="tag">{`#${tag}`}</a>
-            ))
-        }
+        {tags && tags.map((tag) => <Tag name={tag} />)}
       </div>
     </section>
 
@@ -92,14 +88,5 @@ const { title, content, publishAt, tags } = Astro.props;
 
   .tags {
     @apply mt-2;
-  }
-
-  .tag {
-    @apply inline-block;
-    @apply border rounded-xl border-blue-500 bg-blue-500;
-    @apply text-white text-sm;
-    @apply m-1;
-    @apply px-2.5 py-0.5;
-    @apply hover:border-blue-400 hover:bg-blue-400;
   }
 </style>

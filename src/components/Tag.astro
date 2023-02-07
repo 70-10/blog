@@ -1,0 +1,16 @@
+---
+const { name } = Astro.props;
+---
+
+<a href={`/tags/${encodeURI(name)}`} class="tag">#{name}</a>
+
+<style>
+  .tag {
+    @apply inline-block;
+    @apply border rounded-xl border-blue-500 bg-blue-500;
+    @apply text-white text-sm;
+    @apply m-1;
+    @apply px-2.5 py-0.5;
+    @apply hover:border-blue-400 hover:bg-blue-400;
+  }
+</style>
