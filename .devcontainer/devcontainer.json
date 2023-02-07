@@ -4,16 +4,20 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "settings": {
-    "emmet.includeLanguages": {
-      "astro": "html"
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "emmet.includeLanguages": {
+          "astro": "html"
+        }
+      },
+      "extensions": [
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode",
+        "bierner.markdown-preview-github-styles",
+        "yzhang.markdown-all-in-one"
+      ]
     }
   },
-  "extensions": [
-    "astro-build.astro-vscode",
-    "esbenp.prettier-vscode",
-    "bierner.markdown-preview-github-styles",
-    "yzhang.markdown-all-in-one"
-  ],
   "remoteUser": "node"
 }
