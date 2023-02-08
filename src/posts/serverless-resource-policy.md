@@ -12,7 +12,7 @@ Serverless Frameworkのv1.28.0から[API Gatewayのリソースポリシーを�
 APIエンドポイント全体に対して設定したり、特定のエンドポイントのみといった細かな設定ができます。IPは範囲指定などが設定できます。
 
 
-今回はそのリソースポリシーを使ってホワイトリストとブラックリストそれぞれの設定を行います。行う設定は以下の3パターンです。
+今回はそのリソースポリシーを使ってホワイトリストとブラックリストそれぞれを設定します。行う設定は以下の3パターンです。
 
 1. ホワイトリストを設定する
 2. ブラックリストを設定する
@@ -20,7 +20,7 @@ APIエンドポイント全体に対して設定したり、特定のエンド�
 
 ## 準備：APIエンドポイントを用意する
 
-リソースポリシーの設定を行うエンドポイント、 `GET /hello` と `GET /world` を用意します。
+リソースポリシーの設定するエンドポイント、 `GET /hello` と `GET /world` を用意します。
 
 **serverless.yml**
 
@@ -95,7 +95,7 @@ provider:
 ```
 
 この例の場合では `123.123.123.123` がホワイトリストに追加されます。  
-`Resource` に `execute-api:/{stage}/{method}/{path}` という形式でエンドポイントを設定できます。すべての stage, method, path に対して設定を行う場合は `execute-api:/*/*/*` と設定します。
+`Resource` に `execute-api:/{stage}/{method}/{path}` という形式でエンドポイントを設定できます。すべての stage, method, path に対して設定する場合は `execute-api:/*/*/*` と設定します。
 
 ## 検証1: `123.123.123.123` からアクセスする
 
@@ -218,7 +218,8 @@ https://github.com/70-10/sandbox/tree/master/node/serverless/resource-policy
 # おわりに
 
 リソースポリシーによって、簡単にホワイトリスト・ブラックリストの設定ができました。 Serverless Framework では `serverless.yaml` に数行書くだけで簡単に設定できます。  
-Serverless Framework は内部で CloudFormation を使っているため、新機能がリリースされても CloudFormation が対応しないと利用できないという欠点はありますが、自分でCloudFormationのスタックを書くよりも簡単です。
+Serverless Framework は内部で CloudFormation を使っています。  
+新機能がリリースされても CloudFormation が対応しないと利用できないという欠点はありますが、自分でCloudFormationのスタックを書くよりも簡単です。
 
 また、リクエストするIPが限定されたAPIサービスであれば、APIキーを使うよりも簡単にアクセス制御できます。
 

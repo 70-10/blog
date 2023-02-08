@@ -12,9 +12,9 @@ create-react-appのビルドでは、`package.json`の`homepage`の値を参照�
 # Static Serverでの起動
 
 create-react-appでStatic Serverの起動には`serve`が推奨されています。  
-`serve`はルートパスが必ず`/`になり、カスタムすることができません。  
+`serve`はルートパスが必ず`/`になり、カスタムできません。  
 
-ルートパスをを変更した場合は、`express`などのWebフレームワークを使って、自作する必要があります。  
+ルートパスを変更した場合は、`express`などのWebフレームワークを使って、自作する必要があります。  
 `express`を利用した例は以下のとおりです。
 
 ```js

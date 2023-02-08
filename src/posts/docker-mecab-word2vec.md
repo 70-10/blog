@@ -4,7 +4,7 @@ publishDate: 2020-12-27T12:22+09:00
 tags: ["Docker", "Python"]
 ---
 
-ローカル環境を汚したくない人のための、MeCab、Word2VecをDocker環境で実行するためのDockerfileまとめ
+ローカル環境を汚したくない人のための、MeCab、Word2VecをDocker環境で実行するためのDockerfileまとめ。
 
 ```docker
 FROM python:3-alpine

@@ -11,7 +11,7 @@ tags: ["ふりかえり", "音楽", "読書"]
 - GithubのプライベートリポジトリのGitHub Pagesを公開
   - Proにしないとできなかったので課金した
   - https://codetime.70-10.net (コードをどれだけ書いたか可視化するページ)を作った
-- GitHub ActionsでNetlifyにデプロイできるようにした
+- GitHub ActionsでNetlifyにデプロイするよう変更
   - Netlifyのビルド時間短縮のため
   - GitHub Actionsがテンプレート用意してたりNetlifyもActionを用意してくれているので簡単に導入できた
 - [SpotifyのRecommendation API](https://developer.spotify.com/documentation/web-api/reference/browse/get-recommendations/)で遊んでみた
@@ -37,7 +37,7 @@ tags: ["ふりかえり", "音楽", "読書"]
   - 国語が嫌いだった昔の自分に読ませたい
   - 後半は読み方についての話
 - [僕らはSNSでものを買う](https://www.amazon.co.jp/dp/B07WC7YJBM/)
-  - 言われてみればそういう行動してるなと思う
+  - 言われてみればそういう行動している
   - SNSでファンを作り、ファンに情報を拡散してもらうというマーケティングになってきている
   - Amazonのレビューでは酷評されてるけど、マーケティング初心者な自分からすれば読んでいてタメになった
 
@@ -65,7 +65,7 @@ https://open.spotify.com/playlist/5i1snlI2ci3z0P59PORymI?si=hDROJvxuS4ygjgSKEn4E
   - SKET DANCE見てたからギャグ系かと思ってた
   - 最後に伏線回収していくのが最高
   - アニメを見たからマンガは読まなくていいかなと言う気持ち
-- 光BBユニット(IPv6対応の申し込み）
+- 光BBユニット（IPv6対応の申し込み）
   - 光BBユニット使ったことで劇的に速くなった。平均150Mbps
   - ルーター買い換える前にこっちの対応をすべきだった
 - GitHubに課金した
