@@ -15,7 +15,7 @@
     "dev": "astro dev",
     "preview": "astro preview",
     "start": "astro dev",
-    "lint": "echo 'do it later'"
+    "lint": "textlint src/posts/**/*.md"
   },
   "dependencies": {
     "@astrojs/tailwind": "^3.0.1",
@@ -26,5 +26,9 @@
     "github-markdown-css": "^5.1.0",
     "remark-code-titles": "^0.1.2",
     "tailwindcss": "^3.2.4"
+  },
+  "devDependencies": {
+    "textlint": "^13.2.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0"
   }
 }

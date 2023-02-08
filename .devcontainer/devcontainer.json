@@ -15,7 +15,8 @@
         "astro-build.astro-vscode",
         "esbenp.prettier-vscode",
         "bierner.markdown-preview-github-styles",
-        "yzhang.markdown-all-in-one"
+        "yzhang.markdown-all-in-one",
+        "taichi.vscode-textlint"
       ]
     }
   },
