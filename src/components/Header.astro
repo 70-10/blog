@@ -1,0 +1,26 @@
+<header class="base">
+  <section class="content">
+    <div class="flex items-end justify-between">
+      <a href="/" class="text-2xl font-extrabold">Blog</a>
+      <div class="text-sm">
+        <span>witten by</span>
+        <a href="https://github.com/70-10" class="link">70_10</a>
+      </div>
+    </div>
+  </section>
+</header>
+<style>
+  .base {
+    @apply grid grid-cols-10 gap-y-6;
+    @apply pt-3;
+  }
+
+  .content {
+    @apply col-start-2 col-span-8;
+    @apply md:col-start-3 md:col-span-6;
+  }
+
+  .link {
+    @apply text-blue-600 hover:text-gray-700;
+  }
+</style>

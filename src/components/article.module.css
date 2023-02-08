@@ -1,8 +1,0 @@
-.title {
-  @apply text-green-600 hover:text-gray-700;
-  @apply font-semibold text-lg;
-}
-
-.date {
-  @apply font-medium text-sm;
-}

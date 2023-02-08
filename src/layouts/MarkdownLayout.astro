@@ -1,0 +1,65 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "../components/Footer.astro";
+import GoogleAnalytics4 from "../components/GoogleAnalytics4.astro";
+import Header from "../components/Header.astro";
+import "../styles/markdown-body.css";
+
+const { frontmatter } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <SEO
+      title={frontmatter.title}
+      charset="UTF-8"
+      openGraph={{
+        basic: {
+          title: frontmatter.title,
+          type: "article",
+          image: "",
+        },
+        article: {
+          authors: ["70_10"],
+        },
+      }}
+      twitter={{
+        card: "summary",
+        title: frontmatter.title,
+        creator: "@70_10",
+      }}
+      extend={{
+        link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+        meta: [
+          { name: "viewport", content: "width=device-width" },
+          { name: "generator", content: Astro.generator },
+        ],
+      }}
+    />
+    <GoogleAnalytics4 />
+  </head>
+  <body>
+    <Header />
+    <main class="base">
+      <section class="content">
+        <article class="markdown-body">
+          <slot />
+        </article>
+      </section>
+    </main>
+
+    <Footer />
+    <style>
+      .base {
+        @apply grid grid-cols-10 gap-y-6;
+        @apply mt-5;
+      }
+
+      .content {
+        @apply col-start-2 col-span-8;
+        @apply md:col-start-3 md:col-span-6;
+      }
+    </style>
+  </body>
+</html>

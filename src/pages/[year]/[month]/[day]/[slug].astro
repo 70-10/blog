@@ -1,0 +1,92 @@
+---
+import { cdate } from "cdate";
+import path from "path";
+import CalendarIcon from "../../../../components/CalendarIcon.astro";
+import Tag from "../../../../components/Tag.astro";
+import Layout from "../../../../layouts/Layout.astro";
+import type { Frontmatter } from "../../../../models/frontmatter";
+import "../../../../styles/markdown-body.css";
+
+export async function getStaticPaths() {
+  const posts = (
+    await Astro.glob<Frontmatter>("../../../../posts/**/*.md")
+  ).filter((post) => !post.frontmatter.draft);
+
+  return posts.map((post) => {
+    const publishDate = cdate(post.frontmatter.publishDate);
+
+    return {
+      params: {
+        year: publishDate.format("YYYY"),
+        month: publishDate.format("MM"),
+        day: publishDate.format("DD"),
+        slug: path.basename(post.file, ".md"),
+      },
+      props: {
+        title: post.frontmatter.title,
+        content: post.compiledContent(),
+        publishAt: publishDate.format("YYYY/MM/DD"),
+        tags: post.frontmatter.tags,
+      },
+    };
+  });
+}
+
+const { title, content, publishAt, tags } = Astro.props;
+---
+
+<Layout title={title} seo={{ openGraph: { type: "article" } }}>
+  <main class="base">
+    <section class="content">
+      <div class="flex items-center">
+        <div class="min-w-0 flex-1">
+          <h1 class="title">{title}</h1>
+          <div class="subtitle-section">
+            <div class="publish-at">
+              <CalendarIcon />
+              <time>{publishAt}</time>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tags">
+        {tags && tags.map((tag) => <Tag name={tag} />)}
+      </div>
+    </section>
+
+    <seciton class="content">
+      <article class="markdown-body" set:html={content} />
+    </seciton>
+  </main>
+</Layout>
+
+<style>
+  .base {
+    @apply grid grid-cols-10 gap-y-10;
+    @apply mt-5;
+  }
+
+  .content {
+    @apply col-start-2 col-span-8;
+    @apply md:col-start-3 md:col-span-6;
+  }
+
+  .title {
+    @apply text-4xl font-extrabold leading-tight;
+  }
+
+  .subtitle-section {
+    @apply mt-1;
+    @apply flex flex-col;
+  }
+
+  .publish-at {
+    @apply mt-2;
+    @apply flex items-center;
+    @apply text-sm text-gray-500;
+  }
+
+  .tags {
+    @apply mt-2;
+  }
+</style>

@@ -1,0 +1,21 @@
+---
+const id = "G-GSE7S23LEP";
+const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+---
+
+{
+    process.env.NODE_ENV !== "development" &&  
+    <>
+        <script async src={gtagUrl}></script>
+        <script define:vars={{ id }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", id);
+        </script>
+    </>
+
+}

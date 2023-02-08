@@ -1,0 +1,74 @@
+---
+import { cdate } from "cdate";
+import path from "path";
+import Tag from "../components/Tag.astro";
+import Layout from "../layouts/Layout.astro";
+import type { Frontmatter } from "../models/frontmatter";
+
+const posts = (await Astro.glob<Frontmatter>("../posts/**/*.md")).filter(
+  (post) => !post.frontmatter.draft
+);
+const tags = Array.from(
+  new Set(posts.map((post) => post.frontmatter.tags).flat())
+).sort();
+---
+
+<Layout title="Blog" seo={{ openGraph: { type: "website" } }}>
+  <main class="base">
+    <section class="content">
+      <ul>
+        {
+          posts
+            .sort((a, b) => {
+              return (
+                cdate(b.frontmatter.publishDate).toDate().getTime() -
+                cdate(a.frontmatter.publishDate).toDate().getTime()
+              );
+            })
+            .map((post) => {
+              const { frontmatter } = post;
+              const slug = path.basename(post.file, ".md");
+              const publishAt = cdate(frontmatter.publishDate).format(
+                "YYYY/MM/DD"
+              );
+              return (
+                <li class="list">
+                  {publishAt}:
+                  <a href={`/${publishAt}/${slug}`} class="link">
+                    {frontmatter.title}
+                  </a>
+                </li>
+              );
+            })
+        }
+      </ul>
+    </section>
+
+    <section class="content">
+      <h1 class="text-xl mb-3 font-bold">Tags</h1>
+      <div>
+        {tags.filter((tag) => !!tag).map((tag) => <Tag name={tag} />)}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .base {
+    @apply grid grid-cols-10 gap-y-6;
+    @apply mt-5;
+  }
+
+  .content {
+    @apply col-start-2 col-span-8;
+    @apply md:col-start-3 md:col-span-6;
+  }
+
+  .link {
+    @apply text-blue-600 hover:text-gray-700;
+  }
+
+  .list {
+    @apply my-1;
+  }
+</style>
