@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 const { title, content, publishAt, tags } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout title={title} seo={{ openGraph: { type: "article" } }}>
   <main class="base">
     <section class="content">
       <div class="flex items-center">

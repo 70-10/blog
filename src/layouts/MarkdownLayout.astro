@@ -13,6 +13,16 @@ const { frontmatter } = Astro.props;
     <SEO
       title={frontmatter.title}
       charset="UTF-8"
+      openGraph={{
+        basic: {
+          title: frontmatter.title,
+          type: "article",
+          image: "",
+        },
+        article: {
+          authors: ["70_10"],
+        },
+      }}
       twitter={{
         card: "summary",
         title: frontmatter.title,
