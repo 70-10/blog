@@ -156,5 +156,5 @@ main().catch(console.error);
 
 # おわりに
 
-[kinesalite](https://github.com/mhart/kinesalite) と [local-kinesis-lambda-runner](https://github.com/rabblerouser/local-kinesis-lambda-runner) を利用することで簡単にローカルで実行することができます。  
+[kinesalite](https://github.com/mhart/kinesalite) と [local-kinesis-lambda-runner](https://github.com/rabblerouser/local-kinesis-lambda-runner) を利用することで簡単にローカルで実行できます。  
 ソースは[GitHub](https://github.com/70-10/sandbox/tree/master/node/serverless/kinesis-offline-sample) にも上げています。

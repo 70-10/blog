@@ -4,7 +4,7 @@ publishDate: 2022-07-15T11:00+09:00
 tags: ["Test", "Web Frontend", "Web Components", "Lit"]
 ---
 
-# 結論：コンポーネントテストはVitestが最適解（かもしれない）
+# 結論：コンポーネントテストはVitestが最適解（個人的見解）
 
 [Vitest](https://vitest.dev/)が良い。
 イメージとしてはVite + Jest。テストはJestライクに書けて、コンポーネントテストもできるようになった感じ。
@@ -20,8 +20,8 @@ VitestだとLitのコンポーネントテストがここまで簡単に書け�
 
 最近プロダクトでLitを使っていて、コンポーネントテストをどうやってやるかに悩んでいた。  
 まず、[Litが推している](https://lit.dev/docs/tools/testing/#web-test-runner)、[Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)を試した。  
-試しているうちに、どうにも`@customElement`がうまく処理できないことが判明。  
-[Web Test RunnerのExampleリポジトリ](https://github.com/modernweb-dev/example-projects/blob/master/lit-element-ts-esbuild/my-element.ts)を見ると、わざわざ別ファイルから`window.customElements.define`を呼び出しているので、何かしらの問題を抱えているように見える。  
+試しているうちに、どうにも `@customElement` をうまく処理できないことが判明。  
+[Web Test RunnerのExampleリポジトリ](https://github.com/modernweb-dev/example-projects/blob/master/lit-element-ts-esbuild/my-element.ts)を見ると、わざわざ別ファイルから`window.customElements.define`を呼び出している。何かしらの問題を抱えているように見える。  
 `@customElement`を多様しているプロダクトだったので、これはかなり致命的だった。
 
 次に、[LitのStarter Kitリポジトリのテスト](https://github.com/lit/lit-element-starter-ts/)を参考にしてみた。  

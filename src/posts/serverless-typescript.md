@@ -67,7 +67,7 @@ export const hello: Handler = async (
 
 ## 4. `serverless-offline`を使ってローカルで実行する
 
-`npm run dev`で、`serverless-offline`を使ったローカル実行を行うようにします。`serverless-offline`はローカルで API Gateway + Lambda をエミュレートするプラグインです。  
+`npm run dev`で、`serverless-offline`を使ったローカル実行するようにします。`serverless-offline`はローカルで API Gateway + Lambda をエミュレートするプラグインです。  
 HTTP リクエストをトリガーとしない（API Gateway を利用しない）場合は`serverless-offline`の導入は不要です。`serverless invoke local -f <function>`の実行で十分です。
 
 ```

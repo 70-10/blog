@@ -14,7 +14,7 @@ nullもしくはundefinedだけをチェックしたいときは、OR演算子 (
 
 ## OR演算子 (`||`)との違い
 
-OR演算子は左辺がnull, undefined, 0, NaN, falseのFalsyな値の場合に右辺を返す。
+OR演算子は左辺が`null`/`undefined`/`0`/`NaN`/`false`のFalsyな値の場合に右辺を返す。
 
 ### Null合体演算子とOR演算子の挙動を見てみる
 

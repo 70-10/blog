@@ -12,11 +12,9 @@ Gatsbyのチュートリアルやサンプルコードでたびたび目にす�
 
 headタグの管理をするコンポーネントです。
 
-[README](https://github.com/nfl/react-helmet#react-helmet)に
-
 > It’s dead simple
 
-とあるように、死ぬほど簡単なようです。
+[README](https://github.com/nfl/react-helmet#react-helmet)にこう書かれているように、死ぬほど簡単なようです。
 
 # 基本的な書き方
 

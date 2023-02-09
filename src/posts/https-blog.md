@@ -24,13 +24,13 @@ GitHub Pages ではカスタムドメインの HTTPS 化ができません。
 ### CloudFlare を使わなかった理由
 
 GitHub Pages の HTTPS 化で検索すると、真っ先に CloudFlare を利用した設定方法がヒットします。  
-ですが、ドメインを Route53 で管理している・すでに ACM の設定をしているということもあり、AWS サービス（CloudFront）で完結したかったため、CloudFlare は採用しませんでした。
+ですが、ドメインを Route53 で管理し、 ACM の設定をしていたのでAWS サービス（CloudFront）で完結したかったため、CloudFlare は採用しませんでした。
 
 ## つまずいたこと
 
 ### CloudFront に設定できる ACM にはリージョン制限がある
 
-CloudFront への ACM 設定を行うには、ACM がリージョンがバージニア北部（us-east-1）のものでないといけません。  
+CloudFront への ACM 設定するには、ACM がリージョンがバージニア北部（us-east-1）のものでないといけません。  
 以前に、先に ACM の登録を東京リージョンで登録していたため、ここでかなりの時間を費やしました。
 
 ### config.toml の baseurl が http のままだった

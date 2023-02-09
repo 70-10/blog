@@ -9,9 +9,9 @@ tags: ["Web Frontend", "CSS"]
 Hugo が v0.43 から[Sass/Scss をサポートしたので](https://gohugo.io/hugo-pipes/scss-sass/)、この機能を使ってブログのデザインを変更しました。  
 設定方法や、困ったことなどをまとめます。
 
-## _注意_
+## _注意_ （2018/08/26 時点）
 
-2018/08/26 現在、**Netlify では Hugo の extended バージョンをフォローしていないため、Sass/Scss のビルド機能が利用できません。**  
+**Netlify は Hugo の extended をフォローしておらず、Sass/Scss のビルド機能が利用できません。**  
 ワークアラウンド対応を本記事の最後に記載しています。
 
 # Hugo で Sass/Scss を使う
@@ -24,14 +24,12 @@ Hugo が v0.43 から[Sass/Scss をサポートしたので](https://gohugo.io/h
 <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
 ```
 
-ファイルに対する処理をパイプで書き連ねられます。この例では
+ファイルに対する処理をパイプで書き連ねられます。この例では以下の順番で処理しています。
 
 1. CSS に変換
 2. PostCSS を実行
 3. minify を実行
 4. fingerprint を生成
-
-という処理を順番に行っています。
 
 ## PostCSS を使う場合
 

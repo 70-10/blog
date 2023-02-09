@@ -62,5 +62,5 @@ var res = await client.GetAsync("<アクセスしたいパス>");
 
 つまり、パスを含ませる場合は以下の2点を守りましょう。
 
-1. `BaseAddress`は必ず最後は`/`で終わる
-2. `GetAsync`の引数の先頭は`/`をつけない
+1. `BaseAddress` は必ず最後 `/` で終わる
+2. `GetAsync` の引数の先頭は `/` をつけない

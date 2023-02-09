@@ -20,7 +20,8 @@ Mac で OS は Mojave (10.14.1) を使用しています。
 
 # `haskell-platform`のインストールでエラーが起きた
 
-TidalCycles をインストールするには ghci が必要らしく、 tidal-bootstrap.command は brew-cask 経由で`haskell-platform`のインストールを試みます。  
+TidalCycles をインストールするには ghci が必要です。  
+tidal-bootstrap.command は brew-cask 経由で `haskell-platform` のインストールを試みます。  
 ですが、`haskell-platform`は存在しておらず、ここでエラーとなって終了します。
 
 ```
@@ -55,7 +56,8 @@ Homebrew にも`haskell-platform`は存在しておらず、代わりに`brew in
 
 # 回避方法
 
-[tidal-bootstrap.command](https://github.com/tidalcycles/tidal-bootstrap/blob/master/tidal-bootstrap.command)を実行する前に`brew install ghc cabal-install stack`で Haskell をインストールしておくと、TidalCycles を正常にインストールできます。
+[tidal-bootstrap.command](https://github.com/tidalcycles/tidal-bootstrap/blob/master/tidal-bootstrap.command)を実行する前に `brew install ghc cabal-install stack` で Haskell をインストールします。  
+そうすることで、TidalCycles を正常にインストールできます。
 
 # おわりに
 
