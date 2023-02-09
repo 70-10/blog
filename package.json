@@ -21,6 +21,7 @@
     "@astrojs/tailwind": "^3.0.1",
     "@types/node": "^18.11.18",
     "astro": "^2.0.4",
+    "astro-compress": "^1.1.31",
     "astro-seo": "^0.7.0",
     "cdate": "^0.0.4",
     "github-markdown-css": "^5.1.0",

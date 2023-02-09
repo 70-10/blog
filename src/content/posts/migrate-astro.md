@@ -11,9 +11,16 @@ draft: false
 
 ただ単純に Astro を使ってみたいと思ったのがきっかけです。
 
+## Gatsby の満足度の低下
+
 Gatsby でも良かったのだけど、プラグインが多くて管理するのが大変でした。  
 Gatsby をアップデートするのにも少しばかり苦労したこともありました。  
 移行して気づきましたが、 Astro に比べると Gatsby は設定項目が多かったです。
+
+![Gatby Satisfaction for The State of JS 2022](/assets/gatsby-satisfaction.png)
+
+[The State of JS 2022](https://2022.stateofjs.com/en-US/) でも 満足度が徐々に低下していることがわかります。  
+https://2022.stateofjs.com/ja-JP/libraries/rendering-frameworks/
 
 # Astro を触ってみた感想
 
