@@ -1,23 +1,22 @@
 ---
+import { CollectionEntry, getCollection } from "astro:content";
 import { cdate } from "cdate";
-import path from "path";
 import Layout from "../../layouts/Layout.astro";
-import type { Frontmatter } from "../../models/frontmatter";
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+  tag: string;
+}
 
 export async function getStaticPaths() {
-  const posts = (await Astro.glob<Frontmatter>("../../posts/**/*.md")).filter(
-    (post) => !post.frontmatter.draft
-  );
-  const tags = Array.from(
-    new Set(
-      posts
-        .filter(
-          ({ frontmatter }) => frontmatter.tags && frontmatter.tags.length > 0
-        )
-        .map((post) => post.frontmatter.tags)
-        .flat()
-    )
-  );
+  const entries = await getCollection("posts", ({ data }) => !data.draft);
+  const posts = entries.sort((a, b) => {
+    return (
+      cdate(b.data.publishDate).toDate().getTime() -
+      cdate(a.data.publishDate).toDate().getTime()
+    );
+  });
+  const tags = Array.from(new Set(posts.map(({ data }) => data.tags).flat()));
 
   return tags.map((tag) => {
     return {
@@ -26,10 +25,7 @@ export async function getStaticPaths() {
       },
       props: {
         tag,
-        posts: posts.filter(
-          ({ frontmatter }) =>
-            frontmatter.tags && frontmatter.tags.includes(tag)
-        ),
+        posts: posts.filter(({ data }) => data.tags.includes(tag)),
       },
     };
   });
@@ -44,28 +40,20 @@ const { tag, posts } = Astro.props;
       <h1 class="text-xl font-bold">{tag}</h1>
       <ul class="mt-3">
         {
-          posts
-            .sort((a, b) => {
-              return (
-                cdate(b.frontmatter.publishDate).toDate().getTime() -
-                cdate(a.frontmatter.publishDate).toDate().getTime()
-              );
-            })
-            .map((post) => {
-              const { frontmatter } = post;
-              const slug = path.basename(post.file, ".md");
-              const publishAt = cdate(frontmatter.publishDate).format(
-                "YYYY/MM/DD"
-              );
-              return (
-                <li class="list">
-                  {publishAt}:
-                  <a href={`/${publishAt}/${slug}`} class="link">
-                    {frontmatter.title}
-                  </a>
-                </li>
-              );
-            })
+          posts.map((entry) => {
+            const publishAt = cdate(entry.data.publishDate).format(
+              "YYYY/MM/DD"
+            );
+
+            return (
+              <li class="list">
+                <time>{publishAt}</time>:
+                <a href={`/posts/${entry.slug}`} class="link">
+                  {entry.data.title}
+                </a>
+              </li>
+            );
+          })
         }
       </ul>
     </section>
@@ -81,7 +69,6 @@ const { tag, posts } = Astro.props;
   .content {
     @apply col-start-2 col-span-8;
     @apply md:col-start-3 md:col-span-6;
-    /* @apply lg:col-start-4 lg:col-span-4; */
   }
 
   .link {

@@ -1,15 +1,18 @@
 ---
+import { getCollection } from "astro:content";
 import { cdate } from "cdate";
-import path from "path";
 import Tag from "../components/Tag.astro";
 import Layout from "../layouts/Layout.astro";
-import type { Frontmatter } from "../models/frontmatter";
 
-const posts = (await Astro.glob<Frontmatter>("../posts/**/*.md")).filter(
-  (post) => !post.frontmatter.draft
+const entries = await getCollection("posts", ({ data }) => !data.draft);
+const posts = entries.sort(
+  (a, b) =>
+    cdate(b.data.publishDate).toDate().getTime() -
+    cdate(a.data.publishDate).toDate().getTime()
 );
+
 const tags = Array.from(
-  new Set(posts.map((post) => post.frontmatter.tags).flat())
+  new Set(posts.map(({ data }) => data.tags).flat())
 ).sort();
 ---
 
@@ -18,28 +21,20 @@ const tags = Array.from(
     <section class="content">
       <ul>
         {
-          posts
-            .sort((a, b) => {
-              return (
-                cdate(b.frontmatter.publishDate).toDate().getTime() -
-                cdate(a.frontmatter.publishDate).toDate().getTime()
-              );
-            })
-            .map((post) => {
-              const { frontmatter } = post;
-              const slug = path.basename(post.file, ".md");
-              const publishAt = cdate(frontmatter.publishDate).format(
-                "YYYY/MM/DD"
-              );
-              return (
-                <li class="list">
-                  {publishAt}:
-                  <a href={`/${publishAt}/${slug}`} class="link">
-                    {frontmatter.title}
-                  </a>
-                </li>
-              );
-            })
+          posts.map((entry) => {
+            const publishAt = cdate(entry.data.publishDate).format(
+              "YYYY/MM/DD"
+            );
+
+            return (
+              <li class="list">
+                <time>{publishAt}</time>:
+                <a href={`/posts/${entry.slug}`} class="link">
+                  {entry.data.title}
+                </a>
+              </li>
+            );
+          })
         }
       </ul>
     </section>
