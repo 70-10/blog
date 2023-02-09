@@ -1,0 +1,82 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import { cdate } from "cdate";
+import CalendarIcon from "../../components/CalendarIcon.astro";
+import Tag from "../../components/Tag.astro";
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/markdown-body.css";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+export async function getStaticPaths() {
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title} seo={{ openGraph: { type: "article" } }}>
+  <main class="base">
+    <section class="content">
+      <div class="flex items-center">
+        <div class="min-w-0 flex-1">
+          <h1 class="title">{post.data.title}</h1>
+          <div class="subtitle-section">
+            <div class="publish-at">
+              <CalendarIcon />
+              <time>{cdate(post.data.publishDate).format("YYYY/MM/DD")}</time>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tags">
+        {post.data.tags.map((tag) => <Tag name={tag} />)}
+      </div>
+    </section>
+    <section class="content">
+      <article class="markdown-body">
+        <Content />
+      </article>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .base {
+    @apply grid grid-cols-10 gap-y-10;
+    @apply mt-5;
+  }
+
+  .content {
+    @apply col-start-2 col-span-8;
+    @apply md:col-start-3 md:col-span-6;
+  }
+
+  .title {
+    @apply text-4xl font-extrabold leading-tight;
+  }
+
+  .subtitle-section {
+    @apply mt-1;
+    @apply flex flex-col;
+  }
+
+  .publish-at {
+    @apply mt-2;
+    @apply flex items-center;
+    @apply text-sm text-gray-500;
+  }
+
+  .tags {
+    @apply mt-2;
+  }
+</style>
