@@ -20,7 +20,7 @@
   "dependencies": {
     "@astrojs/tailwind": "3.0.1",
     "@types/node": "18.13.0",
-    "astro": "2.0.10",
+    "astro": "2.0.11",
     "astro-compress": "1.1.32",
     "astro-seo": "0.7.0",
     "cdate": "0.0.4",
