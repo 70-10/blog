@@ -1,15 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import { cdate } from "cdate";
 import Tag from "../components/Tag.astro";
 import Layout from "../layouts/Layout.astro";
+import { getPosts } from "../lib/repositories/posts";
 
-const entries = await getCollection("posts", ({ data }) => !data.draft);
-const posts = entries.sort(
-  (a, b) =>
-    cdate(b.data.publishDate).toDate().getTime() -
-    cdate(a.data.publishDate).toDate().getTime()
-);
+const posts = await getPosts();
 
 const tags = Array.from(
   new Set(posts.map(({ data }) => data.tags).flat())
