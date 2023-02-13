@@ -1,16 +1,18 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 import { cdate } from "cdate";
 import CalendarIcon from "../../components/CalendarIcon.astro";
 import Tag from "../../components/Tag.astro";
 import Layout from "../../layouts/Layout.astro";
+import { getPosts } from "../../lib/repositories/posts";
 import "../../styles/markdown-body.css";
 
 interface Props {
   post: CollectionEntry<"posts">;
 }
+
 export async function getStaticPaths() {
-  const posts = await getCollection("posts", ({ data }) => !data.draft);
+  const posts = await getPosts();
 
   return posts.map((post) => ({
     params: { slug: post.slug },
