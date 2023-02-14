@@ -24,9 +24,18 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+console.log(Astro.url);
 ---
 
-<Layout title={post.data.title} seo={{ openGraph: { type: "article" } }}>
+<Layout
+  title={post.data.title}
+  seo={{
+    openGraph: {
+      type: "article",
+      image: new URL(`/og/${post.slug}.png`, Astro.url.origin).toString(),
+    },
+  }}
+>
   <main class="base">
     <section class="content">
       <div class="flex items-center">
