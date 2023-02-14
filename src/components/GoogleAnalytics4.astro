@@ -1,23 +1,19 @@
 ---
-import { isDevelopment } from "../lib/environments";
+import ProductionOnly from "./ProductionOnly.astro";
 
 const id = "G-GSE7S23LEP";
 const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${id}`;
 ---
 
-{
-    isDevelopment &&  
-    <>
-        <script async src={gtagUrl}></script>
-        <script define:vars={{ id }}>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag("js", new Date());
+<ProductionOnly>
+  <script is:inline async src={gtagUrl}></script>
+  <script is:inline define:vars={{ id }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-        gtag("config", id);
-        </script>
-    </>
-
-}
+    gtag("config", id);
+  </script>
+</ProductionOnly>
