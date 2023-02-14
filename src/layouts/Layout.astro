@@ -12,6 +12,7 @@ export interface Props {
 interface SEOProps {
   openGraph: {
     type: string;
+    image?: string;
   };
 }
 
@@ -28,7 +29,7 @@ const { title, seo } = Astro.props;
         basic: {
           title,
           type: seo.openGraph.type,
-          image: "",
+          image: seo.openGraph.image ?? "",
         },
         article: {
           authors: ["70_10"],
