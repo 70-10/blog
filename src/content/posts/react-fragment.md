@@ -5,9 +5,9 @@ tags: ["Web Frontend", "React"]
 draft: false
 ---
 
-# 課題: 正しいDOM構成のままコンポーネントを分離したい
+# 課題: 正しい DOM 構成のままコンポーネントを分離したい
 
-あるTableコンポーネントのtd要素をひとまとめにした、`Columns`コンポーネントを用意したいとします。
+ある Table コンポーネントの td 要素をひとまとめにした、`Columns`コンポーネントを用意したいとします。
 
 ```jsx
 const Table = () => (
@@ -21,7 +21,7 @@ const Table = () => (
 );
 ```
 
-td要素をまとめるとき、divで囲ってしまうとノードの構成がおかしくなってしまいます。
+td 要素をまとめるとき、div で囲ってしまうとノードの構成がおかしくなってしまいます。
 
 ```jsx
 const Columns = () => (
@@ -32,7 +32,7 @@ const Columns = () => (
 );
 ```
 
-## 展開後のHTML
+## 展開後の HTML
 
 ```html
 <table>
@@ -47,14 +47,14 @@ const Columns = () => (
 </table>
 ```
 
-trとtdの間にdivが入ってしまい正しい構成ではありません。
+tr と td の間に div が入ってしまい正しい構成ではありません。
 
 # 解決: `React.Fragment`を使う
 
 `React.Fragment`を使うことで解決できました。
 
 ```jsx
-import React, { Fragment } from "react"
+import React, { Fragment } from "react";
 
 const Columns = () => (
   <Fragment>
@@ -64,7 +64,7 @@ const Columns = () => (
 );
 ```
 
-## 展開後のHTML
+## 展開後の HTML
 
 ```html
 <table>
@@ -77,12 +77,12 @@ const Columns = () => (
 </table>
 ```
 
-React.Fragmentは展開時に無視されるので、正しい構成になりました。
+React.Fragment は展開時に無視されるので、正しい構成になりました。
 
 ## 省略記法
 
 `<Fragment> ... </Fragment>`を`<> ... </>`と省略して書くこともできます。  
-ただ、ツールがこの省略記法にまだ対応していない可能性があるため、Fragmentを使ったほうが無難とのことです。
+ただ、ツールがこの省略記法にまだ対応していない可能性があるため、Fragment を使ったほうが無難とのことです。
 
 # ドキュメント
 

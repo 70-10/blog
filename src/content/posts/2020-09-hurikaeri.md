@@ -42,8 +42,8 @@ https://open.spotify.com/playlist/6BJoVOLW1qj319LqUAxW4Q?si=1sOwouUmRPm8XWDH9XQ0
 # 買い物
 
 - Nintendo Switch lite
-  - Amazonで購入したが、他のところでも抽選なしで通常購入できるようになってきていた
-- [Anker PowerPort Atom III Slim](https://www.amazon.co.jp/dp/B07ZNFR6BF/) 
-  - Macbook Proとその他諸々を充電するために購入
+  - Amazon で購入したが、他のところでも抽選なしで通常購入できるようになってきていた
+- [Anker PowerPort Atom III Slim](https://www.amazon.co.jp/dp/B07ZNFR6BF/)
+  - Macbook Pro とその他諸々を充電するために購入
   - これひとつですべてが事足りるようになるので便利
   - 小さく薄いので持ち運びにも苦労しない

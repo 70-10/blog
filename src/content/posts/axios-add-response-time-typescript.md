@@ -7,11 +7,12 @@ draft: false
 
 # はじめに
 
-axiosで、リクエストからレスポンスまでの時間を計測する必要がありました。  
-調べると方法は出てくるが、TypeScriptでやってる記事は見つからなかっのでまとめます。
+axios で、リクエストからレスポンスまでの時間を計測する必要がありました。  
+調べると方法は出てくるが、TypeScript でやってる記事は見つからなかっのでまとめます。
 
 # `AxiosInstance.interceptors`でレスポンスタイムを追加する
-[この記事](https://note.mu/masio/n/n003cb3aca3fa)に書かれているように、axiosインスタンスにある`interceptors`でレスポンスタイムを追加します。
+
+[この記事](https://note.mu/masio/n/n003cb3aca3fa)に書かれているように、axios インスタンスにある`interceptors`でレスポンスタイムを追加します。
 
 ```js:axios.js
 import axios from 'axios'
@@ -30,7 +31,7 @@ instance.interceptors.response.use(response => {
 export default instance
 ```
 
-# TypeScriptのために型定義を拡張する
+# TypeScript のために型定義を拡張する
 
 `interceptors.request.use`, `interceptors.response.use`で扱う関数の引数には`timestamp`や`responseTime`のフィールド変数はありません。  
 このまま実行しようとすると型定義に反していてエラーが発生します。
@@ -52,4 +53,4 @@ declare module "axios" {
 
 # 参考記事
 
-- [axiosでレスポンスタイムを計測する｜masio｜note](https://note.com/masio/n/n003cb3aca3fa)
+- [axios でレスポンスタイムを計測する｜ masio ｜ note](https://note.com/masio/n/n003cb3aca3fa)

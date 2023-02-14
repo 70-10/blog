@@ -7,13 +7,13 @@ draft: false
 
 # はじめに
 
-serverless-offlineとserverless-webpackを使用しているプロジェクトで、正しく`NODE_ENV`が設定できませんでした。  
+serverless-offline と serverless-webpack を使用しているプロジェクトで、正しく`NODE_ENV`が設定できませんでした。  
 この記事では原因と解決方法をまとめます。
 
 # 困ったこと
 
-serverless-webpackでビルドし、`serverless offline` を実行しても`NODE_ENV`が正しく設定できませんでした。  
-serverless.ymlで以下のように`NODE_ENV=DEV`を指定しているにもかかわらず、 `NODE_ENV=Development`と設定されてしまいました。
+serverless-webpack でビルドし、`serverless offline` を実行しても`NODE_ENV`が正しく設定できませんでした。  
+serverless.yml で以下のように`NODE_ENV=DEV`を指定しているにもかかわらず、 `NODE_ENV=Development`と設定されてしまいました。
 
 ```yaml:serverless.yml
 .
@@ -37,16 +37,16 @@ provider:
 
 # 原因
 
-webpackはビルド時に`NODE_ENV`と`DEBUG`の2つにデフォルトの値を設定します。
+webpack はビルド時に`NODE_ENV`と`DEBUG`の 2 つにデフォルトの値を設定します。
 (`NODE_ENV=Development`, `DEBUG=false`)
 
-Lambdaファンクション実行時は `NODE_ENV=DEV` となります。  
-ビルド時にデフォルト値のDevelopmentが設定されるため、ビルド後のコードには `NODE_ENV=Development` が埋め込まれます。  
+Lambda ファンクション実行時は `NODE_ENV=DEV` となります。  
+ビルド時にデフォルト値の Development が設定されるため、ビルド後のコードには `NODE_ENV=Development` が埋め込まれます。  
 そのため、実行時に正しく指定できていませんでした。
 
 # 解決方法
 
-ビルド時にNODE_ENVの値を設定することで解決できました。  
+ビルド時に NODE_ENV の値を設定することで解決できました。  
 webpack.config.js で EnvironmentPlugin が設定可能です。
 
 ```js:webpack.config.js
@@ -62,8 +62,8 @@ plugins: [new webpack.EnvironmentPlugin(slsw.lib.serverless.service.provider.env
 }
 ```
 
-(`slsw.lib.serverless.service.provider.environment`はserverless.ymlで定義したEnvironmentがオブジェクト形式で取得できます)
+(`slsw.lib.serverless.service.provider.environment`は serverless.yml で定義した Environment がオブジェクト形式で取得できます)
 
-# 参考URL
+# 参考 URL
 
 [EnvironmentPlugin | webpack](https://webpack.js.org/plugins/environment-plugin/)

@@ -72,8 +72,8 @@ main().catch(console.error);
 このモジュールに、実行する Lambda ファンクションを引数に渡して実行するだけでローカル実行ができます。
 
 ```javascript
-const run = require('@rabblerouser/local-kinesis-lambda-runner');
-const lambda = require('./index').handler;
+const run = require("@rabblerouser/local-kinesis-lambda-runner");
+const lambda = require("./index").handler;
 
 run(lambda);
 ```
@@ -140,14 +140,14 @@ const uuid = require("uuid");
 const Kinesis = new AWS.Kinesis({
   endpoint: "http://localhost:4567/",
   region: "ap-northeast-1",
-  sslEnabled: false
+  sslEnabled: false,
 });
 
 async function main() {
   const res = await Kinesis.putRecord({
     Data: JSON.stringify({ hello: "world" }),
     PartitionKey: uuid.v1(),
-    StreamName: "sample-stream"
+    StreamName: "sample-stream",
   }).promise();
   console.log(res);
 }

@@ -7,11 +7,11 @@ draft: false
 
 # 追記（2021/02/10）
 
-2021/02/10時点で、Visual Studio For Macでも`rollForward`を認識するようになっています。
+2021/02/10 時点で、Visual Studio For Mac でも`rollForward`を認識するようになっています。
 
-# global.jsonとは
+# global.json とは
 
-プロジェクトの.NET Coreバージョンを指定するための仕組み  
+プロジェクトの.NET Core バージョンを指定するための仕組み  
 `version`には完全なバージョン番号しか指定できず、`3.1.*`のようなワイルドカードは不可能。  
 ワイルドカードが指定できない代わりに、`rollForward`が用意されている。
 
@@ -26,14 +26,14 @@ draft: false
 }
 ```
 
-# だがしかし、Visual Studio For Macは別だ。
+# だがしかし、Visual Studio For Mac は別だ。
 
-[Developer Communityでのやりとり](https://developercommunity.visualstudio.com/content/problem/1088196/vs2019-for-mac-globaljson-latestfeature-does-not-w.html)を見ると、どうもVisual Studio For Macでは`rollForwad`が機能しない。  
+[Developer Community でのやりとり](https://developercommunity.visualstudio.com/content/problem/1088196/vs2019-for-mac-globaljson-latestfeature-does-not-w.html)を見ると、どうも Visual Studio For Mac では`rollForwad`が機能しない。  
 上記のような設定が行われていても、`3.1.102`しか使用を認めてくれない。
 
 # 結論
 
-Visual Studio For Macを使う場合は指定されたバージョンのSDKを入れましょう。
+Visual Studio For Mac を使う場合は指定されたバージョンの SDK を入れましょう。
 
 # 参考サイト
 

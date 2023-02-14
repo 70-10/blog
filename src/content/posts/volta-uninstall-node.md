@@ -5,17 +5,17 @@ tags: ["Node.js"]
 draft: false
 ---
 
-Node.jsのバージョン管理システムの[Volta](https://volta.sh)を使っています。  
-VoltaのCLIに[`uninstall`コマンド](https://docs.volta.sh/reference/uninstall)が用意されていますが、Node.jsのアンインストールは2021/09/29現在サポートされていません。
+Node.js のバージョン管理システムの[Volta](https://volta.sh)を使っています。  
+Volta の CLI に[`uninstall`コマンド](https://docs.volta.sh/reference/uninstall)が用意されていますが、Node.js のアンインストールは 2021/09/29 現在サポートされていません。
 
-GitHubのIssueを見ると、ワークアラウンドとして所定のディレクトリを削除することでアンインストールできます。
+GitHub の Issue を見ると、ワークアラウンドとして所定のディレクトリを削除することでアンインストールできます。
 
-# Node.jsのアンインストール方法（ワークアラウンド）
+# Node.js のアンインストール方法（ワークアラウンド）
 
 - Linux, Mac: `~/.volta/tools/image/node/<バージョン>`のディレクトリを削除
-- Windows   :  `%LOCALAPPDATA%\Volta\tools\image\node\<バージョン>`のディレクトリを削除
+- Windows : `%LOCALAPPDATA%\Volta\tools\image\node\<バージョン>`のディレクトリを削除
 
-### 例）Macでv16.9.1をアンインストールする
+### 例）Mac で v16.9.1 をアンインストールする
 
 ```
 » volta list node
@@ -34,7 +34,7 @@ GitHubのIssueを見ると、ワークアラウンドとして所定のディレ
     v16.10.0 (default)
 ```
 
-# 参考URL
+# 参考 URL
 
 - [volta uninstall | Volta](https://docs.volta.sh/reference/uninstall)
 - [Unclear how to remove Node.js version · Issue #855 · volta-cli/volta](https://github.com/volta-cli/volta/issues/855)

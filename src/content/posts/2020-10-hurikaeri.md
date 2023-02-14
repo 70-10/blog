@@ -8,9 +8,9 @@ draft: false
 # 技術
 
 - リポジトリのメインブランチ名を`master`から`main`に変更し始めた
-- Gatsby + Markdownのブログを作成
+- Gatsby + Markdown のブログを作成
   - https://note.70-10.net
-- alephjs.orgにPR出した
+- alephjs.org に PR 出した
   - https://github.com/postui/alephjs.org/pull/6
 
 # 読書
@@ -35,8 +35,8 @@ https://open.spotify.com/playlist/3b4SzWpSW2uEUFP1nilssL?si=4DBOms1STuqRKc4LSMVq
 - 引っ越しを進めている
   - 物件を探してから引越し業者の手配、退去手続きなどやることが多すぎる
   - もっと簡単にできるようになってほしい
-    - 内見をVRで実現
-    - 引越し業者の見積もりがすべてWebで完結
+    - 内見を VR で実現
+    - 引越し業者の見積もりがすべて Web で完結
       - むだな交渉をしなくていい
     - 退去・入居に必要な手続きを一括で行える
 
@@ -46,12 +46,12 @@ https://open.spotify.com/playlist/3b4SzWpSW2uEUFP1nilssL?si=4DBOms1STuqRKc4LSMVq
   - 外部音が入りづらく、音も良くしたいと思い購入
   - ただ、まだちゃんと使えていない
 - UMEMORY ワイヤレス充電器
-  - これひとつでiPhone、Apple Watch、AirPods Proの充電ができる
+  - これひとつで iPhone、Apple Watch、AirPods Pro の充電ができる
   - スペースの節約になって良い
 - UNDERTALE
-  - ネットでそこそこ評判のゲームで、Amazon Primeデーで安くなっていたので購入
+  - ネットでそこそこ評判のゲームで、Amazon Prime デーで安くなっていたので購入
   - ポケモンの冠の雪原が楽しくて今はまだノータッチな状態
-- MagSafe 2電源アダプタ
+- MagSafe 2 電源アダプタ
   - 今使っているやつが断線しかかっているので新調
   - それなりの値段がするが純正品じゃないと心配
-  - USB Type-Cが羨ましく思った
+  - USB Type-C が羨ましく思った

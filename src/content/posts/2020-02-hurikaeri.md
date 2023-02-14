@@ -8,17 +8,17 @@ draft: false
 # 技術
 
 - 【業務】[Redux Toolkit](https://redux-toolkit.js.org/)の導入
-  - React + Redux + redux-sagaで構成されているフロントエンドにRedux Toolkitを導入
-  - Action, Reducer, Middlewareの処理がひとつのファイルにまとめられるのはとても読みやすい
-  - TypeScriptはまだ導入できていないのでRedux Toolkitの良さは半分くらいしか引き出せてない
-- 【業務】ReactのUnit Testを模索
-  - [create-react-appのドキュメント](https://create-react-app.dev/docs/running-tests/)から察するに、enzymeとreact-testing-libraryが2強
+  - React + Redux + redux-saga で構成されているフロントエンドに Redux Toolkit を導入
+  - Action, Reducer, Middleware の処理がひとつのファイルにまとめられるのはとても読みやすい
+  - TypeScript はまだ導入できていないので Redux Toolkit の良さは半分くらいしか引き出せてない
+- 【業務】React の Unit Test を模索
+  - [create-react-app のドキュメント](https://create-react-app.dev/docs/running-tests/)から察するに、enzyme と react-testing-library が 2 強
   - 細かいことはまだ理解できてない
-  - 余談だけど、jestを使うようになってからpower-assert利用しなくなったなと感じた
-- 【趣味】FirebaseをReact Hooksで実装
+  - 余談だけど、jest を使うようになってから power-assert 利用しなくなったなと感じた
+- 【趣味】Firebase を React Hooks で実装
   - [react-firebase-hooks](react-firebase-hooks)を使えば簡単
   - [GitHub Action for Firebase](https://github.com/marketplace/actions/github-action-for-firebase)を使えばデプロイも簡単
-  - 余談だけど、React Hooksが充実してきているのでReduxを使う機会は減っていくのかもと感じた
+  - 余談だけど、React Hooks が充実してきているので Redux を使う機会は減っていくのかもと感じた
 
 # 読書
 
@@ -41,9 +41,9 @@ draft: false
 
 # 音楽
 
-SpotifyのDiscover WeeklyとRelease Readerの2つのプレイリストをよく聴いた。  
+Spotify の Discover Weekly と Release Reader の 2 つのプレイリストをよく聴いた。  
 自分の好きな音楽をもとにしてレコメンドしてくれるので良い曲に出会いやすい。  
-Last Electroとザ・おめでたズが今月の収穫。
+Last Electro とザ・おめでたズが今月の収穫。
 
 ## よかった曲まとめプレイリスト
 
@@ -52,7 +52,7 @@ https://open.spotify.com/playlist/1uOm04OUWCxX7ZfpYSmwh5?si=QIigZMipTTaWRIfovvV6
 ## 聴いたアルバム
 
 | タイトル             |    アーティスト    |
-| -------------------- |:------------------:|
+| -------------------- | :----------------: |
 | Ecstasy              |     Disclosure     |
 | Simulcast            |       Tycho        |
 | BL                   |       女王蜂       |
@@ -79,8 +79,8 @@ https://open.spotify.com/playlist/1uOm04OUWCxX7ZfpYSmwh5?si=QIigZMipTTaWRIfovvV6
 
 ## 娯楽
 
-- Netflixのメンバーシップ解除
-  - 録画しているテレビ番組が溜まっていてNetflixに費やす時間がなくなった
+- Netflix のメンバーシップ解除
+  - 録画しているテレビ番組が溜まっていて Netflix に費やす時間がなくなった
   - 海外コンテンツが豊富だけど自分はそこまで惹かれなかった
   - もう一度、火花は見たい
 - [映像研には手を出すな！](http://eizouken-anime.com/)
@@ -90,7 +90,7 @@ https://open.spotify.com/playlist/1uOm04OUWCxX7ZfpYSmwh5?si=QIigZMipTTaWRIfovvV6
 - [東野幸治の幻ラジオ](https://www.youtube.com/watch?v=5i88PxLrRgY)
   - ここ最近で一番楽しみにしているコンテンツ
   - 音声だけなので気軽に聞いていられる
-  - YouTubeじゃないほうが聞きやすい
+  - YouTube じゃないほうが聞きやすい
     - バックグラウンド再生させたいけど、プレミアムに登録しないといけない
 
 ## 買い物
@@ -102,5 +102,4 @@ https://open.spotify.com/playlist/1uOm04OUWCxX7ZfpYSmwh5?si=QIigZMipTTaWRIfovvV6
 - [デジタル電波時計（大音量アラーム機能付） 置時計・ブラック - 無印良品](https://www.muji.com/jp/ja/store/cmdty/detail/4550182136968)
   - 日付、温湿度までわかるので良い
   - 電波時計なのでわざわざ設定しなくていいのが楽
-  - 電池じゃなくて、USBでの充電式だったらもっと良かった
-
+  - 電池じゃなくて、USB での充電式だったらもっと良かった

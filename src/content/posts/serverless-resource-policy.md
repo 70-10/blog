@@ -7,19 +7,18 @@ draft: false
 
 # はじめに
 
-Serverless Frameworkのv1.28.0から[API Gatewayのリソースポリシーを設定できるようになりました](https://github.com/serverless/serverless/pull/5071)。  
-リソースポリシーは、APIエンドポイントに対してIPによるアクセス制御が行えます。
+Serverless Framework の v1.28.0 から[API Gateway のリソースポリシーを設定できるようになりました](https://github.com/serverless/serverless/pull/5071)。  
+リソースポリシーは、API エンドポイントに対して IP によるアクセス制御が行えます。
 
-APIエンドポイント全体に対して設定したり、特定のエンドポイントのみといった細かな設定ができます。IPは範囲指定などが設定できます。
+API エンドポイント全体に対して設定したり、特定のエンドポイントのみといった細かな設定ができます。IP は範囲指定などが設定できます。
 
-
-今回はそのリソースポリシーを使ってホワイトリストとブラックリストそれぞれを設定します。行う設定は以下の3パターンです。
+今回はそのリソースポリシーを使ってホワイトリストとブラックリストそれぞれを設定します。行う設定は以下の 3 パターンです。
 
 1. ホワイトリストを設定する
 2. ブラックリストを設定する
 3. ホワイトリストとブラックリスト両方を設定する
 
-## 準備：APIエンドポイントを用意する
+## 準備：API エンドポイントを用意する
 
 リソースポリシーの設定するエンドポイント、 `GET /hello` と `GET /world` を用意します。
 
@@ -54,8 +53,8 @@ module.exports.hello = async (event, context) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: "hello"
-    })
+      message: "hello",
+    }),
   };
 };
 
@@ -63,8 +62,8 @@ module.exports.world = async (event, context) => {
   return {
     statuCode: 200,
     body: JSON.stringify({
-      message: "world"
-    })
+      message: "world",
+    }),
   };
 };
 ```
@@ -76,7 +75,6 @@ module.exports.world = async (event, context) => {
 `GET /hello` に対してホワイトリストを設定します。
 
 `serverless.yml` の `provider` に `resoucePolicy`を定義することでリソースポリシーを利用できます。
-
 
 ```yaml
 provider:
@@ -98,7 +96,7 @@ provider:
 この例の場合では `123.123.123.123` がホワイトリストに追加されます。  
 `Resource` に `execute-api:/{stage}/{method}/{path}` という形式でエンドポイントを設定できます。すべての stage, method, path に対して設定する場合は `execute-api:/*/*/*` と設定します。
 
-## 検証1: `123.123.123.123` からアクセスする
+## 検証 1: `123.123.123.123` からアクセスする
 
 `123.123.123.123` からアクセスした場合は正常にレスポンスが返されます。
 
@@ -107,9 +105,9 @@ provider:
 {"message":"hello"}
 ```
 
-## 検証2: `123.123.123.123` 以外からアクセスする
+## 検証 2: `123.123.123.123` 以外からアクセスする
 
-`123.123.123.123` 以外のIPからアクセスした場合は403が返されます。
+`123.123.123.123` 以外の IP からアクセスした場合は 403 が返されます。
 
 ```
 » curl https://**********.execute-api.ap-northeast-1.amazonaws.com/dev/hello
@@ -121,7 +119,6 @@ Message: "User: anonymous is not authorized to perform: execute-api:Invoke on re
 # 2. ブラックリストを設定する
 
 ブラックリストを設定する場合は、さきほどのホワイトリストの設定を `Effect: Deny` に変更するだけです。
-
 
 ```yaml
 provider:
@@ -141,7 +138,7 @@ provider:
 ```
 
 アクセス結果はホワイトリストと逆になります。  
-`123.123.123.123` からのアクセスには403を返し、それ以外のアクセルには正常なレスポンスを返します。
+`123.123.123.123` からのアクセスには 403 を返し、それ以外のアクセルには正常なレスポンスを返します。
 
 # 3. ホワイトリストとブラックリスト両方を設定する
 
@@ -187,23 +184,23 @@ functions:
       - http: GET /world
 ```
 
-この場合、それぞれのIPから `GET /hello` と `GET /world` にアクセスするとどうなるでしょうか。
+この場合、それぞれの IP から `GET /hello` と `GET /world` にアクセスするとどうなるでしょうか。
 
 ## 結果
 
-結果は、`GET /hello` には `123.123.123.123` のみがアクセスでき、`GET /world` にはどのIPからもアクセスできなくなります。
+結果は、`GET /hello` には `123.123.123.123` のみがアクセスでき、`GET /world` にはどの IP からもアクセスできなくなります。
 
-| リクエスト先 | 123.123.123.123 | それ以外のIP |
-| :----------: | :-------------: | :----------: |
-| GET /hello   | ○               | ☓            |
-| GET /world   | ☓               | ☓            |
+| リクエスト先 | 123.123.123.123 | それ以外の IP |
+| :----------: | :-------------: | :-----------: |
+|  GET /hello  |        ○        |       ☓       |
+|  GET /world  |        ☓        |       ☓       |
 
 - `GET /hello`
   - `123.123.123.123` は正常にレスポンスを返す （ホワイトリスト設定）
-  - その他のIPからは403を返す （ブラックリスト設定）
+  - その他の IP からは 403 を返す （ブラックリスト設定）
 - `GET /world`
-  - `123.123.123.123` は403を返す （ブラックリスト設定）
-  - その他のIP設定からは403を返す （ホワイトリスト設定）
+  - `123.123.123.123` は 403 を返す （ブラックリスト設定）
+  - その他の IP 設定からは 403 を返す （ホワイトリスト設定）
 
 # 参考ドキュメント
 
@@ -220,7 +217,6 @@ https://github.com/70-10/sandbox/tree/master/node/serverless/resource-policy
 
 リソースポリシーによって、簡単にホワイトリスト・ブラックリストの設定ができました。 Serverless Framework では `serverless.yaml` に数行書くだけで簡単に設定できます。  
 Serverless Framework は内部で CloudFormation を使っています。  
-新機能がリリースされても CloudFormation が対応しないと利用できないという欠点はありますが、自分でCloudFormationのスタックを書くよりも簡単です。
+新機能がリリースされても CloudFormation が対応しないと利用できないという欠点はありますが、自分で CloudFormation のスタックを書くよりも簡単です。
 
-また、リクエストするIPが限定されたAPIサービスであれば、APIキーを使うよりも簡単にアクセス制御できます。
-
+また、リクエストする IP が限定された API サービスであれば、API キーを使うよりも簡単にアクセス制御できます。

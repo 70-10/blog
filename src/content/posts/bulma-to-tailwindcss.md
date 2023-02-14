@@ -7,32 +7,32 @@ draft: false
 
 # はじめに
 
-このブログのCSSフレームワークをBulmaからTailwind CSSに変更しました。
+このブログの CSS フレームワークを Bulma から Tailwind CSS に変更しました。
 
-いろんなところでTailwind CSSという言葉を見かけていたのがきっかけに興味を持ち、勉強がてら変更しようと思い立って変更しました。  
-いわゆるCSSフレームワークとは違い、`.button`のようなコンポーネントは用意されていません。`border`や`font-bold`のようなユーティリティなクラスが用意されています。  
-CSSのエイリアスとしてクラスが用意されている、BootstrapやBulmaよりも低レイヤーなフレームワークというイメージです。  
-そのため、いわゆるフレームワークよりはCSS自体の知識が求められます。
+いろんなところで Tailwind CSS という言葉を見かけていたのがきっかけに興味を持ち、勉強がてら変更しようと思い立って変更しました。  
+いわゆる CSS フレームワークとは違い、`.button`のようなコンポーネントは用意されていません。`border`や`font-bold`のようなユーティリティなクラスが用意されています。  
+CSS のエイリアスとしてクラスが用意されている、Bootstrap や Bulma よりも低レイヤーなフレームワークというイメージです。  
+そのため、いわゆるフレームワークよりは CSS 自体の知識が求められます。
 
 # 使ってみた感想
 
-低レイヤーなフレームワークなので、Bulmaよりも柔軟にコンポーネントを変更できるのが良いです。  
-Bulmaだと、ボタンコンポーネントをイジりたいとなるとBulmaのCSSから上書きする形で自前のCSSを適用することになります。  
-Tailwind CSSであれば、イチからつくるので最初の作り始めるコストはありますが、変更に強いコンポーネントを作成できます。
+低レイヤーなフレームワークなので、Bulma よりも柔軟にコンポーネントを変更できるのが良いです。  
+Bulma だと、ボタンコンポーネントをイジりたいとなると Bulma の CSS から上書きする形で自前の CSS を適用することになります。  
+Tailwind CSS であれば、イチからつくるので最初の作り始めるコストはありますが、変更に強いコンポーネントを作成できます。
 
 ## tailwindcss-typography
 
-MarkdownからレンダリングされるHTMLに対するスタイル適応は[tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography)を使いました。  
-が、これがイマイチでところどころ納得いかないUIでした。なので、細々とした変更を加えています。  
+Markdown からレンダリングされる HTML に対するスタイル適応は[tailwindcss-typography](https://github.com/tailwindlabs/tailwindcss-typography)を使いました。  
+が、これがイマイチでところどころ納得いかない UI でした。なので、細々とした変更を加えています。  
 変更せずともいい感じでスタイルがあたってほしいです。
 
-### Prism.jsと相性が悪い
+### Prism.js と相性が悪い
 
-tailwindcss-typographyはPrism.jsと相性が悪いです。  
-気に入らない部分はtailwind.config.jsで設定していくのですが、シンタックスハイライト部分（codeタグ）のスタイルはPrism.jsが上書きしてしまいます。  
-Prism.jsのスタイルを上書きするために直接CSSを書いています。
+tailwindcss-typography は Prism.js と相性が悪いです。  
+気に入らない部分は tailwind.config.js で設定していくのですが、シンタックスハイライト部分（code タグ）のスタイルは Prism.js が上書きしてしまいます。  
+Prism.js のスタイルを上書きするために直接 CSS を書いています。
 
 ## 学習コスト
 
-[Tailwindに変更するPR](https://github.com/70-10/blog/pull/219)のスタートが1月で、完了したのが3月。Tailwindの学習もこのタイミングからスタートしたので学習コストは2ヶ月ほどでした。  
+[Tailwind に変更する PR](https://github.com/70-10/blog/pull/219)のスタートが 1 月で、完了したのが 3 月。Tailwind の学習もこのタイミングからスタートしたので学習コストは 2 ヶ月ほどでした。  
 そこまでコストは高くないのかなあという印象です。

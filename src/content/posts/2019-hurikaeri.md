@@ -7,23 +7,23 @@ draft: false
 
 # はじめに
 
-[2019年の最初に書いていた目標](/2019/02/28/2019-todo/)をふりかえります。
+[2019 年の最初に書いていた目標](/2019/02/28/2019-todo/)をふりかえります。
 
-# 3つの目標のふりかえり
+# 3 つの目標のふりかえり
 
-## 1. 10キロ痩せる
+## 1. 10 キロ痩せる
 
-3キロしか痩せませんでした。10キロは難しい。
+3 キロしか痩せませんでした。10 キロは難しい。
 
 ### やったこと
 
-- 2駅前から歩いて帰る
-  - 3ヶ月くらいでやめてしまいました
+- 2 駅前から歩いて帰る
+  - 3 ヶ月くらいでやめてしまいました
 - [Fit Boxing](https://fitboxing.net/)
   - モーションをちゃんと読み取ってくれなくてフラストレーションが溜まってしまいやめました
   - 続けたくなる要素が少なかったです（キャラクターのコスチューム集めくらいしかモチベーションがなかった）
 - [Nike Training Club](https://apps.apple.com/jp/app/nike-training-club/id301521403)で筋トレ
-  - 1ヶ月ほどワークアウトをこなしたところで終了
+  - 1 ヶ月ほどワークアウトをこなしたところで終了
   - ワークアウトの種類が多い
     - 多すぎてどれをやればいいのか迷いました
 - [リングフィット アドベンチャー](https://www.nintendo.co.jp/ring/)
@@ -37,9 +37,9 @@ draft: false
 リングフィット アドベンチャーはゲームクリアという目的を達成するために筋トレを手段として使っています。  
 このゲーミフィケーションはすごいなあと感心しました。
 
-## 2. ブログに50記事以上投稿する
+## 2. ブログに 50 記事以上投稿する
 
-12記事でした。  
+12 記事でした。  
 そこまで投稿していないですが、アクセス数は増えていってます。
 
 ### わかったこと
@@ -50,35 +50,35 @@ draft: false
 技術ネタで記事を書き続けようとするとしんどかったです。  
 来年からはジャンルに縛られず書きたいことを書いていければと思っています。
 
-## 3. Webサービスやツールを4つ以上リリースする
+## 3. Web サービスやツールを 4 つ以上リリースする
 
-簡単なツールですが4つ作りました。
+簡単なツールですが 4 つ作りました。
 
 1. [Wakatime Viewer](https://7010-wakatime.netlify.com/)
-   - 自分の2016年8月からのWakatimeデータをまとめたページです
+   - 自分の 2016 年 8 月からの Wakatime データをまとめたページです
    - 技術スタック
-       - GatsbyJS
-       - React
-       - Firebase Firestore
+     - GatsbyJS
+     - React
+     - Firebase Firestore
 2. [Timekeeper](https://timekeeper.now.sh)
    - タイマーアプリです
    - 技術スタック
-       - TypeScript
-       - Vue
+     - TypeScript
+     - Vue
 3. [Backlog Manager](https://backlog-manager.now.sh/)
-   - Backlogでプロジェクトに所属していないユーザーを取得します
+   - Backlog でプロジェクトに所属していないユーザーを取得します
    - 技術スタック
-       - TypeScript
-       - Next.js
-       - React
-       - Redux Toolkit
+     - TypeScript
+     - Next.js
+     - React
+     - Redux Toolkit
 4. [QR Generator](https://qr-generate.now.sh)
-   - 入力した文字列からQRコードを作成します
+   - 入力した文字列から QR コードを作成します
    - 技術スタック
-       - TypeScript
-       - GatsbyJS
-       - React
-       - Now
+     - TypeScript
+     - GatsbyJS
+     - React
+     - Now
 
 # おわりに
 

@@ -5,11 +5,11 @@ tags: ["Web Frontend", "Lit", "Test"]
 draft: false
 ---
 
-VitestでLitのコンポーネントをテストするまでのチュートリアルです。
+Vitest で Lit のコンポーネントをテストするまでのチュートリアルです。
 
 # プロジェクトを用意する
 
-lit-test-sampleという名前のNodeプロジェクトを作成します。
+lit-test-sample という名前の Node プロジェクトを作成します。
 
 ```
 mkdir lit-test-sample
@@ -17,27 +17,27 @@ cd lit-test-sample
 npm init -y
 ```
 
-# Litをインストールする
+# Lit をインストールする
 
 ```
 npm install lit
 ```
 
-# Vitestとjsdomをインストールする
+# Vitest と jsdom をインストールする
 
 ```
 npm install --save-dev vitest
 ```
 
-テストコードの実行環境としてjsdomを使うので、一緒にインストールします。
+テストコードの実行環境として jsdom を使うので、一緒にインストールします。
 
 ```
 npm install --save-dev jsdom
 ```
 
-# vitest.config.tsを用意する
+# vitest.config.ts を用意する
 
-実行環境にjsdomを指定するため、vitest.config.tsを設定します。
+実行環境に jsdom を指定するため、vitest.config.ts を設定します。
 
 ```typescript
 import { defineConfig } from "vitest/config";
@@ -49,9 +49,9 @@ export default defineConfig({
 });
 ```
 
-# package.jsonのscriptsにテストスクリプトを設定する
+# package.json の scripts にテストスクリプトを設定する
 
-Vitestを実行できるようにpackage.jsonのscriptsに`test`を定義します。
+Vitest を実行できるように package.json の scripts に`test`を定義します。
 
 ```json
 {
@@ -75,9 +75,9 @@ Vitestを実行できるようにpackage.jsonのscriptsに`test`を定義しま�
 }
 ```
 
-# tsconfig.jsonを用意する
+# tsconfig.json を用意する
 
-以下のtsconfig.jsonを用意します。
+以下の tsconfig.json を用意します。
 
 ```json
 {
@@ -89,9 +89,9 @@ Vitestを実行できるようにpackage.jsonのscriptsに`test`を定義しま�
 }
 ```
 
-# テストをするLitコンポーネントを作成する
+# テストをする Lit コンポーネントを作成する
 
-テストするLitコンポーネント、`hello-world.ts`を作成します。  
+テストする Lit コンポーネント、`hello-world.ts`を作成します。  
 `name`で指定された値を使って"Hello, {name}!"と表示するだけのシンプルなコンポーネントです。
 
 ```typescript

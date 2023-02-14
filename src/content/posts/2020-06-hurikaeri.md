@@ -7,10 +7,10 @@ draft: false
 
 # 技術
 
-- Gatsbyの日本語翻訳にPR投げた
+- Gatsby の日本語翻訳に PR 投げた
   - https://github.com/gatsbyjs/gatsby-ja/pull/260
   - https://github.com/gatsbyjs/gatsby-ja/pull/270
-- C#のHttpClientについて調べた
+- C#の HttpClient について調べた
   - https://blog.70-10.net/2020/06/27/csharp-httpclient-baseaddress/
 
 # 読書
@@ -21,8 +21,8 @@ draft: false
 
 # 音楽
 
-- Vaundyのアルバム、stroboが良かった
-- BandcampでリリースされたNeutralの音源も良かった
+- Vaundy のアルバム、strobo が良かった
+- Bandcamp でリリースされた Neutral の音源も良かった
   - https://aokitakamasa.bandcamp.com/album/neutral-sounds
   - https://aokitakamasa.bandcamp.com/album/neutral-sounds-2
 
@@ -57,9 +57,9 @@ https://open.spotify.com/playlist/01bGC79WchIfRGch0KRYXl?si=bXXzFPgsQu6rayLGU1U3
   - エキスパンションで初期のポケモンが結構出てきてテンション上がった
   - ダイマックスはいまだによくわからない
 - DEATCH COME TRUE
-  - 2時間弱くらいで終わる
+  - 2 時間弱くらいで終わる
   - 映画を見ているような感覚
-  - 一通り終えるとまた最初からになるので、もう1回やりたいけど重い腰が動かない
+  - 一通り終えるとまた最初からになるので、もう 1 回やりたいけど重い腰が動かない
 - Echo Flex + モーションセンサー + Philips Hue E17
-  - トイレの電気をたびたび消し忘れるのでEcho Flexのモーションセンサーで制御したかった
+  - トイレの電気をたびたび消し忘れるので Echo Flex のモーションセンサーで制御したかった
   - 現在、誠意設定中

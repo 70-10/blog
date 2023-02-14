@@ -5,53 +5,52 @@ tags: ["Test", "Web Frontend", "Web Components", "Lit"]
 draft: false
 ---
 
-# 結論：コンポーネントテストはVitestが最適解（個人的見解）
+# 結論：コンポーネントテストは Vitest が最適解（個人的見解）
 
 [Vitest](https://vitest.dev/)が良い。
-イメージとしてはVite + Jest。テストはJestライクに書けて、コンポーネントテストもできるようになった感じ。
+イメージとしては Vite + Jest。テストは Jest ライクに書けて、コンポーネントテストもできるようになった感じ。
 
-VitestだとLitのコンポーネントテストがここまで簡単に書けてしまう。
-[StackBlitzでオンライン実行する](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/lit?initialPath=__vitest__)
+Vitest だと Lit のコンポーネントテストがここまで簡単に書けてしまう。
+[StackBlitz でオンライン実行する](https://stackblitz.com/fork/github/vitest-dev/vitest/tree/main/examples/lit?initialPath=__vitest__)
 
-ただ、まだv1にも達していないので今後の動向を注視していきたい。
+ただ、まだ v1 にも達していないので今後の動向を注視していきたい。
 
-# 結論にいたるまで：Litのテスト方法の調査変遷
+# 結論にいたるまで：Lit のテスト方法の調査変遷
 
-## Web Test Runnerを調べる
+## Web Test Runner を調べる
 
-最近プロダクトでLitを使っていて、コンポーネントテストをどうやってやるかに悩んでいた。  
-まず、[Litが推している](https://lit.dev/docs/tools/testing/#web-test-runner)、[Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)を試した。  
+最近プロダクトで Lit を使っていて、コンポーネントテストをどうやってやるかに悩んでいた。  
+まず、[Lit が推している](https://lit.dev/docs/tools/testing/#web-test-runner)、[Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)を試した。  
 試しているうちに、どうにも `@customElement` をうまく処理できないことが判明。  
-[Web Test RunnerのExampleリポジトリ](https://github.com/modernweb-dev/example-projects/blob/master/lit-element-ts-esbuild/my-element.ts)を見ると、わざわざ別ファイルから`window.customElements.define`を呼び出している。何かしらの問題を抱えているように見える。  
+[Web Test Runner の Example リポジトリ](https://github.com/modernweb-dev/example-projects/blob/master/lit-element-ts-esbuild/my-element.ts)を見ると、わざわざ別ファイルから`window.customElements.define`を呼び出している。何かしらの問題を抱えているように見える。  
 `@customElement`を多様しているプロダクトだったので、これはかなり致命的だった。
 
-次に、[LitのStarter Kitリポジトリのテスト](https://github.com/lit/lit-element-starter-ts/)を参考にしてみた。  
-Web Test Runnerでテストするための設定項目が多すぎて途中で挫折。
+次に、[Lit の Starter Kit リポジトリのテスト](https://github.com/lit/lit-element-starter-ts/)を参考にしてみた。  
+Web Test Runner でテストするための設定項目が多すぎて途中で挫折。
 
-そんなこんなで、Web Test Runnerは見送った。
+そんなこんなで、Web Test Runner は見送った。
 
-## Jestを調べる
+## Jest を調べる
 
-Web Test Runnerを諦めたあとは、Jestで実現できないか調べた。  
-TypeScriptで書いているのでts-jestを使うのはもちろんだけど、babel-jestまで導入しないといけなかった。  
-（[GitHubでのIssue](https://github.com/facebook/jest/issues/11783)を参照）
+Web Test Runner を諦めたあとは、Jest で実現できないか調べた。  
+TypeScript で書いているので ts-jest を使うのはもちろんだけど、babel-jest まで導入しないといけなかった。  
+（[GitHub での Issue](https://github.com/facebook/jest/issues/11783)を参照）
 
-しかもこの方法を取ったけれども、結局Shadow DOMがちゃんとレンダリングされなくて詰むという状態になって心が折れた。
+しかもこの方法を取ったけれども、結局 Shadow DOM がちゃんとレンダリングされなくて詰むという状態になって心が折れた。
 
-## コンポーネントテストが導入されたCypress,Playwrightを調べる
+## コンポーネントテストが導入された Cypress,Playwright を調べる
 
-最近、E2Eテストフレームワークがコンポーネントテストをサポートするようになってきた。  
-CypressとPlaywrightがサポートし始めている。どちらもまだPreview版な状態。
+最近、E2E テストフレームワークがコンポーネントテストをサポートするようになってきた。  
+Cypress と Playwright がサポートし始めている。どちらもまだ Preview 版な状態。
 
-これでLit（Web Components）もできるかと思ったけれど、現在サポートしているのはReact/Vueなどの有名所のみ。  
-Litはもう少し待つ必要がありそうだとわかったところで調査終了。
+これで Lit（Web Components）もできるかと思ったけれど、現在サポートしているのは React/Vue などの有名所のみ。  
+Lit はもう少し待つ必要がありそうだとわかったところで調査終了。
 
-## Vitestに出会う
+## Vitest に出会う
 
-Viteを調べているときにVitestを見つけた。  
-[Examples](https://vitest.dev/guide/#examples)を眺めていると、なんとLitがある！  
+Vite を調べているときに Vitest を見つけた。  
+[Examples](https://vitest.dev/guide/#examples)を眺めていると、なんと Lit がある！  
 コードを見ると、`vite.config.ts`を設定するだけのシンプルさ。  
-アサーションやモックもJestライクに書けるから、すでにJestを導入しているプロダクトでも学習コストが低い。
+アサーションやモックも Jest ライクに書けるから、すでに Jest を導入しているプロダクトでも学習コストが低い。
 
-ということで、Vitestを導入することに決めた。
-
+ということで、Vitest を導入することに決めた。

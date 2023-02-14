@@ -7,20 +7,20 @@ draft: false
 
 # この記事のゴール
 
-[Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)を使って、TypeScriptで書かれたコードのテストをします。
+[Web Test Runner](https://modern-web.dev/docs/test-runner/overview/)を使って、TypeScript で書かれたコードのテストをします。
 
-# 1. Web Test Runnerをインストールする
+# 1. Web Test Runner をインストールする
 
-Web Test Runnerとchaiをインストールします。
+Web Test Runner と chai をインストールします。
 
 ```
 npm install -D @web/test-runner @esm-bundle/chai
 ```
 
-# 2. 最初のテストをJavaScriptで書く
+# 2. 最初のテストを JavaScript で書く
 
-今回テストするコードは、引数で与えられた2つの数値を合算する関数（sum）です。  
-まずはsum関数を作成します。
+今回テストするコードは、引数で与えられた 2 つの数値を合算する関数（sum）です。  
+まずは sum 関数を作成します。
 
 ```js:src/sum.js
 function some(a, b) {
@@ -28,7 +28,7 @@ function some(a, b) {
 }
 ```
 
-次に、sum関数をテストする`sum.test.js`を作成します。
+次に、sum 関数をテストする`sum.test.js`を作成します。
 
 ```js:tests/sum.test.js
 import { expect } from "@esm-bundle/chai";
@@ -40,11 +40,11 @@ it("sums up 2 numbers", () => {
 });
 ```
 
-# 3. Web Test Runnerでテストする
+# 3. Web Test Runner でテストする
 
-## 3-1. package.jsonのscriptsにtestを定義する
+## 3-1. package.json の scripts に test を定義する
 
-テストを実行するために、package.jsonのscriptsに`test`を定義します。
+テストを実行するために、package.json の scripts に`test`を定義します。
 
 ```json:package.json
 {
@@ -57,7 +57,7 @@ it("sums up 2 numbers", () => {
 }
 ```
 
-`web-test-runner`は`wtr`と書いてもOKです。
+`web-test-runner`は`wtr`と書いても OK です。
 
 ## 3-2. テストを実行する
 
@@ -74,12 +74,12 @@ Chrome: |███████████████████████�
 Finished running tests in 0.9s, all tests passed! 🎉
 ```
 
-# 4. Web Test RunnerのConfigファイルを用意する
+# 4. Web Test Runner の Config ファイルを用意する
 
-package.jsonの`test`でテスト対象ファイル等を指定していました。  
+package.json の`test`でテスト対象ファイル等を指定していました。  
 これらの設定を`web-test-runner.config.js`に移動させます。
 
-## 4-1. web-test-runner.config.jsを作成する
+## 4-1. web-test-runner.config.js を作成する
 
 ```js:web-test-runner.config.js
 module.exports = {
@@ -89,9 +89,9 @@ module.exports = {
 
 ```
 
-## 4-2. package.jsonのtestを修正する
+## 4-2. package.json の test を修正する
 
-package.jsonの`test`を`web-test-runner`のみにします。
+package.json の`test`を`web-test-runner`のみにします。
 
 ```json:package.json
 {
@@ -117,28 +117,28 @@ Chrome: |███████████████████████�
 Finished running tests in 0.9s, all tests passed! 🎉
 ```
 
-# 5. テストコードをTypeScript化して、Web Test Runnerでテストする
+# 5. テストコードを TypeScript 化して、Web Test Runner でテストする
 
 ## 5-1. ファイルの拡張子を変更する
 
-「2. 最初のテストをJavaScriptで書く」で作成したsum.jsとsum.test.jsの拡張子をtsに変更します。  
+「2. 最初のテストを JavaScript で書く」で作成した sum.js と sum.test.js の拡張子を ts に変更します。  
 中身は変更せず、拡張子のみ変更するだけです。
 
 - `src/sum.js` -> `src/sum.ts`
 - `tests/sum.test.js` -> `tests/sum.test.ts`
 
-## 5-2. web-test-runner.config.jsにesbuildPluginを追加する
+## 5-2. web-test-runner.config.js に esbuildPlugin を追加する
 
-Web Test RunnerでTypeScriptのコードをテストするには`esbuildPlugin`を使用します。  
+Web Test Runner で TypeScript のコードをテストするには`esbuildPlugin`を使用します。  
 `esbuildPlugin`は`@web/dev-server-esbuild`モジュールで提供されています。
 
-### 5-2-1. @web/dev-server-esbuildをインストールする
+### 5-2-1. @web/dev-server-esbuild をインストールする
 
 ```
 npm install -D @web/dev-server-esbuild
 ```
 
-### 5-2-3. web-test-runner.config.jsにpluginsを追加する
+### 5-2-3. web-test-runner.config.js に plugins を追加する
 
 ```js:web-test-runner.config.js
 const { esbuildPlugin } = require("@web/dev-server-esbuild");
@@ -163,7 +163,7 @@ Chrome: |███████████████████████�
 Finished running tests in 0.9s, all tests passed! 🎉
 ```
 
-これで、TypeScriptで書かれた関数のテストができるようになりました。
+これで、TypeScript で書かれた関数のテストができるようになりました。
 
 # 参考情報
 
@@ -171,20 +171,20 @@ Finished running tests in 0.9s, all tests passed! 🎉
 
 # 補足
 
-## Web Test Runnerとは
+## Web Test Runner とは
 
-Webアプリケーションのテストランナー  
-Litが推奨している。
+Web アプリケーションのテストランナー  
+Lit が推奨している。
 
 ### 特徴
 
 - ヘッドレスブラウザ
-  - Puppeteer, Playwright, Seleniumが利用可能
+  - Puppeteer, Playwright, Selenium が利用可能
 - ブラウザからログ、404、およびエラーを報告
-- devtoolsで実際のブラウザウィンドウからデバッグ
-- [Import Maps](https://modern-web.dev/docs/test-runner/writing-tests/mocking/)を使用してES Moduleをモック
-- Viewportサイズやダークモードなどのブラウザプロパティを公開
+- devtools で実際のブラウザウィンドウからデバッグ
+- [Import Maps](https://modern-web.dev/docs/test-runner/writing-tests/mocking/)を使用して ES Module をモック
+- Viewport サイズやダークモードなどのブラウザプロパティを公開
 - テストを並行・分離して実行
 - インタラクティブウォッチモード
 - 変更されたテストのみを再実行することによる迅速な開発
-- esbuildおよびrollupプラグインを搭載
+- esbuild および rollup プラグインを搭載

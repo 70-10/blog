@@ -7,14 +7,14 @@ draft: false
 
 # はじめに
 
-Netlifyはとてもいいサービスです。Netlifyは高機能なホスティングサービスです。このブログもNetlifyを利用しています。
+Netlify はとてもいいサービスです。Netlify は高機能なホスティングサービスです。このブログも Netlify を利用しています。
 
-ある日、Netlifyから7ドル請求されました。支払わないとサービスを停止すると言われました。  
+ある日、Netlify から 7 ドル請求されました。支払わないとサービスを停止すると言われました。  
 無料プランを利用していて、課金をした覚えはありません。  
 なんで勝手に課金したことになってるんだ。自分の意思じゃないから払う気なんか無い。  
 そう思っても、支払わないとこのブログが続けられなくなるという事実は変わりません。
 
-そうして僕は7ドル支払いました。
+そうして僕は 7 ドル支払いました。
 
 ## 当時のツイート
 
@@ -22,43 +22,43 @@ Netlifyはとてもいいサービスです。Netlifyは高機能なホスティ
 
 # この記事のまとめ
 
-- 無料プランでビルド時間を300分超えて利用すると、7ドルの支払いが発生する
+- 無料プランでビルド時間を 300 分超えて利用すると、7 ドルの支払いが発生する
 - 支払わないとサービス停止するので素直に払おう
-- ビルド時間が300分超えないように対策を取ろう
-  - GitHub ActionsでビルドしてNetlifyにデプロイしよう
+- ビルド時間が 300 分超えないように対策を取ろう
+  - GitHub Actions でビルドして Netlify にデプロイしよう
 
 # ビルド時間の制約
 
-Netlifyは無料で十分な機能が揃っています。  
-GitHubのリポジトリを連携すると、masterへのプッシュ・プルリクエスト作成をトリガーとしてビルドとデプロイを自動で実行してくれます。  
-ビルドは1ヶ月に300分までしか利用できません。それ以上使う場合は課金する必要があります。500分で7ドルです。
+Netlify は無料で十分な機能が揃っています。  
+GitHub のリポジトリを連携すると、master へのプッシュ・プルリクエスト作成をトリガーとしてビルドとデプロイを自動で実行してくれます。  
+ビルドは 1 ヶ月に 300 分までしか利用できません。それ以上使う場合は課金する必要があります。500 分で 7 ドルです。
 
-## 300分を超えた時点で請求が発生する
+## 300 分を超えた時点で請求が発生する
 
-ビルド時間が300分に達すると利用できなくなるわけではありません。  
-自動で7ドルの課金処理を行い、500分のビルド時間がプラスされます。  
+ビルド時間が 300 分に達すると利用できなくなるわけではありません。  
+自動で 7 ドルの課金処理を行い、500 分のビルド時間がプラスされます。
 
-Netlifyにクレジットカード情報を入力していなくても自動で発生します。  
-入力していないので、当然ですが放っておくと7ドルの支払いは行われません。  
+Netlify にクレジットカード情報を入力していなくても自動で発生します。  
+入力していないので、当然ですが放っておくと 7 ドルの支払いは行われません。
 
 支払わない場合、サービス停止してしまいます。  
 サービス停止させないためにはクレジットカードを登録し支払いを完了させないといけません。
 
-# 再び7ドル支払わないためには
+# 再び 7 ドル支払わないためには
 
-さて、このままではまた300分超えると7ドル支払わなければいけません。  
-300分に収めつつ、サービスは継続させたいです。たかが7ドルですが、されど7ドルです。
+さて、このままではまた 300 分超えると 7 ドル支払わなければいけません。  
+300 分に収めつつ、サービスは継続させたいです。たかが 7 ドルですが、されど 7 ドルです。
 
-対策として、ビルドをNetlifyで行わないようにしました。  
-GitHub Actionsでnpmのインストールとビルド、そしてNetlifyへのパブリッシュを行うようにします。
+対策として、ビルドを Netlify で行わないようにしました。  
+GitHub Actions で npm のインストールとビルド、そして Netlify へのパブリッシュを行うようにします。
 
-# GitHub ActionsでNetlifyにデプロイする
+# GitHub Actions で Netlify にデプロイする
 
-まずはGitHub Actionsに用意されているNode.jsのテンプレートを使います。これでインストールとビルドは完了です。
-テンプレートでは、masterへのPull Requestもトリガーになっているので、それは削除します。  
-Nodeのバージョンはv14系のみにします。
+まずは GitHub Actions に用意されている Node.js のテンプレートを使います。これでインストールとビルドは完了です。
+テンプレートでは、master への Pull Request もトリガーになっているので、それは削除します。  
+Node のバージョンは v14 系のみにします。
 
-## Node.jsプロジェクトのテンプレート
+## Node.js プロジェクトのテンプレート
 
 ```yaml
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
@@ -68,11 +68,10 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -80,17 +79,17 @@ jobs:
         node-version: 14.x
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
 ```
 
-残りはNetlifyへのパブリッシュです。Netlifyが公式でActionを用意してくれています。  
+残りは Netlify へのパブリッシュです。Netlify が公式で Action を用意してくれています。  
 `netlify/actions/cli`を使います。これで完了です。
 
 ## 完成版
@@ -100,11 +99,10 @@ name: Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -112,30 +110,30 @@ jobs:
         node-version: 14.x
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
-    - name: Publish
-       uses: netlify/actions/cli@master
-       with:
-         args: deploy --dir=public --prod
-         env:
-           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - name: Publish
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=public --prod
+          env:
+            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 ```
 
-`NETLIFY_SITE_ID`の値はサイトごとに発行されるAPI IDを指定します。  
-Authトークンは[ここから発行できます](https://app.netlify.com/user/applications#personal-access-tokens)。
+`NETLIFY_SITE_ID`の値はサイトごとに発行される API ID を指定します。  
+Auth トークンは[ここから発行できます](https://app.netlify.com/user/applications#personal-access-tokens)。
 
 # どれほど短縮したか
 
-これまで1分40秒かかっていたものが、GitHub Actionsに切り替えたことでほぼ数秒のうちに完了しました。  
-これで7ドル払う心配は無いでしょう。
+これまで 1 分 40 秒かかっていたものが、GitHub Actions に切り替えたことでほぼ数秒のうちに完了しました。  
+これで 7 ドル払う心配は無いでしょう。
 
-ちなみに、自動ビルド設定はオフにしないとNetlifyのビルドが走ってしまいます。  
-Build SettingsのBuildを`Activate Builds`から`Stop builds`にすればOKです。
+ちなみに、自動ビルド設定はオフにしないと Netlify のビルドが走ってしまいます。  
+Build Settings の Build を`Activate Builds`から`Stop builds`にすれば OK です。

@@ -7,26 +7,26 @@ draft: false
 
 # はじめに
 
-__※Go 1.8以降の場合は`sort.Slice`,`sort.StableSlice`を使いましょう。__
+**※Go 1.8 以降の場合は`sort.Slice`,`sort.StableSlice`を使いましょう。**
 
-## AtCoderでソートしたかった
+## AtCoder でソートしたかった
 
-AtCoderの問題を解くなかで、独自に定義した型のソートをしたい場面があったので、`sort.Slice`を使って実装しました。  
-ですが、AtCoderに提出するとコンパイルエラーとなりました。
+AtCoder の問題を解くなかで、独自に定義した型のソートをしたい場面があったので、`sort.Slice`を使って実装しました。  
+ですが、AtCoder に提出するとコンパイルエラーとなりました。
 
 ```
 # command-line-arguments
 ./Main.go:30: undefined: sort.SliceStable
 ```
 
-調べてみると、`sort.Slice`は[1.8から導入されました](https://golang.org/doc/go1.8#sort_slice)。
+調べてみると、`sort.Slice`は[1.8 から導入されました](https://golang.org/doc/go1.8#sort_slice)。
 
-では、1.8以前ではどうやってソートを実現していたのだろう？と疑問に思い調べた結果をメモとして残しておきます。
+では、1.8 以前ではどうやってソートを実現していたのだろう？と疑問に思い調べた結果をメモとして残しておきます。
 
-# 1.8以前では、sort.Interfaceを満たすための関数実装が必要
+# 1.8 以前では、sort.Interface を満たすための関数実装が必要
 
-1.8以前でソートを実現するにはsort.Interface満たすための関数を実装する必要があります。  
-sort.Interfaceには`Len`,`Less`,`Swap`の3つの関数が定義されています。
+1.8 以前でソートを実現するには sort.Interface 満たすための関数を実装する必要があります。  
+sort.Interface には`Len`,`Less`,`Swap`の 3 つの関数が定義されています。
 
 ```go
 // A type, typically a collection, that satisfies sort.Interface can be
@@ -42,7 +42,6 @@ type Interface interface {
 	Swap(i, j int)
 }
 ```
-
 
 これらを定義することでソートが可能になります。
 
