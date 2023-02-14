@@ -1,0 +1,5 @@
+---
+import { isDevelopment } from "../lib/environments";
+---
+
+{!isDevelopment && <slot />}
