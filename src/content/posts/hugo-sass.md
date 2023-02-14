@@ -21,8 +21,14 @@ Hugo が v0.43 から[Sass/Scss をサポートしたので](https://gohugo.io/h
 テンプレートで以下のように定義することで利用できます。
 
 ```html
-{{ $styles := resources.Get "scss/main.scss" | toCSS | postCSS | minify | fingerprint }}
-<link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+{{ $styles := resources.Get "scss/main.scss" | toCSS | postCSS | minify |
+fingerprint }}
+<link
+  rel="stylesheet"
+  href="{{ $styles.Permalink }}"
+  integrity="{{ $styles.Data.Integrity }}"
+  media="screen"
+/>
 ```
 
 ファイルに対する処理をパイプで書き連ねられます。この例では以下の順番で処理しています。

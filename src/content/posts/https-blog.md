@@ -12,20 +12,20 @@ GitHub Pages ではカスタムドメインの HTTPS 化ができません。
 
 ## やったこと
 
-* [すでに実践されている方の記事](https://qiita.com/iogi/items/82618c1d56abba6b9337)を参考に [CloudFormation を作成しました](https://github.com/70-10/blog/tree/master/cfn)
+- [すでに実践されている方の記事](https://qiita.com/iogi/items/82618c1d56abba6b9337)を参考に [CloudFormation を作成しました](https://github.com/70-10/blog/tree/master/cfn)
 
-  * 記事にある 2 つ目の方法で対応
+  - 記事にある 2 つ目の方法で対応
 
     > CNAME を無効にして、 https://example.github.io/reponame/ でアクセスするようにし、/reponame/ を Origin のパスとして利用する
 
-  - CloudFormation のスタックを domain と dns の 2 つに分離したけど、ひとつにまとめても問題なさそう
+  * CloudFormation のスタックを domain と dns の 2 つに分離したけど、ひとつにまとめても問題なさそう
 
-* gh-pages ブランチで設定していた CNAME を削除しました
+- gh-pages ブランチで設定していた CNAME を削除しました
 
 ### CloudFlare を使わなかった理由
 
 GitHub Pages の HTTPS 化で検索すると、真っ先に CloudFlare を利用した設定方法がヒットします。  
-ですが、ドメインを Route53 で管理し、 ACM の設定をしていたのでAWS サービス（CloudFront）で完結したかったため、CloudFlare は採用しませんでした。
+ですが、ドメインを Route53 で管理し、 ACM の設定をしていたので AWS サービス（CloudFront）で完結したかったため、CloudFlare は採用しませんでした。
 
 ## つまずいたこと
 

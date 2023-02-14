@@ -7,43 +7,43 @@ draft: false
 
 # 結論
 
-nullもしくはundefinedだけをチェックしたいときは、OR演算子 (`||`)ではなくNull合体演算子 (`??`)を使おう。
+null もしくは undefined だけをチェックしたいときは、OR 演算子 (`||`)ではなく Null 合体演算子 (`??`)を使おう。
 
-# Null合体演算子とは
+# Null 合体演算子とは
 
-左辺がnullもしくはundefinedの場合に右辺の値を返す。
+左辺が null もしくは undefined の場合に右辺の値を返す。
 
-## OR演算子 (`||`)との違い
+## OR 演算子 (`||`)との違い
 
-OR演算子は左辺が`null`/`undefined`/`0`/`NaN`/`false`のFalsyな値の場合に右辺を返す。
+OR 演算子は左辺が`null`/`undefined`/`0`/`NaN`/`false`の Falsy な値の場合に右辺を返す。
 
-### Null合体演算子とOR演算子の挙動を見てみる
+### Null 合体演算子と OR 演算子の挙動を見てみる
 
-```javascript
-> false || true
-true
-> false ?? true
-false
+```js
+false || true;
+// => true
+false ?? true;
+// => false
 
-> 0 || 1
-1
-> 0 ?? 1
-0
+0 || 1;
+// => 1
+0 ?? 1;
+// => 0
 
-> "" || "Hello"
-'Hello'
-> "" ?? "Hello"
-''
+"" || "Hello";
+// => 'Hello'
+"" ?? "Hello";
+// => ''
 
-> null || "Hello"
-'Hello'
-> null ?? "Hello"
-'Hello'
+null || "Hello";
+// => 'Hello'
+null ?? "Hello";
+// => 'Hello'
 
-> undefined || "Hello"
-'Hello'
-> undefined ?? "Hello"
-'Hello'
+undefined || "Hello";
+// => 'Hello'
+undefined ?? "Hello";
+// => 'Hello'
 ```
 
 # 参考サイト

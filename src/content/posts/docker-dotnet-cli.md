@@ -5,7 +5,7 @@ tags: ["Docker", ".NET Core"]
 draft: false
 ---
 
-[Microsoftが用意しているDokcerイメージ](https://hub.docker.com/_/microsoft-dotnet-core-sdk/)を使うことで、Dockerで .NET Core CLIを利用できます。
+[Microsoft が用意している Dokcer イメージ](https://hub.docker.com/_/microsoft-dotnet-core-sdk/)を使うことで、Docker で .NET Core CLI を利用できます。
 
 ```
 docker run -it --rm --entrypoint dotnet mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
@@ -17,7 +17,7 @@ docker run -it --rm --entrypoint dotnet mcr.microsoft.com/dotnet/core/sdk:3.1-al
 docker run -it --rm -v ${PWD}:/local -w /local --entrypoint dotnet mcr.microsoft.com/dotnet/core/sdk:3.1-alpine new console --project sample1
 ```
 
-いちいちDockerコマンドを打つのが面倒な場合は、以下のようにエイリアスを設定しましょう。
+いちいち Docker コマンドを打つのが面倒な場合は、以下のようにエイリアスを設定しましょう。
 
 ```
 alias dotnet='docker run -it --rm -v ${PWD}:/local -w /local --entrypoint dotnet mcr.microsoft.com/dotnet/core/sdk:3.1-alpine'

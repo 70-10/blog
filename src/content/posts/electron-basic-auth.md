@@ -38,7 +38,7 @@ app.on("login", (event, webContents, request, authInfo, callback) => {
 
 ```html
 <body>
-    <webview id="browse" src="http://localhost:3000"></webview>
+  <webview id="browse" src="http://localhost:3000"></webview>
 </body>
 ```
 
@@ -64,7 +64,7 @@ app.on("login", (event, webContents, request, authInfo, callback) => {
   event.preventDefault();
   subWindow = new BrowserWindow({
     parent: win,
-    modal: true
+    modal: true,
   });
   subWindow.loadFile("auth.html");
   loginCallback = callback;
@@ -77,10 +77,10 @@ app.on("login", (event, webContents, request, authInfo, callback) => {
 <body>
   <h1>Auth</h1>
   <label>username</label>
-  <input type="text" id="username" class="input">
+  <input type="text" id="username" class="input" />
 
   <label>Password</label>
-  <input type="password" id="password" class="input">
+  <input type="password" id="password" class="input" />
 
   <button id="auth">送信</button>
 </body>
@@ -96,10 +96,10 @@ ipc を使って auth.html からユーザー・パスワードを送信しま�
 <body>
   <h1>Auth</h1>
   <label>username</label>
-  <input type="text" id="username" class="input">
+  <input type="text" id="username" class="input" />
 
   <label>Password</label>
-  <input type="password" id="password" class="input">
+  <input type="password" id="password" class="input" />
 
   <button id="auth" onclick="submit()">送信</button>
   <script type="text/javascript">
@@ -107,7 +107,7 @@ ipc を使って auth.html からユーザー・パスワードを送信しま�
     function submit() {
       const username = document.querySelector("#username").value;
       const password = document.querySelector("#password").value;
-      ipcRenderer.send("authorization", { username, password })
+      ipcRenderer.send("authorization", { username, password });
     }
   </script>
 </body>
@@ -133,7 +133,7 @@ app.on("login", (event, webContents, request, authInfo, callback) => {
   event.preventDefault();
   subWindow = new BrowserWindow({
     parent: win,
-    modal: true
+    modal: true,
   });
   subWindow.loadFile("auth.html");
   loginCallback = callback;
@@ -147,12 +147,12 @@ ipcMain.on("authorization", (event, arg) => {
 
 # おわりに
 
-上記をまとめると、4つの流れでBasic認証の処理ができるようになります。
+上記をまとめると、4 つの流れで Basic 認証の処理ができるようになります。
 
-1. app の`login`イベントでBasic認証の検知
+1. app の`login`イベントで Basic 認証の検知
 2. サブウィンドウでユーザー・パスワード入力画面を表示
 3. 入力された情報を ipc 通信でやり取りする
-4. ipc通信で受け取った入力情報を`callback`に渡す
+4. ipc 通信で受け取った入力情報を`callback`に渡す
 
 # 参考ページ
 

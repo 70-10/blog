@@ -5,7 +5,7 @@ tags: ["Docker", "Python"]
 draft: false
 ---
 
-ローカル環境を汚したくない人のための、MeCab、Word2VecをDocker環境で実行するためのDockerfileまとめ。
+ローカル環境を汚したくない人のための、MeCab、Word2Vec を Docker 環境で実行するための Dockerfile まとめ。
 
 ```docker
 FROM python:3-alpine

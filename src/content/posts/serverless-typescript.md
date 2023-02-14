@@ -47,7 +47,7 @@ import {
   APIGatewayEvent,
   Context,
   Handler,
-  APIGatewayProxyResult
+  APIGatewayProxyResult,
 } from "aws-lambda";
 
 export const hello: Handler = async (
@@ -57,9 +57,10 @@ export const hello: Handler = async (
   const response = {
     statusCode: 200,
     body: JSON.stringify({
-      message: "Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!",
-      input: event
-    })
+      message:
+        "Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!",
+      input: event,
+    }),
   };
 
   return response;
@@ -79,16 +80,17 @@ $ npm install -D serverless serverless-offline
 
 ```yaml
 plugins:
-
-- serverless-webpack
-- serverless-offline // この行を追記
+  - serverless-webpack
+  - serverless-offline // この行を追記
 ```
 
 **package.json**
 
 ```json
-"script": {
-"dev": "serverless offline" // この行を追記
+{
+  "script": {
+    "dev": "serverless offline" // この行を追記
+  }
 }
 ```
 
@@ -180,4 +182,3 @@ Dload Upload Total Spent Left Speed
 テンプレートを`aws-nodejs`に変えれば、JavaScript のプロジェクトで始めることもできます。
 
 ちなみに、serverless-offline はフォローしている言語が限られているようで、2018/08/29 現在、Go はフォローされていませんでした。
-

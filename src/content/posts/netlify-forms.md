@@ -15,7 +15,7 @@ Netlify Forms の実装パターンについてまとめます。
 
 ```html
 <form name="basic" method="POST" data-netlify="true">
-  <label>Your Name: <input type="text" name="name"/></label>
+  <label>Your Name: <input type="text" name="name" /></label>
   <button type="submit">Send</button>
 </form>
 ```
@@ -34,7 +34,7 @@ Netlify 側でスパム判定していて、怪しいリクエストと判断さ
   data-netlify="true"
   action="/success.html"
 >
-  <label>Your Name: <input type="text" name="name"/></label>
+  <label>Your Name: <input type="text" name="name" /></label>
   <button type="submit">Send</button>
 </form>
 ```
@@ -46,7 +46,7 @@ Netlify 側でスパム判定していて、怪しいリクエストと判断さ
 
 ```html
 <form name="explicit-recaptcha" method="POST" data-netlify="true">
-  <label>Your Name: <input type="text" name="name"/></label>
+  <label>Your Name: <input type="text" name="name" /></label>
   <div data-netlify-recaptcha="true"></div>
   <button type="submit">Send</button>
 </form>
@@ -67,9 +67,9 @@ form の子要素に `data-netlify-recaptcha="true"` 属性を持つ DOM を追�
   netlify-honeypot="bot-field"
 >
   <p>
-    <label>Bot Field: <input name="bot-field"/></label>
+    <label>Bot Field: <input name="bot-field" /></label>
   </p>
-  <label>Your Name: <input type="text" name="name"/></label>
+  <label>Your Name: <input type="text" name="name" /></label>
   <button type="submit">Send</button>
 </form>
 ```

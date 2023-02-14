@@ -16,7 +16,8 @@
         "esbenp.prettier-vscode",
         "bierner.markdown-preview-github-styles",
         "yzhang.markdown-all-in-one",
-        "taichi.vscode-textlint"
+        "taichi.vscode-textlint",
+        "dbaeumer.vscode-eslint"
       ]
     }
   },
