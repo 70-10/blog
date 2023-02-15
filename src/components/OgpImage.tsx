@@ -2,7 +2,7 @@ import satori from "satori";
 import sharp from "sharp";
 
 async function getFontData() {
-  const API = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP`;
+  const API = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700`;
 
   const css = await (
     await fetch(API, {
@@ -28,16 +28,33 @@ export async function getOgImage(text: string) {
 
   const svg = await satori(
     <main
-      tw="px-10"
       style={{
+        backgroundSize: "800px 400px",
         backgroundImage:
-          "linear-gradient(90deg, rgba(56, 72, 55, 1), rgba(36, 130, 83, 1))",
+          "url(https://user-images.githubusercontent.com/5960697/218908368-6abb163e-d8e4-45a5-a757-510eb4052cf5.JPG)",
         height: "100%",
         width: "100%",
       }}
     >
-      <section tw="flex flex-col justify-center">
-        <h1 tw="text-6xl font-extraold text-white">{text}</h1>
+      <section
+        tw="flex flex-col w-full p-12 justify-between border"
+        style={{
+          backgroundImage:
+            "linear-gradient(0deg, rgba(80,80,80,0.8) 0%, rgba(120,120,120,0.9) 100%)",
+        }}
+      >
+        <h1 tw="text-5xl text-gray-100">{text}</h1>
+        <div tw="flex justify-between items-center">
+          <p tw="items-center">
+            <img
+              tw="h-12 w-12 rounded-full border border-gray-300"
+              src="https://avatars.githubusercontent.com/u/5960697?v=4"
+              alt="icon"
+            />
+            <span tw="ml-3 text-gray-100 text-lg">70_10</span>
+          </p>
+          <p tw="text-gray-100">https://blog.70-10.net</p>
+        </div>
       </section>
     </main>,
     {
