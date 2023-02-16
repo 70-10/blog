@@ -1,5 +1,5 @@
 ---
-import { isDevelopment } from "../lib/environments";
+import { isProduction } from "../lib/environments";
 ---
 
-{!isDevelopment && <slot />}
+{isProduction && <slot />}
