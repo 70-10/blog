@@ -30,14 +30,13 @@ export async function getOgImage(text: string) {
     <main
       style={{
         backgroundSize: "800px 400px",
-        backgroundImage:
-          "url(https://user-images.githubusercontent.com/5960697/218908368-6abb163e-d8e4-45a5-a757-510eb4052cf5.JPG)",
+        backgroundImage: "url(https://blog.70-10.net/bg_image.jpg)",
         height: "100%",
         width: "100%",
       }}
     >
       <section
-        tw="flex flex-col w-full p-12 justify-between border"
+        tw="flex flex-col w-full px-15 py-12 justify-between border"
         style={{
           backgroundImage:
             "linear-gradient(0deg, rgba(80,80,80,0.8) 0%, rgba(120,120,120,0.9) 100%)",
@@ -53,7 +52,7 @@ export async function getOgImage(text: string) {
             />
             <span tw="ml-3 text-gray-100 text-lg">70_10</span>
           </p>
-          <p tw="text-gray-100">https://blog.70-10.net</p>
+          <p tw="text-gray-100 pr-7">https://blog.70-10.net</p>
         </div>
       </section>
     </main>,
