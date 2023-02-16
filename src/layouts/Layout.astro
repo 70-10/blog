@@ -23,7 +23,7 @@ const { title, seo } = Astro.props;
 <html lang="ja">
   <head>
     <SEO
-      title={title}
+      title={`${title} | Blog`}
       charset="UTF-8"
       openGraph={{
         basic: {
@@ -33,6 +33,9 @@ const { title, seo } = Astro.props;
         },
         article: {
           authors: ["70_10"],
+        },
+        image: {
+          alt: title,
         },
       }}
       twitter={{
