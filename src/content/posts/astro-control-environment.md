@@ -5,10 +5,10 @@ tags: ["Web Frontend", "Astro"]
 draft: false
 ---
 
-Google Analytics の script タグは本番環境でのみ動くようにしたいです。  
-開発時やプレビュー状態のときは script タグを除き、本番ビルドだけ script タグが埋め込まれる仕組みをつくります。
+Google Analytics の script タグは本番でのみ動くようにしたいです。  
+script タグを開発時やプレビューのときは除き、本番ビルド時だけ埋め込まれる仕組みをつくります。
 
-実装結果のイメージはこちらです。
+## 実装イメージ
 
 ```astro
 <ProductionOnly>
@@ -16,7 +16,7 @@ Google Analytics の script タグは本番環境でのみ動くようにした�
 </ProductionOnly>
 ```
 
-# Atro は実行方法で NODE_ENV の値が変わる
+## 実行方法による NODE_ENV の違い
 
 Astro は 実行方法によって `NODE_ENV` が変わります。  
 `astro dev` は `development` 、 `astro build` は `production` が設定されます。  
@@ -33,7 +33,9 @@ $ NODE_ENV=development astro build
 // NODE_ENV => development
 ```
 
-# `isProduction` を実装する
+つまり、 `NODE_ENV` が `production` のときのみ表示される仕組みが必要です。
+
+## `isProduction` を実装する
 
 `NODE_ENV` が `production` のとき true を返す変数を作ります。
 
@@ -41,7 +43,7 @@ $ NODE_ENV=development astro build
 const isProduction = process.env.NODE_ENV === "production"
 ```
 
-# `<ProductionOnly>` を実装する
+## `<ProductionOnly>` を実装する
 
 `src/components/ProductionOnly.astro` を用意します。  
 `isProduction` が true のときだけ `<slot />` をレンダリングします。
@@ -54,7 +56,7 @@ import { isProduction } from "../lib/environments";
 {isProduction && <slot />}
 ```
 
-# 完成形
+## 完成形
 
 ```astro:src/pages/index.astro
 ---
