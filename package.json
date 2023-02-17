@@ -31,7 +31,7 @@
     "@types/node": "18.14.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
-    "astro": "2.0.12",
+    "astro": "2.0.14",
     "astro-compress": "1.1.33",
     "astro-seo": "0.7.0",
     "cdate": "0.0.4",
