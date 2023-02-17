@@ -1,8 +1,8 @@
 ---
 title: Astroで環境変数に応じてコンポーネント表示制御をする
-publishDate: 2023/02/16
+publishDate: 2023/02/17
 tags: ["Web Frontend", "Astro"]
-draft: true
+draft: false
 ---
 
 Google Analytics の script タグは本番環境でのみ動くようにしたいです。  
@@ -54,7 +54,7 @@ import { isProduction } from "../lib/environments";
 {isProduction && <slot />}
 ```
 
-# 完成
+# 完成形
 
 ```astro:src/pages/index.astro
 ---
