@@ -33,7 +33,7 @@
     "@types/react-dom": "18.0.11",
     "astro": "2.0.14",
     "astro-compress": "1.1.33",
-    "astro-seo": "0.7.0",
+    "astro-seo": "0.7.1",
     "cdate": "0.0.4",
     "github-markdown-css": "5.2.0",
     "react": "18.2.0",
