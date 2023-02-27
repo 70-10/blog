@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@astrojs/react": "2.0.2",
-    "@astrojs/rss": "^2.1.1",
+    "@astrojs/rss": "2.1.1",
     "@astrojs/tailwind": "3.0.1",
     "@types/node": "18.14.2",
     "@types/react": "18.0.28",
@@ -37,7 +37,7 @@
     "astro-seo": "0.7.1",
     "cdate": "0.0.4",
     "github-markdown-css": "5.2.0",
-    "marked": "^4.2.12",
+    "marked": "4.2.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "remark-code-titles": "0.1.2",
@@ -46,7 +46,7 @@
     "tailwindcss": "3.2.7"
   },
   "devDependencies": {
-    "@types/marked": "^4.0.8",
+    "@types/marked": "4.0.8",
     "@types/sharp": "0.31.1",
     "@typescript-eslint/eslint-plugin": "5.53.0",
     "@typescript-eslint/parser": "5.53.0",
