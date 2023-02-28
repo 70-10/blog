@@ -4,5 +4,5 @@
   "semi": true,
   "bracketSpacing": true,
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-organize-imports"]
+  "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"]
 }
