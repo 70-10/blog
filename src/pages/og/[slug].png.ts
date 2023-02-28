@@ -1,3 +1,4 @@
+import type { APIContext } from "astro";
 import { getEntryBySlug } from "astro:content";
 import { getOgImage } from "../../components/OgpImage";
 import { getPosts } from "../../lib/repositories/posts";
@@ -10,7 +11,11 @@ export async function getStaticPaths() {
   }));
 }
 
-export async function get({ params, request }) {
+export async function get({ params }: APIContext) {
+  if (!params.slug) {
+    throw new Error("Slug not found");
+  }
+
   const post = await getEntryBySlug("posts", params.slug);
 
   const body = await getOgImage(post?.data.title as string);
