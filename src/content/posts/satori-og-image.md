@@ -13,31 +13,42 @@ draft: false
 
 # satori とは
 
-`@vercel/satori` とは、HTML/CSS を SVG に変換するツールです。
+`@vercel/satori` とは、HTML/CSS を SVG に変換するツールです。  
+[`@vercel/og`](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) という、動的に OG 画像を生成するライブラリの中で使用されています。
 
-# 仕組み
+# Astro で OG 画像を生成する方法
 
 1. OG 画像用の HTML を作成
 2. satori で HTML を SVG に変換
 3. sharp で SVG から PNG に変換
 4. PNG を [静的ファイルエンドポイント](https://docs.astro.build/core-concepts/endpoints/#static-file-endpoints)として配信
+5. meta データの `og:image` に OG 画像の URL を指定
 
-# 導入の流れ
+# 対応
 
-1. `@vercel/satori` と `sharp` をインストール
-   1. `npm install @vercel/satori sharp`
-2. `@vercel/satori` で jsx を使いたいので React を Astro に追加
-   1. `npx astro add react`
-3. `/og/[slug].png.ts` を作成
-4.
+## 1. 必要なパッケージのインストール
 
-## やったこと
+OG 画像生成に必要なパッケージ、 `@vercel/satori` と `sharp` をインストールします。
 
-- `@vercel/satori` をインストール
-- jsx 形式で書くために React を導入 `npx astro add react` を実行
-- `/og/[slug].png.ts` を追加
+```
+npm install @vercel/satori sharp
+```
 
-```ts:/og/[slug].png.ts
+## 2. Astro に React を追加
+
+OG 画像にする HTML を jsx で書くため、Astro に React を導入します。
+
+```
+npx astro add react
+```
+
+## 3. `pages/og/[slug].png.ts` を作成
+
+Astro の静的ファイルエンドポイントとして `pages/og/[slug].png.ts` を作成します。
+
+OG 画像を生成する、 `getOgImage(title: string)` の作成は次の工程で行います。
+
+```ts:src/pages/og/[slug].png.ts
 export async function getStaticPaths() {
   const posts = await getPosts();
 
@@ -58,9 +69,9 @@ export async function get({ params, request }) {
 }
 ```
 
-- `getOgImage(text: string)` を作成
+## 4. `getOgImage(title: string)` を作成
 
-```tsx:OgpImage.tsx
+```tsx:src/components/OgpImage.tsx
 export async function getOgImage(text: string) {
   const fontData = (await getFontData()) as ArrayBuffer;
 
@@ -92,6 +103,8 @@ export async function getOgImage(text: string) {
 }
 ```
 
+### 4.1 OG 画像のフォントの設定
+
 - [satori/font.ts at main · vercel/satori](https://github.com/vercel/satori/blob/main/playground/pages/api/font.ts) を参考にフォント設定
 
 ```ts
@@ -118,7 +131,42 @@ async function getFontData() {
 }
 ```
 
-- `astro-seo` で OG 画像の指定
+## 5. meta データの設定
+
+今回は `astro-seo` を使って設定した。
+
+```tsx
+<SEO
+  title={`${title} | Blog`}
+  charset="UTF-8"
+  openGraph={{
+    basic: {
+      title,
+      type: seo.openGraph.type,
+      image: seo.openGraph.image ?? "",
+    },
+    article: {
+      authors: ["70_10"],
+    },
+    image: {
+      alt: title,
+    },
+  }}
+  twitter={{
+    card: "summary_large_image",
+    title,
+    creator: "@70_10",
+  }}
+  extend={{
+    link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+    meta: [
+      { name: "viewport", content: "width=device-width" },
+      { name: "generator", content: Astro.generator },
+      { name: "format-detection", content: "telephone=no" },
+    ],
+  }}
+/>
+```
 
 # 参考記事
 
