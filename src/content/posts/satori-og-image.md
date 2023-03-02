@@ -5,7 +5,7 @@ tags: ["Web Frontend"]
 draft: false
 ---
 
-[@vercel/satori](https://github.com/vercel/satori) と [sharp](https://sharp.pixelplumbing.com/)を使って、Astro で記事ごとに OG 画像を自動で生成する仕組みを作りました。
+[satori](https://github.com/vercel/satori) と [sharp](https://sharp.pixelplumbing.com/)を使って、Astro で記事ごとに OG 画像を自動で生成する仕組みを作りました。
 
 以下のように画像が表示されます。
 
@@ -13,7 +13,7 @@ draft: false
 
 # satori とは
 
-`@vercel/satori` とは、HTML/CSS を SVG に変換するツールです。  
+`satori` とは、HTML/CSS を SVG に変換するツールです。  
 [`@vercel/og`](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) という、動的に OG 画像を生成するライブラリの中で使用されています。
 
 # Astro で OG 画像を生成する方法
@@ -26,12 +26,105 @@ draft: false
 
 # 対応
 
-## 1. 必要なパッケージのインストール
-
-OG 画像生成に必要なパッケージ、 `@vercel/satori` と `sharp` をインストールします。
+# 0. Astro プロジェクトを用意する
 
 ```
-npm install @vercel/satori sharp
+npm create astro@latest
+```
+
+このコマンドを叩くと設定を聞かれるので、TypeScript のスタータープロジェクトで作成します。  
+作成すると以下のような構成のプロジェクトが生成されます。
+
+```
+.
+├── README.md
+├── astro.config.mjs
+├── package-lock.json
+├── package.json
+├── public
+│   └── favicon.svg
+├── src
+│   ├── components
+│   │   └── Card.astro
+│   ├── env.d.ts
+│   ├── layouts
+│   │   └── Layout.astro
+│   └── pages
+│       └── index.astro
+└── tsconfig.json
+```
+
+## 0.1 ContentCollection の準備
+
+```markdown:src/content/posts/sample.md
+---
+title: OG画像のサンプルページ
+---
+
+# Sample Page
+
+This is sample page.
+```
+
+```ts:src/content/ocnfig.ts
+import { defineCollection, z } from "astro:content";
+
+const postsCollection = defineCollection({
+  schema: z.object({
+    title: z.string(),
+  }),
+});
+
+export const collections = {
+  posts: postsCollection,
+};
+
+```
+
+```astro:src/pages/posts/[slug].astro
+---
+import { CollectionEntry, getCollection } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1>{post.data.title}</h1>
+    <Content />
+  </body>
+</html>
+```
+
+## 1. 必要なパッケージのインストール
+
+OG 画像生成に必要なパッケージ、 `satori` と `sharp` をインストールします。
+
+```
+npm install satori sharp
+```
+
+```
+npm install -D @types/sharp
 ```
 
 ## 2. Astro に React を追加
@@ -44,46 +137,51 @@ npx astro add react
 
 ## 3. `pages/og/[slug].png.ts` を作成
 
-Astro の静的ファイルエンドポイントとして `pages/og/[slug].png.ts` を作成します。
+[label](2018-hurikaeri.md)Astro の静的ファイルエンドポイントとして `pages/og/[slug].png.ts` を作成します。
 
 OG 画像を生成する、 `getOgImage(title: string)` の作成は次の工程で行います。
 
 ```ts:src/pages/og/[slug].png.ts
+import type { APIContext } from "astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+import { getOgImage } from "../../components/OgImage";
+
 export async function getStaticPaths() {
-  const posts = await getPosts();
+  const posts = await getCollection("posts");
 
   return posts.map((post) => ({
     params: { slug: post.slug },
   }));
 }
 
-export async function get({ params, request }) {
+export async function get({ params }: APIContext) {
   const post = await getEntryBySlug("posts", params.slug);
+  const body = await getOgImage(post?.data.title ?? "No title");
 
-  const body = await getOgImage(post?.data.title as string);
-
-  return {
-    body,
-    encoding: "binary",
-  };
+  return { body, encoding: "binary" };
 }
 ```
 
 ## 4. `getOgImage(title: string)` を作成
 
 ```tsx:src/components/OgpImage.tsx
+import satori from "satori";
+import sharp from "sharp";
+
 export async function getOgImage(text: string) {
   const fontData = (await getFontData()) as ArrayBuffer;
-
   const svg = await satori(
     <main
       style={{
         height: "100%",
         width: "100%",
+        backgroundColor: "#444",
+        color: "#fff",
+        padding: "10px",
       }}
     >
       <section>
-        <h1>{text}</h1>
+        <h1 style={{ fontSize: "40px" }}>{text}</h1>
       </section>
     </main>,
     {
@@ -101,20 +199,13 @@ export async function getOgImage(text: string) {
 
   return await sharp(Buffer.from(svg)).png().toBuffer();
 }
-```
 
-### 4.1 OG 画像のフォントの設定
-
-- [satori/font.ts at main · vercel/satori](https://github.com/vercel/satori/blob/main/playground/pages/api/font.ts) を参考にフォント設定
-
-```ts
 async function getFontData() {
   const API = `https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@700`;
 
   const css = await (
     await fetch(API, {
       headers: {
-        // Make sure it returns TTF.
         "User-Agent":
           "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; de-at) AppleWebKit/533.21.1 (KHTML, like Gecko) Version/5.0.5 Safari/533.21.1",
       },
@@ -131,42 +222,68 @@ async function getFontData() {
 }
 ```
 
+### 4.1 OG 画像のフォントの設定
+
+- [satori/font.ts at main · vercel/satori](https://github.com/vercel/satori/blob/main/playground/pages/api/font.ts) を参考にフォントを設定する `getFontData()` を作成
+
 ## 5. meta データの設定
 
 今回は `astro-seo` を使って設定した。
 
-```tsx
-<SEO
-  title={`${title} | Blog`}
-  charset="UTF-8"
-  openGraph={{
-    basic: {
-      title,
-      type: seo.openGraph.type,
-      image: seo.openGraph.image ?? "",
-    },
-    article: {
-      authors: ["70_10"],
-    },
-    image: {
-      alt: title,
-    },
-  }}
-  twitter={{
-    card: "summary_large_image",
-    title,
-    creator: "@70_10",
-  }}
-  extend={{
-    link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
-    meta: [
-      { name: "viewport", content: "width=device-width" },
-      { name: "generator", content: Astro.generator },
-      { name: "format-detection", content: "telephone=no" },
-    ],
-  }}
-/>
 ```
+npm install astro-seo
+```
+
+```astro:src/pages/posts/[slug].astro
+---
+import { SEO } from "astro-seo";
+import { CollectionEntry, getCollection } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"posts">;
+}
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <SEO
+      charset="UTF-8"
+      openGraph={{
+        basic: {
+          title: post.data.title,
+          type: "article",
+          image: new URL(`/og/${post.slug}.png`, Astro.url.origin).toString(),
+        },
+        image: {
+          alt: post.data.title,
+        },
+      }}
+    />
+  </head>
+  <body>
+    <h1>{post.data.title}</h1>
+    <Content />
+  </body>
+</html>
+```
+
+# サンプルアプリ
+
+[70-10/astro-og-sample](https://github.com/70-10/astro-og-sample/tree/main)
 
 # 参考記事
 
