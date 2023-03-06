@@ -1,6 +1,6 @@
 ---
 title: Astroでsatoriを使ったOG画像生成
-publishDate: 2023/03/01
+publishDate: 2023/03/06
 tags: ["Web Frontend"]
 draft: false
 ---
@@ -28,11 +28,15 @@ draft: false
 
 # 0. Astro プロジェクトを用意する
 
+## 0.1 コマンドで Astro プロジェクトを生成
+
+以下のコマンドで、Astro プロジェクトを用意します。
+
 ```
 npm create astro@latest
 ```
 
-このコマンドを叩くと設定を聞かれるので、TypeScript のスタータープロジェクトで作成します。  
+コマンドを実行すると設定を聞かれるので、TypeScript のスタータープロジェクトを選択します。  
 作成すると以下のような構成のプロジェクトが生成されます。
 
 ```
@@ -54,7 +58,10 @@ npm create astro@latest
 └── tsconfig.json
 ```
 
-## 0.1 ContentCollection の準備
+## 0.2 ContentCollection の用意
+
+OG 画像を生成するもととなるページ (`/posts/[slug]`)を ContentCollection を使って用意します。  
+以下の 3 つのファイルを作成します。
 
 ```markdown:src/content/posts/sample.md
 ---
@@ -123,6 +130,8 @@ OG 画像生成に必要なパッケージ、 `satori` と `sharp` をインス�
 npm install satori sharp
 ```
 
+TypeScript を使用しているので、 `@types/sharp` もインストールします。
+
 ```
 npm install -D @types/sharp
 ```
@@ -137,8 +146,7 @@ npx astro add react
 
 ## 3. `pages/og/[slug].png.ts` を作成
 
-[label](2018-hurikaeri.md)Astro の静的ファイルエンドポイントとして `pages/og/[slug].png.ts` を作成します。
-
+Astro の静的ファイルエンドポイント `pages/og/[slug].png.ts` を作成します。  
 OG 画像を生成する、 `getOgImage(title: string)` の作成は次の工程で行います。
 
 ```ts:src/pages/og/[slug].png.ts
@@ -164,7 +172,10 @@ export async function get({ params }: APIContext) {
 
 ## 4. `getOgImage(title: string)` を作成
 
-```tsx:src/components/OgpImage.tsx
+`getOgImage(title: string)` をもつ `OgImage.tsx` を作成します。  
+`getFontData()` は [satori/font.ts at main · vercel/satori](https://github.com/vercel/satori/blob/main/playground/pages/api/font.ts) を参考に作成しています。
+
+```tsx:src/components/OgImage.tsx
 import satori from "satori";
 import sharp from "sharp";
 
@@ -222,17 +233,16 @@ async function getFontData() {
 }
 ```
 
-### 4.1 OG 画像のフォントの設定
-
-- [satori/font.ts at main · vercel/satori](https://github.com/vercel/satori/blob/main/playground/pages/api/font.ts) を参考にフォントを設定する `getFontData()` を作成
-
 ## 5. meta データの設定
 
-今回は `astro-seo` を使って設定した。
+`astro-seo` を使って設定します。  
+ まずは `astro-seo` をインストールします。
 
 ```
 npm install astro-seo
 ```
+
+`src/pages/posts/[slug].astro` に `astro-seo` を追加します。
 
 ```astro:src/pages/posts/[slug].astro
 ---
@@ -280,6 +290,15 @@ const { Content } = await post.render();
   </body>
 </html>
 ```
+
+# 実装の確認
+
+`npm run dev` でローカル実行をし、`http://localhost:3000/posts/sample` にアクセスすると以下のように表示されます。
+
+| ![OG画像サンプル](/assets/astro-og-sample.png) |
+| :--------------------------------------------: |
+
+生成された OG 画像は `http://localhost:3000/og/sample.png` から確認できます。
 
 # サンプルアプリ
 
