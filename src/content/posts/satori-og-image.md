@@ -16,17 +16,25 @@ draft: false
 `satori` とは、HTML/CSS を SVG に変換するツールです。  
 [`@vercel/og`](https://vercel.com/docs/concepts/functions/edge-functions/og-image-generation) という、動的に OG 画像を生成するライブラリの中で使用されています。
 
-# Astro で OG 画像を生成する方法
+# OG 画像が生成されるまでの処理の流れ
 
 1. OG 画像用の HTML を作成
 2. satori で HTML を SVG に変換
 3. sharp で SVG から PNG に変換
 4. PNG を [静的ファイルエンドポイント](https://docs.astro.build/core-concepts/endpoints/#static-file-endpoints)として配信
-5. meta データの `og:image` に OG 画像の URL を指定
 
-# 対応
+# 実装内容
 
-# 0. Astro プロジェクトを用意する
+以下の手順で実際に実装していきます。
+
+0. Astro プロジェクトを用意
+1. 必要なパッケージのインストール
+2. Astro に React を追加
+3. `pages/og/[slug].png.ts` を作成
+4. `getOgImage(title: string)` を作成
+5. meta データの設定
+
+# 0. Astro プロジェクトを用意
 
 ## 0.1 コマンドで Astro プロジェクトを生成
 
@@ -302,6 +310,7 @@ const { Content } = await post.render();
 
 # サンプルアプリ
 
+実際に実装したサンプルアプリはこちらです。  
 [70-10/astro-og-sample](https://github.com/70-10/astro-og-sample/tree/main)
 
 # 参考記事
