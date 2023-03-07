@@ -1,7 +1,7 @@
 ---
-title: Astroでsatoriを使ったOG画像生成
-publishDate: 2023/03/06
-tags: ["Web Frontend"]
+title: Astroで、satoriを使ったOG画像の自動生成を実装する
+publishDate: 2023/03/07 09:43:18 +09:00
+tags: ["Web Frontend", "Astro"]
 draft: false
 ---
 
@@ -81,7 +81,7 @@ title: OG画像のサンプルページ
 This is sample page.
 ```
 
-```ts:src/content/ocnfig.ts
+```ts:src/content/config.ts
 import { defineCollection, z } from "astro:content";
 
 const postsCollection = defineCollection({
