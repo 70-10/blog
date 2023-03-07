@@ -1,6 +1,6 @@
 ---
-title: Astroで、satoriを使ったOG画像の自動生成を実装する
-publishDate: 2023/03/07 09:43:18 +09:00
+title: Astroでsatoriを使ったOG画像の自動生成を実装する
+publishDate: 2023/03/07 11:56:03 +09:00
 tags: ["Web Frontend", "Astro"]
 draft: false
 ---
