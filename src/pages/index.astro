@@ -1,10 +1,29 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import { cdate } from "cdate";
 import Tag from "../components/Tag.astro";
 import Layout from "../layouts/Layout.astro";
 import { getPosts } from "../lib/repositories/posts";
 
 const posts = await getPosts();
+
+const years = Array.from(
+  new Set(
+    posts
+      .map(({ data }) => Number(cdate(data.publishDate).format("YYYY")))
+      .sort((a, b) => b - a)
+  )
+);
+
+const postsSegmentedByYear = posts.reduce((obj, post) => {
+  const year = Number(cdate(post.data.publishDate).format("YYYY"));
+  if (obj[year]) {
+    obj[year].push(post);
+  } else {
+    obj[year] = [post];
+  }
+  return obj;
+}, {} as { [year: number]: CollectionEntry<"posts">[] });
 
 const tags = Array.from(
   new Set(posts.map(({ data }) => data.tags).flat())
@@ -13,29 +32,33 @@ const tags = Array.from(
 
 <Layout title="Blog" seo={{ openGraph: { type: "website" } }}>
   <main class="base">
-    <section class="content">
-      <ul>
-        {
-          posts.map((entry) => {
-            const publishAt = cdate(entry.data.publishDate).format(
-              "YYYY/MM/DD"
-            );
+    {
+      years.map((year) => (
+        <section class="content">
+          <h1 class="heading_text">{year}</h1>
 
-            return (
-              <li class="list">
-                <time>{publishAt}</time>:
-                <a href={`/posts/${entry.slug}`} class="link">
-                  {entry.data.title}
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </section>
+          <ul>
+            {postsSegmentedByYear[year].map((entry) => {
+              const publishAt = cdate(entry.data.publishDate).format(
+                "YYYY/MM/DD"
+              );
+
+              return (
+                <li class="list">
+                  <time>{publishAt}</time>:
+                  <a href={`/posts/${entry.slug}`} class="link">
+                    {entry.data.title}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))
+    }
 
     <section class="content">
-      <h1 class="text-xl mb-3 font-bold">Tags</h1>
+      <h1 class="heading_text">Tags</h1>
       <div>
         {tags.filter((tag) => !!tag).map((tag) => <Tag name={tag} />)}
       </div>
@@ -46,7 +69,7 @@ const tags = Array.from(
 <style>
   .base {
     @apply grid grid-cols-10 gap-y-6;
-    @apply mt-5;
+    @apply mt-8;
   }
 
   .content {
@@ -60,5 +83,10 @@ const tags = Array.from(
 
   .list {
     @apply my-1;
+  }
+
+  .heading_text {
+    @apply text-2xl font-bold;
+    @apply mb-3;
   }
 </style>
