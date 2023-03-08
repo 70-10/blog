@@ -6,8 +6,8 @@ const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${id}`;
 ---
 
 <ProductionOnly>
-  <script is:inline async src={gtagUrl}></script>
-  <script is:inline define:vars={{ id }}>
+  <script is:inline type="text/partytown" async src={gtagUrl}></script>
+  <script is:inline define:vars={{ id }} type="text/partytown">
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       window.dataLayer.push(arguments);
