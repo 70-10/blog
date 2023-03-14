@@ -1,11 +1,8 @@
 import { CollectionEntry, getCollection } from "astro:content";
 import { cdate } from "cdate";
-import { isDevelopment } from "../environments";
 
 export async function getPosts(): Promise<CollectionEntry<"posts">[]> {
-  const entries = isDevelopment
-    ? await getCollection("posts")
-    : await getCollection("posts", ({ data }) => !data.draft);
+  const entries = await getCollection("posts");
 
   return entries.sort(sortByPublishDate);
 }
