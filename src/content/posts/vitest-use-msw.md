@@ -1,6 +1,6 @@
 ---
 title: VitestでMSWを使ってAPIモックする
-publishDate: "2023-03-14T17:47:00+09:00"
+publishDate: "2023-03-16T09:13:00+09:00"
 tags: ["Test", "Node.js"]
 ---
 
@@ -138,10 +138,10 @@ test("custom response", async () => {
 
 2 つ目のテストケースではレスポンスを `{ text: "hello, msw" }` に変更しています。
 
-# msw の URL 指定の煩わしさを少し解消する
+# msw の URL 指定の煩わしさを解消する
 
 レスポンスを変更する際に毎回ドメインから指定するのが面倒なので、パス指定のみで設定できるように修正します。  
-[MSW の Issue に上がっていたコメント](https://github.com/mswjs/msw/issues/397#issuecomment-751230924)のアイデアを拝借します。
+[msw の Issue に上がっていたコメント](https://github.com/mswjs/msw/issues/397#issuecomment-751230924)のアイデアを拝借します。
 
 ```ts:server.ts
 import { rest } from "msw";
