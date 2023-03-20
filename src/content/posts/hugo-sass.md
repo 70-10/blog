@@ -1,6 +1,6 @@
 ---
 title: HugoでSass/Scssを使う
-publishDate: 2018-08-26T21:01+09:00
+publishDate: 2018-08-26T21:01:00+09:00
 tags: ["Web Frontend", "CSS"]
 draft: false
 ---

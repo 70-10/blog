@@ -1,6 +1,6 @@
 ---
 title: Jestを導入するためのワンライナーコマンド
-publishDate: 2022-03-25T14:30+09:00
+publishDate: 2022-03-25T14:30:00+09:00
 tags: ["Node.js", "Test"]
 draft: false
 ---

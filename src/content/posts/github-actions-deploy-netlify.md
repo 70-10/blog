@@ -1,6 +1,6 @@
 ---
 title: Netlifyに7ドル支払った話（GitHub ActionsでNetlifyにデプロイする）
-publishDate: 2020-05-31T22:37+09:00
+publishDate: 2020-05-31T22:37:00+09:00
 tags: ["GitHub Actions", "Netlify"]
 draft: false
 ---

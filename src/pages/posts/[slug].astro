@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { cdate } from "cdate";
 import CalendarIcon from "../../components/CalendarIcon.astro";
 import Tag from "../../components/Tag.astro";
 import Layout from "../../layouts/Layout.astro";
+import { cdateJST } from "../../lib/cdate-jst";
 import { getPosts } from "../../lib/repositories/posts";
 import "../../styles/markdown-body.css";
 
@@ -43,7 +43,8 @@ const { Content } = await post.render();
           <div class="subtitle-section">
             <div class="publish-at">
               <CalendarIcon />
-              <time>{cdate(post.data.publishDate).format("YYYY/MM/DD")}</time>
+              <time>{cdateJST(post.data.publishDate).format("YYYY/MM/DD")}</time
+              >
             </div>
           </div>
         </div>

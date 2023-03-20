@@ -1,6 +1,6 @@
 ---
 title: 「UNIXという考え方」を読んだ
-publishDate: 2017-01-29T18:19+09:00
+publishDate: 2017-01-29T18:19:00+09:00
 tags: ["読書"]
 draft: false
 ---

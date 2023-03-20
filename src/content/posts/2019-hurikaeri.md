@@ -1,6 +1,6 @@
 ---
 title: 2019年のやることリスト ふりかえり編
-publishDate: 2019-12-31T21:00+09:00
+publishDate: 2019-12-31T21:00:00+09:00
 tags: ["TODO", "ふりかえり"]
 draft: false
 ---

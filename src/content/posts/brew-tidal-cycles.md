@@ -1,6 +1,6 @@
 ---
 title: HomebrewでTidalCyclesをインストールする
-publishDate: 2019-01-05T23:50+09:00
+publishDate: 2019-01-05T23:50:00+09:00
 tags: ["TidalCycles", "Homebrew"]
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: HttpClientのBaseAddressを使うときの注意まとめ
-publishDate: 2020-06-27T22:30+09:00
+publishDate: 2020-06-27T22:30:00+09:00
 tags: ["C Sharp", "HttpClient"]
 draft: false
 ---

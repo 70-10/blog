@@ -1,6 +1,6 @@
 ---
 title: GatsbyからAstroに移行した
-publishDate: 2023/02/08
+publishDate: 2023-02-08
 tags: ["Web Frontend", "Astro"]
 draft: false
 ---

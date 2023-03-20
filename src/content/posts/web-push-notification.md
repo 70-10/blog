@@ -1,6 +1,6 @@
 ---
 title: Web プッシュ通知許可はユーザーが求めるタイミングで表示すべき
-publishDate: 2021/05/24
+publishDate: 2021-05-24
 tags: ["Web Frontend"]
 draft: false
 ---

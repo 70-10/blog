@@ -1,6 +1,6 @@
 ---
 title: LitのコンポーネントテストはVitestで決まりかもしれない
-publishDate: 2022-07-15T11:00+09:00
+publishDate: 2022-07-15T11:00:00+09:00
 tags: ["Test", "Web Frontend", "Web Components", "Lit"]
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: Serverless FrameworkのTypeScriptプロジェクト作成と初期設定まとめ
-publishDate: 2018-08-29T23:16+09:00
+publishDate: 2018-08-29T23:16:00+09:00
 tags: ["AWS", "Serverless Framework", "TypeScript"]
 draft: false
 ---

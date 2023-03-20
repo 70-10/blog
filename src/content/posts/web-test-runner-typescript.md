@@ -1,6 +1,6 @@
 ---
 title: Web Test RunnerでTypeScriptコードをテストする
-publishDate: 2022-03-16T10:18+09:00
+publishDate: 2022-03-16T10:18:00+09:00
 tags: ["Test"]
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: DockerでMeCab / Word2Vecの環境を構築する
-publishDate: 2020-12-27T12:22+09:00
+publishDate: 2020-12-27T12:22:00+09:00
 tags: ["Docker", "Python"]
 draft: false
 ---

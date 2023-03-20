@@ -1,6 +1,6 @@
 ---
 title: Null合体演算子 (??) を使おう
-publishDate: 2021-09-10T14:44+09:00
+publishDate: 2021-09-10T14:44:00+09:00
 tags: ["JavaScript"]
 draft: false
 ---

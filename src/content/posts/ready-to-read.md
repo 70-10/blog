@@ -1,6 +1,6 @@
 ---
 title: 読書で心がける3つのこと
-publishDate: 2020-03-09T19:00+09:00
+publishDate: 2020-03-09T19:00:00+09:00
 tags: ["読書"]
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: .NET 5.0のWeb APIをDockerで起動する
-publishDate: 2020-11-30T14:24+09:00
+publishDate: 2020-11-30T14:24:00+09:00
 tags: ["dotnet", "Docker"]
 draft: false
 ---
