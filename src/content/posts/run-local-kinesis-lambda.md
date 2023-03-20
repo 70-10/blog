@@ -1,6 +1,6 @@
 ---
 title: Kinesisストリームからのイベントを処理するLambdaをローカルで実行する
-publishDate: 2018-03-16T22:30+09:00
+publishDate: 2018-03-16T22:30:00+09:00
 tags: ["AWS"]
 draft: false
 ---

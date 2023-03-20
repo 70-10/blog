@@ -1,6 +1,6 @@
 ---
 title: HHKB Professional JPをKarabiner Elementsで快適に利用する
-publishDate: 2019-01-14T21:16+09:00
+publishDate: 2019-01-14T21:16:00+09:00
 tags: ["キーボード"]
 draft: false
 ---

@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { cdate } from "cdate";
 import Tag from "../components/Tag.astro";
 import Layout from "../layouts/Layout.astro";
+import { cdateJST } from "../lib/cdate-jst";
 import { getPosts } from "../lib/repositories/posts";
 
 const posts = await getPosts();
@@ -10,13 +10,13 @@ const posts = await getPosts();
 const years = Array.from(
   new Set(
     posts
-      .map(({ data }) => Number(cdate(data.publishDate).format("YYYY")))
+      .map(({ data }) => Number(cdateJST(data.publishDate).format("YYYY")))
       .sort((a, b) => b - a)
   )
 );
 
 const postsSegmentedByYear = posts.reduce((obj, post) => {
-  const year = Number(cdate(post.data.publishDate).format("YYYY"));
+  const year = Number(cdateJST(post.data.publishDate).format("YYYY"));
   if (obj[year]) {
     obj[year].push(post);
   } else {
@@ -39,7 +39,7 @@ const tags = Array.from(
 
           <ul>
             {postsSegmentedByYear[year].map((entry) => {
-              const publishAt = cdate(entry.data.publishDate).format(
+              const publishAt = cdateJST(entry.data.publishDate).format(
                 "YYYY/MM/DD"
               );
 

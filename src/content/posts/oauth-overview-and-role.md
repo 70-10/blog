@@ -1,6 +1,6 @@
 ---
 title: OAuthとは / OAuthのロールについて
-publishDate: 2020-06-18T22:30+09:00
+publishDate: 2020-06-18T22:30:00+09:00
 tags: ["OAuth"]
 draft: false
 ---

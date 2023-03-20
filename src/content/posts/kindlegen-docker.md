@@ -1,6 +1,6 @@
 ---
 title: KindleGenのDockerイメージを作った
-publishDate: 2020-07-24T09:57+09:00
+publishDate: 2020-07-24T09:57:00+09:00
 tags: ["Docker", "Kindle"]
 draft: false
 ---

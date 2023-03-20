@@ -1,6 +1,6 @@
 ---
 title: OAuth / OIDCを学ぶための最短経路
-publishDate: 2020-07-24T10:43+09:00
+publishDate: 2020-07-24T10:43:00+09:00
 tags: ["OAuth", "OpenID Connect"]
 draft: false
 ---

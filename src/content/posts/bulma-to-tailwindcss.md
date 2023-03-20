@@ -1,6 +1,6 @@
 ---
 title: BulmaからTailwind CSSに乗り換えた
-publishDate: 2021-03-04T14:27+09:00
+publishDate: 2021-03-04T14:27:00+09:00
 tags: ["CSS"]
 draft: false
 ---

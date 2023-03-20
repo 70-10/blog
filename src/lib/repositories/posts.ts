@@ -1,5 +1,5 @@
 import { CollectionEntry, getCollection } from "astro:content";
-import { cdate } from "cdate";
+import { cdateJST } from "../cdate-jst";
 
 export async function getPosts(): Promise<CollectionEntry<"posts">[]> {
   const entries = await getCollection("posts");
@@ -12,7 +12,7 @@ function sortByPublishDate(
   b: CollectionEntry<"posts">
 ): number {
   return (
-    cdate(b.data.publishDate).toDate().getTime() -
-    cdate(a.data.publishDate).toDate().getTime()
+    cdateJST(b.data.publishDate).toDate().getTime() -
+    cdateJST(a.data.publishDate).toDate().getTime()
   );
 }

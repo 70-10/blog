@@ -1,6 +1,6 @@
 ---
 title: Visual Studio For Macはglobal.jsonのrollForwardが使えない（追記あり）
-publishDate: 2021-02-04T16:52+09:00
+publishDate: 2021-02-04T16:52:00+09:00
 tags: [".NET Core", "Visual Studio"]
 draft: false
 ---

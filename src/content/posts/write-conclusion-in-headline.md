@@ -1,6 +1,6 @@
 ---
 title: 段落の見出しには結論を書く
-publishDate: 2021/05/24
+publishDate: 2021-05-24
 tags: ["文章"]
 draft: false
 ---

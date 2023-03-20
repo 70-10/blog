@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { cdate } from "cdate";
 import Layout from "../../layouts/Layout.astro";
+import { cdateJST } from "../../lib/cdate-jst";
 import { getPosts } from "../../lib/repositories/posts";
 
 interface Props {
@@ -36,7 +36,7 @@ const { tag, posts } = Astro.props;
       <ul class="mt-3">
         {
           posts.map((entry) => {
-            const publishAt = cdate(entry.data.publishDate).format(
+            const publishAt = cdateJST(entry.data.publishDate).format(
               "YYYY/MM/DD"
             );
 

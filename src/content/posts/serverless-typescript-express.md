@@ -1,6 +1,6 @@
 ---
 title: Serverless + TypescriptのプロジェクトにExpressを導入する
-publishDate: 2019-03-09T17:00+09:00
+publishDate: 2019-03-09T17:00:00+09:00
 tags: ["Serverless Framework", "TypeScript"]
 draft: false
 ---

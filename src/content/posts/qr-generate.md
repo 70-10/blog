@@ -1,6 +1,6 @@
 ---
 title: QRコードジェネレーターを作った
-publishDate: 2019-12-12T22:20+09:00
+publishDate: 2019-12-12T22:20:00+09:00
 tags: ["Web Frontend", "React", "GatsbyJS"]
 draft: false
 ---

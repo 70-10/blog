@@ -1,6 +1,6 @@
 ---
 title: Go 1.8以前のバージョンでソートする
-publishDate: 2019-10-31T20:00+09:00
+publishDate: 2019-10-31T20:00:00+09:00
 tags: ["Go", "AtCoder"]
 draft: false
 ---

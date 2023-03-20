@@ -1,6 +1,6 @@
 ---
 title: eval-spec-makerをDocker化した
-publishDate: 2017-09-25T22:11+09:00
+publishDate: 2017-09-25T22:11:00+09:00
 tags: ["Docker", "Test"]
 draft: false
 ---

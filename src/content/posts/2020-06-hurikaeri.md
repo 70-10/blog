@@ -1,6 +1,6 @@
 ---
 title: 2020年6月のふりかえり
-publishDate: 2020-06-30T23:24+09:00
+publishDate: 2020-06-30T23:24:00+09:00
 tags: ["ふりかえり", "音楽"]
 draft: false
 ---

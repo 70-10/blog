@@ -1,6 +1,6 @@
 ---
 title: Hello World.
-publishDate: 2017-05-20T15:04+09:00
+publishDate: 2017-05-20T15:04:00+09:00
 draft: false
 tags: []
 ---
