@@ -4,22 +4,24 @@ publishDate: 2023-05-02T13:02:00+09:00
 tags: ["Web Frontend", "Next.js"]
 ---
 
-Next.js で API リクエストを行う方法を 3 つまとめます。  
+Next.js で API リクエストを行う方法 3 つのパターン例をまとめます。  
 それぞれの方法で、[PokeAPI](https://pokeapi.co/) を使ってピカチュウの情報を取得してみます。
 
 # API にリクエストする 3 つのパターン
 
 1. CSR (Client-side Rendering)
+   - ページのレンダリングをブラウザで行う
+   - API リクエストはブラウザから行われる
 2. SSR (Server-side Renderring)
+   - ページのレンダリングをサーバーで行う
+   - API リクエストはサーバーから行われる
 3. SSG (Static-site Generation)
+   - ページのレンダリングをビルド時に行う
+   - API リクエストはビルドを実行処理のなかで行われる
 
 PokeAPI でピカチュウの情報を取得するサンプルアプリ。
 
 # 1. CSR (Client-side Rendering)
-
-API リクエストには swr を利用します。  
-画面に遷移するたび API リクエストが発生します。  
-ブラウザから API をリクエストしています。
 
 ```tsx
 import type { Pokemon } from "@/models/pokemon";
@@ -47,8 +49,6 @@ export default function CSR() {
 ```
 
 # SSR (Server-side Renderring)
-
-サーバーから API をリクエストし、その情報をもとに画面を生成します。
 
 ```tsx
 import type { Pokemon } from "@/models/pokemon";
