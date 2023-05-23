@@ -1,11 +1,14 @@
 ---
 title: Next.jsでAPIをリクエストする
-publishDate: 2023-05-02T13:02:00+09:00
+publishDate: 2023-05-23T10:59:00+09:00
 tags: ["Web Frontend", "Next.js"]
 ---
 
 Next.js で API リクエストを行う方法 3 つのパターン例をまとめます。  
 それぞれの方法で、[PokeAPI](https://pokeapi.co/) を使ってピカチュウの情報を取得してみます。
+
+サンプルコードはこちらに置いています。  
+[70-10/nextjs-api-request](https://github.com/70-10/nextjs-api-request)
 
 # API にリクエストする 3 つのパターン
 
@@ -19,12 +22,16 @@ Next.js で API リクエストを行う方法 3 つのパターン例をまと�
    - ページのレンダリングをビルド時に行う
    - API リクエストはビルドを実行処理のなかで行われる
 
-PokeAPI でピカチュウの情報を取得するサンプルアプリ。
+| ![サンプルアプリイメージ](/assets/nextjs-api-request.jpg) |
+| :-------------------------------------------------------: |
+
+実装イメージはこんな感じ。図鑑番号と名前、画像が表示されるというシンプルなもの。
 
 # 1. CSR (Client-side Rendering)
 
 ```tsx
 import type { Pokemon } from "@/models/pokemon";
+import Image from "next/image";
 import useSWR from "swr";
 
 const pokeapiUrl = "https://pokeapi.co/api/v2/pokemon/25";
@@ -39,20 +46,29 @@ export default function CSR() {
       {error && <p>Failed to load</p>}
       {isLoading && <p>Loading...</p>}
       {data && (
-        <p>
-          {data.id}: {data.name}
-        </p>
+        <>
+          <p>
+            {data.id}: {data.name}
+          </p>
+          <Image
+            src={pokemon.sprites.front_default}
+            width={200}
+            height={200}
+            alt="Picture of the author"
+          />
+        </>
       )}
     </main>
   );
 }
 ```
 
-# SSR (Server-side Renderring)
+# 2. SSR (Server-side Renderring)
 
 ```tsx
 import type { Pokemon } from "@/models/pokemon";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Image from "next/image";
 
 const pokeapiUrl = "https://pokeapi.co/api/v2/pokemon/25";
 
@@ -69,6 +85,12 @@ export default function SSR({
       <p>
         {pokemon.id}: {pokemon.name}
       </p>
+      <Image
+        src={pokemon.sprites.front_default}
+        width={200}
+        height={200}
+        alt="Picture of the author"
+      />
     </main>
   );
 }
@@ -87,11 +109,12 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 };
 ```
 
-# SSG (Static-site Generation)
+# 3. SSG (Static-site Generation)
 
 ```tsx
 import type { Pokemon } from "@/models/pokemon";
 import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import Image from "next/image";
 
 const pokeapiUrl = "https://pokeapi.co/api/v2/pokemon/25";
 
@@ -108,6 +131,12 @@ export default function SSG({
       <p>
         {pokemon.id}: {pokemon.name}
       </p>
+      <Image
+        src={pokemon.sprites.front_default}
+        width={200}
+        height={200}
+        alt="Picture of the author"
+      />
     </main>
   );
 }
