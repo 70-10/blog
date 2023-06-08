@@ -47,8 +47,6 @@ test("CSR (Client-side Rendering)", async ({ page }) => {
 
   await expect(page.getByAltText(pokemonName)).toBeVisible();
   await expect(page.getByText(pokemonName)).toBeVisible();
-
-  expect(await page.screenshot()).toMatchSnapshot("csr.png");
 });
 
 test("SSR (Server-side Rendering)", async ({ page }) => {
@@ -56,8 +54,6 @@ test("SSR (Server-side Rendering)", async ({ page }) => {
 
   await expect(page.getByAltText(pokemonName)).toBeVisible();
   await expect(page.getByText(pokemonName)).toBeVisible();
-
-  expect(await page.screenshot()).toMatchSnapshot("ssr.png");
 });
 
 test("SSG (Static-site Generation)", async ({ page }) => {
@@ -65,8 +61,6 @@ test("SSG (Static-site Generation)", async ({ page }) => {
 
   await expect(page.getByAltText(pokemonName)).toBeVisible();
   await expect(page.getByText(pokemonName)).toBeVisible();
-
-  expect(await page.screenshot()).toMatchSnapshot("ssg.png");
 });
 ```
 
