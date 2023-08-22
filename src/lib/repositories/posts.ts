@@ -9,7 +9,7 @@ export async function getPosts(): Promise<CollectionEntry<"posts">[]> {
 
 function sortByPublishDate(
   a: CollectionEntry<"posts">,
-  b: CollectionEntry<"posts">
+  b: CollectionEntry<"posts">,
 ): number {
   return (
     cdateJST(b.data.publishDate).toDate().getTime() -

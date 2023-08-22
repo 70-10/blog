@@ -15,7 +15,7 @@ async function getFontData() {
   ).text();
 
   const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/
+    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
   );
 
   if (!resource) return;
@@ -66,7 +66,7 @@ export async function getOgImage(text: string) {
           style: "normal",
         },
       ],
-    }
+    },
   );
 
   return await sharp(Buffer.from(svg)).png().toBuffer();

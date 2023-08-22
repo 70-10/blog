@@ -52,7 +52,7 @@ import {
 
 export const hello: Handler = async (
   event: APIGatewayEvent,
-  context: Context
+  context: Context,
 ): Promise<APIGatewayProxyResult> => {
   const response = {
     statusCode: 200,

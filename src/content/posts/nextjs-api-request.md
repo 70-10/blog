@@ -96,7 +96,7 @@ export default function SSR({
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
-  context
+  context,
 ) => {
   const res = await fetch(pokeapiUrl);
   const pokemon = (await res.json()) as Pokemon;

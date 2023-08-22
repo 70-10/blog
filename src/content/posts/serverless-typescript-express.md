@@ -60,7 +60,7 @@ export const handler = serverless(app, {
   request: (
     req: CustomRequest,
     event: APIGatewayProxyEvent,
-    _context: Context
+    _context: Context,
   ) => {
     req.context = event.requestContext;
   },
