@@ -21,7 +21,7 @@ or 検索か and 検索も選べるようにしている。
 const multipleIncludes = (
   text: string,
   pattern: string | string[],
-  conditions: "and" | "or" = "or"
+  conditions: "and" | "or" = "or",
 ) => {
   if (typeof pattern === "string") {
     return text.includes(pattern);

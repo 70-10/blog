@@ -54,7 +54,7 @@ export default multipleIncludes;
 > function containsPatterns(
 >   text: string,
 >   patterns: string[],
->   operator: LogicOperator
+>   operator: LogicOperator,
 > ): boolean {
 >   return operator === "and"
 >     ? patterns.every((pattern) => text.includes(pattern))
@@ -84,7 +84,7 @@ type LogicOperator = "and" | "or";
 function containsPatterns(
   text: string,
   patterns: string[],
-  operator: LogicOperator
+  operator: LogicOperator,
 ): boolean {
   if (operator === "and") {
     for (let pattern of patterns) {
