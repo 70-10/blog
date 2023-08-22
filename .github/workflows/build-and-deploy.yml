@@ -21,7 +21,8 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
 
-      - uses: pnpm/action-setup@v2
+      - name: Use pnpm@8
+        uses: pnpm/action-setup@v2
         with:
           version: 8
 
