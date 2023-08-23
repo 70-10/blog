@@ -21,19 +21,28 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
 
+      - name: Use pnpm@8
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+
       - name: Install
         run: |
-          npm ci
+          pnpm install --frozen-lockfile
+      - name: Check pnpm-lock.yaml
+        run: git diff --exit-code pnpm-lock.yaml
       - name: Lint
         run: |
-          npm run lint
+          pnpm lint
       - name: Build
         run: |
-          npm run build
+          pnpm build
         env:
           NODE_ENV: production
       - name: Publish
