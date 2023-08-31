@@ -32,7 +32,7 @@
     "@astrojs/tailwind": "5.0.0",
     "astro": "3.0.3",
     "astro-compress": "2.0.14",
-    "astro-seo": "0.7.6",
+    "astro-seo": "0.8.0",
     "cdate": "0.0.7",
     "github-markdown-css": "5.2.0",
     "marked": "7.0.4",
