@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   }));
 }
 
-export async function get({ params }: APIContext) {
+export async function GET({ params }: APIContext) {
   if (!params.slug) {
     throw new Error("Slug not found");
   }
@@ -20,8 +20,7 @@ export async function get({ params }: APIContext) {
 
   const body = await getOgImage(post?.data.title as string);
 
-  return {
-    body,
-    encoding: "binary",
-  };
+  return new Response(body, {
+    headers: { "Content-Type": "image/png" },
+  });
 }
