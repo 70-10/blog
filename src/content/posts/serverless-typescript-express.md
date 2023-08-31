@@ -29,13 +29,13 @@ $ npm install -D @types/express
 ## express + serverless-http を使った handler を`app.ts`に用意
 
 ```typescript
-import serverless from "serverless-http";
-import * as express from "express";
 import {
-  APIGatewayProxyEvent,
   APIGatewayEventRequestContext,
+  APIGatewayProxyEvent,
   Context,
 } from "aws-lambda";
+import * as express from "express";
+import serverless from "serverless-http";
 
 interface CustomRequest extends express.Request {
   context: APIGatewayEventRequestContext;

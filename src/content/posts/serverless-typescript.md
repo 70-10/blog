@@ -45,9 +45,9 @@ region: ap-northeast-1 // この行を追記
 ```typescript
 import {
   APIGatewayEvent,
+  APIGatewayProxyResult,
   Context,
   Handler,
-  APIGatewayProxyResult,
 } from "aws-lambda";
 
 export const hello: Handler = async (
