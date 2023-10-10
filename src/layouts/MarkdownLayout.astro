@@ -8,7 +8,7 @@ import "../styles/markdown-body.css";
 const { frontmatter } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <SEO
@@ -52,13 +52,13 @@ const { frontmatter } = Astro.props;
     <Footer />
     <style>
       .base {
-        @apply grid grid-cols-10 gap-y-6;
+        @apply grid grid-cols-12 gap-y-6;
         @apply mt-5;
       }
 
       .content {
         @apply col-span-8 col-start-2;
-        @apply md:col-span-6 md:col-start-3;
+        @apply md:col-span-6 md:col-start-4;
       }
     </style>
   </body>

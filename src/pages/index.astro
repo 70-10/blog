@@ -11,22 +11,25 @@ const years = Array.from(
   new Set(
     posts
       .map(({ data }) => Number(cdateJST(data.publishDate).format("YYYY")))
-      .sort((a, b) => b - a)
-  )
+      .sort((a, b) => b - a),
+  ),
 );
 
-const postsSegmentedByYear = posts.reduce((obj, post) => {
-  const year = Number(cdateJST(post.data.publishDate).format("YYYY"));
-  if (obj[year]) {
-    obj[year].push(post);
-  } else {
-    obj[year] = [post];
-  }
-  return obj;
-}, {} as { [year: number]: CollectionEntry<"posts">[] });
+const postsSegmentedByYear = posts.reduce(
+  (obj, post) => {
+    const year = Number(cdateJST(post.data.publishDate).format("YYYY"));
+    if (obj[year]) {
+      obj[year].push(post);
+    } else {
+      obj[year] = [post];
+    }
+    return obj;
+  },
+  {} as { [year: number]: CollectionEntry<"posts">[] },
+);
 
 const tags = Array.from(
-  new Set(posts.map(({ data }) => data.tags).flat())
+  new Set(posts.map(({ data }) => data.tags).flat()),
 ).sort();
 ---
 
@@ -40,7 +43,7 @@ const tags = Array.from(
           <ul>
             {postsSegmentedByYear[year].map((entry) => {
               const publishAt = cdateJST(entry.data.publishDate).format(
-                "YYYY/MM/DD"
+                "YYYY/MM/DD",
               );
 
               return (
@@ -68,13 +71,13 @@ const tags = Array.from(
 
 <style>
   .base {
-    @apply grid grid-cols-10 gap-y-6;
+    @apply grid grid-cols-12 gap-y-6;
     @apply mt-8;
   }
 
   .content {
     @apply col-span-8 col-start-2;
-    @apply md:col-span-6 md:col-start-3;
+    @apply md:col-span-8 md:col-start-4;
   }
 
   .link {
