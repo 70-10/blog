@@ -14,11 +14,16 @@
   "customizations": {
     "vscode": {
       "settings": {
+        "workbench.colorCustomizations": {
+          "editorWhitespace.foreground": "#7c7a7a"
+        },
+        "editor.renderWhitespace": "boundary",
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "emmet.includeLanguages": {
           "astro": "html"
-        }
+        },
+        "prettier.documentSelectors": ["**/*.astro"]
       },
       "extensions": [
         "astro-build.astro-vscode",
