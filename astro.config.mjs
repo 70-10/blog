@@ -1,4 +1,5 @@
 import partytown from "@astrojs/partytown";
+import prefetch from "@astrojs/prefetch";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import compress from "astro-compress";
@@ -17,6 +18,7 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),
+    prefetch(),
   ],
   markdown: {
     remarkPlugins: ["remark-gfm", "remark-smartypants", codeTitle],
