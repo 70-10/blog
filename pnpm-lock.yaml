@@ -36,8 +36,8 @@ dependencies:
     specifier: 5.3.0
     version: 5.3.0
   marked:
-    specifier: 8.0.0
-    version: 8.0.0
+    specifier: 8.0.1
+    version: 8.0.1
   react:
     specifier: 18.2.0
     version: 18.2.0
@@ -4285,8 +4285,8 @@ packages:
     hasBin: true
     dev: false
 
-  /marked@8.0.0:
-    resolution: {integrity: sha512-RI/D5csFVreNrFchdKFSdV38GDHJdD7OdmbNWYzGvApPb0A9pyypgfHC/FBH4ugmRE8cr7yg/TH7tu8585eMhA==}
+  /marked@8.0.1:
+    resolution: {integrity: sha512-eEbeEb/mJwh+sNLEhHOWtxMgjN/NEwZUBs1nkiIH2sTQTq07KmPMQ48ihyvo5+Ya56spVOPhunfGr6406crCVA==}
     engines: {node: '>= 16'}
     hasBin: true
     dev: false
