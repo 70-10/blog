@@ -10,7 +10,9 @@ import codeTitle from "remark-code-titles";
 export default defineConfig({
   site: "https://blog.70-10.net/",
   integrations: [
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
     compress(),
     react(),
     partytown({
