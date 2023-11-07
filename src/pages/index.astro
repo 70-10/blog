@@ -40,7 +40,7 @@ const tags = Array.from(
         <section class="content">
           <h1 class="heading_text">{year}</h1>
 
-          <ul>
+          <ul class="list-none">
             {postsSegmentedByYear[year].map((entry) => {
               const publishAt = cdateJST(entry.data.publishDate).format(
                 "YYYY/MM/DD",
