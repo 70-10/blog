@@ -33,8 +33,8 @@ dependencies:
     specifier: 0.0.7
     version: 0.0.7
   github-markdown-css:
-    specifier: 5.3.0
-    version: 5.3.0
+    specifier: 5.4.0
+    version: 5.4.0
   marked:
     specifier: 9.1.2
     version: 9.1.2
@@ -3239,8 +3239,8 @@ packages:
   /github-from-package@0.0.0:
     resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
 
-  /github-markdown-css@5.3.0:
-    resolution: {integrity: sha512-WI+6puEQJnC8JoIveA8R8PiwH/wJwlneE88j7Q+ojMfzWcqRJF01vrVvo8PoWc6Y4aDF+kG4WGZi3RHXymyzJg==}
+  /github-markdown-css@5.4.0:
+    resolution: {integrity: sha512-eJhoFp9fiZ290h0vWrU5MmW0A2eeB81Lv/3ZkdtKrylJvtWi71ezGrxCcw1P2fVr82s3NvBX66SoDCN1pWLadw==}
     engines: {node: '>=10'}
     dev: false
 
