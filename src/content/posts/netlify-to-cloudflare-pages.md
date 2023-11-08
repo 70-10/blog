@@ -24,9 +24,9 @@ Cloudflare Pages には本番環境とプレビュー環境が用意されてい
 
 もう少し細やかな設定を入れたビルドをしたい場合は、[cloudflare/pages-action](https://github.com/cloudflare/pages-action) を使うことになりそうです。
 
-# 少しハマったことのメモ
+### 少しハマったことのメモ
 
-## 本番環境のビルドが通らない
+#### 本番環境のビルドが通らない
 
 package.json の scripts に `"prepare": "husky install"` を設定していたのですが、デプロイすると `husky not found` となりビルドが通らなくなる事象にぶち当たりました。  
 原因は `NODE_ENV=production` を設定していることで `pnpm install` で `devDependencies` のパッケージがスキップされていたことでした。  
