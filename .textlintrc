@@ -1,7 +1,10 @@
 {
-    "rules": {
-        "preset-ja-technical-writing": {
-            "no-exclamation-question-mark": false
-        }
+  "rules": {
+    "preset-ja-technical-writing": {
+      "no-exclamation-question-mark": false
+    },
+    "ja-space-between-half-and-full-width": {
+      "space": "always"
     }
+  }
 }

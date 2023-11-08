@@ -23,7 +23,8 @@
         "emmet.includeLanguages": {
           "astro": "html"
         },
-        "prettier.documentSelectors": ["**/*.astro"]
+        "prettier.documentSelectors": ["**/*.astro"],
+        "textlint.autoFixOnSave": true
       },
       "extensions": [
         "astro-build.astro-vscode",
