@@ -33,7 +33,7 @@ const { tag, posts } = Astro.props;
   <main class="base">
     <section class="content">
       <h1 class="text-xl font-bold">{tag}</h1>
-      <ul class="mt-3">
+      <ul class="mt-3 list-none">
         {
           posts.map((entry) => {
             const publishAt = cdateJST(entry.data.publishDate).format(
