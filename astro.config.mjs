@@ -1,5 +1,4 @@
 import partytown from "@astrojs/partytown";
-import prefetch from "@astrojs/prefetch";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import compress from "astro-compress";
@@ -9,6 +8,10 @@ import codeTitle from "remark-code-titles";
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.70-10.net/",
+  prefetch: {
+    defaultStrategy: "viewport",
+    prefetchAll: true,
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -20,7 +23,6 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),
-    prefetch(),
   ],
   markdown: {
     remarkPlugins: ["remark-gfm", "remark-smartypants", codeTitle],
