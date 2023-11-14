@@ -26,13 +26,13 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/partytown": "2.0.1",
+    "@astrojs/partytown": "2.0.2",
     "@astrojs/prefetch": "0.4.1",
-    "@astrojs/react": "3.0.3",
+    "@astrojs/react": "3.0.4",
     "@astrojs/rss": "3.0.0",
     "@astrojs/tailwind": "5.0.2",
-    "astro": "3.3.3",
-    "astro-compress": "2.1.5",
+    "astro": "3.5.3",
+    "astro-compress": "2.2.3",
     "astro-seo": "0.8.0",
     "cdate": "0.0.7",
     "github-markdown-css": "5.4.0",
