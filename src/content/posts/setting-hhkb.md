@@ -27,7 +27,7 @@ Karabiner Elements で設定して使えるようにします。
 
 ### Karabiner Elements の設定
 
-![Karabiner settings](//images.ctfassets.net/sa46287w9bii/3NnTOBIWhWE193NpdmBrWn/dd2d01b4c030fb9cd3135fe78f79d421/karabiner-settings.png)
+![Karabiner settings](../images/setting-hhkb/karabiner-settings.png)
 
 シフトキーの両端は internatinal4, international5 で指定できます。  
 右 Cmd は Kana キーに割り当てました。HHKB ロゴキーには Fn キーを割り当てています。

@@ -15,7 +15,7 @@ draft: false
 
 毎日のコミットはクリアできました。1 年半ほど続けられています。
 
-![GitHubへのコミット](//images.ctfassets.net/sa46287w9bii/2Xt9FvrL4PULh780XBFFtu/23bc7a3a020fd1fbe5caff58b61a7468/GitHub__________________.png)
+![GitHubへのコミット](../images/2018-hurikaeri/github-contributions.png)
 
 肝心のコミット内容ですが、勉強や実験用の [sandbox リポジトリ](https://github.com/70-10/sandbox)へのコミットが多かったです。気になったことをメモ書きのようにいくつもこのリポジトリに入れていました。  
 コミット内容の質を上げることを目指していましたが、そこはクリアできなかったと感じています。  
@@ -26,7 +26,7 @@ draft: false
 年間 51 冊、平均月 4 冊ペースでした。  
 6 月と 10 月は未達ですが合計 50 冊以上読めて良かったです。
 
-![読んだ本の冊数](//images.ctfassets.net/sa46287w9bii/2pSEJ63QpMCOztBumjDnyv/a129c7959cbc9250c3fc655efc07236b/________________________.png)
+![読んだ本の冊数](../images/2018-hurikaeri/read-books.png)
 
 51 冊のほとんどを Kindle で読みました。紙の書籍で読んだものはおそらく 10 冊程度でした。
 
@@ -37,7 +37,7 @@ draft: false
 
 年間 192 枚、平均月 16 枚ペースでした。
 
-![聴いたCDの枚数](//images.ctfassets.net/sa46287w9bii/4CcOLQ8GVb8s504VVio567/da7a971b8e1f364d73cf98ab90c9bc80/_________CD_________.png)
+![聴いたCDの枚数](../images/2018-hurikaeri/listen-cds.png)
 
 192 枚のうち、実際に CD として購入したものは 18 枚。それ以外はすべてストリーミングサービスです。  
 利用したサービスは Spotify がほとんどで、Spotify に無いものを聴く場合にのみ Apple Music を利用していました。
@@ -50,7 +50,7 @@ draft: false
 
 年間 13 記事、平均月 1 記事ペースでした。
 
-![記事数](//images.ctfassets.net/sa46287w9bii/6QbGDfCVUikBpgQmmyPo8O/c54c5fc4feb0721db5b800fb604a4083/_________.png)
+![記事数](../images/2018-hurikaeri/posts-articles.png)
 
 毎月という目標は未達ですが平均月 1 回のペースでできたので良しとします。  
 想像していたよりもアクセス数が伸びていました。まずは質よりも量が大事だとわかりました。
