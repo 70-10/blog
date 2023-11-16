@@ -303,8 +303,8 @@ const { Content } = await post.render();
 
 `npm run dev` でローカル実行をし、`http://localhost:3000/posts/sample` にアクセスすると以下のように表示されます。
 
-| ![OG画像サンプル](/assets/astro-og-sample.png) |
-| :--------------------------------------------: |
+| ![OG画像サンプル](../images/satori-og-image/astro-og-sample.png) |
+| :--------------------------------------------------------------: |
 
 生成された OG 画像は `http://localhost:3000/og/sample.png` から確認できます。
 

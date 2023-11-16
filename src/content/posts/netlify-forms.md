@@ -55,7 +55,7 @@ Netlify 側でスパム判定していて、怪しいリクエストと判断さ
 form の子要素に `data-netlify-recaptcha="true"` 属性を持つ DOM を追加すると、reCAPTCHA 2 を埋め込めます。  
 基本パターンは、submit 後に CAPTCHA 画面が出ますが、こちらは form 自身に reCAPTCHA 2 が埋め込まれるため、遷移数が少なくなります。
 
-![reCAPTCHA](//images.ctfassets.net/sa46287w9bii/2swBoZ9F1qapr1lSlEBrHl/afe239c9ea3a4bd42aa764321fe0802f/recaptcha.png)
+![reCAPTCHA](../images/netlify-forms/recaptcha.png)
 
 ## ハニーポットを設定する
 

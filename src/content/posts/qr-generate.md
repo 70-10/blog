@@ -9,7 +9,8 @@ draft: false
 
 https://qr-generate.now.sh
 
-![QR Code Generator](//images.ctfassets.net/sa46287w9bii/1rIZTxffHmrPRRjeIH37YH/827b1baf6618cce7927b6b7ae2e5bdc5/0bf7a4435facb935454b30587bd4386e.gif)
+| ![QR Code Generator](../images/qr-generate/example.gif) |
+| :-----------------------------------------------------: |
 
 フレームワークには[GatsbyJS](https://www.gatsbyjs.org/)を、QR の生成には[qrcode.react](https://github.com/zpao/qrcode.react)を使用しています。  
 qrcode.react はとても簡単で、QR コードにしたい文字列を `value` へ渡すだけです。
