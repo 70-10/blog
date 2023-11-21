@@ -1,11 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import CalendarIcon from "../../components/CalendarIcon.astro";
 import Tag from "../../components/Tag.astro";
 import Layout from "../../layouts/Layout.astro";
 import { cdateJST } from "../../lib/cdate-jst";
 import { getPosts } from "../../lib/repositories/posts";
 import "../../styles/markdown-body.css";
+import { Image } from "astro:assets";
+import iconImage from "../../images/icon.svg";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -40,17 +41,25 @@ const { Content } = await post.render();
       <div class="flex items-center">
         <div class="min-w-0 flex-1">
           <h1 class="title">{post.data.title}</h1>
+
+          <section class="content"></section>
           <div class="subtitle-section">
-            <div class="publish-at">
-              <CalendarIcon />
-              <time>{cdateJST(post.data.publishDate).format("YYYY/MM/DD")}</time
+            <div class="relative -ml-0.5 aspect-square w-7 shrink-0">
+              <Image
+                src={iconImage}
+                alt="Icon"
+                class="h-full w-full rounded-full"
+              />
+              <div
+                class="absolute inset-0 rounded-full mix-blend-darken shadow-[0_0_0_1px_#f1f3f3_inset]"
               >
+              </div>
             </div>
+
+            <p>70_10</p>
+            <time>{cdateJST(post.data.publishDate).format("YYYY/MM/DD")}</time>
           </div>
         </div>
-      </div>
-      <div class="tags">
-        {post.data.tags.map((tag) => <Tag name={tag} />)}
       </div>
     </section>
     <section class="content">
@@ -58,12 +67,17 @@ const { Content } = await post.render();
         <Content />
       </article>
     </section>
+    <section class="content">
+      <div class="tags">
+        {post.data.tags.map((tag) => <Tag name={tag} />)}
+      </div>
+    </section>
   </main>
 </Layout>
 
 <style>
   .base {
-    @apply grid grid-cols-12 gap-y-10;
+    @apply grid grid-cols-12 gap-y-8;
     @apply mt-5;
   }
 
@@ -73,18 +87,15 @@ const { Content } = await post.render();
   }
 
   .title {
-    @apply text-4xl font-extrabold leading-tight;
+    @apply text-2xl font-extrabold leading-tight;
+    @apply my-8;
   }
 
   .subtitle-section {
     @apply mt-1;
-    @apply flex flex-col;
-  }
-
-  .publish-at {
-    @apply mt-2;
-    @apply flex items-center;
-    @apply text-sm text-gray-500;
+    @apply flex gap-x-2;
+    @apply items-center;
+    @apply font-mono text-sm text-gray-500;
   }
 
   .tags {
