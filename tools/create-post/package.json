@@ -1,0 +1,16 @@
+{
+  "name": "create-post",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx index.ts"
+  },
+  "devDependencies": {
+    "consola": "3.2.3",
+    "tsx": "4.2.0"
+  }
+}
