@@ -32,7 +32,7 @@ const { tag, posts } = Astro.props;
 <Layout title={`Tag: ${tag}`} seo={{ openGraph: { type: "article" } }}>
   <main class="base">
     <section class="title-content">
-      <h1 class="text-xl font-bold">{tag}</h1>
+      <h1 class="title">{`#${tag}`}</h1>
     </section>
     <section class="content">
       <ul class="mt-3 list-none">
@@ -70,8 +70,12 @@ const { tag, posts } = Astro.props;
     @apply mt-8;
   }
 
+  .title {
+    @apply text-xl font-bold;
+  }
+
   .link {
-    @apply text-blue-600 hover:text-gray-700;
+    @apply text-emerald-500 hover:underline;
   }
 
   .list {
