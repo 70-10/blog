@@ -1,7 +1,7 @@
 ---
 title: Goでsha256ハッシュするCLIをつくる
 publishDate: 2018-07-28T15:52:00+09:00
-tags: ["Go", "Node.js"]
+tags: ["Develop"]
 draft: false
 ---
 

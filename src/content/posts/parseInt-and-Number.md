@@ -1,7 +1,7 @@
 ---
 title: parseInt() と Number() の違い
 publishDate: 2023-08-29T13:53:00+09:00
-tags: ["JavaScript"]
+tags: ["Develop"]
 ---
 
 JavaScript の `parseInt()` と `Number()` はどちらも与えられた文字列を数値に変換する関数です。  
@@ -43,7 +43,7 @@ Number("abc10"); // NaN
 ## 3. 基数の指定
 
 `parseInt()`は第二引数に基数を指定できます。  
-`Number()` は基数を指定できず文字列を必ず10進数の値として処理します。
+`Number()` は基数を指定できず文字列を必ず 10 進数の値として処理します。
 
 ```js
 parseInt("100", 2); // 4

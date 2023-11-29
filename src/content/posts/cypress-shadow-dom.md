@@ -1,7 +1,7 @@
 ---
 title: CypressでShadow DOMにアクセスする
 publishDate: 2023-01-25T12:06:00+09:00
-tags: ["Test", "E2E", "Web Components"]
+tags: ["Web Frontend", "テスト"]
 draft: false
 ---
 

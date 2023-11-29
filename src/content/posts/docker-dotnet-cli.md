@@ -1,7 +1,7 @@
 ---
 title: Dockerで.NET Core CLIを使う
 publishDate: 2020-10-07T12:52:00+09:00
-tags: ["Docker", ".NET Core"]
+tags: ["Develop"]
 draft: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: VoltaでNodeをアンインストールする
 publishDate: 2021-09-29T11:02:00+09:00
-tags: ["Node.js"]
+tags: ["Develop"]
 draft: false
 ---
 

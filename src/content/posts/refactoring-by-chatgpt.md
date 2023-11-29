@@ -1,7 +1,7 @@
 ---
 title: ChatGPTにリファクタリングしてもらう
 publishDate: 2023-05-22T17:06:00+09:00
-tags: ["GPT", "プログラミング"]
+tags: ["Develop"]
 ---
 
 # ChatGPT Plus に課金

@@ -1,7 +1,7 @@
 ---
 title: React.FragmentでDOMの構成を正しく保つ
 publishDate: 2019-04-19T14:14:00+09:00
-tags: ["Web Frontend", "React"]
+tags: ["Web Frontend"]
 draft: false
 ---
 

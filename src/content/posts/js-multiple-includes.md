@@ -1,7 +1,7 @@
 ---
 title: String.prototype.includes()の検索文字列を複数指定できる関数を作る
 publishDate: 2021-02-05T09:00:00+09:00
-tags: ["JavaScript", "TypeScript"]
+tags: ["Develop"]
 draft: false
 ---
 

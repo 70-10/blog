@@ -1,7 +1,7 @@
 ---
 title: Playwrightでブラウザの時刻を操作する
 publishDate: 2023-04-11T13:02:00+09:00
-tags: ["Web Frontend", "Test", "Playwright", "E2E"]
+tags: ["Web Frontend", "テスト"]
 ---
 
 現在 Playwright にはブラウザ内の時刻を操作する機能がありません。  

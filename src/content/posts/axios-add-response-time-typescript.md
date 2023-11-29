@@ -1,7 +1,7 @@
 ---
 title: axiosでレスポンスタイムを計測する （TypeScript編）
 publishDate: 2019-11-29T20:00:00+09:00
-tags: ["TypeScript", "Web Frontend"]
+tags: ["Web Frontend"]
 draft: false
 ---
 

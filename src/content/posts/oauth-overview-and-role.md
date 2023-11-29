@@ -1,8 +1,7 @@
 ---
 title: OAuthとは / OAuthのロールについて
 publishDate: 2020-06-18T22:30:00+09:00
-tags: ["OAuth"]
-draft: false
+tags: ["セキュリティ"]
 ---
 
 この記事では以下の 3 つをまとめます。

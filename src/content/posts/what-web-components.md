@@ -1,7 +1,7 @@
 ---
 title: Web Componentsとはなんぞや
 publishDate: 2021-12-07T12:30:00+09:00
-tags: ["Web Frontend", "Web Components"]
+tags: ["Web Frontend"]
 draft: false
 ---
 

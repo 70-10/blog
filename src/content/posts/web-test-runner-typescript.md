@@ -1,7 +1,7 @@
 ---
 title: Web Test RunnerでTypeScriptコードをテストする
 publishDate: 2022-03-16T10:18:00+09:00
-tags: ["Test"]
+tags: ["Web Frontend", "テスト"]
 draft: false
 ---
 
@@ -52,7 +52,7 @@ it("sums up 2 numbers", () => {
   .
   .
   "scripts": {
-    "test": "web-test-runner tests/**/**.test.js --node-resolve"
+    "テスト": "web-test-runner tests/**/**.test.js --node-resolve"
   }
 }
 ```
@@ -99,7 +99,7 @@ package.json の`test`を`web-test-runner`のみにします。
   .
   .
   "scripts": {
-    "test": "web-test-runner"
+    "テスト": "web-test-runner"
   }
 }
 ```

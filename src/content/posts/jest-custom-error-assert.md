@@ -1,7 +1,7 @@
 ---
 title: Jestでカスタムエラーのフィールド変数をアサートする
 publishDate: 2023-10-01T21:20:00+09:00
-tags: ["JavaScript", "TypeScript", "Jest"]
+tags: ["Develop", "テスト"]
 ---
 
 以下のようなカスタムエラークラスが持つフィールド変数、 `name` のテストを書きたいとします。

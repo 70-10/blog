@@ -1,7 +1,7 @@
 ---
 title: 2018年のやることリスト ふりかえり編
 publishDate: 2018-12-31T23:53:00+09:00
-tags: ["TODO", "ふりかえり"]
+tags: ["日記"]
 draft: false
 ---
 
