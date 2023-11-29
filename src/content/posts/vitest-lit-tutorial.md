@@ -1,7 +1,7 @@
 ---
 title: VitestでLitコンポーネントをテストするためのチュートリアル
 publishDate: 2022-08-02T12:45:00+09:00
-tags: ["Web Frontend", "Lit", "Test"]
+tags: ["Web Frontend", "テスト"]
 draft: false
 ---
 
@@ -60,7 +60,7 @@ Vitest を実行できるように package.json の scripts に`test`を定義�
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
+    "テスト": "vitest"
   },
   "keywords": [],
   "author": "",

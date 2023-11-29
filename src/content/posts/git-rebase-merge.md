@@ -1,7 +1,7 @@
 ---
 title: rebase時にマージコミットを残したいのなら、--rebase-mergeオプションを使おう
 publishDate: 2021-09-13T14:14:00+09:00
-tags: ["Git"]
+tags: ["Develop"]
 draft: false
 ---
 

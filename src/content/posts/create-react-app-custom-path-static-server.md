@@ -1,7 +1,7 @@
 ---
 title: create-react-appでルートパスをカスタムした時のStatic Serverの起動について
 publishDate: 2020-11-03T20:46:00+09:00
-tags: ["Web Frontend", "React"]
+tags: ["Web Frontend"]
 draft: false
 ---
 

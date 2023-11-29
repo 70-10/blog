@@ -1,7 +1,7 @@
 ---
 title: Goでtime.Parseを使うときのタイムゾーンについて
 publishDate: 2018-07-31T21:13:00+09:00
-tags: ["Go"]
+tags: ["Develop"]
 draft: false
 ---
 

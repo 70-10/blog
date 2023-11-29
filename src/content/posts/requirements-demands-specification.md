@@ -1,7 +1,7 @@
 ---
 title: 要求/要件/仕様の違い
 publishDate: 2020-12-10T00:00:00+09:00
-tags: ["開発"]
+tags: ["Develop"]
 ---
 
 # 要求

@@ -1,7 +1,7 @@
 ---
 title: redux-saga v1.0.0を使うとredux-saga-test-planでエラーが出る
 publishDate: 2019-01-28T23:14:00+09:00
-tags: ["Web Frontend", "React"]
+tags: ["Web Frontend"]
 draft: false
 ---
 

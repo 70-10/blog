@@ -1,7 +1,7 @@
 ---
 title: iOS端末にプッシュ配信するCLIツールを作った
 publishDate: 2017-09-03T23:44:00+09:00
-tags: ["iOS", "Go"]
+tags: ["Develop"]
 draft: false
 ---
 

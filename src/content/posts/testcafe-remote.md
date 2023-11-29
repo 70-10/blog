@@ -1,7 +1,7 @@
 ---
 title: TestCafeのremote機能が良い
 publishDate: 2021-10-15T16:58:00+09:00
-tags: ["Test", "E2E"]
+tags: ["Develop", "テスト"]
 draft: false
 ---
 

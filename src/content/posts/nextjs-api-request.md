@@ -1,7 +1,7 @@
 ---
 title: Next.jsでAPIをリクエストする
 publishDate: 2023-05-23T10:59:00+09:00
-tags: ["Web Frontend", "Next.js"]
+tags: ["Web Frontend"]
 ---
 
 Next.js で API リクエストを行う方法 3 つのパターン例をまとめます。  

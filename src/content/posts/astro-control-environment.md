@@ -1,7 +1,7 @@
 ---
 title: Astroで環境変数に応じてコンポーネント表示制御をする
 publishDate: 2023-02-17
-tags: ["Web Frontend", "Astro"]
+tags: ["Web Frontend"]
 draft: false
 ---
 

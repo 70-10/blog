@@ -1,7 +1,7 @@
 ---
 title: VitestでMSWを使ってAPIモックする
 publishDate: 2023-03-16T09:13:00+09:00
-tags: ["Test", "Node.js"]
+tags: ["テスト"]
 ---
 
 # Node.js のプロジェクトに `vitest` と `msw` をインストールする

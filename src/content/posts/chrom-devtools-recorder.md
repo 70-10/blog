@@ -1,7 +1,7 @@
 ---
 title: Chrome DevTools の Recorder はE2Eテストを助けてくれる
 publishDate: 2023-07-31T19:55:00+09:00
-tags: ["Chrome"]
+tags: ["Web Frontend"]
 ---
 
 # Recorder はユーザーフローを記録・再生できる

@@ -1,8 +1,7 @@
 ---
 title: DockerでMeCab / Word2Vecの環境を構築する
 publishDate: 2020-12-27T12:22:00+09:00
-tags: ["Docker", "Python"]
-draft: false
+tags: ["Develop"]
 ---
 
 ローカル環境を汚したくない人のための、MeCab、Word2Vec を Docker 環境で実行するための Dockerfile まとめ。

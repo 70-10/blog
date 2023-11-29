@@ -1,7 +1,7 @@
 ---
 title: tailwindcss-typographyからgithub-markdown-cssに乗り換えた
 publishDate: 2022-03-24T12:29:00+09:00
-tags: ["CSS"]
+tags: ["Web Frontend"]
 draft: false
 ---
 
