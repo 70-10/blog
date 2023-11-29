@@ -37,7 +37,7 @@
 }
 
 .markdown-body .remark-card {
-  @apply p-2;
+  @apply mb-4 p-2;
 }
 
 .markdown-body .remark-card a {
