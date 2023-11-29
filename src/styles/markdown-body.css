@@ -41,12 +41,12 @@
 }
 
 .markdown-body .remark-card a {
-  @apply block rounded-lg border border-gray-200 bg-white px-6 shadow-sm hover:bg-neutral-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700;
+  @apply block rounded-lg border border-gray-200 bg-white px-6 shadow-sm hover:bg-neutral-50;
   @apply hover:no-underline;
 }
 
 .markdown-body .remark-card .title {
-  @apply mb-2 text-gray-900 dark:text-white;
+  @apply mb-2 text-gray-900;
 }
 
 .markdown-body .remark-card .site {
