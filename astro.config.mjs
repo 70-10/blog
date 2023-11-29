@@ -4,6 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import compress from "astro-compress";
 import { defineConfig } from "astro/config";
 import codeTitle from "remark-code-titles";
+import ogpCardPlugin from "./tools/remark-ogp-card";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,7 +26,12 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: ["remark-gfm", "remark-smartypants", codeTitle],
+    remarkPlugins: [
+      "remark-gfm",
+      "remark-smartypants",
+      codeTitle,
+      ogpCardPlugin,
+    ],
     shikiConfig: {
       theme: "monokai",
       wrap: true,

@@ -19,7 +19,8 @@ Gatsby をアップデートするのにも少しばかり苦労したことも�
 
 ![Gatby Satisfaction for The State of JS 2022](../images/migrate-astro/gatsby-satisfaction.png)
 
-[The State of JS 2022](https://2022.stateofjs.com/en-US/) でも 満足度が徐々に低下していることがわかります。  
+[The State of JS 2022](https://2022.stateofjs.com/en-US/) でも 満足度が徐々に低下していることがわかります。
+
 https://2022.stateofjs.com/ja-JP/libraries/rendering-frameworks/
 
 # Astro を触ってみた感想

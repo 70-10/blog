@@ -41,7 +41,7 @@ draft: false
 
 ## よかった曲まとめプレイリスト
 
-https://open.spotify.com/playlist/5P6Nhg4jBmBr3JNmDtzQoh?si=lFsr8mA8TwG--qF2P07b_w
+https://open.spotify.com/playlist/5P6Nhg4jBmBr3JNmDtzQoh?si=d89fd06189604f48
 
 ## 聴いたアルバム
 
