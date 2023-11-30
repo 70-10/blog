@@ -5,8 +5,9 @@ tags: ["Web Frontend", "テスト"]
 ---
 
 現在 Playwright にはブラウザ内の時刻を操作する機能がありません。  
-この機能について Issue が上がっていますが、まだ対応するまでには至っていません。  
-[\[Feature\] Time/Date emulation via e.g. a `clock()` primitive · Issue #6347 · microsoft/playwright](https://github.com/microsoft/playwright/issues/6347)
+この機能について Issue が上がっていますが、まだ対応するまでには至っていません。
+
+https://github.com/microsoft/playwright/issues/6347
 
 この Issue ではワークアラウンドとして Sinon.js を使った方法が提案されています。  
 今回はその方法でブラウザの時刻を操作します。
@@ -94,4 +95,4 @@ await page.evaluate(() => window.__clock.tick(60 * 60 * 1000));
 
 # 参考記事
 
-- [\[Feature\] Time/Date emulation via e.g. a `clock()` primitive · Issue #6347 · microsoft/playwright](https://github.com/microsoft/playwright/issues/6347#issuecomment-965887758)
+https://github.com/microsoft/playwright/issues/6347#issuecomment-965887758

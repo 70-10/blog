@@ -204,13 +204,16 @@ functions:
 
 # 参考ドキュメント
 
-リソースポリシーの設定に関する詳細は AWS のドキュメントを読みましょう。  
+リソースポリシーの設定に関する詳細は AWS のドキュメントを読みましょう。
+
 https://docs.aws.amazon.com/ja_jp/apigateway/latest/developerguide/apigateway-resource-policies-examples.html
 
-Serverless Framework での設定方法は以下のページに記載されています。  
+Serverless Framework での設定方法は以下のページに記載されています。
+
 https://serverless.com/framework/docs/providers/aws/events/apigateway#resource-policy
 
-今回実装したソースコードはこちらにコミットしてあります。  
+今回実装したソースコードはこちらにコミットしてあります。
+
 https://github.com/70-10/sandbox/tree/master/node/serverless/resource-policy
 
 # おわりに
