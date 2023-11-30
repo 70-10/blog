@@ -167,7 +167,7 @@ Finished running tests in 0.9s, all tests passed! 🎉
 
 # 参考情報
 
-- [Web Test Runner: Modern Web](https://modern-web.dev/docs/test-runner/overview/)
+https://modern-web.dev/docs/test-runner/overview/
 
 # 補足
 

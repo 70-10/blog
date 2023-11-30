@@ -10,7 +10,9 @@ draft: false
 [以前の記事](/2018/08/29/serverless-typescript/)で、Serverless + TypeScript のプロジェクトを作りました。  
 今回はそのプロジェクトに Express（と、serverless-http）を導入します。
 
-[リポジトリも用意しました](https://github.com/70-10/serverless-typescript)。
+リポジトリも用意しました。
+
+https://github.com/70-10/serverless-typescript
 
 # 導入方法
 

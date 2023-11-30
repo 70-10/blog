@@ -33,7 +33,9 @@ FAIL  src/saga.test.js
 # redux-saga-test-plan の Issue を見る
 
 [同様のエラーが起きたと報告されている Issue](https://github.com/jfairbank/redux-saga-test-plan/issues/217)では、`v1.0.0-beta.2`を使用していることが原因と言及されています。`v1.0.0-beta.1`にダウングレードするとエラーは発生しなくなっています。  
-redux-saga-test-plan では v1.0.0-beta.1 までフォローしているようで、それ以降のバージョンはまだ対応していません。（[関連 Pull Request](https://github.com/jfairbank/redux-saga-test-plan/pull/200)）
+redux-saga-test-plan では v1.0.0-beta.1 までフォローしているようで、それ以降のバージョンはまだ対応していません。
+
+https://github.com/jfairbank/redux-saga-test-plan/pull/200
 
 ## redux-saga-test-plan の活動状況
 

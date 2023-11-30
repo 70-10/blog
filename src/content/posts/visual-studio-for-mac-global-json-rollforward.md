@@ -37,4 +37,4 @@ Visual Studio For Mac を使う場合は指定されたバージョンの SDK �
 
 # 参考サイト
 
-- [global.json の概要 - .NET CLI | Microsoft Docs](https://docs.microsoft.com/ja-jp/dotnet/core/tools/global-json?tabs=netcore3x)
+https://docs.microsoft.com/ja-jp/dotnet/core/tools/global-json?tabs=netcore3x

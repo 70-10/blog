@@ -66,4 +66,4 @@ plugins: [new webpack.EnvironmentPlugin(slsw.lib.serverless.service.provider.env
 
 # 参考 URL
 
-[EnvironmentPlugin | webpack](https://webpack.js.org/plugins/environment-plugin/)
+https://webpack.js.org/plugins/environment-plugin/
