@@ -65,6 +65,6 @@
     "prettier-plugin-tailwindcss": "0.5.7",
     "textlint": "13.4.0",
     "textlint-rule-ja-space-between-half-and-full-width": "2.3.0",
-    "textlint-rule-preset-ja-technical-writing": "8.0.0"
+    "textlint-rule-preset-ja-technical-writing": "9.0.0"
   }
 }
