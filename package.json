@@ -29,9 +29,9 @@
   "dependencies": {
     "@astrojs/partytown": "2.0.2",
     "@astrojs/react": "3.0.5",
-    "@astrojs/rss": "3.0.0",
+    "@astrojs/rss": "4.0.0",
     "@astrojs/tailwind": "5.0.2",
-    "astro": "3.5.5",
+    "astro": "4.0.1",
     "astro-compress": "2.2.3",
     "astro-seo": "0.8.0",
     "cdate": "0.0.7",
