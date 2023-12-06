@@ -28,10 +28,10 @@
   },
   "dependencies": {
     "@astrojs/partytown": "2.0.2",
-    "@astrojs/react": "3.0.5",
+    "@astrojs/react": "3.0.7",
     "@astrojs/rss": "4.0.0",
-    "@astrojs/tailwind": "5.0.2",
-    "astro": "4.0.1",
+    "@astrojs/tailwind": "5.0.3",
+    "astro": "4.0.2",
     "astro-compress": "2.2.3",
     "astro-seo": "0.8.0",
     "cdate": "0.0.7",
