@@ -3,7 +3,7 @@ import type { APIContext } from "astro";
 import { marked } from "marked";
 import { getPosts } from "../lib/repositories/posts";
 
-export async function get(context: APIContext) {
+export async function GET(context: APIContext) {
   const posts = await getPosts();
 
   return rss({
