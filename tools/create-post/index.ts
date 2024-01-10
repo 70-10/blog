@@ -7,6 +7,10 @@ const templatePath = join(__dirname, "template.md");
 const postsPath = join(__dirname, "..", "..", "src", "content", "posts");
 
 async function main() {
+  const title = (await consola.prompt(
+    "Enter the title of the new post",
+  )) as string;
+
   const slug = (await consola.prompt(
     "Enter the slug of the new post",
   )) as string;
@@ -14,10 +18,6 @@ async function main() {
   if (await checkSameSlug(slug)) {
     throw new Error("The slug already exists");
   }
-
-  const title = (await consola.prompt(
-    "Enter the title of the new post",
-  )) as string;
 
   const tags = (await consola.prompt("Enter the tags of the new post", {
     type: "multiselect",
