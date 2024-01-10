@@ -1,12 +1,12 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Tag from "../../components/Tag.astro";
-import Layout from "../../layouts/Layout.astro";
-import { cdateJST } from "../../lib/cdate-jst";
-import { getPosts } from "../../lib/repositories/posts";
-import "../../styles/markdown-body.css";
+import Tag from "@/components/Tag.astro";
+import Layout from "@/layouts/Layout.astro";
+import { cdateJST } from "@/lib/cdate-jst";
+import { getPosts } from "@/lib/repositories/posts";
+import "@/styles/markdown-body.css";
 import { Image } from "astro:assets";
-import iconImage from "../../images/icon.svg";
+import iconImage from "@/images/icon.svg";
 
 interface Props {
   post: CollectionEntry<"posts">;

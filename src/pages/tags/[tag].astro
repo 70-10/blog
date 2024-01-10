@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
-import { cdateJST } from "../../lib/cdate-jst";
-import { getPosts } from "../../lib/repositories/posts";
+import Layout from "@/layouts/Layout.astro";
+import { cdateJST } from "@/lib/cdate-jst";
+import { getPosts } from "@/lib/repositories/posts";
 
 interface Props {
   posts: CollectionEntry<"posts">[];
