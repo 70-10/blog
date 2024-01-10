@@ -1,10 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Tag from "../components/Tag.astro";
-import Layout from "../layouts/Layout.astro";
-import { cdateJST } from "../lib/cdate-jst";
-import { getPosts } from "../lib/repositories/posts";
-import ProfileCard from "../components/ProfileCard.astro";
+import Tag from "@/components/Tag.astro";
+import Layout from "@/layouts/Layout.astro";
+import { cdateJST } from "@/lib/cdate-jst";
+import { getPosts } from "@/lib/repositories/posts";
+import ProfileCard from "@/components/ProfileCard.astro";
 
 const posts = await getPosts();
 
