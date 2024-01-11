@@ -33,8 +33,8 @@ importers:
         specifier: 0.0.7
         version: 0.0.7
       github-markdown-css:
-        specifier: 5.4.0
-        version: 5.4.0
+        specifier: 5.5.0
+        version: 5.5.0
       marked:
         specifier: 11.0.1
         version: 11.0.1
@@ -3956,8 +3956,8 @@ packages:
     requiresBuild: true
     dev: false
 
-  /github-markdown-css@5.4.0:
-    resolution: {integrity: sha512-eJhoFp9fiZ290h0vWrU5MmW0A2eeB81Lv/3ZkdtKrylJvtWi71ezGrxCcw1P2fVr82s3NvBX66SoDCN1pWLadw==}
+  /github-markdown-css@5.5.0:
+    resolution: {integrity: sha512-Ncp4putm+cGteDhtNYKGdchM4uiIm5tmQcAQx/eEYhuM0sOdjZYNQOauQTaodjDQjfw7whU99MijwC1M0FUY4w==}
     engines: {node: '>=10'}
     dev: false
 
