@@ -9,8 +9,11 @@
   "scripts": {
     "start": "tsx index.ts"
   },
-  "devDependencies": {
+  "dependencies": {
     "consola": "3.2.3",
+    "execa": "8.0.1"
+  },
+  "devDependencies": {
     "tsx": "4.6.2"
   }
 }

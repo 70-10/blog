@@ -1,8 +1,8 @@
 import consola from "consola";
+import { $ } from "execa";
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import allTags from "./tags.json";
-
 const templatePath = join(__dirname, "template.md");
 const postsPath = join(__dirname, "..", "..", "src", "content", "posts");
 
@@ -30,6 +30,7 @@ async function main() {
   const content = await generateContent(templatePath, title, tags);
 
   await writeFile(newFilePath, content);
+  await $`code ${newFilePath}`;
 }
 
 main().catch(console.error);
