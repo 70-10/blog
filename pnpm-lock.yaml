@@ -122,10 +122,14 @@ importers:
         version: 9.0.0(textlint@13.4.1)
 
   tools/create-post:
-    devDependencies:
+    dependencies:
       consola:
         specifier: 3.2.3
         version: 3.2.3
+      execa:
+        specifier: 8.0.1
+        version: 8.0.1
+    devDependencies:
       tsx:
         specifier: 4.6.2
         version: 4.6.2
@@ -2910,7 +2914,7 @@ packages:
   /consola@3.2.3:
     resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
-    dev: true
+    dev: false
 
   /convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
