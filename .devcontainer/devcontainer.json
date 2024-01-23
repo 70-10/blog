@@ -20,6 +20,7 @@
         "editor.renderWhitespace": "boundary",
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.stickyScroll.enabled": true,
         "emmet.includeLanguages": {
           "astro": "html"
         },
