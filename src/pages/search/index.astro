@@ -1,0 +1,36 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Search from "@/components/Search.astro";
+---
+
+<Layout title="Blog" seo={{ openGraph: { type: "website" } }}>
+  <main class="base">
+    <section class="content">
+      <Search />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .base {
+    @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;
+    @apply mt-10;
+  }
+
+  .content {
+    @apply mt-8;
+  }
+
+  .link {
+    @apply text-emerald-500 hover:underline;
+  }
+
+  .list {
+    @apply my-1;
+  }
+
+  .heading_text {
+    @apply text-2xl font-bold;
+    @apply mb-3;
+  }
+</style>
