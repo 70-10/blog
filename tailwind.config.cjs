@@ -1,8 +1,21 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+
+import defaultTheme from "tailwindcss/defaultTheme";
+
+export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: [
+          "Inter",
+          "Hiragino Kaku Gothic ProN",
+          "Hiragino Sans",
+          "Meiryo",
+          ...defaultTheme.fontFamily.sans,
+        ],
+      },
+    },
   },
   plugins: [],
 };
