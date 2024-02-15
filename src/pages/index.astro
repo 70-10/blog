@@ -42,18 +42,20 @@ const tags = Array.from(
 
     {
       years.map((year) => (
-        <section class="content">
-          <h1 class="heading_text">{year}</h1>
+        <section class="content flex gap-x-6">
+          <header>
+            <h1 class="heading_text">{year}</h1>
+          </header>
 
           <ul class="list-none">
             {postsSegmentedByYear[year].map((entry) => {
               const publishAt = cdateJST(entry.data.publishDate).format(
-                "YYYY/MM/DD",
+                "MM/DD",
               );
 
               return (
                 <li class="list">
-                  <time>{publishAt}</time>:
+                  <time class="text-sm">{publishAt}</time>
                   <a href={`/posts/${entry.slug}`} class="link">
                     {entry.data.title}
                   </a>
@@ -66,7 +68,10 @@ const tags = Array.from(
     }
 
     <section class="content">
-      <h1 class="heading_text">Tags</h1>
+      <div class="mb-6">
+        <h1 class="heading_text">Tags</h1>
+      </div>
+
       <div>
         {tags.filter((tag) => !!tag).map((tag) => <Tag name={tag} />)}
       </div>
@@ -77,7 +82,7 @@ const tags = Array.from(
 <style>
   .base {
     @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;
-    @apply mt-10;
+    @apply mt-12;
   }
 
   .content {
@@ -89,11 +94,12 @@ const tags = Array.from(
   }
 
   .list {
-    @apply my-1;
+    @apply mb-3;
+    @apply flex flex-col;
   }
 
   .heading_text {
     @apply text-2xl font-bold;
-    @apply mb-3;
+    @apply sticky top-2;
   }
 </style>
