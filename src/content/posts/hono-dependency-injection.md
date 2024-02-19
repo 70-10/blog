@@ -6,48 +6,14 @@ tags: ["Develop"]
 
 Hono で Dependency Injection をするためのシンプルな DIContainer クラスを作成します。
 
-# 完成イメージ
-
-完成形は Hono の Variables にセットされた DI コンテナから必要な Service などを取得し利用する。
-
-```ts:index.ts
-import { Hono } from "hono";
-import { DependencyTypes, diContainer } from "./di-config";
-import { DIContainer } from "./di-container";
-
-const app = new Hono<{
-  Variables: {
-    diContainer: DIContainer<DependencyTypes>;
-  };
-}>();
-
-app.use("*", (c, next) => {
-  c.set("diContainer", diContainer);
-  return next();
-});
-
-app.get("/users/:id", (c) => {
-  const di = c.get("diContainer");
-  const id = parseInt(c.req.param("id"));
-
-  const userService = di.get("UserService");
-  const user = userService.getUser(id);
-
-  return c.json(user);
-});
-
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
-});
-
-export default app;
-```
-
 # 1. User / UserRepository / UserService を作成する
+
+モデル、リポジトリ、サービスをそれぞれ作成します。  
+今回はユーザー情報を返すだけのシンプルなものを用意します。
 
 ## User
 
-ID と名前を持つシンプルな User クラスを用意します。
+ID と名前を持つシンプルな User クラスです。
 
 ```ts:user.ts
 export class User {
@@ -60,7 +26,7 @@ export class User {
 
 ## UserRepository
 
-`findUser(id: number): User` を持つ UserRepository クラスと IUserRepository インターフェースを用意します。  
+`findUser(id: number): User` を持つ UserRepository クラスと IUserRepository インターフェースです。  
 `findUser(id: number): User` では引数で渡された ID を持つ User インスタンスを返します。
 
 ```ts:user-repository.ts
@@ -79,8 +45,8 @@ export class UserRepository implements IUserRepository {
 
 ## UserService
 
-`getUser(id: number): User` を持つ UserService クラスと IUserService インターフェースを用意します。  
-`getUser(id:number): User` は`UserRepository.findUser(id)`を呼び出すだけのシンプルな処理です。
+`getUser(id: number): User` を持つ UserService クラスと IUserService インターフェースです。  
+`getUser(id:number): User` は `UserRepository.findUser(id)` を呼び出します。
 
 ```ts:user-service.ts
 import { User } from "./user";
@@ -100,6 +66,8 @@ export class UserService implements IUserService {
 ```
 
 # 2. DI コンテナクラスを作成する
+
+Service/Repository のインスタンス化し管理する DIContainer クラスを作成します。
 
 ```ts:di-container.ts
 export class DIContainer<DependencyTypes> {
@@ -129,6 +97,31 @@ export class DIContainer<DependencyTypes> {
 
 # 3. DI コンテナにクラスを登録する
 
+DIContainer インスタンス生成をする際に、管理するものを型宣言しておく必要があります。  
+今回は UserService, UserRepository の 2 つのみです。
+
+```ts
+interface DependencyTypes {
+  UserRepository: IUserRepository;
+  UserService: IUserService;
+}
+
+const diContainer = new DIContainer<DependencyTypes>();
+```
+
+`register` メソッドで UserRepository と UserService を登録します。
+
+```ts
+diContainer.register("UserRepository", UserRepository);
+diContainer.register(
+  "UserService",
+  UserService,
+  diContainer.get("UserRepository"),
+);
+```
+
+## 完成形
+
 ```ts:di-config.ts
 import { DIContainer } from "./di-container";
 import { IUserRepository, UserRepository } from "./user-repository";
@@ -141,10 +134,7 @@ export interface DependencyTypes {
 
 const diContainer = new DIContainer<DependencyTypes>();
 
-// Register repositories
 diContainer.register("UserRepository", UserRepository);
-
-// Register services
 diContainer.register(
   "UserService",
   UserService,
@@ -155,6 +145,43 @@ export { diContainer };
 ```
 
 # 4. Hono の Variables に DI コンテナをセットする
+
+## HonoのVariablesの型を指定する
+
+```ts:index.ts
+const app = new Hono<{
+  Variables: {
+    diContainer: DIContainer<DependencyTypes>;
+  };
+}>();
+```
+
+## ContextにSetしてどこからでも利用できるようにする
+
+すべてのエンドポイントから利用できるように `context.set` で DI コンテナをセットします。
+
+```ts
+app.use("*", (c, next) => {
+  c.set("diContainer", diContainer);
+  return next();
+});
+```
+
+DI コンテナを使うには `cotext.get` から取得します。
+
+```ts
+app.get("/users/:id", (c) => {
+  const di = c.get("diContainer");
+  const id = parseInt(c.req.param("id"));
+
+  const userService = di.get("UserService");
+  const user = userService.getUser(id);
+
+  return c.json(user);
+});
+```
+
+## 完成形
 
 ```ts:index.ts
 import { Hono } from "hono";
@@ -182,12 +209,12 @@ app.get("/users/:id", (c) => {
   return c.json(user);
 });
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
-});
-
 export default app;
 ```
+
+# リポジトリ
+
+https://github.com/70-10/sandbox/tree/main/backend/hono/di-sample
 
 # 参考情報
 
