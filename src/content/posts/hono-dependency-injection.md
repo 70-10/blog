@@ -4,7 +4,62 @@ publishDate: 2024-02-19T02:58:37.220+09:00
 tags: ["Develop"]
 ---
 
-Hono で Dependency Injection をするためのシンプルな DIContainer クラスを作成します。
+Hono で Dependency Injection をしたかったので、シンプルな DI コンテナを作りました。  
+DI コンテナで管理する簡単なサービスとリポジトリの作成から、実際に DI コンテナで呼び出すところまでをまとめます。
+
+# DIContainer クラス
+
+Service/Repository のインスタンス化し管理する DIContainer クラスを作成します。
+
+```ts:di-container.ts
+export class DIContainer<DependencyTypes> {
+  private registry = new Map<
+    keyof DependencyTypes,
+    DependencyTypes[keyof DependencyTypes]
+  >();
+
+  register<Key extends keyof DependencyTypes, Args extends unknown[]>(
+    key: Key,
+    Constructor: new (...args: Args) => DependencyTypes[Key],
+    ...args: Args
+  ): void {
+    const instance = new Constructor(...args);
+    this.registry.set(key, instance);
+  }
+
+  get<K extends keyof DependencyTypes>(key: K): DependencyTypes[K] {
+    const instance = this.registry.get(key);
+    if (!instance) {
+      throw new Error(`No instance found for key: ${String(key)}`);
+    }
+    return instance as DependencyTypes[K];
+  }
+}
+```
+
+## 使い方
+
+```ts
+// DIコンテナで管理するオブジェクトの型宣言
+interface DependencyTypes {
+  UserRepository: IUserRepository;
+  UserService: IUserService;
+}
+
+// DIコンテナの初期化
+const diContainer = new DIContainer<DependencyTypes>();
+
+// オブジェクトの登録
+diContainer.register("UserRepository", UserRepository);
+diContainer.register(
+  "UserService",
+  UserService,
+  diContainer.get("UserRepository"),
+);
+
+// オブジェクトの取得
+const userService = diContainer.get("UserService");
+```
 
 # 1. User / UserRepository / UserService を作成する
 
@@ -65,6 +120,7 @@ export class UserService implements IUserService {
 }
 ```
 
+<!--
 # 2. DI コンテナクラスを作成する
 
 Service/Repository のインスタンス化し管理する DIContainer クラスを作成します。
@@ -93,7 +149,7 @@ export class DIContainer<DependencyTypes> {
     return instance as DependencyTypes[K];
   }
 }
-```
+``` -->
 
 # 3. DI コンテナにクラスを登録する
 
@@ -213,6 +269,8 @@ export default app;
 ```
 
 # リポジトリ
+
+今回作った DI コンテナを使ったサンプルは、以下のリポジトリにあります。
 
 https://github.com/70-10/sandbox/tree/main/backend/hono/di-sample
 
