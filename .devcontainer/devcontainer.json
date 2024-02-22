@@ -33,7 +33,10 @@
         "bierner.markdown-preview-github-styles",
         "yzhang.markdown-all-in-one",
         "taichi.vscode-textlint",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "usernamehw.errorlens",
+        "formulahendry.auto-rename-tag",
+        "yoavbls.pretty-ts-errors"
       ]
     }
   },
