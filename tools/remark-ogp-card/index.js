@@ -50,7 +50,7 @@ function createCard(url, domain, title) {
   return `
 <div class="remark-card">
   <a href="${url}" target="_blank" rel="noopener noreferrer">
-    <h5 class="title">${title}</h5>
+    <h5 class="title">${htmlEncode(title)}</h5>
     <div class="site">
       <img src="https://icons.duckduckgo.com/ip3/${domain}.ico" alt="favicon" class="favicon" />
       <p class="domain">${domain}</p>
@@ -67,4 +67,13 @@ function extractDomain(url) {
   } catch (error) {
     return "";
   }
+}
+
+function htmlEncode(text) {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
