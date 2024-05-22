@@ -7,6 +7,7 @@ import { getPosts } from "@/lib/repositories/posts";
 import "@/styles/markdown-body.css";
 import { Image } from "astro:assets";
 import iconImage from "@/images/icon.svg";
+import TableOfContents from "@/components/TableOfContents";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -61,6 +62,9 @@ const { Content } = await post.render();
       </div>
     </section>
     <section class="content">
+      <TableOfContents markdownContent={post.body} />
+    </section>
+    <section class="content">
       <article class="markdown-body">
         <Content />
       </article>
@@ -100,5 +104,22 @@ const { Content } = await post.render();
 
   .tags {
     @apply mt-2;
+  }
+
+  .toc {
+    @apply list-outside list-none;
+  }
+
+  .toc li {
+    /* margin: 5px 0; */
+  }
+
+  .toc a {
+    text-decoration: none;
+    color: #007acc;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
   }
 </style>

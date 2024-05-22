@@ -63,6 +63,7 @@
     "prettier-plugin-astro": "0.13.0",
     "prettier-plugin-organize-imports": "3.2.4",
     "prettier-plugin-tailwindcss": "0.5.12",
+    "remark-autolink-headings": "7.0.1",
     "textlint": "14.0.4",
     "textlint-rule-ja-space-between-half-and-full-width": "2.3.1",
     "textlint-rule-preset-ja-technical-writing": "10.0.1"
