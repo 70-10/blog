@@ -1,3 +1,5 @@
+import { toASCII, toUnicode } from "node:punycode";
+import { URL } from "node:url";
 import ogs from "open-graph-scraper";
 import { visit } from "unist-util-visit";
 
@@ -14,15 +16,13 @@ export default function ogpCardPlugin() {
       }
 
       visit(paragraphNode, "text", (textNode) => {
-        const urls = textNode.value.match(
-          /(https?:\/\/|www(?=\.))([-.\w]+)([^ \t\r\n]*)/g,
-        );
+        const urls = textNode.value.match(/(https?:\/\/[^\s]+)/g);
 
         if (!urls || urls.length !== 1) {
           return;
         }
 
-        const url = urls[0];
+        const url = generateURL(urls[0]).toString();
         transformers.push(async () => {
           const { result } = await ogs({ url });
 
@@ -39,11 +39,17 @@ export default function ogpCardPlugin() {
     try {
       await Promise.all(transformers.map((t) => t()));
     } catch (error) {
-      console.error(`remark-ogp-card: ${error}`);
+      console.error("remark-ogp-card:", error);
     }
 
     return tree;
   };
+}
+
+function generateURL(urlStr) {
+  const url = new URL(urlStr);
+  url.hostname = toASCII(url.hostname);
+  return url;
 }
 
 function createCard(url, domain, title) {
@@ -53,7 +59,7 @@ function createCard(url, domain, title) {
     <h5 class="title">${htmlEncode(title)}</h5>
     <div class="site">
       <img src="https://icons.duckduckgo.com/ip3/${domain}.ico" alt="favicon" class="favicon" />
-      <p class="domain">${domain}</p>
+      <p class="domain">${toUnicode(domain)}</p>
     </div>
   </a>
 </div>
