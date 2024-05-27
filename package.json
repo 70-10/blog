@@ -27,12 +27,12 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "@astrojs/partytown": "2.0.4",
-    "@astrojs/react": "3.1.0",
-    "@astrojs/rss": "4.0.5",
+    "@astrojs/partytown": "2.1.0",
+    "@astrojs/react": "3.4.0",
+    "@astrojs/rss": "4.0.6",
     "@astrojs/tailwind": "5.1.0",
-    "astro": "4.5.8",
-    "astro-compress": "2.2.15",
+    "astro": "4.9.1",
+    "astro-compress": "2.2.25",
     "astro-seo": "0.8.3",
     "cdate": "0.0.7",
     "github-markdown-css": "5.5.1",
