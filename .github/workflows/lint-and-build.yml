@@ -18,10 +18,10 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Use pnpm@8
+      - name: Use pnpm@9
         uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
