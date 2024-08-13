@@ -45,6 +45,10 @@ tags: ["Develop", "Web Frontend"]
 
 https://developer.mozilla.org/docs/Web/HTML/Element/progress
 
+https://developer.mozilla.org/en-US/docs/Web/CSS/::-webkit-progress-value
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/::-moz-progress-bar
+
 https://stackoverflow.com/questions/18368202/how-can-i-set-the-color-for-the-progress-element
 
 https://zenn.dev/tokuyuuuuuu/articles/1aaaebb604bf69
