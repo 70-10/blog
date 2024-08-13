@@ -37,4 +37,7 @@ export default defineConfig({
       wrap: true,
     },
   },
+  server: {
+    host: "127.0.0.1",
+  },
 });
