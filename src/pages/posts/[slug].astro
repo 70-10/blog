@@ -7,6 +7,7 @@ import { getPosts } from "@/lib/repositories/posts";
 import "@/styles/markdown-body.css";
 import { Image } from "astro:assets";
 import iconImage from "@/images/icon.svg";
+import ReadingProgressBar from "@/components/ReadingProgressBar.astro";
 
 interface Props {
   post: CollectionEntry<"posts">;
@@ -36,6 +37,7 @@ const { Content } = await post.render();
     },
   }}
 >
+  <ReadingProgressBar />
   <main class="base">
     <section class="title-content">
       <div class="flex items-center">
