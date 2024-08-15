@@ -70,7 +70,7 @@ function extractDomain(url) {
   try {
     const parsedUrl = new URL(url);
     return parsedUrl.hostname;
-  } catch (error) {
+  } catch {
     return "";
   }
 }

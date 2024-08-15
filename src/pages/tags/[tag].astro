@@ -21,7 +21,7 @@ export async function getStaticPaths() {
       props: {
         tag,
         posts: posts.filter(({ data }) => data.tags.includes(tag)),
-      },
+      } satisfies Props,
     };
   });
 }
