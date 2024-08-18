@@ -152,8 +152,8 @@ importers:
   tools/remark-ogp-card:
     dependencies:
       open-graph-scraper:
-        specifier: 6.7.2
-        version: 6.7.2
+        specifier: 6.8.0
+        version: 6.8.0
       unist-builder:
         specifier: 4.0.0
         version: 4.0.0
@@ -2971,8 +2971,8 @@ packages:
     resolution: {integrity: sha512-1FlR+gjXK7X+AsAHso35MnyN5KqGwJRi/31ft6x0M194ht7S+rWAvd7PHss9xSKMzE0asv1pyIHaJYq+BbacAQ==}
     engines: {node: '>=12'}
 
-  open-graph-scraper@6.7.2:
-    resolution: {integrity: sha512-y/1l2NYDFbmYZRM4rTE3YWNc1IufuoxbsObuzXxYdlDrHJDyd4ru6ecUYxEYZN+K0mCViFHMgGDIkfwXhMwqSQ==}
+  open-graph-scraper@6.8.0:
+    resolution: {integrity: sha512-0Lv+6kWTlFjtnUzkIqzvpgaOZ7AAibZB7GRXj5yLIZv56SOS7jApdhCjlFn8Elr17SnG6L2FAD5NpRUv0f2yCQ==}
     engines: {node: '>=18.0.0'}
 
   optionator@0.9.3:
@@ -7526,7 +7526,7 @@ snapshots:
     dependencies:
       mimic-fn: 4.0.0
 
-  open-graph-scraper@6.7.2:
+  open-graph-scraper@6.8.0:
     dependencies:
       chardet: 2.0.0
       cheerio: 1.0.0-rc.12
