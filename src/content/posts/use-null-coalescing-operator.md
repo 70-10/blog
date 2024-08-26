@@ -1,13 +1,13 @@
 ---
-title: Null合体演算子 (??) を使おう
+title: "JavaScript: Null合体演算子 (??) を使おう"
 publishDate: 2021-09-10T14:44:00+09:00
-tags: ["Develop"]
+tags: ["Develop", "JavaScript"]
 draft: false
 ---
 
 # 結論
 
-null もしくは undefined だけをチェックしたいときは、OR 演算子 (`||`)ではなく Null 合体演算子 (`??`)を使おう。
+JavaScript で null もしくは undefined だけをチェックしたいときは、OR 演算子 (`||`)ではなく Null 合体演算子 (`??`)を使おう。
 
 # Null 合体演算子とは
 
@@ -48,4 +48,4 @@ undefined ?? "Hello";
 
 # 参考サイト
 
-- [Null 合体 (??) - JavaScript | MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator
