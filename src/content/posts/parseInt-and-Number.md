@@ -1,7 +1,7 @@
 ---
-title: parseInt() と Number() の違い
+title: "JavaScript: parseInt() と Number() の違い"
 publishDate: 2023-08-29T13:53:00+09:00
-tags: ["Develop"]
+tags: ["Develop", "JavaScript"]
 ---
 
 JavaScript の `parseInt()` と `Number()` はどちらも与えられた文字列を数値に変換する関数です。  
@@ -72,9 +72,10 @@ Number("10 20"); // NaN
 
 ## 科学的な計算
 
-浮動小数点が扱える `Number()` が良いでしょう。
+浮動小数点を扱える `Number()` が良いでしょう。
 
 # 参考情報
 
-- [parseInt() - JavaScript | MDN](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
-- [Number() コンストラクター - JavaScript | MDN](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/Number)
+https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+
+https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/Number
