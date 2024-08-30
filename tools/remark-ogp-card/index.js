@@ -22,13 +22,26 @@ export default function ogpCardPlugin() {
           return;
         }
 
-        const url = generateURL(urls[0]).toString();
+        const url = generateURL(urls[0]);
+        const urlStr = url.toString();
+
         transformers.push(async () => {
-          const { result } = await ogs({ url });
+          if (url.hostname === "www.youtube.com") {
+            const videoId = url.searchParams.get("v");
+            const cardNode = {
+              type: "html",
+              value: createYouTubeCard(videoId),
+            };
+
+            tree.children.splice(index, 1, cardNode);
+            return;
+          }
+
+          const { result } = await ogs({ url: urlStr });
 
           const cardNode = {
             type: "html",
-            value: createCard(url, extractDomain(url), result.ogTitle),
+            value: createCard(urlStr, extractDomain(urlStr), result.ogTitle),
           };
 
           tree.children.splice(index, 1, cardNode);
@@ -64,6 +77,21 @@ function createCard(url, domain, title) {
   </a>
 </div>
 `;
+}
+
+function createYouTubeCard(videoId) {
+  return `
+<div class="remark-card">
+  <iframe
+    class="w-full"
+    style="aspect-ratio: 16 / 9;"
+    src="https://www.youtube.com/embed/${videoId}"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>`;
 }
 
 function extractDomain(url) {
