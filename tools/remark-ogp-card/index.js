@@ -23,25 +23,10 @@ export default function ogpCardPlugin() {
         }
 
         const url = generateURL(urls[0]);
-        const urlStr = url.toString();
-
         transformers.push(async () => {
-          if (url.hostname === "www.youtube.com") {
-            const videoId = url.searchParams.get("v");
-            const cardNode = {
-              type: "html",
-              value: createYouTubeCard(videoId),
-            };
-
-            tree.children.splice(index, 1, cardNode);
-            return;
-          }
-
-          const { result } = await ogs({ url: urlStr });
-
           const cardNode = {
             type: "html",
-            value: createCard(urlStr, extractDomain(urlStr), result.ogTitle),
+            value: await createElement(url),
           };
 
           tree.children.splice(index, 1, cardNode);
@@ -59,13 +44,28 @@ export default function ogpCardPlugin() {
   };
 }
 
+async function createElement(url) {
+  switch (url.hostname) {
+    case "www.youtube.com": {
+      const videoId = url.searchParams.get("v");
+      return createYouTubeFrameElement(videoId);
+    }
+    default:
+      return await createCardElement(url.toString());
+  }
+}
+
 function generateURL(urlStr) {
   const url = new URL(urlStr);
   url.hostname = toASCII(url.hostname);
   return url;
 }
 
-function createCard(url, domain, title) {
+async function createCardElement(url) {
+  const { result } = await ogs({ url });
+  const domain = extractDomain(url);
+  const title = result.ogTitle;
+
   return `
 <div class="remark-card">
   <a href="${url}" target="_blank" rel="noopener noreferrer">
@@ -79,7 +79,7 @@ function createCard(url, domain, title) {
 `;
 }
 
-function createYouTubeCard(videoId) {
+function createYouTubeFrameElement(videoId) {
   return `
 <div class="remark-card">
   <iframe
