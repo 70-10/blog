@@ -22,13 +22,11 @@ export default function ogpCardPlugin() {
           return;
         }
 
-        const url = generateURL(urls[0]).toString();
+        const url = generateURL(urls[0]);
         transformers.push(async () => {
-          const { result } = await ogs({ url });
-
           const cardNode = {
             type: "html",
-            value: createCard(url, extractDomain(url), result.ogTitle),
+            value: await createElement(url),
           };
 
           tree.children.splice(index, 1, cardNode);
@@ -46,13 +44,28 @@ export default function ogpCardPlugin() {
   };
 }
 
+async function createElement(url) {
+  switch (url.hostname) {
+    case "www.youtube.com": {
+      const videoId = url.searchParams.get("v");
+      return createYouTubeFrameElement(videoId);
+    }
+    default:
+      return await createCardElement(url.toString());
+  }
+}
+
 function generateURL(urlStr) {
   const url = new URL(urlStr);
   url.hostname = toASCII(url.hostname);
   return url;
 }
 
-function createCard(url, domain, title) {
+async function createCardElement(url) {
+  const { result } = await ogs({ url });
+  const domain = extractDomain(url);
+  const title = result.ogTitle;
+
   return `
 <div class="remark-card">
   <a href="${url}" target="_blank" rel="noopener noreferrer">
@@ -64,6 +77,21 @@ function createCard(url, domain, title) {
   </a>
 </div>
 `;
+}
+
+function createYouTubeFrameElement(videoId) {
+  return `
+<div class="remark-card">
+  <iframe
+    class="w-full"
+    style="aspect-ratio: 16 / 9;"
+    src="https://www.youtube.com/embed/${videoId}"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+    allowfullscreen
+  ></iframe>
+</div>`;
 }
 
 function extractDomain(url) {
