@@ -21,6 +21,11 @@
   @apply text-emerald-500;
 }
 
+.markdown-body hr {
+  height: 0.05em;
+  margin: 2.5rem;
+}
+
 .remark-code-title {
   @apply inline-block;
   @apply font-mono text-xs text-white;
