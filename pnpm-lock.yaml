@@ -152,8 +152,8 @@ importers:
   tools/remark-ogp-card:
     dependencies:
       open-graph-scraper:
-        specifier: 6.8.0
-        version: 6.8.0
+        specifier: 6.8.1
+        version: 6.8.1
       unist-builder:
         specifier: 4.0.0
         version: 4.0.0
@@ -3139,8 +3139,8 @@ packages:
     resolution: {integrity: sha512-VXJjc87FScF88uafS3JllDgvAm+c/Slfz06lorj2uAY34rlUu0Nt+v8wreiImcrgAjjIHp1rXpTDlLOGw29WwQ==}
     engines: {node: '>=18'}
 
-  open-graph-scraper@6.8.0:
-    resolution: {integrity: sha512-0Lv+6kWTlFjtnUzkIqzvpgaOZ7AAibZB7GRXj5yLIZv56SOS7jApdhCjlFn8Elr17SnG6L2FAD5NpRUv0f2yCQ==}
+  open-graph-scraper@6.8.1:
+    resolution: {integrity: sha512-uy9tHm80ir9AnEQclmnlpxU80SBQkwZfWFq0lzRxpNAY1Grcyn7tuOu354XhnfA7C3wNuZ0/j94LNQY5XP7ZRg==}
     engines: {node: '>=18.0.0'}
 
   optionator@0.9.3:
@@ -4099,8 +4099,8 @@ packages:
   undici-types@6.19.6:
     resolution: {integrity: sha512-e/vggGopEfTKSvj4ihnOLTsqhrKRN3LeO6qSN/GxohhuRv8qH9bNQ4B8W7e/vFL+0XTnmHPB4/kegunZGA4Org==}
 
-  undici@6.19.7:
-    resolution: {integrity: sha512-HR3W/bMGPSr90i8AAp2C4DM3wChFdJPLrWYpIS++LxS8K+W535qftjt+4MyjNYHeWabMj1nvtmLIi7l++iq91A==}
+  undici@6.19.8:
+    resolution: {integrity: sha512-U8uCCl2x9TK3WANvmBavymRzxbfFYG+tAu+fgx3zxQy3qdagQqBLwJVrdyO1TBfUXvfKveMKJZhpvUYoOjM+4g==}
     engines: {node: '>=18.17'}
 
   unicode-trie@2.0.0:
@@ -7860,12 +7860,12 @@ snapshots:
     dependencies:
       mimic-function: 5.0.1
 
-  open-graph-scraper@6.8.0:
+  open-graph-scraper@6.8.1:
     dependencies:
       chardet: 2.0.0
       cheerio: 1.0.0-rc.12
       iconv-lite: 0.6.3
-      undici: 6.19.7
+      undici: 6.19.8
 
   optionator@0.9.3:
     dependencies:
@@ -9046,7 +9046,7 @@ snapshots:
 
   undici-types@6.19.6: {}
 
-  undici@6.19.7: {}
+  undici@6.19.8: {}
 
   unicode-trie@2.0.0:
     dependencies:
