@@ -3,6 +3,7 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import compress from "astro-compress";
 import { defineConfig } from "astro/config";
+import rehypeBudouxParagraph from "rehype-budoux-paragraph";
 import codeTitle from "remark-code-titles";
 import ogpCardPlugin from "./tools/remark-ogp-card";
 
@@ -32,6 +33,7 @@ export default defineConfig({
       codeTitle,
       ogpCardPlugin,
     ],
+    rehypePlugins: [rehypeBudouxParagraph],
     shikiConfig: {
       theme: "monokai",
       wrap: true,
