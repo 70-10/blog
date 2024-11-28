@@ -33,8 +33,8 @@ importers:
         specifier: 0.0.7
         version: 0.0.7
       github-markdown-css:
-        specifier: 5.8.0
-        version: 5.8.0
+        specifier: 5.8.1
+        version: 5.8.1
       marked:
         specifier: 14.1.2
         version: 14.1.2
@@ -2212,8 +2212,8 @@ packages:
   get-tsconfig@4.7.5:
     resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
 
-  github-markdown-css@5.8.0:
-    resolution: {integrity: sha512-dSyhHzwQw4+5z+JveMY66o4PdbRP7ORjCiR5f1DjIDM5sSSE9rrRG5jpXGgx0PUMJC7goIzLtEJyItT2tL8IsQ==}
+  github-markdown-css@5.8.1:
+    resolution: {integrity: sha512-8G+PFvqigBQSWLQjyzgpa2ThD9bo7+kDsriUIidGcRhXgmcaAWUIpCZf8DavJgc+xifjbCG+GvMyWr0XMXmc7g==}
     engines: {node: '>=10'}
 
   github-slugger@2.0.0:
@@ -6760,7 +6760,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  github-markdown-css@5.8.0: {}
+  github-markdown-css@5.8.1: {}
 
   github-slugger@2.0.0: {}
 
