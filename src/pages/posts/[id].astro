@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import { render, type CollectionEntry } from "astro:content";
 import Tag from "@/components/Tag.astro";
 import Layout from "@/layouts/Layout.astro";
 import { cdateJST } from "@/lib/cdate-jst";
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
   const posts = await getPosts();
 
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { id: post.id },
     props: {
       post,
     } satisfies Props,
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Layout
@@ -33,7 +33,7 @@ const { Content } = await post.render();
   seo={{
     openGraph: {
       type: "article",
-      image: new URL(`/og/${post.slug}.png`, Astro.url.origin).toString(),
+      image: new URL(`/og/${post.id}.png`, Astro.url.origin).toString(),
     },
   }}
 >
