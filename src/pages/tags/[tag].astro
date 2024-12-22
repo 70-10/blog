@@ -45,7 +45,7 @@ const { tag, posts } = Astro.props;
             return (
               <li class="list">
                 <time>{publishAt}</time>:
-                <a href={`/posts/${entry.slug}`} class="link">
+                <a href={`/posts/${entry.id}`} class="link">
                   {entry.data.title}
                 </a>
               </li>

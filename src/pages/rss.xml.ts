@@ -13,8 +13,8 @@ export async function GET(context: APIContext) {
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: new Date(post.data.publishDate),
-      description: marked.parse(post.body),
-      link: `/posts/${post.slug}`,
+      description: marked.parse(post.body ?? "") as string,
+      link: `/posts/${post.id}`,
     })),
   });
 }
