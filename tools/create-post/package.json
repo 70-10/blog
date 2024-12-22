@@ -10,7 +10,7 @@
     "start": "tsx index.ts"
   },
   "dependencies": {
-    "consola": "3.2.3",
+    "consola": "3.3.0",
     "execa": "9.3.1"
   },
   "devDependencies": {
