@@ -31,7 +31,7 @@
     "@astrojs/react": "4.1.6",
     "@astrojs/rss": "4.0.11",
     "@astrojs/tailwind": "5.1.5",
-    "astro": "5.1.8",
+    "astro": "5.1.9",
     "astro-compress": "2.3.6",
     "astro-seo": "0.8.4",
     "cdate": "0.0.7",
