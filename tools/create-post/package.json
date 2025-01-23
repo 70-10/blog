@@ -7,7 +7,7 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsx index.ts"
+    "start": "tsx -C import index.ts"
   },
   "dependencies": {
     "consola": "3.4.0",
