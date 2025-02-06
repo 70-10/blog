@@ -52,7 +52,8 @@ const { frontmatter } = Astro.props;
 
     <Footer />
     <style>
-      @import "tailwindcss";
+      @reference "@/styles/global.css";
+
       .base {
         @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;
         @apply mt-10;
