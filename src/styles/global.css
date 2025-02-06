@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
 @import "tailwindcss";
 
 @layer base {
@@ -9,4 +10,8 @@
   ol {
     list-style: revert;
   }
+}
+
+@theme {
+  --font-sacramento: "Sacramento", cursive;
 }
