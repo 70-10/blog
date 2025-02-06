@@ -30,7 +30,7 @@
 .remark-code-title {
   @apply inline-block;
   @apply font-mono text-xs text-white;
-  @apply px-3 pb-3.5 pt-1.5;
+  @apply px-3 pt-1.5 pb-3.5;
   @apply rounded;
   @apply relative;
 
