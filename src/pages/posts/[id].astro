@@ -76,6 +76,7 @@ const { Content } = await render(post);
 </Layout>
 
 <style>
+  @import "tailwindcss";
   .base {
     @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;
   }
@@ -89,7 +90,7 @@ const { Content } = await render(post);
   }
 
   .title {
-    @apply text-2xl font-extrabold leading-tight;
+    @apply text-2xl leading-tight font-extrabold;
     @apply my-8;
   }
 

@@ -5,6 +5,7 @@ const { name } = Astro.props;
 <a href={`/tags/${encodeURI(name)}`} class="tag">#{name}</a>
 
 <style>
+  @import "tailwindcss";
   .tag {
     @apply inline-block;
     @apply rounded-lg border border-zinc-400;
