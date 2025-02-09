@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import "./global.css";
 @import "github-markdown-css/github-markdown-light.css";
 
 .markdown-body {
