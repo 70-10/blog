@@ -11,7 +11,3 @@
     list-style: revert;
   }
 }
-
-@theme {
-  --font-sacramento: "Sacramento", cursive;
-}
