@@ -6,8 +6,8 @@
   </section>
 </header>
 <style>
-  @reference "@/styles/global.css";
-
+  @import "tailwindcss";
+  @import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
   .base {
   }
 
@@ -17,7 +17,7 @@
   }
 
   .title {
-    @apply font-sacramento;
+    font-family: "Sacramento", cursive;
     @apply text-5xl;
     @apply text-zinc-700;
     @apply hover:text-zinc-500;
