@@ -1,6 +1,6 @@
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
 import { defineConfig } from "astro/config";
 import codeTitle from "remark-code-titles";
@@ -14,9 +14,6 @@ export default defineConfig({
     prefetchAll: true,
   },
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
-    }),
     compress(),
     react(),
     partytown({
@@ -36,6 +33,9 @@ export default defineConfig({
       theme: "monokai",
       wrap: true,
     },
+  },
+  vite: {
+    plugins: [tailwindcss({ applyBaseStyles: false })],
   },
   server: {
     host: true,
