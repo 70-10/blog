@@ -2,6 +2,7 @@
 title: ブラウザ上の fetch でレスポンスヘッダにある Date が取得できない
 publishDate: 2025-01-24T17:12:05.736+09:00
 tags: ["Develop", "Web Frontend"]
+description: ブラウザのfetchでDateヘッダがnullとなるのは、CORSの制限によりDateが公開対象に含まれていないため。サーバー側でAccess-Control-Expose-Headersを設定する必要がある。
 ---
 
 ブラウザ上で fetch を実行し、レスポンスヘッダにある `Date` を取得したいとします。
