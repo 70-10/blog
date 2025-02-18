@@ -5,6 +5,7 @@ import GoogleAnalytics4 from "@/components/GoogleAnalytics4.astro";
 import Header from "@/components/Header.astro";
 import "@/styles/global.css";
 import "@/styles/markdown-body.css";
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 
 const { frontmatter } = Astro.props;
 ---
@@ -39,6 +40,9 @@ const { frontmatter } = Astro.props;
       }}
     />
     <GoogleAnalytics4 />
+    <GoogleFontsOptimizer
+      url="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sacramento&display=swap"
+    />
   </head>
   <body>
     <Header />
