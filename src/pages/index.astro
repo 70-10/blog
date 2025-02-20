@@ -34,7 +34,11 @@ const tags = Array.from(
 ).sort();
 ---
 
-<Layout title="Top" seo={{ openGraph: { type: "website" } }}>
+<Layout
+  title="Top"
+  seo={{ openGraph: { type: "website" } }}
+  displayBackButton={false}
+>
   <main class="base">
     <section class="content">
       <ProfileCard />
