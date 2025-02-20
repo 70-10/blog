@@ -1,6 +1,5 @@
 ---
-import { ArrowLeft } from "lucide-astro";
-
+import { ArrowLeft } from "lucide-react";
 export interface Props {
   displayBackButton: boolean;
 }
@@ -8,11 +7,11 @@ export interface Props {
 const { displayBackButton } = Astro.props;
 ---
 
-<section class="flex p-6 lg:sticky lg:top-0">
+<section class="flex h-1 px-4 py-6 md:sticky md:top-0">
   {
     displayBackButton && (
       <a href="/">
-        <ArrowLeft />
+        <ArrowLeft className="w-10 h-10 p-2 rounded-full hover:bg-gray-100" />
       </a>
     )
   }
