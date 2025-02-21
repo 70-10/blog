@@ -1,4 +1,23 @@
-<header class="base">
+---
+import { ArrowLeft } from "lucide-react";
+export interface Props {
+  displayBackButton: boolean;
+}
+
+const { displayBackButton } = Astro.props;
+---
+
+<section class="flex h-1 px-4 py-6 md:sticky md:top-0">
+  {
+    displayBackButton && (
+      <a href="/">
+        <ArrowLeft className="w-10 h-10 p-2 rounded-full hover:bg-gray-100" />
+      </a>
+    )
+  }
+</section>
+
+<header>
   <section class="content">
     <div class="flex items-end justify-between">
       <a href="/" class="title">mnml</a>
@@ -7,9 +26,6 @@
 </header>
 <style>
   @reference "@/styles/global.css";
-
-  .base {
-  }
 
   .content {
     @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;

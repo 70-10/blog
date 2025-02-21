@@ -9,6 +9,7 @@ import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 export interface Props {
   title: string;
   description?: string;
+  displayBackButton?: boolean;
   seo: SEOProps;
 }
 
@@ -19,7 +20,7 @@ interface SEOProps {
   };
 }
 
-const { title, seo, description } = Astro.props;
+const { title, seo, description, displayBackButton = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -62,7 +63,7 @@ const { title, seo, description } = Astro.props;
     />
   </head>
   <body class="text-zinc-600">
-    <Header />
+    <Header displayBackButton={displayBackButton} />
 
     <slot />
 
