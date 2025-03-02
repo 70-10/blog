@@ -1,6 +1,6 @@
 ---
 title: TypeScript で Durable Functions をつくる
-publishDate: 2025-02-26T07:02:11.535+09:00
+publishDate: 2025-03-02T21:18:11.535+09:00
 tags: ["Develop"]
 description: ""
 ---
@@ -9,7 +9,7 @@ Azure Functions の拡張機能である Durable Functions を TypeScript で実
 
 Durable Functions については以下のドキュメントを参照してください。
 
-https://learn.microsoft.com/azure/azure-functions/durable/durable-functions-overview?tabs=in-process,nodejs-v3,v1-model&pivots=javascript
+https://learn.microsoft.com/azure/azure-functions/durable/durable-functions-overview
 
 # 環境を用意する
 
@@ -40,14 +40,14 @@ Dev Containers を使って開発環境を用意します。
 
 Azure Functions Core Tools は、Azure Functions をローカルで作成、テスト、デバッグ、デプロイするためのコマンドラインツールです。これにより、クラウドへデプロイする前に関数をローカル環境で実行し、検証できます。
 
-https://learn.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos,isolated-process,node-v4,python-v2,http-trigger,container-apps&pivots=programming-language-csharp
+https://learn.microsoft.com/azure/azure-functions/functions-run-local
 
 ## 補足: Azurite とは
 
 Durable Functions は、実行する際に Storage を必要とします。  
 Azurite はローカル環境に Azure Storage を動作させるエミュレーターです。ローカル環境では Azurite を Storage として利用し Durable Functions を実行します。
 
-https://learn.microsoft.com/azure/storage/common/storage-use-azurite?tabs=visual-studio,blob-storage
+https://learn.microsoft.com/azure/storage/common/storage-use-azurite
 
 Azurite は npm からインストールもできます。今回は Visual Studio Code のエクステンションを使って導入します。
 
@@ -190,11 +190,9 @@ Functions:
         Hello: activityTrigger
 
         HelloOrchestrator: orchestrationTrigger
-
-        Sample: activityTrigger
 ```
 
-ブラウザまたは curl コマンドで `http://localhost:7071/api/orchestrators/HelloOrchestrator` にリクエストを送ると、以下のようなレスポンスが返ります。
+`http://localhost:7071/api/orchestrators/HelloOrchestrator` にリクエストすると、以下のようなレスポンスが返ります。
 
 ```json
 {
@@ -225,9 +223,9 @@ Functions:
 }
 ```
 
-`runtimeStatus` が `Completed` になっていると、Durable Functions の実行が完了していることを示す。
-Activity が返す値は `output` に格納されている。
+`runtimeStatus` が `Completed` になっていると、Durable Functions の実行完了です。
+Activity が返す値は `output` に格納されています。この例では `["Hello, Tokyo", "Hello, Seattle", "Hello, Cairo"]` が返されています。
 
 # 参考情報
 
-https://learn.microsoft.com/azure/azure-functions/durable/quickstart-ts-vscode?pivots=nodejs-model-v4
+https://learn.microsoft.com/azure/azure-functions/durable/quickstart-ts-vscode
