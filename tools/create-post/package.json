@@ -10,7 +10,7 @@
     "start": "tsx -C import index.ts"
   },
   "dependencies": {
-    "consola": "3.4.0",
+    "consola": "3.4.2",
     "execa": "9.5.2"
   },
   "devDependencies": {
