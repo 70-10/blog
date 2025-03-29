@@ -50,7 +50,7 @@
     "@eslint/eslintrc": "3.3.1",
     "@eslint/js": "9.23.0",
     "@types/marked": "6.0.0",
-    "@types/node": "22.13.13",
+    "@types/node": "22.13.14",
     "@types/react": "19.0.12",
     "@types/react-dom": "19.0.4",
     "@types/sharp": "0.32.0",
