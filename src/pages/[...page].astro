@@ -19,17 +19,18 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-interface Props {
-  page: Page<CollectionEntry<"posts">>;
-  tags: string[];
-}
-
 // /1 にアクセスした場合は / にリダイレクト
 if (Astro.params.page === "1") {
   return Astro.redirect("/");
 }
 
-const { page, tags } = Astro.props;
+const {
+  page,
+  tags,
+}: {
+  page: Page<CollectionEntry<"posts">>;
+  tags: string[];
+} = Astro.props;
 const posts = page.data;
 const isLastPage = !page.url.next;
 ---

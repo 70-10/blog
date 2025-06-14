@@ -1,11 +1,7 @@
 ---
-import type { Page } from "astro:content";
+import type { Page, CollectionEntry } from "astro:content";
 
-interface Props {
-  page: Page<any>;
-}
-
-const { page } = Astro.props;
+const { page }: { page: Page<CollectionEntry<"posts">> } = Astro.props;
 ---
 
 <nav class="pagination" aria-label="ページネーション">
