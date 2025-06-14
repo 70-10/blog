@@ -19,7 +19,6 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-// /1 にアクセスした場合は / にリダイレクト
 if (Astro.params.page === "1") {
   return Astro.redirect("/");
 }
