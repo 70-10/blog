@@ -3,6 +3,7 @@ import { render, type CollectionEntry } from "astro:content";
 import Tag from "@/components/Tag.astro";
 import Layout from "@/layouts/Layout.astro";
 import { cdateJST } from "@/lib/cdate-jst";
+import { shouldSkipOgGeneration } from "@/lib/environments";
 import { getPosts } from "@/lib/repositories/posts";
 import "@/styles/markdown-body.css";
 import { Image } from "astro:assets";
@@ -26,6 +27,11 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+// OGP画像のURLを条件によって設定
+const ogImageUrl = shouldSkipOgGeneration
+  ? undefined
+  : new URL(`/og/${post.id}.png`, Astro.url.origin).toString();
 ---
 
 <Layout
@@ -34,7 +40,7 @@ const { Content } = await render(post);
   seo={{
     openGraph: {
       type: "article",
-      image: new URL(`/og/${post.id}.png`, Astro.url.origin).toString(),
+      image: ogImageUrl,
     },
   }}
 >

@@ -12,6 +12,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
+    "build:local": "SKIP_OG_GENERATION=true astro build",
     "create-post": "pnpm --filter create-post start",
     "dev": "astro dev",
     "fix": "run-s fix:eslint fix:prettier fix:textlint",
