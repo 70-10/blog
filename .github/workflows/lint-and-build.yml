@@ -36,7 +36,7 @@ jobs:
         run: git diff --exit-code pnpm-lock.yaml
       - name: Test with Coverage
         run: |
-          pnpm test --coverage
+          pnpm test -- --coverage
         env:
           CI: true
       - name: Lint
