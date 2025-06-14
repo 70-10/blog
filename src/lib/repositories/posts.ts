@@ -1,4 +1,5 @@
-import { CollectionEntry, getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import { cdateJST } from "../cdate-jst";
 
 export async function getPosts(): Promise<CollectionEntry<"posts">[]> {
@@ -7,7 +8,7 @@ export async function getPosts(): Promise<CollectionEntry<"posts">[]> {
   return entries.sort(sortByPublishDate);
 }
 
-function sortByPublishDate(
+export function sortByPublishDate(
   a: CollectionEntry<"posts">,
   b: CollectionEntry<"posts">,
 ): number {

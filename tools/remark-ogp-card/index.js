@@ -55,7 +55,7 @@ async function createElement(url) {
   }
 }
 
-function generateURL(urlStr) {
+export function generateURL(urlStr) {
   const url = new URL(urlStr);
   url.hostname = toASCII(url.hostname);
   return url;
@@ -94,7 +94,7 @@ function createYouTubeFrameElement(videoId) {
 </div>`;
 }
 
-function extractDomain(url) {
+export function extractDomain(url) {
   try {
     const parsedUrl = new URL(url);
     return parsedUrl.hostname;
@@ -103,7 +103,7 @@ function extractDomain(url) {
   }
 }
 
-function htmlEncode(text) {
+export function htmlEncode(text) {
   return text
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
