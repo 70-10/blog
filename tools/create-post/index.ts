@@ -33,9 +33,12 @@ async function main() {
   await $`code ${newFilePath}`;
 }
 
-main().catch(console.error);
+// Only run main if this file is executed directly (not imported for testing)
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch(console.error);
+}
 
-async function generateContent(
+export async function generateContent(
   templatePath: string,
   title: string,
   tags: string[],
@@ -46,7 +49,7 @@ async function generateContent(
     .replace("<tags>", `"${tags.join('", "')}"`);
 }
 
-function publishDate() {
+export function publishDate() {
   const now = new Date();
   return (
     now.toISOString().split("Z")[0] +
@@ -54,7 +57,7 @@ function publishDate() {
   );
 }
 
-async function checkSameSlug(slug: string) {
+export async function checkSameSlug(slug: string) {
   const files = await readdir(postsPath);
   return files.some((file) => file === `${slug}.md`);
 }
