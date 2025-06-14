@@ -1,0 +1,123 @@
+---
+import type { Page } from "astro:content";
+
+interface Props {
+  page: Page<any>;
+}
+
+const { page } = Astro.props;
+---
+
+<nav class="pagination" aria-label="ページネーション">
+  <div class="pagination-info">
+    <span class="current-page">
+      Page {page.currentPage} of {page.lastPage}
+    </span>
+    <span class="total-posts">
+      ({page.total} posts)
+    </span>
+  </div>
+
+  <div class="pagination-controls">
+    {
+      page.url.prev && (
+        <a href={page.url.prev} class="pagination-link prev" rel="prev">
+          ← Previous
+        </a>
+      )
+    }
+
+    <div class="page-numbers">
+      {
+        page.url.prev && (
+          <a href={page.url.prev} class="pagination-number">
+            {page.currentPage - 1}
+          </a>
+        )
+      }
+
+      <span class="pagination-current" aria-current="page">
+        {page.currentPage}
+      </span>
+
+      {
+        page.url.next && (
+          <a href={page.url.next} class="pagination-number">
+            {page.currentPage + 1}
+          </a>
+        )
+      }
+    </div>
+
+    {
+      page.url.next && (
+        <a href={page.url.next} class="pagination-link next" rel="next">
+          Next →
+        </a>
+      )
+    }
+  </div>
+</nav>
+
+<style>
+  @reference "@/styles/global.css";
+
+  .pagination {
+    @apply flex flex-col items-center;
+    @apply mt-8;
+  }
+
+  .pagination-info {
+    @apply flex items-center text-sm text-gray-600;
+    @apply mb-4;
+  }
+
+  .current-page {
+    @apply font-semibold;
+    @apply mr-2;
+  }
+
+  .pagination-controls {
+    @apply flex items-center;
+  }
+
+  .pagination-link {
+    @apply rounded bg-emerald-500 px-4 py-2 text-white hover:bg-emerald-600;
+    @apply m-1;
+  }
+
+  .page-numbers {
+    @apply flex items-center;
+    @apply m-1;
+  }
+
+  .pagination-number {
+    @apply flex h-10 w-10 items-center justify-center rounded border border-gray-300 hover:bg-gray-100;
+    @apply m-1;
+  }
+
+  .pagination-current {
+    @apply flex h-10 w-10 items-center justify-center rounded bg-emerald-500 font-semibold text-white;
+    @apply m-1;
+  }
+
+  @media (max-width: 640px) {
+    .pagination-controls {
+      @apply flex-col;
+    }
+
+    .pagination-link {
+      @apply px-3 py-2 text-sm;
+      @apply m-1;
+    }
+
+    .pagination-number,
+    .pagination-current {
+      @apply h-8 w-8 text-sm;
+    }
+
+    .page-numbers {
+      @apply m-1;
+    }
+  }
+</style>

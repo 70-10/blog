@@ -1,0 +1,153 @@
+---
+import type { CollectionEntry, Page } from "astro:content";
+import Tag from "@/components/Tag.astro";
+import Layout from "@/layouts/Layout.astro";
+import { cdateJST } from "@/lib/cdate-jst";
+import { getPosts } from "@/lib/repositories/posts";
+import ProfileCard from "@/components/ProfileCard.astro";
+import Pagination from "@/components/Pagination.astro";
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await getPosts();
+  const tags = Array.from(
+    new Set(posts.map(({ data }) => data.tags).flat()),
+  ).sort();
+
+  return paginate(posts, {
+    pageSize: 10,
+    props: { tags },
+  });
+}
+
+interface Props {
+  page: Page<CollectionEntry<"posts">>;
+  tags: string[];
+}
+
+// /1 にアクセスした場合は / にリダイレクト
+if (Astro.params.page === "1") {
+  return Astro.redirect("/");
+}
+
+const { page, tags } = Astro.props;
+const posts = page.data;
+const isLastPage = !page.url.next;
+---
+
+<Layout
+  title={page.currentPage === 1 ? "Top" : `Top - Page ${page.currentPage}`}
+  seo={{ openGraph: { type: "website" } }}
+  displayBackButton={false}
+>
+  <main class="base">
+    {
+      page.currentPage === 1 && (
+        <section class="content">
+          <ProfileCard />
+        </section>
+      )
+    }
+
+    <section class="content">
+      <ul class="list-none">
+        {
+          posts.map((entry) => {
+            const publishAt = cdateJST(entry.data.publishDate).format(
+              "YYYY/MM/DD",
+            );
+
+            return (
+              <li class="post-item">
+                <article>
+                  <time class="post-date">{publishAt}</time>
+                  <h2 class="post-title">
+                    <a href={`/posts/${entry.id}`} class="link">
+                      {entry.data.title}
+                    </a>
+                  </h2>
+                  {entry.data.description && (
+                    <p class="post-description">{entry.data.description}</p>
+                  )}
+                  <div class="post-tags">
+                    {entry.data.tags
+                      .filter((tag) => !!tag)
+                      .map((tag) => (
+                        <Tag name={tag} />
+                      ))}
+                  </div>
+                </article>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
+
+    <section class="content">
+      <Pagination page={page} />
+    </section>
+
+    {
+      isLastPage && (
+        <section class="content">
+          <div class="mb-6">
+            <h2 class="heading_text">Tags</h2>
+          </div>
+
+          <div>
+            {tags
+              .filter((tag) => !!tag)
+              .map((tag) => (
+                <Tag name={tag} />
+              ))}
+          </div>
+        </section>
+      )
+    }
+  </main>
+</Layout>
+
+<style>
+  @reference "@/styles/global.css";
+
+  .base {
+    @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;
+    @apply mt-12;
+  }
+
+  .content {
+    @apply mt-8;
+  }
+
+  .link {
+    @apply text-emerald-500 hover:underline;
+  }
+
+  .post-item {
+    @apply mb-6 border-b border-gray-200 pb-6;
+  }
+
+  .post-date {
+    @apply text-sm text-gray-600;
+  }
+
+  .post-title {
+    @apply mt-2 mb-2 text-xl font-bold;
+  }
+
+  .post-description {
+    @apply mb-3 text-gray-700;
+  }
+
+  .post-tags {
+    @apply flex flex-wrap;
+  }
+
+  .post-tags > * {
+    @apply mr-2 mb-2;
+  }
+
+  .heading_text {
+    @apply text-2xl font-bold;
+  }
+</style>
