@@ -184,6 +184,22 @@ importers:
       unist-util-visit:
         specifier: 5.0.0
         version: 5.0.0
+    devDependencies:
+      '@types/mdast':
+        specifier: 4.0.4
+        version: 4.0.4
+      '@types/node':
+        specifier: 22.15.31
+        version: 22.15.31
+      '@types/unist':
+        specifier: 3.0.3
+        version: 3.0.3
+      typescript:
+        specifier: ^5.0.0
+        version: 5.2.2
+      vitest:
+        specifier: 3.2.3
+        version: 3.2.3(@types/node@22.15.31)(@vitest/ui@3.2.3)(jiti@2.4.2)(jsdom@26.1.0)(lightningcss@1.29.3)(terser@5.39.0)(tsx@4.20.3)(yaml@2.8.0)
 
 packages:
 
@@ -1276,6 +1292,9 @@ packages:
   '@types/mdast@4.0.2':
     resolution: {integrity: sha512-tYR83EignvhYO9iU3kDg8V28M0jqyh9zzp5GV+EO+AYnyUl3P5ltkTeJuTiFZQFz670FSb3EwT/6LQdX+UdKfw==}
 
+  '@types/mdast@4.0.4':
+    resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
+
   '@types/ms@0.7.33':
     resolution: {integrity: sha512-AuHIyzR5Hea7ij0P9q7vx7xu4z0C28ucwjAZC0ja7JhINyCnOw8/DnvAPQQ9TfOlCtZAmCERKQX9+o1mgQhuOQ==}
 
@@ -1308,6 +1327,9 @@ packages:
 
   '@types/unist@3.0.1':
     resolution: {integrity: sha512-ue/hDUpPjC85m+PM9OQDMZr3LywT+CT6mPsQq8OJtCLiERkGRcQUFvu9XASF5XWqyZFXbf15lvb3JFJ4dRLWPg==}
+
+  '@types/unist@3.0.3':
+    resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
   '@typescript-eslint/eslint-plugin@8.34.0':
     resolution: {integrity: sha512-QXwAlHlbcAwNlEEMKQS2RCgJsgXrTJdjXT08xEgbPFa2yYQgVjBymxP5DrfrE7X7iodSzd9qBUHUycdyVJTW1w==}
@@ -6179,6 +6201,10 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.1
 
+  '@types/mdast@4.0.4':
+    dependencies:
+      '@types/unist': 3.0.3
+
   '@types/ms@0.7.33': {}
 
   '@types/nlcst@2.0.3':
@@ -6210,6 +6236,8 @@ snapshots:
   '@types/unist@2.0.9': {}
 
   '@types/unist@3.0.1': {}
+
+  '@types/unist@3.0.3': {}
 
   '@typescript-eslint/eslint-plugin@8.34.0(@typescript-eslint/parser@8.34.0(eslint@9.29.0(jiti@2.4.2))(typescript@5.2.2))(eslint@9.29.0(jiti@2.4.2))(typescript@5.2.2)':
     dependencies:
@@ -10239,7 +10267,7 @@ snapshots:
 
   unist-builder@4.0.0:
     dependencies:
-      '@types/unist': 3.0.1
+      '@types/unist': 3.0.3
 
   unist-util-find-after@5.0.0:
     dependencies:
@@ -10252,7 +10280,7 @@ snapshots:
 
   unist-util-is@6.0.0:
     dependencies:
-      '@types/unist': 3.0.1
+      '@types/unist': 3.0.3
 
   unist-util-modify-children@4.0.0:
     dependencies:
@@ -10291,7 +10319,7 @@ snapshots:
 
   unist-util-visit-parents@6.0.1:
     dependencies:
-      '@types/unist': 3.0.1
+      '@types/unist': 3.0.3
       unist-util-is: 6.0.0
 
   unist-util-visit@1.4.1:
@@ -10306,7 +10334,7 @@ snapshots:
 
   unist-util-visit@5.0.0:
     dependencies:
-      '@types/unist': 3.0.1
+      '@types/unist': 3.0.3
       unist-util-is: 6.0.0
       unist-util-visit-parents: 6.0.1
 

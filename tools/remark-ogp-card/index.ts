@@ -1,22 +1,46 @@
+import type { Html, Paragraph, Root, Text } from "mdast";
 import { toASCII, toUnicode } from "node:punycode";
 import { URL } from "node:url";
 import ogs from "open-graph-scraper";
+import type { Node } from "unist";
 import { visit } from "unist-util-visit";
 
+interface OpenGraphResult {
+  result: {
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: Array<{ url: string }>;
+    ogUrl?: string;
+  };
+}
+
+interface ParagraphNode extends Paragraph {
+  children: Text[];
+  data?: Record<string, unknown>;
+}
+
+interface TextNode extends Text {
+  value: string;
+}
+
 export default function ogpCardPlugin() {
-  return async (tree) => {
-    const transformers = [];
-    visit(tree, "paragraph", (paragraphNode, index) => {
-      if (paragraphNode.children.length !== 1) {
-        return tree;
+  return async (tree: Root): Promise<Root> => {
+    const transformers: Array<() => Promise<void>> = [];
+
+    visit(tree, "paragraph", (paragraphNode: Node, index?: number) => {
+      const paragraph = paragraphNode as ParagraphNode;
+
+      if (paragraph.children.length !== 1) {
+        return;
       }
 
-      if (paragraphNode && paragraphNode.data !== undefined) {
-        return tree;
+      if (paragraph && paragraph.data !== undefined) {
+        return;
       }
 
-      visit(paragraphNode, "text", (textNode) => {
-        const urls = textNode.value.match(/(https?:\/\/[^\s]+)/g);
+      visit(paragraph, "text", (textNode: Node) => {
+        const text = textNode as TextNode;
+        const urls = text.value.match(/(https?:\/\/[^\s]+)/g);
 
         if (!urls || urls.length !== 1) {
           return;
@@ -24,12 +48,14 @@ export default function ogpCardPlugin() {
 
         const url = generateURL(urls[0]);
         transformers.push(async () => {
-          const cardNode = {
+          const cardNode: Html = {
             type: "html",
             value: await createElement(url),
           };
 
-          tree.children.splice(index, 1, cardNode);
+          if (typeof index === "number") {
+            tree.children.splice(index, 1, cardNode);
+          }
         });
       });
     });
@@ -44,7 +70,7 @@ export default function ogpCardPlugin() {
   };
 }
 
-async function createElement(url) {
+async function createElement(url: URL): Promise<string> {
   switch (url.hostname) {
     case "www.youtube.com": {
       const videoId = url.searchParams.get("v");
@@ -55,21 +81,21 @@ async function createElement(url) {
   }
 }
 
-export function generateURL(urlStr) {
+export function generateURL(urlStr: string): URL {
   const url = new URL(urlStr);
   url.hostname = toASCII(url.hostname);
   return url;
 }
 
-async function createCardElement(url) {
-  const { result } = await ogs({ url });
+async function createCardElement(url: string): Promise<string> {
+  const { result }: OpenGraphResult = await ogs({ url });
   const domain = extractDomain(url);
   const title = result.ogTitle;
 
   return `
 <div class="remark-card">
   <a href="${url}" target="_blank" rel="noopener noreferrer">
-    <h5 class="title">${htmlEncode(title)}</h5>
+    <h5 class="title">${htmlEncode(title || "")}</h5>
     <div class="site">
       <img src="https://icons.duckduckgo.com/ip3/${domain}.ico" alt="favicon" class="favicon" />
       <p class="domain">${toUnicode(domain)}</p>
@@ -79,7 +105,11 @@ async function createCardElement(url) {
 `;
 }
 
-function createYouTubeFrameElement(videoId) {
+function createYouTubeFrameElement(videoId: string | null): string {
+  if (!videoId) {
+    return "";
+  }
+
   return `
 <div class="remark-card">
   <iframe
@@ -94,7 +124,7 @@ function createYouTubeFrameElement(videoId) {
 </div>`;
 }
 
-export function extractDomain(url) {
+export function extractDomain(url: string): string {
   try {
     const parsedUrl = new URL(url);
     return parsedUrl.hostname;
@@ -103,7 +133,7 @@ export function extractDomain(url) {
   }
 }
 
-export function htmlEncode(text) {
+export function htmlEncode(text: string): string {
   return text
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
