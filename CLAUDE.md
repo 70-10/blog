@@ -88,3 +88,8 @@ The codebase uses pnpm workspaces with separate tools having their own package.j
 - **All code comments must be written in English**
 - Avoid redundant comments that simply describe what the code does
 - Focus on explaining the reasoning behind complex or workaround implementations
+
+### GitHub Communication
+
+- **All Pull Requests and Issues must be written in English**
+- This ensures better collaboration and accessibility for the open-source community
