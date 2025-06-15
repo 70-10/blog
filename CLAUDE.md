@@ -71,6 +71,17 @@ The codebase uses pnpm workspaces with separate tools having their own package.j
 
 ## Coding Guidelines
 
+### Package Management
+
+- **Always use exact versions when installing new packages** - Use `pnpm add -DE` to install dev dependencies with exact versions
+- This ensures reproducible builds and prevents unexpected version conflicts
+
+### TypeScript
+
+- **Never use `any` type** - Always use specific types, `unknown`, or proper generic constraints
+- Use `Record<string, unknown>` for object types with unknown structure
+- Use union types, interfaces, or type aliases for better type safety
+
 ### Comments
 
 - **Only add comments when absolutely necessary** - specifically when implementing something unavoidable or non-obvious that requires explanation of the "why"
