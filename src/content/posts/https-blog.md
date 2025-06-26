@@ -13,11 +13,9 @@ GitHub Pages ではカスタムドメインの HTTPS 化ができません。
 ## やったこと
 
 - [すでに実践されている方の記事](https://qiita.com/iogi/items/82618c1d56abba6b9337)を参考に [CloudFormation を作成しました](https://github.com/70-10/blog/tree/master/cfn)
-
   - 記事にある 2 つ目の方法で対応
 
     > CNAME を無効にして、 https://example.github.io/reponame/ でアクセスするようにし、/reponame/ を Origin のパスとして利用する
-
   * CloudFormation のスタックを domain と dns の 2 つに分離したけど、ひとつにまとめても問題なさそう
 
 - gh-pages ブランチで設定していた CNAME を削除しました
