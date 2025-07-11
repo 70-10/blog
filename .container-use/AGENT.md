@@ -1,1 +1,1 @@
-No instructions found. Please look around the filesystem and update me
+Development environment for Astro blog project with Node.js 22 and pnpm 9. Available commands: pnpm install, pnpm test, pnpm test:coverage (to be added), pnpm lint, pnpm build
