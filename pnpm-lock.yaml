@@ -42,8 +42,8 @@ importers:
         specifier: 0.539.0
         version: 0.539.0(react@19.1.0)
       marked:
-        specifier: 15.0.12
-        version: 15.0.12
+        specifier: 16.1.2
+        version: 16.1.2
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -3206,9 +3206,9 @@ packages:
   markdown-table@3.0.3:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
 
-  marked@15.0.12:
-    resolution: {integrity: sha512-8dD6FusOQSrpv9Z1rdNMdlSgQOIP880DHqnohobOmYLElGEqAL/JvxvuxZO16r4HtjTlfPRDC1hbvxC9dPN2nA==}
-    engines: {node: '>= 18'}
+  marked@16.1.2:
+    resolution: {integrity: sha512-rNQt5EvRinalby7zJZu/mB+BvaAY2oz3wCuCjt1RDrWNpS1Pdf9xqMOeC9Hm5adBdcV/3XZPJpG58eT+WBc0XQ==}
+    engines: {node: '>= 20'}
     hasBin: true
 
   match-index@1.0.3:
@@ -6354,7 +6354,7 @@ snapshots:
 
   '@types/marked@6.0.0':
     dependencies:
-      marked: 15.0.12
+      marked: 16.1.2
 
   '@types/mdast@3.0.14':
     dependencies:
@@ -8562,7 +8562,7 @@ snapshots:
 
   markdown-table@3.0.3: {}
 
-  marked@15.0.12: {}
+  marked@16.1.2: {}
 
   match-index@1.0.3:
     dependencies:
