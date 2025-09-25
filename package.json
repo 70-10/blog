@@ -34,7 +34,7 @@
     "@astrojs/partytown": "2.1.4",
     "@astrojs/react": "4.3.0",
     "@astrojs/rss": "4.0.12",
-    "@tailwindcss/vite": "4.0.17",
+    "@tailwindcss/vite": "4.1.13",
     "astro": "5.12.9",
     "astro-compress": "2.3.8",
     "astro-google-fonts-optimizer": "0.2.2",
@@ -48,7 +48,7 @@
     "remark-code-titles": "0.1.2",
     "satori": "0.15.2",
     "sharp": "0.34.3",
-    "tailwindcss": "4.0.17"
+    "tailwindcss": "4.1.13"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
