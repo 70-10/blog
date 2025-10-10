@@ -27,8 +27,8 @@ draft: false
   - ワークアウトの種類が多い
     - 多すぎてどれをやればいいのか迷いました
 - [リングフィット アドベンチャー](https://www.nintendo.co.jp/ring/)
-  - 現在挑戦中です
-  - 続けたくなるゲーミフィケーションがすごいです
+  - 現在挑戦中
+  - 続けたくなるゲーミフィケーションがすごい
 
 ### わかったこと
 
@@ -55,25 +55,25 @@ draft: false
 簡単なツールですが 4 つ作りました。
 
 1. [Wakatime Viewer](https://7010-wakatime.netlify.com/)
-   - 自分の 2016 年 8 月からの Wakatime データをまとめたページです
+   - 自分の 2016 年 8 月からの Wakatime データをまとめたページ
    - 技術スタック
      - GatsbyJS
      - React
      - Firebase Firestore
 2. [Timekeeper](https://timekeeper.now.sh)
-   - タイマーアプリです
+   - タイマーアプリ
    - 技術スタック
      - TypeScript
      - Vue
 3. [Backlog Manager](https://backlog-manager.now.sh/)
-   - Backlog でプロジェクトに所属していないユーザーを取得します
+   - Backlog でプロジェクトに所属していないユーザーを取得する
    - 技術スタック
      - TypeScript
      - Next.js
      - React
      - Redux Toolkit
 4. [QR Generator](https://qr-generate.now.sh)
-   - 入力した文字列から QR コードを作成します
+   - 入力した文字列から QR コードを作成する
    - 技術スタック
      - TypeScript
      - GatsbyJS

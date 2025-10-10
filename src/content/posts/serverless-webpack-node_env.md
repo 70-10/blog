@@ -62,7 +62,7 @@ plugins: [new webpack.EnvironmentPlugin(slsw.lib.serverless.service.provider.env
 }
 ```
 
-(`slsw.lib.serverless.service.provider.environment`は serverless.yml で定義した Environment がオブジェクト形式で取得できます)
+(`slsw.lib.serverless.service.provider.environment`は serverless.yml で定義した Environment がオブジェクト形式で取得できる)
 
 # 参考 URL
 
