@@ -12,7 +12,7 @@ https://github.com/marketplace/actions/bun-coverage-report
 # 使い方
 
 以下のように GitHub Actions のワークフローを作成します。
-`bun test --coverage ---coverage-reporter=lcov --coverage-dir=coverage` を実行して、lcov 形式のカバレッジレポートを生成し、出力された `coverage/lcov.info` を `70-10/bun-coverage-report-action` に渡すことで、GitHub のプルリクエストにカバレッジレポートをコメントします。
+`bun test --coverage ---coverage-reporter=lcov --coverage-dir=coverage` を実行して、lcov 形式のカバレッジレポートを生成。出力された `coverage/lcov.info` を `70-10/bun-coverage-report-action` に渡し、GitHub のプルリクエストにカバレッジレポートをコメントします。
 
 ```yaml: .github/workflows/ci.yml
 name: Coverage Report

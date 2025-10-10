@@ -28,7 +28,7 @@ Cloudflare Pages には本番環境とプレビュー環境が用意されてい
 
 #### 本番環境のビルドが通らない
 
-package.json の scripts に `"prepare": "husky install"` を設定していたのですが、デプロイすると `husky not found` となりビルドが通らなくなる事象にぶち当たりました。  
+package.json の scripts に `"prepare": "husky install"` を設定しても、`husky not found` となりビルドできない事象が発生しました。  
 原因は `NODE_ENV=production` を設定していることで `pnpm install` で `devDependencies` のパッケージがスキップされていたことでした。  
 回避策として、prepare の設定を以下のように変更し、`NODE_ENV=production` のときはスキップするようにしました。
 
