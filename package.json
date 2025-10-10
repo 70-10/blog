@@ -22,7 +22,7 @@
     "lint": "run-p lint:*",
     "lint:eslint": "eslint . --format friendly",
     "lint:prettier": "prettier . --check",
-    "lint:textlint": "textlint src/posts/**/*.md",
+    "lint:textlint": "textlint src/content/posts/**/*.md",
     "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky; fi",
     "preview": "astro preview",
     "start": "astro dev",
