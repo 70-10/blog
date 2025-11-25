@@ -1,4 +1,4 @@
 {
   "*.{ts,js,cjs,mjs,json,yml,astro}": ["eslint --fix", "prettier --write"],
-  "*.md": ["prettier --write", "textlint --fix"]
+  "src/content/posts/*.md": ["prettier --write", "textlint --fix"]
 }
