@@ -67,3 +67,7 @@
 .markdown-body .remark-card .site .domain {
   @apply inline-block text-gray-500;
 }
+
+.markdown-body svg[id^="mermaid-"] {
+  @apply mx-auto block max-w-full my-6;
+}
