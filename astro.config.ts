@@ -3,6 +3,7 @@ import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
 import { defineConfig } from "astro/config";
+import rehypeMermaid from "rehype-mermaid";
 import codeTitle from "remark-code-titles";
 import ogpCardPlugin from "./tools/remark-ogp-card";
 
@@ -29,9 +30,12 @@ export default defineConfig({
       codeTitle,
       ogpCardPlugin,
     ],
-    shikiConfig: {
+    rehypePlugins: [rehypeMermaid],
+    syntaxHighlight: {
+      type: "shiki",
       theme: "monokai",
       wrap: true,
+      excludeLangs: ["mermaid"],
     },
   },
   vite: {
