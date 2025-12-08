@@ -74,14 +74,9 @@ Note: Pre-commit hooks automatically run `lint-staged` which applies ESLint, Pre
 
 ### Layout System
 
-- `src/layouts/Layout.astro` - Base layout with SEO, analytics
+- `src/layouts/Layout.astro` - Base layout with SEO
 - `src/layouts/MarkdownLayout.astro` - Post layout with reading progress bar
-- Components: Header, Footer, ProfileCard, Tag, ReadingProgressBar
-
-### Analytics & Third-party
-
-- Google Analytics 4 (production only via `ProductionOnly.astro`)
-- Partytown for offloading third-party scripts
+- Components: Header, ProfileCard, Tag, ReadingProgressBar
 
 ### Package Manager
 

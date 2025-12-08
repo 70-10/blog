@@ -1,4 +1,3 @@
-import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
@@ -13,15 +12,7 @@ export default defineConfig({
     defaultStrategy: "viewport",
     prefetchAll: true,
   },
-  integrations: [
-    compress(),
-    react(),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-      },
-    }),
-  ],
+  integrations: [compress(), react()],
   markdown: {
     remarkPlugins: [
       "remark-gfm",
