@@ -1,6 +1,5 @@
 ---
 import { SEO } from "astro-seo";
-import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import "@/styles/global.css";
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
@@ -64,7 +63,5 @@ const { title, seo, description, displayBackButton = true } = Astro.props;
     <Header displayBackButton={displayBackButton} />
 
     <slot />
-
-    <Footer />
   </body>
 </html>
