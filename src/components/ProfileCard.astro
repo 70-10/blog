@@ -3,19 +3,24 @@ import { Image } from "astro:assets";
 import iconImage from "@/images/icon.svg";
 ---
 
-<div class="flex items-center gap-x-3">
+<div class="flex items-center gap-x-4">
   <Image
     src={iconImage}
     alt="Icon"
     width="60"
     height="60"
-    class="rounded-full"
+    class="rounded-full shadow-sm transition-transform duration-300 hover:scale-105"
   />
-  <div class="flex flex-col font-mono text-gray-600">
-    <p class="text-lg">70_10</p>
+  <div class="flex flex-col text-gray-700">
+    <p class="text-lg font-semibold">70_10</p>
 
     <div class="mt-1 flex gap-x-2">
-      <a href="https://x.com/70_10" target="_blank" rel="noopener noreferrer">
+      <a
+        href="https://x.com/70_10"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="transition-colors duration-300 hover:text-emerald-600 hover:underline"
+      >
         <svg
           viewBox="0 0 1800 1800"
           xmlns="http://www.w3.org/2000/svg"
@@ -32,6 +37,7 @@ import iconImage from "@/images/icon.svg";
         href="https://github.com/70-10"
         target="_blank"
         rel="noopener noreferrer"
+        class="transition-colors duration-300 hover:text-emerald-600 hover:underline"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
