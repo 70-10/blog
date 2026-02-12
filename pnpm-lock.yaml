@@ -36,8 +36,8 @@ importers:
         specifier: 0.0.7
         version: 0.0.7
       github-markdown-css:
-        specifier: 5.8.1
-        version: 5.8.1
+        specifier: 5.9.0
+        version: 5.9.0
       lucide-react:
         specifier: 0.562.0
         version: 0.562.0(react@19.1.0)
@@ -2647,8 +2647,8 @@ packages:
   get-tsconfig@4.7.5:
     resolution: {integrity: sha512-ZCuZCnlqNzjb4QprAzXKdpp/gh6KTxSJuw3IBsPnV/7fV4NxC9ckB+vPTt8w7fJA0TaSD7c55BR47JD6MEDyDw==}
 
-  github-markdown-css@5.8.1:
-    resolution: {integrity: sha512-8G+PFvqigBQSWLQjyzgpa2ThD9bo7+kDsriUIidGcRhXgmcaAWUIpCZf8DavJgc+xifjbCG+GvMyWr0XMXmc7g==}
+  github-markdown-css@5.9.0:
+    resolution: {integrity: sha512-tmT5sY+zvg2302XLYEfH2mtkViIM1SWf2nvYoF5N1ZsO0V6B2qZTiw3GOzw4vpjLygK/KG35qRlPFweHqfzz5w==}
     engines: {node: '>=10'}
 
   github-slugger@2.0.0:
@@ -8250,7 +8250,7 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  github-markdown-css@5.8.1: {}
+  github-markdown-css@5.9.0: {}
 
   github-slugger@2.0.0: {}
 
