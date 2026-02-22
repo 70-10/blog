@@ -1,5 +1,6 @@
 /// <reference types="vitest" />
 import { getViteConfig } from "astro/config";
+import { resolve } from "node:path";
 
 export default getViteConfig({
   test: {
@@ -17,7 +18,7 @@ export default getViteConfig({
   },
   resolve: {
     alias: {
-      "@": "/src",
+      "@": resolve(import.meta.dirname, "src"),
     },
   },
 });
