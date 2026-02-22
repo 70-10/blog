@@ -1,96 +1,129 @@
-import { describe, expect, it } from "vitest";
-import { cdateJST } from "../cdate-jst";
+import { getCollection } from "astro:content";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { getPosts, sortByPublishDate } from "../repositories/posts";
 
-// Test the date comparison logic without Astro dependencies
-interface TestPost {
-  title: string;
-  publishDate: Date;
-}
+vi.mock("astro:content", () => ({
+  getCollection: vi.fn(),
+}));
 
-function sortByPublishDateLogic(a: TestPost, b: TestPost): number {
-  return (
-    cdateJST(b.publishDate).toDate().getTime() -
-    cdateJST(a.publishDate).toDate().getTime()
-  );
-}
-
-const createTestPost = (publishDate: string, title: string): TestPost => ({
-  title,
-  publishDate: new Date(publishDate),
+const createTestPost = (publishDate: string, title: string) => ({
+  data: { publishDate: new Date(publishDate), title, tags: [] },
+  id: title.toLowerCase().replace(/\s+/g, "-"),
 });
 
 describe("sortByPublishDate", () => {
-  it("should sort posts by publish date in descending order", () => {
-    // Arrange
-    const post1 = createTestPost("2023-01-01", "First Post");
-    const post2 = createTestPost("2023-01-15", "Second Post");
-    const post3 = createTestPost("2023-01-10", "Third Post");
-    const posts = [post1, post2, post3];
+  describe("Positive Cases", () => {
+    it("should sort posts by publish date in descending order", () => {
+      const post1 = createTestPost("2023-01-01", "First Post");
+      const post2 = createTestPost("2023-01-15", "Second Post");
+      const post3 = createTestPost("2023-01-10", "Third Post");
+      const posts = [post1, post2, post3];
 
-    // Act
-    const sortedPosts = posts.sort(sortByPublishDateLogic);
+      const sortedPosts = posts.sort(sortByPublishDate);
 
-    // Assert
-    expect(sortedPosts[0].title).toBe("Second Post"); // 2023-01-15
-    expect(sortedPosts[1].title).toBe("Third Post"); // 2023-01-10
-    expect(sortedPosts[2].title).toBe("First Post"); // 2023-01-01
+      expect(sortedPosts[0].data.title).toBe("Second Post");
+      expect(sortedPosts[1].data.title).toBe("Third Post");
+      expect(sortedPosts[2].data.title).toBe("First Post");
+    });
   });
 
-  it("should handle posts with same publish date", () => {
-    // Arrange
-    const post1 = createTestPost("2023-01-01", "First Post");
-    const post2 = createTestPost("2023-01-01", "Second Post");
-    const posts = [post1, post2];
+  describe("Edge Cases", () => {
+    it("should handle posts with same publish date", () => {
+      const post1 = createTestPost("2023-01-01", "First Post");
+      const post2 = createTestPost("2023-01-01", "Second Post");
+      const posts = [post1, post2];
 
-    // Act
-    const sortedPosts = posts.sort(sortByPublishDateLogic);
+      const sortedPosts = posts.sort(sortByPublishDate);
 
-    // Assert
-    expect(sortedPosts).toHaveLength(2);
-    // Both posts have same date, so order should remain stable
-    expect(sortedPosts[0].publishDate.getTime()).toBe(
-      sortedPosts[1].publishDate.getTime(),
-    );
+      expect(sortedPosts).toHaveLength(2);
+      expect(sortedPosts[0].data.publishDate.getTime()).toBe(
+        sortedPosts[1].data.publishDate.getTime(),
+      );
+    });
+
+    it("should handle single post", () => {
+      const post = createTestPost("2023-01-01", "Single Post");
+      const posts = [post];
+
+      const sortedPosts = posts.sort(sortByPublishDate);
+
+      expect(sortedPosts).toHaveLength(1);
+      expect(sortedPosts[0].data.title).toBe("Single Post");
+    });
+
+    it("should handle empty array", () => {
+      const posts: ReturnType<typeof createTestPost>[] = [];
+
+      const sortedPosts = posts.sort(sortByPublishDate);
+
+      expect(sortedPosts).toHaveLength(0);
+    });
+
+    it("should handle timezone correctly with cdateJST", () => {
+      const post1 = createTestPost("2023-01-01T10:00:00+09:00", "JST Morning");
+      const post2 = createTestPost(
+        "2023-01-01T01:00:00Z",
+        "UTC Morning (JST 10:00)",
+      );
+      const posts = [post1, post2];
+
+      const sortedPosts = posts.sort(sortByPublishDate);
+
+      expect(sortedPosts).toHaveLength(2);
+    });
+  });
+});
+
+describe("getPosts", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
   });
 
-  it("should handle single post", () => {
-    // Arrange
-    const post = createTestPost("2023-01-01", "Single Post");
-    const posts = [post];
+  describe("Positive Cases", () => {
+    it("should return posts sorted by publish date in descending order", async () => {
+      const post1 = createTestPost("2023-01-01", "First Post");
+      const post2 = createTestPost("2023-01-15", "Second Post");
+      const post3 = createTestPost("2023-01-10", "Third Post");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      vi.mocked(getCollection).mockResolvedValue([post1, post2, post3] as any);
 
-    // Act
-    const sortedPosts = posts.sort(sortByPublishDateLogic);
+      const result = await getPosts();
 
-    // Assert
-    expect(sortedPosts).toHaveLength(1);
-    expect(sortedPosts[0].title).toBe("Single Post");
+      expect(result[0].data.title).toBe("Second Post");
+      expect(result[1].data.title).toBe("Third Post");
+      expect(result[2].data.title).toBe("First Post");
+    });
+
+    it("should call getCollection with 'posts'", async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      vi.mocked(getCollection).mockResolvedValue([] as any);
+
+      await getPosts();
+
+      expect(getCollection).toHaveBeenCalledWith("posts");
+    });
   });
 
-  it("should handle empty array", () => {
-    // Arrange
-    const posts: TestPost[] = [];
+  describe("Edge Cases", () => {
+    it("should return empty array when no posts", async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      vi.mocked(getCollection).mockResolvedValue([] as any);
 
-    // Act
-    const sortedPosts = posts.sort(sortByPublishDateLogic);
+      const result = await getPosts();
 
-    // Assert
-    expect(sortedPosts).toHaveLength(0);
-  });
+      expect(result).toHaveLength(0);
+      expect(result).toEqual([]);
+    });
 
-  it("should handle timezone correctly with cdateJST", () => {
-    // Arrange
-    const post1 = createTestPost("2023-01-01T10:00:00+09:00", "JST Morning");
-    const post2 = createTestPost(
-      "2023-01-01T01:00:00Z",
-      "UTC Morning (JST 10:00)",
-    );
-    const posts = [post1, post2];
+    it("should handle single post", async () => {
+      const post = createTestPost("2023-01-01", "Single Post");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      vi.mocked(getCollection).mockResolvedValue([post] as any);
 
-    // Act
-    const sortedPosts = posts.sort(sortByPublishDateLogic);
+      const result = await getPosts();
 
-    // Assert
-    // Both should be treated as same time when converted to JST
-    expect(sortedPosts).toHaveLength(2);
+      expect(result).toHaveLength(1);
+      expect(result[0].data.title).toBe("Single Post");
+    });
   });
 });
