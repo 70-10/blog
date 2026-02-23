@@ -70,6 +70,19 @@ describe("getOgImage", () => {
         expect.any(Object),
       );
     });
+
+    it("should pass text to satori JSX", async () => {
+      // Arrange
+      const satori = (await import("satori")).default;
+
+      // Act
+      await getOgImage("My Blog Title");
+
+      // Assert
+      const jsxArg = vi.mocked(satori).mock.calls[0][0];
+      // satori receives JSX with the text content
+      expect(JSON.stringify(jsxArg)).toContain("My Blog Title");
+    });
   });
 
   describe("Edge Cases", () => {
@@ -83,19 +96,41 @@ describe("getOgImage", () => {
   });
 
   describe("Negative Cases", () => {
-    it("should handle CSS response that does not match font URL pattern", async () => {
+    it("should throw error when CSS response does not match font URL pattern", async () => {
       // Arrange
       mockFetch.mockReset();
       mockFetch.mockResolvedValueOnce({
         text: () => Promise.resolve("body { font-family: sans-serif; }"),
       });
 
-      // Act
-      const result = await getOgImage("Test Title");
+      // Act & Assert
+      await expect(getOgImage("Test Title")).rejects.toThrow(
+        "Failed to load font data",
+      );
+    });
 
-      // Assert
-      expect(result).toBeInstanceOf(Buffer);
-      expect(mockFetch).toHaveBeenCalledTimes(1);
+    it("should propagate error when font API fetch fails", async () => {
+      // Arrange
+      mockFetch.mockReset();
+      mockFetch.mockRejectedValueOnce(new Error("Network error"));
+
+      // Act & Assert
+      await expect(getOgImage("Test")).rejects.toThrow("Network error");
+    });
+
+    it("should propagate error when font file download fails", async () => {
+      // Arrange
+      mockFetch.mockReset();
+      mockFetch.mockResolvedValueOnce({
+        text: () =>
+          Promise.resolve(
+            "src: url(https://fonts.example.com/font.ttf) format('truetype')",
+          ),
+      });
+      mockFetch.mockRejectedValueOnce(new Error("Font download failed"));
+
+      // Act & Assert
+      await expect(getOgImage("Test")).rejects.toThrow("Font download failed");
     });
   });
 });
