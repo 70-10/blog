@@ -100,6 +100,11 @@ Note: Pre-commit hooks automatically run `lint-staged` which applies ESLint, Pre
 - Test files colocated with source (e.g., `src/lib/repositories/posts.test.ts`)
 - Coverage reports via `@vitest/coverage-v8`
 
+### Test Conventions
+
+- **AAA comments**: Always add `// Arrange`, `// Act`, `// Assert` comments to all test cases
+- **Type casts in tests**: Use `as unknown as T` instead of `as any`. Do not use `eslint-disable` for `@typescript-eslint/no-explicit-any`
+
 ## Important Patterns
 
 ### Japanese Text Linting
