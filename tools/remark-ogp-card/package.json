@@ -15,7 +15,7 @@
   "dependencies": {
     "open-graph-scraper": "6.11.0",
     "unist-builder": "4.0.0",
-    "unist-util-visit": "5.0.0"
+    "unist-util-visit": "5.1.0"
   },
   "devDependencies": {
     "@types/mdast": "4.0.4",
