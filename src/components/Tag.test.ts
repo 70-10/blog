@@ -36,12 +36,23 @@ describe("Tag", () => {
   });
 
   describe("Edge Cases", () => {
-    it("should encode special characters in tag name URL", async () => {
+    it("should keep plus signs in tag name URL", async () => {
       // Act
       const html = await renderComponent(Tag, { props: { name: "C++" } });
 
       // Assert
       expect(html).toContain("#C++");
+      // encodeURI does not encode '+', so href keeps the plus signs
+      expect(html).toContain('href="/tags/C++"');
+    });
+
+    it("should encode multibyte characters in tag name URL", async () => {
+      // Act
+      const html = await renderComponent(Tag, { props: { name: "日本語" } });
+
+      // Assert
+      expect(html).toContain("#日本語");
+      expect(html).toContain('href="/tags/%E6%97%A5%E6%9C%AC%E8%AA%9E"');
     });
   });
 });

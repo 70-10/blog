@@ -38,4 +38,8 @@ describe("ReadingProgressBar", () => {
       expect(html).toContain('max="100"');
     });
   });
+
+  // Edge Cases / Negative Cases: Not applicable.
+  // This is a static component with no props.
+  // Client-side scroll behavior (is:inline script) cannot be tested in server rendering.
 });

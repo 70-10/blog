@@ -45,31 +45,22 @@ describe("Header", () => {
       expect(html).toContain("<header");
     });
 
-    it("should render back button section when displayBackButton is true", async () => {
+    it("should render back button with ArrowLeft icon when displayBackButton is true", async () => {
       // Act
       const html = await renderHeader({ displayBackButton: true });
 
       // Assert
-      const hrefMatches = html.match(/href="\/"/g);
-      expect(hrefMatches!.length).toBeGreaterThanOrEqual(2);
+      expect(html).toMatch(/<svg[^>]*>/);
     });
   });
 
   describe("Negative Cases", () => {
     it("should not render back button when displayBackButton is false", async () => {
-      // Arrange
-      const htmlWithBack = await renderHeader({ displayBackButton: true });
-      const htmlWithoutBack = await renderHeader({
-        displayBackButton: false,
-      });
-
       // Act
-      const withBackCount = (htmlWithBack.match(/href="\/"/g) || []).length;
-      const withoutBackCount = (htmlWithoutBack.match(/href="\/"/g) || [])
-        .length;
+      const html = await renderHeader({ displayBackButton: false });
 
       // Assert
-      expect(withoutBackCount).toBeLessThan(withBackCount);
+      expect(html).not.toMatch(/<svg[^>]*>/);
     });
   });
 });

@@ -30,4 +30,7 @@ describe("ProfileCard", () => {
       expect(html).toContain("https://github.com/70-10");
     });
   });
+
+  // Edge Cases / Negative Cases: Not applicable.
+  // This is a static component with no props or dynamic behavior.
 });

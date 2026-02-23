@@ -32,4 +32,7 @@ describe("Footer", () => {
       expect(html).toContain("GitHub");
     });
   });
+
+  // Edge Cases / Negative Cases: Not applicable.
+  // This is a static component with no props or dynamic behavior.
 });
