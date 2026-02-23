@@ -13,7 +13,7 @@ export default getViteConfig({
       provider: "v8",
       reporter: ["text", "json", "html"],
       include: ["src/**/*", "tools/**/*"],
-      exclude: ["**/*.test.*", "**/*.config.*", "**/*.d.ts"],
+      exclude: ["**/*.test.*", "**/*.config.*", "**/*.d.ts", "**/*.astro"],
     },
   },
   resolve: {
