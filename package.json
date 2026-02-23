@@ -52,7 +52,6 @@
     "tailwindcss": "4.2.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.3.3",
     "@eslint/js": "10.0.1",
     "@types/jsdom": "27.0.0",
     "@types/marked": "6.0.0",

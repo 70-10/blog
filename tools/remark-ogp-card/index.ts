@@ -1,6 +1,5 @@
 import type { Html, Paragraph, Root, Text } from "mdast";
-import { toASCII, toUnicode } from "node:punycode";
-import { URL } from "node:url";
+import { URL, domainToASCII, domainToUnicode } from "node:url";
 import ogs from "open-graph-scraper";
 import type { Node } from "unist";
 import { visit } from "unist-util-visit";
@@ -87,7 +86,7 @@ export async function createElement(url: URL): Promise<string> {
 
 export function generateURL(urlStr: string): URL {
   const url = new URL(urlStr);
-  url.hostname = toASCII(url.hostname);
+  url.hostname = domainToASCII(url.hostname);
   return url;
 }
 
@@ -102,7 +101,7 @@ export async function createCardElement(url: string): Promise<string> {
     <h5 class="title">${htmlEncode(title || "")}</h5>
     <div class="site">
       <img src="https://icons.duckduckgo.com/ip3/${domain}.ico" alt="favicon" class="favicon" />
-      <p class="domain">${toUnicode(domain)}</p>
+      <p class="domain">${domainToUnicode(domain)}</p>
     </div>
   </a>
 </div>
