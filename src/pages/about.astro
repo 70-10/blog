@@ -1,0 +1,23 @@
+---
+import ProfileCard from "@/components/ProfileCard.astro";
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="About" seo={{ openGraph: { type: "website" } }}>
+  <div class="content">
+    <ProfileCard />
+  </div>
+</Layout>
+
+<style>
+  .content {
+    @apply mx-auto w-full max-w-screen-sm px-6;
+    @apply mt-12;
+  }
+
+  @media (min-width: 640px) {
+    .content {
+      padding-inline: 2.5rem;
+    }
+  }
+</style>
