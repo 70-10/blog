@@ -10,14 +10,10 @@ import Layout from "@/layouts/Layout.astro";
 </Layout>
 
 <style>
-  .content {
-    @apply mx-auto w-full max-w-screen-sm px-6;
-    @apply mt-12;
-  }
+  @reference "@/styles/global.css";
 
-  @media (min-width: 640px) {
-    .content {
-      padding-inline: 2.5rem;
-    }
+  .content {
+    @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;
+    @apply mt-12;
   }
 </style>

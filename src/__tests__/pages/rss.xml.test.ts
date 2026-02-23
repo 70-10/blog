@@ -1,13 +1,13 @@
+import { getPosts } from "@/lib/repositories/posts";
+import { GET } from "@/pages/rss.xml";
 import rss from "@astrojs/rss";
 import { marked } from "marked";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { getPosts } from "../lib/repositories/posts";
-import { GET } from "./rss.xml";
 
 vi.mock("astro:content", () => ({
   getCollection: vi.fn(),
 }));
-vi.mock("../lib/repositories/posts");
+vi.mock("@/lib/repositories/posts");
 vi.mock("marked", () => ({
   marked: {
     parse: vi.fn((text: string) => `<p>${text}</p>`),

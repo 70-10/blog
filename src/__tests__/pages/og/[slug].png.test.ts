@@ -1,7 +1,7 @@
 import { getOgImage } from "@/components/OgpImage";
 import { getPosts } from "@/lib/repositories/posts";
+import { GET, getStaticPaths } from "@/pages/og/[slug].png";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { GET, getStaticPaths } from "./[slug].png";
 
 vi.mock("@/lib/repositories/posts");
 vi.mock("@/components/OgpImage");
@@ -116,7 +116,7 @@ describe("GET", () => {
         isProduction: false,
         shouldSkipOgGeneration: true,
       }));
-      const { GET: GET2 } = await import("./[slug].png");
+      const { GET: GET2 } = await import("@/pages/og/[slug].png");
 
       // Act
       const response = await GET2({
