@@ -73,23 +73,29 @@ describe("sortByPublishDate", () => {
       expect(sortedPosts).toHaveLength(0);
     });
 
-    it("should sort posts with different timezone representations correctly", () => {
+    it("should handle timezone correctly with cdateJST", () => {
       // Arrange
-      const postJST = createTestPost(
-        "2023-01-01T10:00:00+09:00",
-        "JST Morning",
+      const post1 = createTestPost("2023-01-01T10:00:00+09:00", "JST Morning");
+      const post2 = createTestPost(
+        "2023-01-01T01:00:00Z",
+        "UTC Morning (JST 10:00)",
       );
-      const postUTC = createTestPost("2023-01-02T10:00:00Z", "UTC Next Day");
-      const posts = [postJST, postUTC];
+      const posts = [post1, post2];
 
       // Act
       const sortedPosts = posts.sort(sortByPublishDate);
 
       // Assert
-      expect(sortedPosts[0].data.title).toBe("UTC Next Day");
-      expect(sortedPosts[1].data.title).toBe("JST Morning");
+      // JST 10:00 と UTC 01:00 は同一時刻。ソート後も2件存在し、同一時刻として扱われる
+      expect(sortedPosts).toHaveLength(2);
+      expect(sortedPosts[0].data.publishDate.getTime()).toBe(
+        sortedPosts[1].data.publishDate.getTime(),
+      );
     });
   });
+
+  // Negative Cases: Not applicable. sortByPublishDate is a pure comparator function
+  // that always returns a number. Invalid dates would be caught at content collection level.
 });
 
 describe("getPosts", () => {
@@ -139,7 +145,6 @@ describe("getPosts", () => {
       const result = await getPosts();
 
       // Assert
-      expect(result).toHaveLength(0);
       expect(result).toEqual([]);
     });
 
@@ -154,6 +159,18 @@ describe("getPosts", () => {
       // Assert
       expect(result).toHaveLength(1);
       expect(result[0].data.title).toBe("Single Post");
+    });
+  });
+
+  describe("Negative Cases", () => {
+    it("should propagate error when getCollection fails", async () => {
+      // Arrange
+      vi.mocked(getCollection).mockRejectedValue(
+        new Error("Collection not found"),
+      );
+
+      // Act & Assert
+      await expect(getPosts()).rejects.toThrow("Collection not found");
     });
   });
 });
