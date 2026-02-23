@@ -16,9 +16,8 @@ describe("ProductionOnly", () => {
         isProduction: true,
         shouldSkipOgGeneration: false,
       }));
-      const { default: ProductionOnly } = await import(
-        "./ProductionOnly.astro"
-      );
+      const { default: ProductionOnly } =
+        await import("./ProductionOnly.astro");
       const container = await AstroContainer.create();
 
       // Act
@@ -41,9 +40,8 @@ describe("ProductionOnly", () => {
         isProduction: false,
         shouldSkipOgGeneration: false,
       }));
-      const { default: ProductionOnly } = await import(
-        "./ProductionOnly.astro"
-      );
+      const { default: ProductionOnly } =
+        await import("./ProductionOnly.astro");
       const container = await AstroContainer.create();
 
       // Act
