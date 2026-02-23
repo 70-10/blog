@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import rss from "@astrojs/rss";
 import { marked } from "marked";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -18,6 +17,16 @@ vi.mock("@astrojs/rss", () => ({
   default: vi.fn(() => new Response("rss xml")),
 }));
 
+type Post = {
+  id: string;
+  data: { title: string; publishDate: Date; tags: string[] };
+  body: string;
+};
+
+type RSSContext = {
+  site: URL | undefined;
+};
+
 describe("GET", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -25,6 +34,7 @@ describe("GET", () => {
 
   describe("Positive Cases", () => {
     it("should map posts to RSS items correctly", async () => {
+      // Arrange
       vi.mocked(getPosts).mockResolvedValue([
         {
           id: "post-1",
@@ -44,11 +54,15 @@ describe("GET", () => {
           },
           body: "body 2",
         },
-      ] as any);
+      ] as unknown as Post[]);
+      const context = {
+        site: new URL("https://example.com"),
+      } as unknown as RSSContext;
 
-      const context = { site: new URL("https://example.com") } as any;
+      // Act
       await GET(context);
 
+      // Assert
       expect(rss).toHaveBeenCalledWith(
         expect.objectContaining({
           title: "Blog",
@@ -65,9 +79,16 @@ describe("GET", () => {
     });
 
     it("should use context.site correctly", async () => {
-      vi.mocked(getPosts).mockResolvedValue([] as any);
-      const context = { site: new URL("https://blog.example.com") } as any;
+      // Arrange
+      vi.mocked(getPosts).mockResolvedValue([] as unknown as Post[]);
+      const context = {
+        site: new URL("https://blog.example.com"),
+      } as unknown as RSSContext;
+
+      // Act
       await GET(context);
+
+      // Assert
       expect(rss).toHaveBeenCalledWith(
         expect.objectContaining({
           site: "https://blog.example.com/",
@@ -78,9 +99,14 @@ describe("GET", () => {
 
   describe("Edge Cases", () => {
     it("should handle undefined context.site", async () => {
-      vi.mocked(getPosts).mockResolvedValue([] as any);
-      const context = { site: undefined } as any;
+      // Arrange
+      vi.mocked(getPosts).mockResolvedValue([] as unknown as Post[]);
+      const context = { site: undefined } as unknown as RSSContext;
+
+      // Act
       await GET(context);
+
+      // Assert
       expect(rss).toHaveBeenCalledWith(
         expect.objectContaining({
           site: "",
@@ -89,6 +115,7 @@ describe("GET", () => {
     });
 
     it("should handle post with undefined body", async () => {
+      // Arrange
       vi.mocked(getPosts).mockResolvedValue([
         {
           id: "post-1",
@@ -99,16 +126,29 @@ describe("GET", () => {
           },
           body: undefined,
         },
-      ] as any);
-      const context = { site: new URL("https://example.com") } as any;
+      ] as unknown as Post[]);
+      const context = {
+        site: new URL("https://example.com"),
+      } as unknown as RSSContext;
+
+      // Act
       await GET(context);
+
+      // Assert
       expect(marked.parse).toHaveBeenCalledWith("");
     });
 
     it("should handle empty posts array", async () => {
-      vi.mocked(getPosts).mockResolvedValue([] as any);
-      const context = { site: new URL("https://example.com") } as any;
+      // Arrange
+      vi.mocked(getPosts).mockResolvedValue([] as unknown as Post[]);
+      const context = {
+        site: new URL("https://example.com"),
+      } as unknown as RSSContext;
+
+      // Act
       await GET(context);
+
+      // Assert
       expect(rss).toHaveBeenCalledWith(
         expect.objectContaining({
           items: [],
