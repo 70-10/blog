@@ -86,11 +86,29 @@ describe("GET", () => {
       } as unknown as OgAPIContext);
 
       // Assert
+      expect(getEntry).toHaveBeenCalledWith("posts", "test-post");
+      expect(getOgImage).toHaveBeenCalledWith("Test Post");
       expect(response.headers.get("Content-Type")).toBe("image/png");
     });
   });
 
   describe("Negative Cases", () => {
+    it("should call getOgImage with undefined title when getEntry returns null", async () => {
+      // Arrange
+      const { getEntry } = await import("astro:content");
+      vi.mocked(getEntry).mockResolvedValue(null as unknown as GetEntryResult);
+      vi.mocked(getOgImage).mockResolvedValue(Buffer.from("fake-png"));
+
+      // Act
+      await GET({
+        params: { slug: "non-existent" },
+      } as unknown as OgAPIContext);
+
+      // Assert
+      // post?.data.title evaluates to undefined when post is null
+      expect(getOgImage).toHaveBeenCalledWith(undefined);
+    });
+
     it("should return 404 when shouldSkipOgGeneration is true", async () => {
       // Arrange
       vi.resetModules();

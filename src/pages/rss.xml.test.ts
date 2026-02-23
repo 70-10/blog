@@ -72,6 +72,8 @@ describe("GET", () => {
             expect.objectContaining({
               title: "Post 1",
               link: "/posts/post-1",
+              pubDate: new Date("2024-01-01"),
+              description: "<p>body 1</p>",
             }),
           ]),
         }),
