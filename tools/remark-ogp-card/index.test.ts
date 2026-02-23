@@ -1,7 +1,7 @@
 import ogs from "open-graph-scraper";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import ogpCardPlugin, {
   createCardElement,
   createElement,
@@ -24,6 +24,10 @@ interface TreeNode {
 }
 
 describe("remark-ogp-card utilities", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
   describe("generateURL", () => {
     describe("Positive Cases", () => {
       it("should handle regular ASCII domain", () => {
@@ -213,6 +217,10 @@ describe("remark-ogp-card utilities", () => {
         expect(htmlEncode("こんにちは & 世界")).toBe("こんにちは &amp; 世界");
       });
     });
+
+    // Negative Cases: Not applicable. htmlEncode is a pure string transformation function.
+    // It accepts any string input and always returns a valid encoded string.
+    // TypeScript type system prevents non-string inputs at compile time.
   });
 });
 
@@ -338,6 +346,18 @@ describe("createElement", () => {
       expect(result).toBe("");
     });
   });
+
+  describe("Negative Cases", () => {
+    it("should propagate error when OGS fails for non-YouTube URL", async () => {
+      // Arrange
+      const mockOgs = vi.mocked(ogs);
+      mockOgs.mockRejectedValue(new Error("Fetch failed"));
+      const url = new URL("https://example.com");
+
+      // Act & Assert
+      await expect(createElement(url)).rejects.toThrow("Fetch failed");
+    });
+  });
 });
 
 describe("ogpCardPlugin", () => {
@@ -428,8 +448,9 @@ describe("ogpCardPlugin", () => {
       const tree = await processMarkdown("https://example.com\n");
 
       // Assert
-      consoleSpy.mockRestore();
       expect(tree).toBeDefined();
+      expect(consoleSpy).toHaveBeenCalled();
+      consoleSpy.mockRestore();
     });
   });
 });
