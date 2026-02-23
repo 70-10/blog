@@ -24,7 +24,11 @@ async function getFontData() {
 }
 
 export async function getOgImage(text: string) {
-  const fontData = (await getFontData()) as ArrayBuffer;
+  const fontData = await getFontData();
+
+  if (!fontData) {
+    throw new Error("Failed to load font data");
+  }
 
   const svg = await satori(
     <main

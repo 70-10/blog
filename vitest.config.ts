@@ -1,7 +1,8 @@
 /// <reference types="vitest" />
-import { defineConfig } from "vitest/config";
+import { getViteConfig } from "astro/config";
+import { resolve } from "node:path";
 
-export default defineConfig({
+export default getViteConfig({
   test: {
     environment: "jsdom",
     globals: true,
@@ -12,12 +13,12 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "json", "html", "json-summary"],
       include: ["src/**/*", "tools/**/*"],
-      exclude: ["**/*.test.*", "**/*.config.*", "**/*.d.ts"],
+      exclude: ["**/*.test.*", "**/*.config.*", "**/*.d.ts", "**/*.astro"],
     },
   },
   resolve: {
     alias: {
-      "@": "/src",
+      "@": resolve(import.meta.dirname, "src"),
     },
   },
 });

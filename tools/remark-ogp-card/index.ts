@@ -46,6 +46,10 @@ export default function ogpCardPlugin() {
           return;
         }
 
+        if (text.value.trim() !== urls[0]) {
+          return;
+        }
+
         const url = generateURL(urls[0]);
         transformers.push(async () => {
           const cardNode: Html = {
@@ -70,7 +74,7 @@ export default function ogpCardPlugin() {
   };
 }
 
-async function createElement(url: URL): Promise<string> {
+export async function createElement(url: URL): Promise<string> {
   switch (url.hostname) {
     case "www.youtube.com": {
       const videoId = url.searchParams.get("v");
@@ -87,7 +91,7 @@ export function generateURL(urlStr: string): URL {
   return url;
 }
 
-async function createCardElement(url: string): Promise<string> {
+export async function createCardElement(url: string): Promise<string> {
   const { result }: OpenGraphResult = await ogs({ url });
   const domain = extractDomain(url);
   const title = result.ogTitle;
@@ -105,7 +109,7 @@ async function createCardElement(url: string): Promise<string> {
 `;
 }
 
-function createYouTubeFrameElement(videoId: string | null): string {
+export function createYouTubeFrameElement(videoId: string | null): string {
   if (!videoId) {
     return "";
   }
