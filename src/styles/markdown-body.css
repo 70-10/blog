@@ -47,7 +47,7 @@
 }
 
 .markdown-body .remark-card a {
-  @apply block rounded-lg border border-gray-200 bg-white px-6 shadow-sm hover:bg-neutral-50;
+  @apply block w-full! rounded-lg border border-gray-200 bg-white px-6 shadow-sm hover:bg-neutral-50;
   @apply hover:no-underline;
 }
 
