@@ -32,12 +32,12 @@
     "test:run": "vitest run"
   },
   "dependencies": {
-    "@astrojs/partytown": "2.1.4",
+    "@astrojs/partytown": "2.1.5",
     "@astrojs/react": "4.4.2",
-    "@astrojs/rss": "4.0.15",
+    "@astrojs/rss": "4.0.17",
     "@tailwindcss/vite": "4.2.0",
-    "astro": "5.17.3",
-    "astro-compress": "2.3.9",
+    "astro": "5.18.1",
+    "astro-compress": "2.4.0",
     "astro-google-fonts-optimizer": "0.2.2",
     "astro-seo": "1.1.0",
     "cdate": "0.0.7",
