@@ -29,7 +29,7 @@ Personal blog built with Astro 5, deployed at https://blog.70-10.net. Uses pnpm 
 - `pnpm lint:prettier` - Prettier check only
 - `pnpm lint:textlint` - Japanese text linting for markdown posts in `src/content/posts/**/*.md`
 
-Note: Pre-commit hooks automatically run `lint-staged` which applies ESLint, Prettier, and textlint fixes to staged files.
+Note: Pre-commit hooks automatically run `lefthook` which applies ESLint, Prettier, and textlint fixes to staged files.
 
 ### Content Management
 

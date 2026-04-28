@@ -17,3 +17,8 @@ pre-commit:
       glob: "*.md"
       run: pnpm textlint --fix {staged_files}
       stage_fixed: true
+
+pre-push:
+  commands:
+    typecheck:
+      run: pnpm typecheck
