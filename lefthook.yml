@@ -1,0 +1,19 @@
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "*.{ts,js,cjs,mjs,json,yml,astro}"
+      run: pnpm eslint --fix {staged_files}
+      stage_fixed: true
+    prettier-code:
+      glob: "*.{ts,js,cjs,mjs,json,yml,astro}"
+      run: pnpm prettier --write {staged_files}
+      stage_fixed: true
+    prettier-md:
+      glob: "*.md"
+      run: pnpm prettier --write {staged_files}
+      stage_fixed: true
+    textlint:
+      glob: "*.md"
+      run: pnpm textlint --fix {staged_files}
+      stage_fixed: true
