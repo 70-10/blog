@@ -8,11 +8,19 @@ const { name } = Astro.props;
   @reference "@/styles/global.css";
 
   .tag {
-    @apply inline-block;
-    @apply rounded-lg border border-zinc-400;
-    @apply text-sm text-zinc-500;
-    @apply m-1;
-    @apply px-2.5 py-1;
-    @apply hover:border-emerald-400 hover:text-emerald-400;
+    display: inline-block;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(161, 161, 170);
+    font-size: 0.875rem;
+    color: rgb(113, 113, 122);
+    margin: 0.25rem;
+    padding: 0.625rem 0.625rem;
+    transition-property: border-color, color;
+    transition-duration: 0.2s;
+  }
+
+  .tag:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 </style>
