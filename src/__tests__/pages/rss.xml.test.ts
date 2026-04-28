@@ -1,6 +1,7 @@
 import { getPosts } from "@/lib/repositories/posts";
 import { GET } from "@/pages/rss.xml";
 import rss from "@astrojs/rss";
+import type { APIContext } from "astro";
 import { marked } from "marked";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -17,15 +18,7 @@ vi.mock("@astrojs/rss", () => ({
   default: vi.fn(() => new Response("rss xml")),
 }));
 
-type Post = {
-  id: string;
-  data: { title: string; publishDate: Date; tags: string[] };
-  body: string;
-};
-
-type RSSContext = {
-  site: URL | undefined;
-};
+type Post = Awaited<ReturnType<typeof getPosts>>[number];
 
 describe("GET", () => {
   beforeEach(() => {
@@ -57,7 +50,7 @@ describe("GET", () => {
       ] as unknown as Post[]);
       const context = {
         site: new URL("https://example.com"),
-      } as unknown as RSSContext;
+      } as unknown as APIContext;
 
       // Act
       await GET(context);
@@ -85,7 +78,7 @@ describe("GET", () => {
       vi.mocked(getPosts).mockResolvedValue([] as unknown as Post[]);
       const context = {
         site: new URL("https://blog.example.com"),
-      } as unknown as RSSContext;
+      } as unknown as APIContext;
 
       // Act
       await GET(context);
@@ -103,7 +96,7 @@ describe("GET", () => {
     it("should handle undefined context.site", async () => {
       // Arrange
       vi.mocked(getPosts).mockResolvedValue([] as unknown as Post[]);
-      const context = { site: undefined } as unknown as RSSContext;
+      const context = { site: undefined } as unknown as APIContext;
 
       // Act
       await GET(context);
@@ -131,7 +124,7 @@ describe("GET", () => {
       ] as unknown as Post[]);
       const context = {
         site: new URL("https://example.com"),
-      } as unknown as RSSContext;
+      } as unknown as APIContext;
 
       // Act
       await GET(context);
@@ -145,7 +138,7 @@ describe("GET", () => {
       vi.mocked(getPosts).mockResolvedValue([] as unknown as Post[]);
       const context = {
         site: new URL("https://example.com"),
-      } as unknown as RSSContext;
+      } as unknown as APIContext;
 
       // Act
       await GET(context);

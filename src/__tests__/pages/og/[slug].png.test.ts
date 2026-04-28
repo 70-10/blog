@@ -1,6 +1,7 @@
 import { getOgImage } from "@/components/OgpImage";
 import { getPosts } from "@/lib/repositories/posts";
 import { GET, getStaticPaths } from "@/pages/og/[slug].png";
+import type { APIContext } from "astro";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 vi.mock("@/lib/repositories/posts");
@@ -13,17 +14,10 @@ vi.mock("@/lib/environments", () => ({
   shouldSkipOgGeneration: false,
 }));
 
-type Post = {
-  id: string;
-  data: { title: string; publishDate: Date; tags: string[] };
-};
+type Post = Awaited<ReturnType<typeof getPosts>>[number];
 
 type GetEntryResult = {
   data: { title: string };
-};
-
-type OgAPIContext = {
-  params: { slug: string | undefined };
 };
 
 describe("getStaticPaths", () => {
@@ -83,7 +77,7 @@ describe("GET", () => {
       // Act
       const response = await GET({
         params: { slug: "test-post" },
-      } as unknown as OgAPIContext);
+      } as unknown as APIContext);
 
       // Assert
       expect(getEntry).toHaveBeenCalledWith("posts", "test-post");
@@ -102,7 +96,7 @@ describe("GET", () => {
       // Act
       await GET({
         params: { slug: "non-existent" },
-      } as unknown as OgAPIContext);
+      } as unknown as APIContext);
 
       // Assert
       // post?.data.title evaluates to undefined when post is null
@@ -121,7 +115,7 @@ describe("GET", () => {
       // Act
       const response = await GET2({
         params: { slug: "test-post" },
-      } as unknown as OgAPIContext);
+      } as unknown as APIContext);
 
       // Assert
       expect(response.status).toBe(404);
@@ -130,14 +124,14 @@ describe("GET", () => {
     it("should throw error when slug is undefined", async () => {
       // Act & Assert
       await expect(
-        GET({ params: { slug: undefined } } as unknown as OgAPIContext),
+        GET({ params: { slug: undefined } } as unknown as APIContext),
       ).rejects.toThrow("Slug not found");
     });
 
     it("should throw error when slug is empty string", async () => {
       // Act & Assert
       await expect(
-        GET({ params: { slug: "" } } as unknown as OgAPIContext),
+        GET({ params: { slug: "" } } as unknown as APIContext),
       ).rejects.toThrow("Slug not found");
     });
   });

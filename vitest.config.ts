@@ -1,6 +1,9 @@
-/// <reference types="vitest" />
 import { getViteConfig } from "astro/config";
 import { resolve } from "node:path";
+import { defineConfig } from "vitest/config";
+
+type VitestConfig = Parameters<typeof getViteConfig>[0] &
+  Parameters<typeof defineConfig>[0];
 
 export default getViteConfig({
   test: {
@@ -21,4 +24,4 @@ export default getViteConfig({
       "@": resolve(import.meta.dirname, "src"),
     },
   },
-});
+} as VitestConfig);

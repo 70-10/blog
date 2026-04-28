@@ -9,6 +9,7 @@ vi.mock("astro:content", () => ({
 type Posts = Awaited<ReturnType<typeof getCollection>>;
 
 const createTestPost = (publishDate: string, title: string) => ({
+  collection: "posts" as const,
   data: { publishDate: new Date(publishDate), title, tags: [] },
   id: title.toLowerCase().replace(/\s+/g, "-"),
 });

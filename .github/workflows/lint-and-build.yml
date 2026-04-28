@@ -50,6 +50,9 @@ jobs:
           json-summary-path: "./coverage/coverage-summary.json"
           json-final-path: "./coverage/coverage-final.json"
           file-coverage-mode: "changes"
+      - name: Typecheck
+        run: |
+          pnpm typecheck
       - name: Lint
         run: |
           pnpm lint

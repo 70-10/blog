@@ -35,7 +35,7 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [tailwindcss({ applyBaseStyles: false })],
+    plugins: [tailwindcss()],
   },
   server: {
     host: true,

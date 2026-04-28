@@ -29,7 +29,7 @@ export async function GET({ params }: APIContext) {
 
   const body = await getOgImage(post?.data.title as string);
 
-  return new Response(body, {
+  return new Response(body as unknown as BodyInit, {
     headers: { "Content-Type": "image/png" },
   });
 }

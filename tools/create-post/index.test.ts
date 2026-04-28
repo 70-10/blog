@@ -173,10 +173,9 @@ description: ""
       it("should return true when slug matches existing file", async () => {
         // Arrange
         // readdir returns string[] when called without withFileTypes option
-        vi.mocked(readdir).mockResolvedValue([
-          "existing-post.md",
-          "another-post.md",
-        ] as unknown as string[]);
+        vi.mocked(
+          readdir as (path: string) => Promise<string[]>,
+        ).mockResolvedValue(["existing-post.md", "another-post.md"]);
 
         // Act
         const result = await checkSameSlug("existing-post");
@@ -190,7 +189,9 @@ description: ""
       it("should return false for empty directory", async () => {
         // Arrange
         // readdir returns string[] when called without withFileTypes option
-        vi.mocked(readdir).mockResolvedValue([] as unknown as string[]);
+        vi.mocked(
+          readdir as (path: string) => Promise<string[]>,
+        ).mockResolvedValue([]);
 
         // Act
         const result = await checkSameSlug("any-slug");
@@ -202,10 +203,9 @@ description: ""
       it("should return false when file with different extension exists", async () => {
         // Arrange
         // readdir returns string[] when called without withFileTypes option
-        vi.mocked(readdir).mockResolvedValue([
-          "my-post.txt",
-          "my-post.mdx",
-        ] as unknown as string[]);
+        vi.mocked(
+          readdir as (path: string) => Promise<string[]>,
+        ).mockResolvedValue(["my-post.txt", "my-post.mdx"]);
 
         // Act
         const result = await checkSameSlug("my-post");
@@ -219,10 +219,9 @@ description: ""
       it("should return false when slug does not match any file", async () => {
         // Arrange
         // readdir returns string[] when called without withFileTypes option
-        vi.mocked(readdir).mockResolvedValue([
-          "existing-post.md",
-          "another-post.md",
-        ] as unknown as string[]);
+        vi.mocked(
+          readdir as (path: string) => Promise<string[]>,
+        ).mockResolvedValue(["existing-post.md", "another-post.md"]);
 
         // Act
         const result = await checkSameSlug("non-existing-post");

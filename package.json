@@ -29,7 +29,8 @@
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "typecheck": "astro check"
   },
   "dependencies": {
     "@astrojs/partytown": "2.1.4",
