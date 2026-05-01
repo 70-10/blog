@@ -37,7 +37,7 @@
     "@astrojs/react": "4.4.2",
     "@astrojs/rss": "4.0.18",
     "@tailwindcss/vite": "4.2.4",
-    "astro": "5.17.3",
+    "astro": "6.1.6",
     "astro-compress": "2.4.1",
     "astro-google-fonts-optimizer": "0.2.2",
     "astro-seo": "1.1.0",
