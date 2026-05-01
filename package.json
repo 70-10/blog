@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@astrojs/partytown": "2.1.7",
-    "@astrojs/react": "4.4.2",
+    "@astrojs/react": "5.0.4",
     "@astrojs/rss": "4.0.18",
     "@tailwindcss/vite": "4.2.4",
     "astro": "6.1.6",
