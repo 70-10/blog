@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Use pnpm@9
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v2.4.1
         with:
           version: 10.33.2
 
