@@ -7,7 +7,7 @@ type VitestConfig = Parameters<typeof getViteConfig>[0] &
 
 export default getViteConfig({
   test: {
-    environment: "jsdom",
+    environment: "node",
     globals: true,
     typecheck: {
       enabled: true,
