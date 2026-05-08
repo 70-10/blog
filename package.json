@@ -20,7 +20,7 @@
     "fix:prettier": "npm run lint:prettier -- --write",
     "fix:textlint": "npm run lint:textlint -- --fix",
     "lint": "run-p lint:*",
-    "lint:eslint": "eslint . --format friendly",
+    "lint:eslint": "eslint . --format friendly --report-unused-disable-directives",
     "lint:prettier": "prettier . --check",
     "lint:textlint": "textlint src/content/posts/**/*.md",
     "prepare": "lefthook install",

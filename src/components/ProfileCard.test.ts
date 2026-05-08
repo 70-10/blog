@@ -7,6 +7,8 @@ import ProfileCard from "./ProfileCard.astro";
 describe("ProfileCard", () => {
   describe("Positive Cases", () => {
     it("should display profile name", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(ProfileCard);
 
@@ -15,6 +17,8 @@ describe("ProfileCard", () => {
     });
 
     it("should contain X link", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(ProfileCard);
 
@@ -23,6 +27,8 @@ describe("ProfileCard", () => {
     });
 
     it("should contain GitHub link", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(ProfileCard);
 
