@@ -12,11 +12,23 @@ export default getViteConfig({
     typecheck: {
       enabled: true,
     },
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/.{idea,git,cache,output,temp}/**",
+      "tools/admin/**",
+    ],
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html", "json-summary"],
       include: ["src/**/*", "tools/**/*"],
-      exclude: ["**/*.test.*", "**/*.config.*", "**/*.d.ts", "**/*.astro"],
+      exclude: [
+        "**/*.test.*",
+        "**/*.config.*",
+        "**/*.d.ts",
+        "**/*.astro",
+        "tools/admin/**",
+      ],
     },
   },
   resolve: {

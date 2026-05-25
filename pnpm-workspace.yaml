@@ -5,3 +5,7 @@ allowBuilds:
   esbuild: true
   lefthook: true
   sharp: true
+minimumReleaseAgeExclude:
+  - "@cloudflare/workers-types@4.20260524.1"
+overrides:
+  vite: 7.3.2
