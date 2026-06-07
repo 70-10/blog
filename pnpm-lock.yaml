@@ -42,8 +42,8 @@ importers:
         specifier: 1.17.0
         version: 1.17.0(react@19.2.6)
       marked:
-        specifier: 18.0.3
-        version: 18.0.3
+        specifier: 18.0.5
+        version: 18.0.5
       react:
         specifier: 19.2.6
         version: 19.2.6
@@ -3241,6 +3241,11 @@ packages:
 
   marked@18.0.3:
     resolution: {integrity: sha512-7VT90JOkDeaRWpfjOReRGPEKn0ecdARBkDGL+tT1wZY0efPPqkUxLUSmzy/C7TIylQYJC9STISEsCHrqb/7VIA==}
+    engines: {node: '>= 20'}
+    hasBin: true
+
+  marked@18.0.5:
+    resolution: {integrity: sha512-S6GcvALHg6K4ohtu4E7x0a1AqhAjp6cV8KhLSyN9qVapnzJkusVBxZRcIU9AeYsbe6P1hKDusSbEOzGyyuce6w==}
     engines: {node: '>= 20'}
     hasBin: true
 
@@ -8380,6 +8385,8 @@ snapshots:
   markdown-table@3.0.3: {}
 
   marked@18.0.3: {}
+
+  marked@18.0.5: {}
 
   match-index@1.0.3:
     dependencies:
