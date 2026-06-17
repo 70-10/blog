@@ -21,8 +21,8 @@ importers:
         specifier: 4.3.1
         version: 4.3.1(vite@7.3.2(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2))
       astro:
-        specifier: 6.4.7
-        version: 6.4.7(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2)
+        specifier: 6.4.8
+        version: 6.4.8(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2)
       astro-compress:
         specifier: 2.4.1
         version: 2.4.1(@types/node@24.13.1)(jiti@2.7.0)(rollup@4.60.2)(tsx@4.22.4)(yaml@2.8.2)
@@ -1974,13 +1974,13 @@ packages:
   astro-seo@1.1.0:
     resolution: {integrity: sha512-G6LDNDyga30o+52v58jU7C35n3cORUzk7RSuY+xf/ZRbW6JiNplyaOO1VoYVKO+xzYNaBcxqNln2RFRR/wgJNQ==}
 
-  astro@6.4.4:
-    resolution: {integrity: sha512-hVe8tq3lqt/Dr0UyB//yUmQSlHMTU8scTiF/vQddQVahLE4TTaSdH5H0nb7OvRcwo0UmlAO8DWYar4jNaS7H+A==}
+  astro@6.4.7:
+    resolution: {integrity: sha512-5vsXx0H52u23Jpshs9tM81D03Tb3Oh2Vt2Zo0bpqjXN+njkAWjFyGjTfmWJLAcrCQd9Q+iWB1eqfhR1sZJEaUA==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
-  astro@6.4.7:
-    resolution: {integrity: sha512-5vsXx0H52u23Jpshs9tM81D03Tb3Oh2Vt2Zo0bpqjXN+njkAWjFyGjTfmWJLAcrCQd9Q+iWB1eqfhR1sZJEaUA==}
+  astro@6.4.8:
+    resolution: {integrity: sha512-KK5lX90uU9EeVaTjINyj3sy9/NFXVa59aowaqbWBDDKLXZh4rr7GwIaCFYVetE22MJtsCNFerQXn0vlCLmpP/Q==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -6646,7 +6646,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.60.1
       debug: 4.4.3
       minimatch: 10.2.5
-      semver: 7.7.4
+      semver: 7.8.4
       tinyglobby: 0.2.15
       ts-api-utils: 2.5.0(typescript@6.0.3)
       typescript: 6.0.3
@@ -6887,7 +6887,7 @@ snapshots:
       '@playform/pipe': 0.1.5
       '@types/csso': 5.0.4
       '@types/html-minifier-terser': 7.0.2
-      astro: 6.4.4(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2)
+      astro: 6.4.7(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2)
       commander: 14.0.3
       csso: 5.0.5
       deepmerge-ts: 7.1.5
@@ -6957,7 +6957,7 @@ snapshots:
       - prettier-plugin-astro
       - typescript
 
-  astro@6.4.4(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2):
+  astro@6.4.7(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2):
     dependencies:
       '@astrojs/compiler': 4.0.0
       '@astrojs/internal-helpers': 0.10.0
@@ -7050,7 +7050,7 @@ snapshots:
       - uploadthing
       - yaml
 
-  astro@6.4.7(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2):
+  astro@6.4.8(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.60.2)(terser@5.46.1)(tsx@4.22.4)(yaml@2.8.2):
     dependencies:
       '@astrojs/compiler': 4.0.0
       '@astrojs/internal-helpers': 0.10.0
@@ -7090,7 +7090,7 @@ snapshots:
       piccolore: 0.1.3
       picomatch: 4.0.4
       rehype: 13.0.2
-      semver: 7.7.4
+      semver: 7.8.4
       shiki: 4.0.2
       smol-toml: 1.6.0
       svgo: 4.0.1
@@ -7662,7 +7662,7 @@ snapshots:
   eslint-compat-utils@0.6.4(eslint@10.4.1(jiti@2.7.0)):
     dependencies:
       eslint: 10.4.1(jiti@2.7.0)
-      semver: 7.7.4
+      semver: 7.8.4
 
   eslint-config-prettier@10.1.8(eslint@10.4.1(jiti@2.7.0)):
     dependencies:
@@ -8608,7 +8608,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.4
 
   markdown-table@2.0.0:
     dependencies:
@@ -9144,7 +9144,7 @@ snapshots:
   normalize-package-data@6.0.2:
     dependencies:
       hosted-git-info: 7.0.2
-      semver: 7.7.4
+      semver: 7.8.4
       validate-npm-package-license: 3.0.4
 
   normalize-path@3.0.0: {}
@@ -10346,7 +10346,7 @@ snapshots:
 
   typescript-auto-import-cache@0.3.6:
     dependencies:
-      semver: 7.7.4
+      semver: 7.8.4
 
   typescript@6.0.3: {}
 
@@ -10638,7 +10638,7 @@ snapshots:
   volar-service-typescript@0.0.68(@volar/language-service@2.4.28):
     dependencies:
       path-browserify: 1.0.1
-      semver: 7.7.4
+      semver: 7.8.4
       typescript-auto-import-cache: 0.3.6
       vscode-languageserver-textdocument: 1.0.11
       vscode-nls: 5.2.0
