@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import iconImage from "@/images/icon.svg";
 ---
 
-<div class="flex items-center gap-x-3">
+<div class="cluster items-center" style="--cluster-space: var(--spacing-s);">
   <Image
     src={iconImage}
     alt="Icon"
@@ -11,10 +11,13 @@ import iconImage from "@/images/icon.svg";
     height="60"
     class="rounded-full"
   />
-  <div class="flex flex-col font-mono text-gray-600">
+  <div
+    class="stack font-mono text-gray-600"
+    style="--stack-space: var(--spacing-3xs);"
+  >
     <p class="text-lg">70_10</p>
 
-    <div class="mt-1 flex gap-x-2">
+    <div class="cluster" style="--cluster-space: var(--spacing-2xs);">
       <a href="https://x.com/70_10" target="_blank" rel="noopener noreferrer">
         <svg
           viewBox="0 0 1800 1800"
