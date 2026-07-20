@@ -1,8 +1,10 @@
+import { unified } from "@astrojs/markdown-remark";
 import partytown from "@astrojs/partytown";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import compress from "astro-compress";
 import { defineConfig } from "astro/config";
+import { fileURLToPath } from "node:url";
 import codeTitle from "remark-code-titles";
 import ogpCardPlugin from "./tools/remark-ogp-card";
 
@@ -23,12 +25,14 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [
-      "remark-gfm",
-      "remark-smartypants",
-      codeTitle,
-      ogpCardPlugin,
-    ],
+    processor: unified({
+      remarkPlugins: [
+        "remark-gfm",
+        "remark-smartypants",
+        codeTitle,
+        ogpCardPlugin,
+      ],
+    }),
     shikiConfig: {
       theme: "monokai",
       wrap: true,
@@ -36,6 +40,11 @@ export default defineConfig({
   },
   vite: {
     plugins: [...tailwindcss()],
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+      },
+    },
   },
   server: {
     host: true,
