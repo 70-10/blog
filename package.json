@@ -35,9 +35,9 @@
   "dependencies": {
     "@astrojs/partytown": "2.1.7",
     "@astrojs/react": "5.0.7",
-    "@astrojs/rss": "4.0.18",
+    "@astrojs/rss": "4.0.19",
     "@tailwindcss/vite": "4.3.1",
-    "astro": "6.4.7",
+    "astro": "6.4.8",
     "astro-compress": "2.4.1",
     "astro-google-fonts-optimizer": "0.2.2",
     "astro-seo": "1.1.0",
