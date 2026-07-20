@@ -44,7 +44,7 @@ jobs:
         env:
           CI: true
       - name: Vitest Coverage Report
-        uses: davelosert/vitest-coverage-report-action@v2.12.0
+        uses: davelosert/vitest-coverage-report-action@v2.12.2
         if: always()
         with:
           json-summary-path: "./coverage/coverage-summary.json"
