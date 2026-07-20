@@ -244,7 +244,7 @@ async function getFontData() {
 ## 5. meta データの設定
 
 `astro-seo` を使って設定します。  
- まずは `astro-seo` をインストールします。
+まずは `astro-seo` をインストールします。
 
 ```
 npm install astro-seo
