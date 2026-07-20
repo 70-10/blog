@@ -22,6 +22,8 @@ async function renderHeader(props: Record<string, unknown>) {
 describe("Header", () => {
   describe("Positive Cases", () => {
     it("should display site title 'mnml'", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderHeader({ displayBackButton: false });
 
@@ -30,6 +32,8 @@ describe("Header", () => {
     });
 
     it("should include link to top page", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderHeader({ displayBackButton: false });
 
@@ -38,6 +42,8 @@ describe("Header", () => {
     });
 
     it("should render header element", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderHeader({ displayBackButton: false });
 
@@ -46,6 +52,8 @@ describe("Header", () => {
     });
 
     it("should render back button with ArrowLeft icon when displayBackButton is true", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderHeader({ displayBackButton: true });
 
@@ -56,6 +64,8 @@ describe("Header", () => {
 
   describe("Negative Cases", () => {
     it("should not render back button when displayBackButton is false", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderHeader({ displayBackButton: false });
 
