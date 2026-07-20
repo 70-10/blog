@@ -7,19 +7,22 @@
 }
 
 .markdown-body h1 {
-  @apply text-2xl;
+  font-size: var(--font-size-2xl);
+  @apply font-bold;
 }
 
 .markdown-body h2 {
-  @apply text-xl;
+  font-size: var(--font-size-xl);
+  @apply font-bold;
 }
 
 .markdown-body h3 {
-  @apply text-lg;
+  font-size: var(--font-size-lg);
+  @apply font-bold;
 }
 
 .markdown-body a {
-  @apply text-emerald-500;
+  @apply text-emerald-500 hover:underline;
 }
 
 .markdown-body hr {

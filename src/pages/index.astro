@@ -39,28 +39,31 @@ const tags = Array.from(
   seo={{ openGraph: { type: "website" } }}
   displayBackButton={false}
 >
-  <main class="base">
-    <section class="content">
+  <main class="center stack mt-12">
+    <section>
       <ProfileCard />
     </section>
 
     {
       years.map((year) => (
-        <section class="content flex gap-x-6">
+        <section class="flex gap-x-6">
           <header>
-            <h1 class="heading_text">{year}</h1>
+            <h1 class="sticky top-2 text-2xl font-bold">{year}</h1>
           </header>
 
-          <ul class="list-none">
+          <ul class="stack list-none">
             {postsSegmentedByYear[year].map((entry) => {
               const publishAt = cdateJST(entry.data.publishDate).format(
                 "MM/DD",
               );
 
               return (
-                <li class="list">
+                <li class="flex flex-col">
                   <time class="text-sm">{publishAt}</time>
-                  <a href={`/posts/${entry.id}`} class="link">
+                  <a
+                    href={`/posts/${entry.id}`}
+                    class="text-emerald-500 hover:underline"
+                  >
                     {entry.data.title}
                   </a>
                 </li>
@@ -71,9 +74,9 @@ const tags = Array.from(
       ))
     }
 
-    <section class="content">
+    <section>
       <div class="mb-6">
-        <h1 class="heading_text">Tags</h1>
+        <h1 class="sticky top-2 text-2xl font-bold">Tags</h1>
       </div>
 
       <div>
@@ -85,27 +88,4 @@ const tags = Array.from(
 
 <style>
   @reference "@/styles/global.css";
-
-  .base {
-    @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;
-    @apply mt-12;
-  }
-
-  .content {
-    @apply mt-8;
-  }
-
-  .link {
-    @apply text-emerald-500 hover:underline;
-  }
-
-  .list {
-    @apply mb-3;
-    @apply flex flex-col;
-  }
-
-  .heading_text {
-    @apply text-2xl font-bold;
-    @apply sticky top-2;
-  }
 </style>
