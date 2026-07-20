@@ -5,6 +5,7 @@ import GoogleAnalytics4 from "@/components/GoogleAnalytics4.astro";
 import Header from "@/components/Header.astro";
 import "@/styles/global.css";
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import { ClientRouter } from "astro:transitions";
 
 export interface Props {
   title: string;
@@ -61,6 +62,7 @@ const { title, seo, description, displayBackButton = true } = Astro.props;
     <GoogleFontsOptimizer
       url="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sacramento&display=swap"
     />
+    <ClientRouter />
   </head>
   <body class="text-zinc-600">
     <Header displayBackButton={displayBackButton} />
