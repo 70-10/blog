@@ -60,7 +60,7 @@ https://open.spotify.com/user/70_10/playlist/6IxdQB1Sow8qYM6b1vGS42?si=hZOciOUUT
 - C3 - Base Ball Bear
 - BORDERLESS - 雨のパレード
 - Answer to Remember - Answer to Remember
-- エアにに - 長谷川白紙
+- エアに<!-- textlint false-positive -->に - 長谷川白紙
 - Retro Future Love Sound Machine - Jim Alxndr
 - The Finish Line - Middle School
 - CEREMONY - King Gnu
