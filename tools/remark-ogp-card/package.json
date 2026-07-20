@@ -22,7 +22,7 @@
     "@types/node": "24.13.3",
     "@types/unist": "3.0.3",
     "remark-parse": "11.0.0",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "unified": "11.0.5",
     "vitest": "4.1.10"
   },
