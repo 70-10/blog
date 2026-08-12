@@ -95,10 +95,16 @@ else
 fi
 
 echo "== 5. 候補ゼロでも1問聞く =="
+# 承認ゲートを持つスキルだけを明示で並べる。construction-* を glob で回すと、
+# ゲートを持たない無人オーケストレーターまで対象に入って誤って FAIL する。
+GATED="$INCEPTION"
+for st in $STAGES; do
+  GATED="$GATED .claude/skills/construction-$st/SKILL.md"
+done
 miss=""
 n=0
-for f in "$INCEPTION" .claude/skills/construction-*/SKILL.md; do
-  [ -f "$f" ] || continue
+for f in $GATED; do
+  if [ ! -f "$f" ]; then miss="$miss $f(ファイル無し)"; continue; fi
   n=$((n + 1))
   sec=$(h2_section "$f" "## 承認ゲート")
   has "$sec" "候補がゼロでも" || miss="$miss $f"
@@ -342,6 +348,92 @@ if [ -z "$miss" ]; then
   pass "inception と 6 ステージがルールの読み込みを手順に持っている"
 else
   ng "ルールを読む手順が無い:$miss"
+fi
+
+echo "== 14. 無人オーケストレーターが問いかけツールを持たない =="
+# 本文には「問いかけない」と否定形で書けてしまうので、語の有無ではなく
+# frontmatter の権限（allowed-tools に載っているか）で判定する。
+UNATT=".claude/skills/construction-unattended/SKILL.md"
+if [ ! -f "$UNATT" ]; then
+  ng "$UNATT が無い（無人実行の経路が存在しない）"
+else
+  fm=$(awk 'NR==1 && /^---$/ { f=1; next } f && /^---$/ { exit } f' "$UNATT")
+  if has "$fm" "AskUserQuestion"; then
+    ng "$UNATT の frontmatter に AskUserQuestion がある（無人経路が人に聞ける）"
+  else
+    pass "$UNATT の frontmatter に AskUserQuestion が無い"
+  fi
+fi
+
+echo "== 15. 無人モードの規定が1箇所にあり全ステージが起動時に読む =="
+# 承認ゲート節にだけ書いても遅い。ゲートに着く前の手順（「ユーザーに確認して解消する」等）を
+# 素通りして人に聞きに行ってしまう。ゲート節より前で読むことを見る。
+UREF=".claude/skills/construction/references/unattended.md"
+if [ ! -f "$UREF" ]; then
+  ng "$UREF が無い（無人時の扱いを書く場所が無い）"
+else
+  miss=""
+  for st in $STAGES; do
+    f=".claude/skills/construction-$st/SKILL.md"
+    if [ ! -f "$f" ]; then miss="$miss $st(ファイル無し)"; continue; fi
+    gate=$(grep -n '^## 承認ゲート' "$f" | head -1 | cut -d: -f1)
+    if [ -z "$gate" ]; then miss="$miss $st(承認ゲート節無し)"; continue; fi
+    head -n "$((gate - 1))" "$f" | grep -qF '`## モード` を読む' || miss="$miss $st"
+  done
+  if [ -z "$miss" ]; then
+    pass "$UREF があり、6ステージすべてが起動時にモードを読む"
+  else
+    ng "承認ゲートより前にモードの読み取りが無いステージ:$miss"
+  fi
+fi
+
+echo "== 19. 検証の再試行回数が1つに揃っている =="
+# verify の「最大N回」と無人モードの中断条件が食い違うと、どちらで止まるか決まらない。
+VER=".claude/skills/construction-verify/SKILL.md"
+if [ ! -f "$VER" ] || [ ! -f "$UREF" ]; then
+  ng "verify か unattended.md が無いため確認をスキップ"
+else
+  vn=$(grep -oE '最大 ?[0-9]+ ?回' "$VER" | grep -oE '[0-9]+' | head -1)
+  un=$(grep -oE '最大 ?[0-9]+ ?回' "$UREF" | grep -oE '[0-9]+' | head -1)
+  if [ -z "$vn" ]; then
+    ng "$VER に再試行回数の記述が無い"
+  elif [ -z "$un" ]; then
+    ng "$UREF が verify の再試行回数（最大 ${vn} 回）を参照していない"
+  elif [ "$vn" = "$un" ]; then
+    pass "再試行回数が両方 最大 ${vn} 回 で揃っている"
+  else
+    ng "再試行回数が食い違う（verify=${vn} / unattended=${un}）"
+  fi
+fi
+
+echo "== 16. progress の状態に中断が定義されている =="
+CORE=".claude/skills/construction/SKILL.md"
+if [ ! -f "$CORE" ]; then
+  ng "$CORE が無い"
+elif grep -qF '`[B]`' "$CORE"; then
+  pass "$CORE の状態表に [B] がある"
+else
+  ng "$CORE の状態表に [B] が無い（中断状態が未定義）"
+fi
+
+echo "== 17. 記録の書式が無人経路を含む =="
+if grep -qF "無人実行のとき" "$CONV"; then
+  pass "$CONV に無人実行の節がある"
+else
+  ng "$CONV に無人実行の節が無い（無人時の記録の行き先が未定義）"
+fi
+
+echo "== 18. 無人実行の範囲を定める ADR がある =="
+# 0001（記録は承認ゲートで発火する）との関係が記録されていることを見る。
+found=""
+for a in docs/adr/[0-9]*.md; do
+  [ -f "$a" ] || continue
+  if grep -qF "無人" "$a" && grep -qF "0001" "$a"; then found="$a"; break; fi
+done
+if [ -n "$found" ]; then
+  pass "無人実行の範囲を定める ADR がある（$(basename "$found")）"
+else
+  ng "無人実行の範囲を定める ADR が無い（ADR 0001 との関係が記録されていない）"
 fi
 
 echo

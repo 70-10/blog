@@ -23,6 +23,8 @@ allowed-tools:
 
 **起動時に `${CLAUDE_PROJECT_DIR}/docs/rules/project.md` と `${CLAUDE_PROJECT_DIR}/docs/rules/construction.md` を読む。** 過去のゲートで確定した実践がここにある。
 
+**あわせて `progress.md` の `## モード` を読む。** `unattended` なら、人に確認せずに進める・中断の条件・記録の書き方が変わる。扱いは `${CLAUDE_PROJECT_DIR}/.claude/skills/construction/references/unattended.md` にある。
+
 ## 入出力
 
 - **consumes**: user-stories（必須）, intent（必須）, constraints（任意）, design-decisions（任意）
@@ -52,6 +54,8 @@ allowed-tools:
 ③は learn 候補 → ADR 候補 → 用語の揺れ の順に提示する。**候補がゼロでも**「今回、用語集・ADR・ルールに残すことはありますか」を 1 問聞く（省くと記録の要否が自己判定に戻り、書かれないまま流れる）。コマンドと振り分けの詳細は `${CLAUDE_PROJECT_DIR}/docs/recording-conventions.md` の「承認ゲートでの振り分け」。
 
 このステージはデータ構造を定義するため、新しい語が出やすい。用語の揺れの提示では、`data-model.md` で定義した語を `docs/glossary.md` に登録するかを必ず確認する。
+
+無人モード（`progress.md` の `## モード` が `unattended`）のときの扱いは `${CLAUDE_PROJECT_DIR}/.claude/skills/construction/references/unattended.md` に従う。
 
 ## スキップ条件
 

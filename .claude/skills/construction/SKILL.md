@@ -95,6 +95,10 @@ Stage 3 のスキップ条件が他より狭いのは、CLAUDE.md がテスト�
 ```markdown
 # Construction Progress — <slug> / <unit>
 
+## モード
+
+attended
+
 ## ステージ
 
 - [ ] explore
@@ -105,6 +109,8 @@ Stage 3 のスキップ条件が他より狭いのは、CLAUDE.md がテスト�
 - [ ] review
 ```
 
+`## モード` は `attended`（人が承認する）か `unattended`（承認を挟まない）。ステージはここを読んでゲートの進め方を変える。無人で回すのは `construction-unattended` の役目で、このスキルは `attended` を書く。
+
 | 記号 | 状態 | 意味 |
 |---|---|---|
 | `[ ]` | Pending | 未開始 |
@@ -113,9 +119,11 @@ Stage 3 のスキップ条件が他より狭いのは、CLAUDE.md がテスト�
 | `[R]` | Revising | 修正指示 → 修正中 |
 | `[x]` | Completed | 承認済み・完了 |
 | `[S]` | Skipped | CONDITIONAL スキップ |
+| `[B]` | Blocked | 人の判断が要ると判断して中断（無人時のみ。理由は `blocked.md`） |
 
 - オーケストレーターが各ステージを `[-]` で囲み、承認後 `[x]` ／スキップ時 `[S]` に更新する
 - `[?]` / `[R]` はステージが自分の承認ゲートのループ中に反映する（**ステージは自分の状態しか触らない**）
+- `[?]` / `[R]` は `attended` のときだけ使う。`unattended` の扱いは [references/unattended.md](references/unattended.md)
 - セッション再開はこのチェックボックスから現在地を判定する。Stage 4 は承認が 2 回（実装計画・完了）あり両方 `[?]` になりうるので、再開時の中間状態は `implementation/` の成果物の有無で判定する
 
 ## CONDITIONAL ステージのスキップ判断
@@ -142,5 +150,6 @@ AI が対象の内容（バグ修正か新機能か）・コードベースの�
 | [references/sensors.md](references/sensors.md) | 成果物の品質チェック（Bash・参考） |
 | [references/learn.md](references/learn.md) | 学習ループの Construction 固有の点 |
 | [references/artifact-schemas.md](references/artifact-schemas.md) | 各成果物の必須 H2 見出し |
+| [references/unattended.md](references/unattended.md) | 無人モードでのゲート・記録・中断の扱い（`construction-unattended` から回すとき） |
 | `${CLAUDE_PROJECT_DIR}/docs/recording-conventions.md` | memory・ADR・用語集の書式と、承認ゲートでの振り分け手順 |
 | `${CLAUDE_PROJECT_DIR}/docs/rules/construction.md` | Construction の各ステージに効く実践（起動時に読む） |

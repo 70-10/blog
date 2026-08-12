@@ -23,6 +23,8 @@ allowed-tools:
 
 **起動時に `${CLAUDE_PROJECT_DIR}/docs/rules/project.md` と `${CLAUDE_PROJECT_DIR}/docs/rules/construction.md` を読む。** 過去のゲートで確定した実践がここにある。
 
+**あわせて `progress.md` の `## モード` を読む。** `unattended` なら、人に確認せずに進める・中断の条件・記録の書き方が変わる。扱いは `${CLAUDE_PROJECT_DIR}/.claude/skills/construction/references/unattended.md` にある。
+
 ## 入出力
 
 - **consumes**: intent（必須）, logic-model / rules / data-model / components / test-cases / constraints（任意）
@@ -61,6 +63,8 @@ allowed-tools:
 ③は learn 候補 → ADR 候補 → 用語の揺れ の順に提示する。**候補がゼロでも**「今回、用語集・ADR・ルールに残すことはありますか」を 1 問聞く（省くと記録の要否が自己判定に戻り、書かれないまま流れる）。コマンドと振り分けの詳細は `${CLAUDE_PROJECT_DIR}/docs/recording-conventions.md` の「承認ゲートでの振り分け」。
 
 このゲートは 2 回ある（実装計画・完了）。2 回とも③を行う。スクリプトはファイルの中身を全部出すので、1 回目で振り分け済みのエントリも再び出る。2 回目はタイムスタンプを見て 1 回目以降に追記した分に絞る。
+
+無人モード（`progress.md` の `## モード` が `unattended`）のときの扱いは `${CLAUDE_PROJECT_DIR}/.claude/skills/construction/references/unattended.md` に従う。
 
 ## 完了条件
 
