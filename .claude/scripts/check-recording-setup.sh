@@ -436,6 +436,24 @@ else
   ng "無人実行の範囲を定める ADR が無い（ADR 0001 との関係が記録されていない）"
 fi
 
+echo "== 20. Git の規約がスキルの読む場所にある =="
+# ブランチ・コミット・PR の規約は、スキルが起動時に読む docs/rules/project.md に無いと
+# 無人実行に届かない。README や CONTRIBUTING に書いてもスキルは読まない。
+PROJ="docs/rules/project.md"
+if [ ! -f "$PROJ" ]; then
+  ng "$PROJ が無い"
+else
+  miss=""
+  for kw in "intent/<intent-slug>/unit/<unit-slug>" "Conventional Commits" "Draft"; do
+    grep -qF "$kw" "$PROJ" || miss="$miss [$kw]"
+  done
+  if [ -z "$miss" ]; then
+    pass "$PROJ にブランチ・コミット・PR の規約がある"
+  else
+    ng "$PROJ に足りない規約:$miss"
+  fi
+fi
+
 echo
 if [ "$FAIL" -eq 0 ]; then
   echo "すべて PASS"
