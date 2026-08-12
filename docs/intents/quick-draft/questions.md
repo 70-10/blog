@@ -68,4 +68,5 @@
 ## 未解決
 
 - [Q] 公開の経路をどう作るか。校正の AC（指摘があれば公開を止める）により、`main` への素の push では成立しない。textlint は今 lefthook の pre-commit でしか走らず、CI は `pull_request` でしか動かないため（step3 → **Unit 2 `publish-from-draft`** で解く）
+  - 追加で分かったこと: **`textlint --fix` は残ったエラーの種類によって exit code が変わる。** 検証用の記事（`sentence-length` と `ja-no-weak-phrase` が残存）では exit 0、`docs/recording-conventions.md`（7 件残存）では exit 1 だった。つまり `--fix` 付きの実行は「必ず止める門番」にならない。公開を止めるには `--fix` なしで検査する経路が要る
 - [Q] 下書きをどこにどう持つか。`src/content/posts/` は使えない（`getPosts()` が絞り込まないので公開される、かつスキーマが `title` / `publishDate` / `tags` を必須にするので本文だけの下書きはビルドを落とす）。別ディレクトリ / フラグと絞り込み / 別ブランチ / リポジトリ外のどれを採るかは開いている（step1 / step2 → **Unit 1 `draft-anywhere`** で解く）
