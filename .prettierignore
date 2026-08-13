@@ -4,3 +4,6 @@ node_modules/**
 dist/
 pnpm-lock.yaml
 .claude/
+
+# 下書き（スマホから書いたものを整形しない。docs/adr/0009）
+src/content/drafts/
