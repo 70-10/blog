@@ -125,6 +125,22 @@ describe("DraftEditorPage", () => {
   });
 
   describe("Edge Cases", () => {
+    it("should not refetch after the first save changes the url", async () => {
+      // Arrange
+      // 最初の保存で URL が /drafts/<id> に変わる。ここで取得し直すと、
+      // 保存している間に打った分が取得の結果で上書きされて消える。
+      await render("/drafts/new");
+
+      // Act
+      await type("本文", "新しい着想");
+      await waitDelay();
+
+      // Assert
+      expect(api.createDraft).toHaveBeenCalledTimes(1);
+      expect(api.getDraft).not.toHaveBeenCalled();
+      expect(field("本文").value).toBe("新しい着想");
+    });
+
     it("should restart the timer while the user keeps typing", async () => {
       // Arrange
       await render(`/drafts/${id}`);

@@ -106,6 +106,49 @@ describe("onRequestGet", () => {
   });
 
   describe("Edge Cases", () => {
+    it("should still list a draft whose frontmatter cannot be read", async () => {
+      // Arrange
+      // 1 件でも読めないものがあると一覧ごと落ちる、という作りになっていないこと。
+      // 落ちると「残した下書きを開き直せる」が全件について成り立たなくなる。
+      const broken = crypto.randomUUID();
+      const good = crypto.randomUUID();
+      fetchMock.mockImplementation(async (url: string) => {
+        if (url.includes(`${broken}.md`)) {
+          return json({
+            content: encodeBase64("frontmatter のない中身"),
+            sha: "s",
+          });
+        }
+        if (url.includes(`${good}.md`)) {
+          return fileResponse({
+            title: "読める下書き",
+            createdAt: "2026-08-01T00:00:00.000Z",
+            updatedAt: "2026-08-13T00:00:00.000Z",
+            body: "a",
+          });
+        }
+        return json(
+          [broken, good].map((id) => ({
+            name: `${id}.md`,
+            path: `src/content/drafts/${id}.md`,
+            sha: "sha-dir",
+          })),
+        );
+      });
+
+      // Act
+      const response = await onRequestGet({
+        request: new Request("https://admin.example.net/api/drafts"),
+        env,
+      });
+
+      // Assert
+      const list = (await response.json()) as { id: string; title: string }[];
+      expect(response.status).toBe(200);
+      expect(list).toHaveLength(2);
+      expect(list.map((item) => item.id)).toContain(broken);
+    });
+
     it("should return an empty list when the drafts directory is missing", async () => {
       // Arrange
       fetchMock.mockResolvedValue(json({ message: "Not Found" }, 404));

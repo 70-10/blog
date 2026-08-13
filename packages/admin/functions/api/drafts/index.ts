@@ -25,14 +25,19 @@ export async function onRequestGet(context: RequestContext): Promise<Response> {
   // 1 件ずつ取りに行く。Unit 1 は件数が少ない前提で受け入れる（design/data-model.md）。
   const summaries = await Promise.all(
     files.map(async (entry): Promise<DraftSummary | null> => {
+      const id = entry.name.replace(/\.md$/, "");
       const file = await readFile(context.env, entry.path);
       if (!file) return null;
-      const draft = parseDraft(file.text);
-      return {
-        id: entry.name.replace(/\.md$/, ""),
-        title: draft.title,
-        updatedAt: draft.updatedAt,
-      };
+
+      // 1 件でも読めないものがあると一覧ごと落ちる、という作りにしない。
+      // 落ちると「残した下書きを開き直せる」が全件について成り立たなくなる。
+      // 読めなかったものは中身なしとして並べ、開くことはできるようにする。
+      try {
+        const draft = parseDraft(file.text);
+        return { id, title: draft.title, updatedAt: draft.updatedAt };
+      } catch {
+        return { id, title: "", updatedAt: "" };
+      }
     }),
   );
 

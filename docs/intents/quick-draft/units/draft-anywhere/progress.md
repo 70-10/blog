@@ -11,7 +11,7 @@ unattended
 - [x] test-design
 - [x] implement
 - [x] verify
-- [ ] review
+- [x] review
 
 ## Stage 1: explore
 
@@ -263,3 +263,54 @@ SVG は実際にブラウザで描画して確認した。テキストのはみ�
 ### 実施できなかったもの
 
 **T10（実際に動かして確かめる）は 1 件も実施していない。** デプロイと Cloudflare Access の設定が要る。Stage 6 の `ac-check-report.md` に未実施として書く。
+
+## Stage 6: review
+
+**結果**: 完了。**コードの欠陥を 2 件見つけて直した。**
+
+### 見つけた欠陥
+
+| #   | 欠陥                                                      | 受け入れ条件への影響                                              | 回帰テスト                                                   |
+| --- | --------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------ |
+| 1   | 一覧が 1 件の読み取り失敗で全滅する                       | **手で編集した下書きが 1 件でもあると、どの下書きも開き直せない** | `should still list a draft whose frontmatter cannot be read` |
+| 2   | 最初の保存で URL が変わると取得し直し、打った分が消えうる | **「着想が失われないようにする」という目的に反する**              | `should not refetch after the first save changes the url`    |
+
+**2 の回帰テストは、修正を戻すと落ちることを確かめた**（戻すと 1 failed / 戻すと 11 passed）。
+
+**2 を直す過程で自分が欠陥を入れた**（既存の下書きの読み込みが始まらなくなる）。既存のテスト 6 件が落ちて検出できた。
+
+### 照合
+
+設計・ADR に書いた 17 項目とコードを突き合わせて**食い違い 0 件**。触らないと書いた 7 つ（`src/content.config.ts` / `src/lib/repositories/posts.ts` / `lefthook.yml` / `pnpm-workspace.yaml` / `tools/create-post/` / `.github/` / 既存 13 テスト）も**すべて触っていない**。
+
+### 受け入れ条件
+
+**コードとビルドで確かめられる範囲はすべて満たしている。実際に動かす範囲は 1 件も確かめていない。**
+
+| 確かめ方     | 件数         |
+| ------------ | ------------ |
+| 単体テスト   | 55 件        |
+| ビルド       | T8 の 6 項目 |
+| 既存テスト   | 110 件       |
+| 実際に動かす | **0 件**     |
+
+未実施は M1〜M5 の 5 件（[review/ac-check-report.md](review/ac-check-report.md)）。**コードを読んで満たしていそうだから合格、とはしていない。**
+
+### 最終の検査
+
+| コマンド                          | exit | 中身                         |
+| --------------------------------- | ---- | ---------------------------- |
+| `pnpm test:run`                   | 0    | 20 ファイル / **165 テスト** |
+| `pnpm typecheck`                  | 0    | 0 errors                     |
+| `pnpm lint`                       | 0    | —                            |
+| `pnpm build:local`                | 0    | 106 ページ                   |
+| `pnpm --filter @blog/admin build` | 0    | —                            |
+
+### 成果物
+
+| ファイル                                                         | 中身                                                              |
+| ---------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [review/code-review-report.md](review/code-review-report.md)     | 欠陥 2 件と修正、確かめて問題が無かった 7 観点、直さなかった 4 件 |
+| [review/doc-alignment-report.md](review/doc-alignment-report.md) | 設計 17 項目との照合、乖離 4 件                                   |
+| [review/ac-check-report.md](review/ac-check-report.md)           | US-01 / US-03 の全シナリオ、未実施 5 件、未カバーの分岐           |
+| [review/memory.md](review/memory.md)                             | 解釈 1・逸脱 2・トレードオフ 2・未解決 1                          |

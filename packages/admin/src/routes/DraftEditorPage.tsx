@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useAutosave, type SaveStatus } from "../hooks/useAutosave";
 import { createDraft, getDraft, updateDraft } from "../lib/api";
@@ -32,13 +32,18 @@ export function DraftEditorPage() {
   const [saved, setSaved] = useState({ title: "", body: "" });
   const [sha, setSha] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState(Boolean(id));
+  // 手元にある中身がどの下書きのものか。最初の保存で URL が /drafts/<id> に
+  // 変わったとき、いま打っている中身を取得の結果で上書きしないために見る。
+  // 初期値は undefined。まだ何も読んでいないので、最初の 1 回は必ず取りに行く。
+  const loadedId = useRef<string | undefined>(undefined);
 
   useEffect(() => {
-    if (!id) return;
+    if (!id || loadedId.current === id) return;
     let cancelled = false;
     void (async () => {
       const draft = await getDraft(id);
       if (cancelled) return;
+      loadedId.current = id;
       // 残したときの本文がそのまま入る。写し直しは要らない（US-02 の前提）。
       setTitle(draft.title);
       setBody(draft.body);
@@ -60,6 +65,8 @@ export function DraftEditorPage() {
         // 最初の保存で識別子が決まる。空の編集画面を開いただけでは作らない。
         const created = await createDraft(nextTitle, nextBody);
         setSha(created.sha);
+        // URL が変わっても取得し直さない（打っている途中の中身を失わないため）
+        loadedId.current = created.id;
         void navigate(`/drafts/${created.id}`, { replace: true });
       }
       setSaved({ title: nextTitle, body: nextBody });
