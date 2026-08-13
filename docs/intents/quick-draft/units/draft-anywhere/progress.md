@@ -76,7 +76,7 @@ Q1（下書きをどんな形でリポジトリに持つか）を決着させた
 | 書き込み         | `main` へのコミット。メッセージの先頭に `[CI Skip]` を付けてデプロイを飛ばす                      |
 | 管理画面の置き場 | `packages/admin/`（`pnpm-workspace.yaml` は既に `packages/*` を列挙）                             |
 | 枠組み           | Vite + React + Tailwind 4 + react-router の SPA。**Astro は使わない**                             |
-| 裏側             | Cloudflare Pages Functions。JWT の検証は `_middleware.ts` の 1 か所                               |
+| 裏側             | Cloudflare Pages Functions。JWT の検証は `functions/api/_middleware.ts` の 1 か所                 |
 | 自動保存         | 入力が止まって 3 秒。フォーカスが外れたとき・タブが隠れたときは待たずに発火                       |
 
 Q3（テストの実行環境）も決まった。`jsdom` は既に devDependency にあり、`// @vitest-environment` のファイル単位の指定が既存テストで使われている（`src/components/Tag.test.ts`）。**`vitest.config.ts` の `environment` は変えない。**
@@ -103,13 +103,18 @@ Q3（テストの実行環境）も決まった。`jsdom` は既に devDependenc
 
 ### センサー
 
-| センサー          | 結果                                                                                    |
-| ----------------- | --------------------------------------------------------------------------------------- |
-| required-sections | PASS（4 ファイルとも）                                                                  |
-| upstream-coverage | PASS（4 ファイルとも。`constraints` `design-decisions` も含む）                         |
-| glossary-drift    | 1 件出たので直した（「メモリ」→「一度取った鍵を実行中だけ保持し」）。**現在は揺れなし** |
+| センサー          | 結果                                                                                                     |
+| ----------------- | -------------------------------------------------------------------------------------------------------- |
+| required-sections | PASS（4 ファイルとも）                                                                                   |
+| upstream-coverage | PASS（4 ファイルとも。`constraints` `design-decisions` も含む）                                          |
+| glossary-drift    | 1 件出たので言い換えて直した（計算機の記憶領域を指す語で、下書きの別名ではなかった）。**現在は揺れなし** |
 
 SVG は実際にブラウザで描画して確認した。テキストのはみ出し・クリッピング・viewBox 超えは無い。
+
+**設計を書いたあとに 2 点を直した**（コミット `882786d`）。
+
+- `_middleware.ts` を `functions/` の直下から `functions/api/` の下へ移した。根に置くとミドルウェアが静的なファイルの前でも動き、**JWT が無いことを理由に画面そのものが出なくなる**（Cloudflare のドキュメントで確認）
+- `vitest.config.ts` の `coverage.include` への追加を、触るファイルの一覧に足した。explore で調べてあったのに design で漏らしていた
 
 ## Stage 3: test-design
 
