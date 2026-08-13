@@ -1,0 +1,24 @@
+{
+  "name": "@blog/admin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "jose": "6.2.8",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-router": "8.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.1",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.5",
+    "tailwindcss": "4.3.1",
+    "vite": "8.2.1"
+  }
+}
