@@ -77,9 +77,21 @@ git switch -c intent/quick-draft/unit/<unit-slug>
 /construction-unattended quick-draft <unit-slug>
 ```
 
-6 ステージ（explore → design → test-design → implement → verify → review）を承認なしで通す。コミットは `implement` ステージが打つ（テストが通る状態で、Conventional Commits）。
+6 ステージ（explore → design → test-design → implement → verify → review）を承認なしで通す。**検証（テスト・lint・型チェック・ビルド）は Stage 5 がやる**ので、ここで自分で走らせる必要はない。
 
-進捗は `docs/intents/quick-draft/units/<unit-slug>/progress.md` に出る。
+成果物は `docs/intents/quick-draft/units/<unit-slug>/` に出る。
+
+| 置き場                              | 中身                                                               |
+| ----------------------------------- | ------------------------------------------------------------------ |
+| `progress.md`                       | 6 ステージの進み具合と、無人モードであること                       |
+| `explore/` `design/` `test-design/` | 制約・設計・テストケース                                           |
+| `implementation/`                   | 実装計画とコードサマリー                                           |
+| `verification/`                     | `build-results.md` / `test-results.md`（Stage 5 の検証結果）       |
+| `review/`                           | コードレビュー・ドキュメント照合・AC 受け入れチェックの 3 レポート |
+| `records.md`                        | 記録の取捨選択の入口（書いたもの / 書かなかった候補と理由）        |
+| `blocked.md`                        | `[B]` で終わったときだけ                                           |
+
+実装コードは成果物ディレクトリではなくリポジトリ本体（`src/` `tools/` 等）に入る。
 
 ### 3. 結果を見る
 
@@ -88,7 +100,11 @@ git switch -c intent/quick-draft/unit/<unit-slug>
 | 全ステージ `[x]` | 4 へ                   |
 | どこかが `[B]`   | 下の「止まったとき」へ |
 
-### 4. 検証する
+### 4. 検証の結果を確かめる
+
+**まず Stage 5 の記録を読む。** `verification/build-results.md` と `verification/test-results.md` に、実行したコマンドと結果が書かれている。
+
+**そのうえで自分で 4 つを走らせ直す。**
 
 ```bash
 pnpm test:run
@@ -97,11 +113,23 @@ pnpm typecheck
 pnpm build:local
 ```
 
-4 つとも exit 0 になること。`pnpm build:local` は OGP 画像の生成を飛ばす。本番と同じビルドを見たいときは `pnpm build`（97 記事ぶんの画像を作るので重い）。
+4 つとも exit 0 になること。**記録を読むだけで済ませないのは、書かれた結果は実施の証明ではないから。** Stage 5 のあとに Stage 6（review）がコードを直すこともあるので、最後の状態で通ることを確かめる意味もある。
+
+`pnpm build:local` は OGP 画像の生成を飛ばす。本番と同じビルドを見たいときは `pnpm build`（97 記事ぶんの画像を作るので重い）。
 
 **注意**: ログに `Error: Input file contains unsupported image format` が出ることがあるが、これは既存の挙動で exit 0 で完了する。エラー表示だけで失敗と判断しない。
 
-### 5. push して PR を作る
+### 5. 残った成果物をコミットする
+
+**コミットを打つのは `implement`（Stage 4）だけ。** そのあとに Stage 5 が `verification/`、Stage 6 が `review/` を書くので、**これらは未コミットで残る**。`construction` は「コミット・PR 等はプロジェクト運用に委ねる」と明記していて、拾うのは呼んだ側の仕事。
+
+```bash
+git status --short --untracked-files=all
+```
+
+残っていればコミットする。Conventional Commits で、`docs(<unit-slug>): record verification and review results` のような形。
+
+### 6. push して PR を作る
 
 ```bash
 git push -u origin intent/quick-draft/unit/<unit-slug>
@@ -120,7 +148,7 @@ PR の形は結果で分ける（[docs/rules/project.md](../../rules/project.md)
 - 検証の結果（実行したもの・実行できなかったものとその理由）
 - `[B]` なら `blocked.md` への導線と、何の判断が要るか
 
-### 6. 人がレビューしてマージする
+### 7. 人がレビューしてマージする
 
 `records.md` を読んで記録を取捨選択し、コードをレビューしてマージする。**ここは自動化しない。**
 
