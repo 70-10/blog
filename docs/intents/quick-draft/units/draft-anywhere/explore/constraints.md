@@ -71,6 +71,28 @@ US-01 は「タイトル・タグを決めなくても保存できる」「本�
 - pnpm 11.15.1（`mise.toml` と CI で一致）
 - 公開は `main` への push を Cloudflare Pages が受けてデプロイする。リポジトリ内にデプロイ設定はない（[01_current-and-constraints.md](../../../01_current-and-constraints.md)）
 
+### 管理画面の土台（Cloudflare / GitHub）
+
+構成は [ADR 0008](../../../../../adr/0008-admin-runs-as-its-own-pages-project-behind-cloudflare-access.md) で決めた。ここはその決定が受ける制約で、**すべて Cloudflare / GitHub の公開ドキュメントで確認**したもの（このリポジトリのコードからは分からない）。
+
+| 制約                                                                                                                       | 出典                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pages Functions は現役で、Pages プロジェクトの中でサーバー側のコードを動かせる（廃止の告知なし）                           | [Pages Functions](https://developers.cloudflare.com/pages/functions/)                                                                             |
+| Pages Functions は KV と秘密の値を bind できる。秘密の値はダッシュボードで設定し `context.env` から読む                    | [バインディング](https://developers.cloudflare.com/pages/functions/bindings/)                                                                     |
+| ローカル開発の秘密の値は `.dev.vars` か `.env`（**両方は不可**）。`.env` は `.gitignore` 済み                              | 同上                                                                                                                                              |
+| **Access の JWT はアプリ側で署名まで検証する。** ヘッダーだけの確認ではなりすませる                                        | [JWT の検証](https://developers.cloudflare.com/cloudflare-one/identity/authorization-cookie/validating-json/)                                     |
+| JWT は `Cf-Access-Jwt-Assertion` ヘッダーから取る（`CF_Authorization` Cookie は届く保証がない）                            | 同上                                                                                                                                              |
+| 公開鍵は `https://<team>.cloudflareaccess.com/cdn-cgi/access/certs` から取得する。**6 週ごとに入れ替わるので埋め込まない** | 同上                                                                                                                                              |
+| Access で守れるのは自分の Cloudflare アカウントの有効なゾーンに属するドメインだけ。パスでも絞れる                          | [自己ホスト型アプリケーション](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/self-hosted-public-app/)              |
+| Access のポリシーは既定が拒否。`Emails` セレクタでアドレスを 1 つ指定できる                                                | [Access ポリシー](https://developers.cloudflare.com/cloudflare-one/policies/access/)                                                              |
+| **使い捨てのコードをメールで送る方式（OTP）は新しい組織では既定で無効。** 既定は Cloudflare の ID プロバイダー             | [One-time PIN](https://developers.cloudflare.com/cloudflare-one/identity/one-time-pin/)                                                           |
+| Zero Trust は 50 席まで無料                                                                                                | [Cloudflare One の 50 席](https://blog.cloudflare.com/zero-trust-week-setting-up-cloudflare-one-as-a-small-business/)                             |
+| 細かい権限のトークンは対象リポジトリを絞れる。Contents を read and write にする。期限は 1〜366 日、期限なしも選べる        | [個人アクセストークンの管理](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) |
+
+**`*.pages.dev` の露出に注意。** 独自ドメインにだけ Access を掛けると、Pages プロジェクトに付く `*.pages.dev` とブランチプレビューは守られないまま残る。[ADR 0008](../../../../../adr/0008-admin-runs-as-its-own-pages-project-behind-cloudflare-access.md) が管理画面を別プロジェクトにしたのはこれを 1 か所に閉じ込めるため。**管理画面のプロジェクトではプレビューデプロイを止める。**
+
+**ゾーンの確認は人が行う。** `70-10.net` が Cloudflare アカウントの有効なゾーンになっているかは、このリポジトリからは確かめられない。Access を設定する時点でダッシュボードで分かる。
+
 ## 命名規約・コーディング規約
 
 `CLAUDE.md` と既存コードから（本 Unit で確認）。
