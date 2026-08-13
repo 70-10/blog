@@ -9,7 +9,7 @@ unattended
 - [x] explore
 - [x] design
 - [x] test-design
-- [ ] implement
+- [x] implement
 - [ ] verify
 - [ ] review
 
@@ -166,3 +166,52 @@ SVG は実際にブラウザで描画して確認した。テキストのはみ�
 | upstream-coverage | PASS（`acceptance-criteria` が拾われず 1 度 WARN。本文に語を補って解消）    |
 | completeness      | PASS（US-01〜US-05 すべてに言及。US-02 / US-04 / US-05 は担当外として明記） |
 | glossary-drift    | 揺れなし                                                                    |
+
+## Stage 4: implement
+
+**結果**: 完了。**人の判断を要する点は出なかった。**
+
+### 検査の結果
+
+| コマンド                          | 結果   | 中身                              |
+| --------------------------------- | ------ | --------------------------------- |
+| `pnpm test:run`                   | exit 0 | **20 ファイル / 163 テスト** 通過 |
+| `pnpm typecheck`                  | exit 0 | 66 ファイル・0 errors             |
+| `pnpm lint`                       | exit 0 | Prettier / textlint / ESLint      |
+| `pnpm build:local`                | exit 0 | 106 ページ                        |
+| `pnpm --filter @blog/admin build` | exit 0 | 79 モジュール                     |
+
+**既存の 13 テストファイルは 1 つも直していない。** 110 → 163 テストに増えたのは `packages/admin` の 7 ファイル分。
+
+### 作ったもの
+
+`packages/admin/` に 17 ファイル + テスト 7 ファイル。詳細は [implementation/code-summary.md](implementation/code-summary.md)。
+
+- `shared/` — 空の判定・frontmatter の組み立てと分解・識別子の検査（画面と裏側で共有）
+- `functions/api/_middleware.ts` — Access の JWT の検証（`/api/` 以下だけ）
+- `functions/api/drafts/` — 一覧・作成・取得・更新
+- `src/` — 編集画面（自動保存）・最小の一覧・ルーティング
+
+### 既存ファイルへの変更（3 つだけ）
+
+`.prettierignore` / `vitest.config.ts` / `pnpm-lock.yaml`。**`src/content.config.ts` も `src/lib/repositories/posts.ts` も `lefthook.yml` も `tools/create-post/` も 1 行も触っていない。**
+
+### T0 の結果
+
+**追加の設定は要らなかった。** `packages/admin` のテストは根の `vitest.config.ts` のまま拾われ、TSX + jsdom も型検査も通った。`packages/admin/vitest.config.ts` は作っていない。
+
+### 実装で直したこと
+
+| 直したもの                     | 何が起きていたか                                                                |
+| ------------------------------ | ------------------------------------------------------------------------------- |
+| 鍵の入れ替わりのテスト         | `jose` は取り直しに間隔の下限を置く。**即時に取り直す前提のテストが誤りだった** |
+| フォーカスが外れたときのテスト | React の `onBlur` は native の `focusout` に対応する。`blur` は上がってこない   |
+| `IS_REACT_ACT_ENVIRONMENT`     | `pnpm typecheck` が型で落ちたので `src/globals.d.ts` で宣言                     |
+| 依存の版                       | 一度 `^` 付きで入れてしまい、`-E` で入れ直した                                  |
+
+### センサー
+
+| センサー          | 結果                   |
+| ----------------- | ---------------------- |
+| required-sections | PASS（2 ファイルとも） |
+| glossary-drift    | 揺れなし               |
