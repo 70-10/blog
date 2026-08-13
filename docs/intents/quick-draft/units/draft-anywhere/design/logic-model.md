@@ -27,9 +27,12 @@ packages/admin/
 │   └── lib/        画面から裏側を呼ぶ処理
 ├── functions/      Cloudflare Pages Functions（裏側）
 │   └── api/
+│       ├── _middleware.ts   JWT の検証（/api/ 以下だけに掛かる）
 │       └── drafts/
 └── shared/         画面と裏側で共有する型・下書きの読み書き
 ```
+
+**`_middleware.ts` は `functions/api/` の下に置く。** `functions/` の直下に置くと静的なファイルにも掛かり、画面そのものが出なくなる（[components.md](components.md) の「裏側」）。
 
 `packages/` を選んだのは、`tools/` が開発者の手元で動く道具（`create-post` の CLI、Markdown の変換）の置き場になっているのに対し、管理画面は配信されるアプリケーションだから。`pnpm-workspace.yaml` は既に `packages/*` を列挙しているので追記は要らない（[explore/constraints.md](../explore/constraints.md)）。
 
@@ -42,7 +45,7 @@ packages/admin/
 
 **画面側に認証の処理は無い。** 入口を守るのは Access で、アプリが確かめるのは裏側の API を呼ばれたときだけ（次項）。
 
-### 裏側の API が呼ばれたとき（すべての経路で共通）
+### 裏側の API が呼ばれたとき（`functions/api/_middleware.ts` が全経路で行う）
 
 1. `Cf-Access-Jwt-Assertion` ヘッダーを取り出す。**無ければ 401**
 2. JWKS（`<team>.cloudflareaccess.com/cdn-cgi/access/certs`）で署名を検証し、`iss` / `aud` / `exp` も確かめる。**通らなければ 401**
@@ -136,6 +139,16 @@ packages/admin/
 
 `.prettierignore` への追加を落とすと、スマホで書いた整形されていない文章で CI が落ちる（[ADR 0009](../../../../../adr/0009-drafts-live-outside-the-posts-collection-and-commit-with-a-build-skip-flag.md)）。
 
-```
+### 既存の設定ファイルへの変更
 
-```
+**この 3 つだけ。** 下書きの保存のために既存の実装（`src/content.config.ts` / `src/lib/repositories/posts.ts` / `lefthook.yml`）を変える必要は無い。
+
+| ファイル           | 変更                                         | 落とすとどうなるか                                            |
+| ------------------ | -------------------------------------------- | ------------------------------------------------------------- |
+| `.prettierignore`  | `src/content/drafts/` を足す                 | 整形されていない下書きで `pnpm lint` が落ちる                 |
+| `vitest.config.ts` | `coverage.include` に `packages/**/*` を足す | 管理画面のコードがカバレッジに出ない。CI の報告が実態とずれる |
+| `pnpm-lock.yaml`   | 依存を足すので同じコミットに入れる           | CI の `git diff --exit-code pnpm-lock.yaml` が落ちる          |
+
+`coverage.include` は今 `["src/**/*", "tools/**/*"]` で、`packages/**` を含まない（[explore/constraints.md](../explore/constraints.md)）。**テストの実行自体は `test.exclude` の指定が無いので何もしなくても入る**が、カバレッジの集計だけ漏れる。CI は `vitest-coverage-report-action` に `file-coverage-mode: "changes"` を渡しているので、足さないと変更したファイルの数字が出ない。
+
+`pnpm-workspace.yaml` は `packages/*` を既に列挙しているので**触らない**。

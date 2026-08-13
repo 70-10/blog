@@ -100,5 +100,8 @@ US-01 の受け入れ条件は「作られない」までしか定めていな�
 
 ### 検査の経路を壊さないための決まり
 
-- **`.prettierignore` に `src/content/drafts/` を足す。** `prettier . --check` が下書きを検査対象にすると、スマホで書いた整形されていない文章で CI が落ちる（[logic-model.md](logic-model.md) の「検査の経路への影響」）
+- **`.prettierignore` に `src/content/drafts/` を足す。** `prettier . --check` が下書きを検査対象にすると、スマホで書いた整形されていない文章で CI が落ちる
+- **`vitest.config.ts` の `coverage.include` に `packages/**/*` を足す。** 今は `src` と `tools` だけなので、管理画面のコードがカバレッジに出ない
 - **依存を足したら `pnpm-lock.yaml` を同じコミットに入れる。** CI が `git diff --exit-code pnpm-lock.yaml` で見ている
+
+3 つとも [logic-model.md](logic-model.md) の「既存の設定ファイルへの変更」に、落としたときに何が起きるかを添えてある。

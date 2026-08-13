@@ -50,13 +50,15 @@
 
 コンポーネントではないが、画面と対になるので並べる。経路はファイルの位置で決まる。
 
-| ファイル                        | 経路                          | 受け持ち                       |
-| ------------------------------- | ----------------------------- | ------------------------------ |
-| `functions/api/drafts/index.ts` | `GET` / `POST /api/drafts`    | 一覧、作成                     |
-| `functions/api/drafts/[id].ts`  | `GET` / `PUT /api/drafts/:id` | 1 件取得、更新                 |
-| `functions/_middleware.ts`      | `/api/*` の手前               | **JWT の検証**（全経路で共通） |
+| ファイル                        | 経路                          | 受け持ち                             |
+| ------------------------------- | ----------------------------- | ------------------------------------ |
+| `functions/api/drafts/index.ts` | `GET` / `POST /api/drafts`    | 一覧、作成                           |
+| `functions/api/drafts/[id].ts`  | `GET` / `PUT /api/drafts/:id` | 1 件取得、更新                       |
+| `functions/api/_middleware.ts`  | `/api/` 以下すべて            | **JWT の検証**（API の全経路で共通） |
 
-**JWT の検証を各経路に書かない。** `_middleware.ts` に 1 か所置くことで、経路を足したときに検証を忘れる余地をなくす。Unit 2 以降が経路を足しても自動で掛かる。
+**JWT の検証を各経路に書かない。** 1 か所に置くことで、経路を足したときに検証を忘れる余地をなくす。Unit 2 以降が `functions/api/` の下に経路を足しても自動で掛かる。
+
+**置き場は `functions/api/_middleware.ts`。`functions/_middleware.ts` にはしない。** Cloudflare のドキュメントは「アプリケーション全体、静的なファイルの前でも動かしたいなら `functions/_middleware.js` を作る」と書いている。つまり根に置くと画面そのもの（`index.html` や JavaScript のファイル）にも掛かり、**JWT が無いことを理由に画面が出なくなる**。画面を守るのは Cloudflare Access の役目で、この検証が守るのは API だけ（[Pages Functions のミドルウェア](https://developers.cloudflare.com/pages/functions/middleware/)）。
 
 ### 共有する部分
 

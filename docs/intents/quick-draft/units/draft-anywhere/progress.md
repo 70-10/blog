@@ -83,12 +83,13 @@ Q3（テストの実行環境）も決まった。`jsdom` は既に devDependenc
 
 ### 既存コードへの影響
 
-**下書きの保存のために既存の実装を変える必要は無い。** `src/content.config.ts` も `src/lib/repositories/posts.ts` も `lefthook.yml` も触らない。触るのは次の 2 つだけ。
+**下書きの保存のために既存の実装を変える必要は無い。** `src/content.config.ts` も `src/lib/repositories/posts.ts` も `lefthook.yml` も `pnpm-workspace.yaml` も触らない。触るのは設定ファイル 3 つだけ。
 
-| ファイル          | 変更                                                                        |
-| ----------------- | --------------------------------------------------------------------------- |
-| `.prettierignore` | `src/content/drafts/` を足す。**これを落とすと CI が落ちる**                |
-| `pnpm-lock.yaml`  | 依存を足すので同じコミットに入れる。CI が `git diff --exit-code` で見ている |
+| ファイル           | 変更                                         | 落とすとどうなるか                            |
+| ------------------ | -------------------------------------------- | --------------------------------------------- |
+| `.prettierignore`  | `src/content/drafts/` を足す                 | 整形されていない下書きで `pnpm lint` が落ちる |
+| `vitest.config.ts` | `coverage.include` に `packages/**/*` を足す | 管理画面がカバレッジに出ず、CI の報告がずれる |
+| `pnpm-lock.yaml`   | 依存を足すので同じコミットに入れる           | CI の `git diff --exit-code` が落ちる         |
 
 ### 成果物
 
