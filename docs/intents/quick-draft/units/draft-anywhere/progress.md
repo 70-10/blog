@@ -7,7 +7,7 @@ unattended
 ## ステージ
 
 - [x] explore
-- [ ] design
+- [x] design
 - [ ] test-design
 - [ ] implement
 - [ ] verify
@@ -59,3 +59,53 @@ unattended
 ### 記録
 
 [records.md](records.md) に振り分けの結果がある。ルール 3 件・用語集 1 件・ADR 1 件。
+
+## Stage 2: design
+
+**結果**: 完了。**人の判断を要する点は出なかった。**
+
+### 決めたこと
+
+Q1（下書きをどんな形でリポジトリに持つか）を決着させた → [ADR 0009](../../../../adr/0009-drafts-live-outside-the-posts-collection-and-commit-with-a-build-skip-flag.md)
+
+| 決めたこと       | 中身                                                                                              |
+| ---------------- | ------------------------------------------------------------------------------------------------- |
+| 下書きの置き場   | `src/content/drafts/<id>.md`。**posts コレクションの glob の外**なので生成物に現れない            |
+| 下書きの形       | Markdown + frontmatter（`title` / `createdAt` / `updatedAt`）。`tags` と `publishDate` は持たない |
+| 識別子           | `crypto.randomUUID()`。時刻を埋め込まない（`createdAt` と二重になるため）                         |
+| 書き込み         | `main` へのコミット。メッセージの先頭に `[CI Skip]` を付けてデプロイを飛ばす                      |
+| 管理画面の置き場 | `packages/admin/`（`pnpm-workspace.yaml` は既に `packages/*` を列挙）                             |
+| 枠組み           | Vite + React + Tailwind 4 + react-router の SPA。**Astro は使わない**                             |
+| 裏側             | Cloudflare Pages Functions。JWT の検証は `_middleware.ts` の 1 か所                               |
+| 自動保存         | 入力が止まって 3 秒。フォーカスが外れたとき・タブが隠れたときは待たずに発火                       |
+
+Q3（テストの実行環境）も決まった。`jsdom` は既に devDependency にあり、`// @vitest-environment` のファイル単位の指定が既存テストで使われている（`src/components/Tag.test.ts`）。**`vitest.config.ts` の `environment` は変えない。**
+
+### 既存コードへの影響
+
+**下書きの保存のために既存の実装を変える必要は無い。** `src/content.config.ts` も `src/lib/repositories/posts.ts` も `lefthook.yml` も触らない。触るのは次の 2 つだけ。
+
+| ファイル          | 変更                                                                        |
+| ----------------- | --------------------------------------------------------------------------- |
+| `.prettierignore` | `src/content/drafts/` を足す。**これを落とすと CI が落ちる**                |
+| `pnpm-lock.yaml`  | 依存を足すので同じコミットに入れる。CI が `git diff --exit-code` で見ている |
+
+### 成果物
+
+| ファイル                                       | 中身                                                                                                |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [design/logic-model.md](design/logic-model.md) | 全体の構成（[SVG](design/assets/overview.svg)）、6 つの処理の流れ、値の動き、検査の経路への影響     |
+| [design/data-model.md](design/data-model.md)   | 下書きのファイルの形、識別子、記事との対応、設定と秘密の値、GitHub API とのやりとり                 |
+| [design/rules.md](design/rules.md)             | 判定 6 件（認証・作る／作らない・空になったとき・並び順・衝突・コミットメッセージ）、バリデーション |
+| [design/components.md](design/components.md)   | 枠組みの選定理由、階層 8 件、裏側の 3 ファイル、状態 5 件と保存の状態 7 通り                        |
+| [design/memory.md](design/memory.md)           | 解釈 3・逸脱 3・トレードオフ 8・未解決 2                                                            |
+
+### センサー
+
+| センサー          | 結果                                                                                    |
+| ----------------- | --------------------------------------------------------------------------------------- |
+| required-sections | PASS（4 ファイルとも）                                                                  |
+| upstream-coverage | PASS（4 ファイルとも。`constraints` `design-decisions` も含む）                         |
+| glossary-drift    | 1 件出たので直した（「メモリ」→「一度取った鍵を実行中だけ保持し」）。**現在は揺れなし** |
+
+SVG は実際にブラウザで描画して確認した。テキストのはみ出し・クリッピング・viewBox 超えは無い。

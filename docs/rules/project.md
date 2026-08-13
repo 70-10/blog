@@ -12,6 +12,7 @@
 
 - **ブランチ名は `intent/<intent-slug>/unit/<unit-slug>`。** 例: `intent/quick-draft/unit/draft-anywhere`。どの Intent のどの Unit の作業かが名前だけで分かる
 - **コミットメッセージは Conventional Commits**（`<type>(<scope>): <subject>`、type は `feat` / `fix` / `docs` / `style` / `refactor` / `test` / `chore`）。記事の追加だけは既存の `Add post/<slug>` を残す
+- **管理画面が自動で打つコミットは `[CI Skip]` を先頭に置き、型はその後ろに来る**（`[CI Skip] chore(draft): update <id>`）。Cloudflare Pages はこの印が先頭にあるときだけデプロイを飛ばすため。**人が打つコミットではこの形を使わない**
 - **PR は結果で分ける。** Unit を最後まで通せたら通常の PR、`[B]` で中断したら Draft。`main` に必須レビューも必須チェックも無いため、中断したものが誤ってマージされるのを防ぐ
 - **PR 本文は base ↔ head の差分視点で書く。** ブランチ内の作業の経緯は書かない。無人実行のときは `records.md`（記録の取捨選択の入口）への導線を必ず入れ、中断したなら `blocked.md` も添える
 

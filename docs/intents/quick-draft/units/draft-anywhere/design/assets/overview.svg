@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="572" viewBox="0 0 900 572" font-family="Hiragino Sans, Noto Sans JP, sans-serif">
+  <rect width="900" height="572" fill="#ffffff"/>
+
+  <!-- 1. ブラウザ -->
+  <rect x="40" y="30" width="300" height="56" rx="6" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.5"/>
+  <text x="190" y="55" font-size="14" fill="#1e1b4b" text-anchor="middle">スマホ / PC のブラウザ</text>
+  <text x="190" y="74" font-size="12" fill="#4338ca" text-anchor="middle">admin.70-10.net を開く</text>
+
+  <!-- arrow 1 -->
+  <line x1="190" y1="86" x2="190" y2="126" stroke="#64748b" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- 2. Access -->
+  <rect x="40" y="130" width="300" height="76" rx="6" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="190" y="154" font-size="14" fill="#7c2d12" text-anchor="middle">Cloudflare Access</text>
+  <text x="190" y="174" font-size="12" fill="#9a3412" text-anchor="middle">既定は拒否。Emails に登録した</text>
+  <text x="190" y="191" font-size="12" fill="#9a3412" text-anchor="middle">アドレスだけを通す</text>
+
+  <!-- arrow 2 -->
+  <line x1="190" y1="206" x2="190" y2="248" stroke="#64748b" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="202" y="232" font-size="11" fill="#475569">JWT を付けて渡す</text>
+
+  <!-- 3. admin pages project -->
+  <rect x="40" y="252" width="360" height="148" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="60" y="275" font-size="14" fill="#14532d">管理画面の Pages プロジェクト</text>
+  <text x="60" y="293" font-size="11" fill="#15803d">プレビューデプロイは止める</text>
+
+  <rect x="60" y="304" width="150" height="76" rx="4" fill="#ffffff" stroke="#86efac" stroke-width="1.2"/>
+  <text x="135" y="326" font-size="12" fill="#14532d" text-anchor="middle">画面</text>
+  <text x="135" y="345" font-size="11" fill="#166534" text-anchor="middle">React + Tailwind</text>
+  <text x="135" y="363" font-size="11" fill="#166534" text-anchor="middle">一覧 / 編集</text>
+
+  <rect x="230" y="304" width="150" height="76" rx="4" fill="#ffffff" stroke="#86efac" stroke-width="1.2"/>
+  <text x="305" y="326" font-size="12" fill="#14532d" text-anchor="middle">裏側</text>
+  <text x="305" y="345" font-size="11" fill="#166534" text-anchor="middle">Pages Functions</text>
+  <text x="305" y="363" font-size="11" fill="#166534" text-anchor="middle">JWT 検証 + API</text>
+
+  <line x1="210" y1="342" x2="228" y2="342" stroke="#16a34a" stroke-width="1.2" marker-end="url(#b)"/>
+
+  <!-- token note -->
+  <rect x="430" y="304" width="230" height="52" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="545" y="326" font-size="11" fill="#991b1b" text-anchor="middle">GITHUB_TOKEN は裏側だけが持つ</text>
+  <text x="545" y="344" font-size="11" fill="#991b1b" text-anchor="middle">画面には一度も渡らない</text>
+  <line x1="428" y1="330" x2="382" y2="330" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+  <!-- arrow 3 -->
+  <line x1="190" y1="400" x2="190" y2="442" stroke="#64748b" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="202" y="426" font-size="11" fill="#475569">Contents API</text>
+
+  <!-- 4. GitHub -->
+  <rect x="40" y="446" width="360" height="96" rx="6" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+  <text x="60" y="470" font-size="14" fill="#0f172a">GitHub  70-10/blog（main）</text>
+  <text x="60" y="493" font-size="12" fill="#334155">src/content/drafts/&lt;id&gt;.md  ← 下書き</text>
+  <text x="60" y="513" font-size="12" fill="#334155">src/content/posts/&lt;slug&gt;.md ← 記事</text>
+  <text x="60" y="532" font-size="11" fill="#64748b">下書きのコミットは先頭に [CI Skip] を付ける</text>
+
+  <!-- arrow to blog -->
+  <line x1="400" y1="486" x2="516" y2="486" stroke="#64748b" stroke-width="1.5" marker-end="url(#a)"/>
+  <text x="410" y="476" font-size="11" fill="#475569">push でデプロイ</text>
+  <text x="410" y="506" font-size="11" fill="#dc2626">[CI Skip] 付きは飛ぶ</text>
+
+  <!-- 5. blog pages project -->
+  <rect x="520" y="446" width="340" height="96" rx="6" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="540" y="470" font-size="14" fill="#1e3a8a">ブログの Pages プロジェクト</text>
+  <text x="540" y="493" font-size="12" fill="#1d4ed8">blog.70-10.net</text>
+  <text x="540" y="515" font-size="11" fill="#1e40af">posts の glob しか読まないので</text>
+  <text x="540" y="532" font-size="11" fill="#1e40af">下書きは生成物に現れない</text>
+
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+</svg>
