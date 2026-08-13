@@ -20,6 +20,9 @@
 - Construction の 2 件をフェーズのファイルに置いたのは、どちらも Construction のステージ構成（explore → design の役割分担、`[B]` の扱い）に固有だから。既定は `project.md` だが、Inception には効かない
 - `glossary-drift.sh` の件を `project.md` に置いたのは、Inception の 5 ゲートでも Construction の 7 ゲートでも同じ手順を踏むため
 - 「管理画面」を登録したのは、[ADR 0006](../../../../adr/0006-build-our-own-admin-screen-for-writing.md) 以降この語が Unit をまたいで出てくるのに揺れやすいため。無人時は迷ったら書く方針に従った。**要らないと判断したら消してよい**
+- **避ける別名を足すと、既にある文書の判定が後から変わる。** そこで `docs/` 全体に `glossary-drift.sh` を掛け直した。新しい 5 つの別名（管理ツール / 執筆画面 / エディタ画面 / admin 画面 / CMS）が当たったのは、この `records.md` で別名を列挙している行だけ。**既存の文書は 1 件も揺れていない**
+- 併せて出た `メモ` / `エントリ` / `ネタ` の指摘（`docs/adr/0005`・`0006`、`docs/recording-conventions.md`、[execution-plan.md](../../execution-plan.md)、[questions.md](../../questions.md)）は**この Unit の変更より前からあるもの**で、いずれも引用か別の意味での用法。この Unit では触らない
+- [03_units.md](../../03_units.md) の「編集画面」は管理画面の一部を指す語であって別名ではない。統一語に寄せない
 
 ### 候補に挙げたが書かなかったもの
 
