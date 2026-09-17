@@ -6,8 +6,9 @@
   "license": "ISC",
   "author": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "tsx -C import index.ts"
+    "start": "tsx cli.ts"
   },
   "dependencies": {
     "consola": "3.4.2",
