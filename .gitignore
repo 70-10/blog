@@ -23,4 +23,7 @@ pnpm-debug.log*
 # test coverage output
 coverage/
 
+# git worktrees（git add -A で埋め込みリポジトリとして巻き込まれるのを防ぐ）
+.claude/worktrees/
+
 !.vscode/ 

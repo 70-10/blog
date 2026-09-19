@@ -14,7 +14,9 @@ pre-commit:
       run: pnpm prettier --write {staged_files}
       stage_fixed: true
     textlint:
-      glob: "*.md"
+      # 対象は記事だけ。package.json の lint:textlint（CI が使う）と揃える。
+      # .textlintrc は読む人向けの記事のための設定なので、docs や skill には当てない
+      glob: "src/content/posts/*.md"
       run: pnpm textlint --fix {staged_files}
       stage_fixed: true
 
