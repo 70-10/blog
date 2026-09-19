@@ -62,6 +62,9 @@
 - [Q] `draft-command` ブランチ（/draft コマンドと文体ガイド）をどうするか
 - [A] 丸ごと捨てる（削除は未実施）
 
+- [Q] 管理画面をどこで動かし、認証をどう作るか
+- [A] ブログとは別の Cloudflare Pages プロジェクトを作りサブドメインで開く。入口は Cloudflare Access が守り、アプリ側は Access が付ける JWT を検証する。リポジトリへの書き込みは `70-10/blog` だけに絞った細かい権限のトークンで行う（Unit 1 `draft-anywhere` の Stage 1 で中断して判断 → `docs/adr/0008`）
+
 - [Q] Cloudflare Pages に `main` 以外のブランチのプレビューデプロイが設定されているか
 - [A] 有効になっている。PR #904（`worktree-admin`）と PR #917（`renovate/astro`）の Cloudflare ボットのコメントに `Branch Preview URL: https://<branch>.blog-68b.pages.dev` がある。ただし決定 2 で画面の中のプレビューを採ったため、Unit 3 では直接は使わない
 
@@ -70,6 +73,5 @@
 - [Q] 公開の経路をどう作るか。校正の AC（指摘があれば公開を止める）により、`main` への素の push では成立しない。textlint は今 lefthook の pre-commit でしか走らず、CI は `pull_request` でしか動かないため（step3 → **Unit 2 `publish-from-draft`** で解く）
   - 追加で分かったこと: **`textlint --fix` は残ったエラーの種類によって exit code が変わる。** 検証用の記事（`sentence-length` と `ja-no-weak-phrase` が残存）では exit 0、`docs/recording-conventions.md`（7 件残存）では exit 1 だった。つまり `--fix` 付きの実行は「必ず止める門番」にならない。公開を止めるには `--fix` なしで検査する経路が要る
 - [Q] 下書きをどこにどう持つか。**リポジトリの中に持つことは決まった**（ADR 0006）が、形は開いている。`src/content/posts/` は使えない（`getPosts()` が絞り込まないので公開される、かつスキーマが `title` / `publishDate` / `tags` を必須にするので本文だけの下書きはビルドを落とす）。別ディレクトリか、フラグと絞り込みかは未定（step1 / step2 → **Unit 1 `draft-anywhere`** で解く）
-- [Q] 管理画面をどこで動かし、認証をどう作るか。ADR 0006 で自作すると決めたが、技術構成は決定 1 で白紙に戻した（step2 → **Unit 1 `draft-anywhere`** で解く）
 - [Q] 画面の中のプレビューを、本番の Astro のビルド結果とどう一致させるか。受け入れ条件は「公開後と同じ見え方」だが、自作の描画は別物になる（step3 / ADR 0006 → **Unit 3 `preview-before-publish`** で解く）
 - [Q] Cloudflare Pages のブランチプレビュー URL は、ブランチ名の `/` を `-` に置き換える（`renovate/astro` → `renovate-astro.blog-68b.pages.dev` で確認）。スラッシュ 2 つの `intent/<intent>/unit/<unit>` でも同じ規則かは未確認。最初の PR で実物を見れば分かる（決定 5）

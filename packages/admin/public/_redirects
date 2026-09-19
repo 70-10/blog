@@ -1,0 +1,3 @@
+# SPA の深いリンク（/drafts/<id>）を index.html に落とす。
+# /api/* は Pages Functions が受けるのでここには書かない。
+/*  /index.html  200
