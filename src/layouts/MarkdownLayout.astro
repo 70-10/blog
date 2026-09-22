@@ -6,6 +6,7 @@ import Header from "@/components/Header.astro";
 import "@/styles/global.css";
 import "@/styles/markdown-body.css";
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import { ClientRouter } from "astro:transitions";
 
 const { frontmatter } = Astro.props;
 ---
@@ -43,6 +44,7 @@ const { frontmatter } = Astro.props;
     <GoogleFontsOptimizer
       url="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sacramento&display=swap"
     />
+    <ClientRouter />
   </head>
   <body>
     <Header displayBackButton={true} />
