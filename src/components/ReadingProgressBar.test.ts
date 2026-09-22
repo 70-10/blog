@@ -7,6 +7,8 @@ import ReadingProgressBar from "./ReadingProgressBar.astro";
 describe("ReadingProgressBar", () => {
   describe("Positive Cases", () => {
     it("should render progress element", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(ReadingProgressBar);
 
@@ -15,6 +17,8 @@ describe("ReadingProgressBar", () => {
     });
 
     it("should have correct id attribute", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(ReadingProgressBar);
 
@@ -23,6 +27,8 @@ describe("ReadingProgressBar", () => {
     });
 
     it("should have initial value of 0", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(ReadingProgressBar);
 
@@ -31,6 +37,8 @@ describe("ReadingProgressBar", () => {
     });
 
     it("should have max value of 100", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(ReadingProgressBar);
 

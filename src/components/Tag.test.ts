@@ -7,6 +7,8 @@ import Tag from "./Tag.astro";
 describe("Tag", () => {
   describe("Positive Cases", () => {
     it("should display tag name with hash prefix", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(Tag, {
         props: { name: "javascript" },
@@ -17,6 +19,8 @@ describe("Tag", () => {
     });
 
     it("should generate correct tag link", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(Tag, {
         props: { name: "javascript" },
@@ -27,6 +31,8 @@ describe("Tag", () => {
     });
 
     it("should render as anchor element", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(Tag, { props: { name: "test" } });
 
@@ -37,6 +43,8 @@ describe("Tag", () => {
 
   describe("Edge Cases", () => {
     it("should keep plus signs in tag name URL", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(Tag, { props: { name: "C++" } });
 
@@ -47,6 +55,8 @@ describe("Tag", () => {
     });
 
     it("should encode multibyte characters in tag name URL", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(Tag, { props: { name: "日本語" } });
 
