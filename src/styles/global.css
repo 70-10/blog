@@ -2,11 +2,78 @@
 
 @theme {
   --font-sans: "Inter", "sans-serif";
+
+  /* Fluid type scale: min 375px → max 1200px, Minor Third (1.25) */
+  --font-size-sm: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);
+  --font-size-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --font-size-lg: clamp(1.25rem, 1.19rem + 0.3vw, 1.5rem);
+  --font-size-xl: clamp(1.563rem, 1.48rem + 0.4vw, 1.875rem);
+  --font-size-2xl: clamp(1.953rem, 1.84rem + 0.57vw, 2.25rem);
+  --font-size-3xl: clamp(2.441rem, 2.28rem + 0.8vw, 2.813rem);
+  --font-size-4xl: clamp(3.052rem, 2.84rem + 1.06vw, 3.516rem);
+
+  /* Fluid space scale */
+  --spacing-3xs: clamp(0.25rem, 0.23rem + 0.1vw, 0.3125rem);
+  --spacing-2xs: clamp(0.5rem, 0.46rem + 0.2vw, 0.625rem);
+  --spacing-xs: clamp(0.75rem, 0.69rem + 0.3vw, 0.9375rem);
+  --spacing-s: clamp(1rem, 0.92rem + 0.4vw, 1.25rem);
+  --spacing-m: clamp(1.5rem, 1.38rem + 0.6vw, 1.875rem);
+  --spacing-l: clamp(2rem, 1.84rem + 0.8vw, 2.5rem);
+  --spacing-xl: clamp(3rem, 2.76rem + 1.2vw, 3.75rem);
+  --spacing-2xl: clamp(4rem, 3.68rem + 1.6vw, 5rem);
+
+  /* Color tokens */
+  --color-text: theme("colors.zinc.700");
+  --color-text-sub: theme("colors.zinc.500");
+  --color-accent: theme("colors.emerald.500");
+  --color-surface: theme("colors.zinc.100");
+  --color-border: theme("colors.zinc.400");
 }
 
 @layer base {
+  body {
+    @apply bg-white text-zinc-700;
+  }
+
   ul,
   ol {
     list-style: revert;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-emerald-500;
+  }
+}
+
+@layer components {
+  /* Stack — vertical spacing rhythm */
+  .stack {
+    @apply flex flex-col;
+  }
+
+  .stack > * + * {
+    margin-block-start: var(--stack-space, var(--spacing-s));
+  }
+
+  /* Cluster — flexible horizontal wrap with gap */
+  .cluster {
+    @apply flex flex-wrap;
+    gap: var(--cluster-space, var(--spacing-s));
+  }
+
+  /* Center — max-width container with responsive padding */
+  .center {
+    max-inline-size: var(--measure, 40rem);
+    @apply mx-auto w-full px-6 sm:px-10;
+  }
+
+  /* Auto Grid — responsive grid with auto-fill */
+  .auto-grid {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(var(--grid-min, 20rem), 100%), 1fr)
+    );
+    gap: var(--spacing-s);
   }
 }

@@ -45,12 +45,16 @@ const ogImageUrl = shouldSkipOgGeneration
   }}
 >
   <ReadingProgressBar />
-  <main class="base">
-    <section class="title-content">
+  <main class="center stack">
+    <section class="mt-1">
       <div class="flex items-center">
         <div class="min-w-0 flex-1">
-          <h1 class="title">{post.data.title}</h1>
-          <div class="subtitle-section">
+          <h1 class="my-8 text-2xl leading-tight font-extrabold">
+            {post.data.title}
+          </h1>
+          <div
+            class="mt-1 flex items-center gap-x-2 font-mono text-sm text-gray-500"
+          >
             <div class="relative -ml-0.5 aspect-square w-7 shrink-0">
               <Image
                 src={iconImage}
@@ -69,13 +73,13 @@ const ogImageUrl = shouldSkipOgGeneration
         </div>
       </div>
     </section>
-    <section class="content">
+    <section>
       <article class="markdown-body">
         <Content />
       </article>
     </section>
-    <section class="content">
-      <div class="tags">
+    <section>
+      <div class="mt-2">
         {post.data.tags.map((tag) => <Tag name={tag} />)}
       </div>
     </section>
@@ -84,32 +88,4 @@ const ogImageUrl = shouldSkipOgGeneration
 
 <style>
   @reference "@/styles/global.css";
-
-  .base {
-    @apply mx-auto w-full max-w-screen-sm px-6 sm:px-10;
-  }
-
-  .title-content {
-    @apply mt-1;
-  }
-
-  .content {
-    @apply mt-8;
-  }
-
-  .title {
-    @apply text-2xl leading-tight font-extrabold;
-    @apply my-8;
-  }
-
-  .subtitle-section {
-    @apply mt-1;
-    @apply flex gap-x-2;
-    @apply items-center;
-    @apply font-mono text-sm text-gray-500;
-  }
-
-  .tags {
-    @apply mt-2;
-  }
 </style>

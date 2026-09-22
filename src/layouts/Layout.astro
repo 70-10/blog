@@ -62,7 +62,7 @@ const { title, seo, description, displayBackButton = true } = Astro.props;
       url="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sacramento&display=swap"
     />
   </head>
-  <body class="text-zinc-600">
+  <body class="stack text-zinc-600" style="--stack-space: var(--spacing-m);">
     <Header displayBackButton={displayBackButton} />
 
     <slot />
