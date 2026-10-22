@@ -83,6 +83,6 @@
     "textlint": "15.7.1",
     "textlint-rule-ja-space-between-half-and-full-width": "3.0.2",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   }
 }

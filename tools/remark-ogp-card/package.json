@@ -24,7 +24,7 @@
     "remark-parse": "11.0.0",
     "typescript": "7.0.2",
     "unified": "11.0.5",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   },
   "type": "module"
 }
