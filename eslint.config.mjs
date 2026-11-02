@@ -15,6 +15,7 @@ export default [
       "**/*.d.ts",
       "**/dist/",
       "coverage/**",
+      ".claude/worktrees/",
     ],
   },
   {
