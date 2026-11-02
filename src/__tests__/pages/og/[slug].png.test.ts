@@ -122,6 +122,8 @@ describe("GET", () => {
     });
 
     it("should throw error when slug is undefined", async () => {
+      // Arrange (no setup needed)
+
       // Act & Assert
       await expect(
         GET({ params: { slug: undefined } } as unknown as APIContext),
@@ -129,6 +131,8 @@ describe("GET", () => {
     });
 
     it("should throw error when slug is empty string", async () => {
+      // Arrange (no setup needed)
+
       // Act & Assert
       await expect(
         GET({ params: { slug: "" } } as unknown as APIContext),

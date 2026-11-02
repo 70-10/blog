@@ -5,6 +5,7 @@ import * as astroParser from "astro-eslint-parser";
 import eslintConfigPrettier from "eslint-config-prettier";
 import astroPlugin from "eslint-plugin-astro";
 import globals from "globals";
+import requireAaaComments from "./eslint-rules/require-aaa-comments.mjs";
 
 export default [
   {
@@ -49,6 +50,15 @@ export default [
         parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
       },
+    },
+  },
+  {
+    files: ["**/*.test.ts", "**/*.test.tsx"],
+    plugins: {
+      local: { rules: { "require-aaa-comments": requireAaaComments } },
+    },
+    rules: {
+      "local/require-aaa-comments": "error",
     },
   },
   eslintConfigPrettier,

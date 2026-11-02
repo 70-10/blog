@@ -86,6 +86,8 @@ describe("remark-ogp-card utilities", () => {
 
     describe("Negative Cases", () => {
       it("should throw error for invalid URL", () => {
+        // Arrange (no setup needed)
+
         // Act & Assert
         expect(() => generateURL("not a valid url")).toThrow();
       });
@@ -169,16 +171,22 @@ describe("remark-ogp-card utilities", () => {
   describe("htmlEncode", () => {
     describe("Positive Cases", () => {
       it("should encode ampersand", () => {
+        // Arrange (no setup needed)
+
         // Act & Assert
         expect(htmlEncode("Rock & Roll")).toBe("Rock &amp; Roll");
       });
 
       it("should encode less than and greater than", () => {
+        // Arrange (no setup needed)
+
         // Act & Assert
         expect(htmlEncode("value < 10 > 5")).toBe("value &lt; 10 &gt; 5");
       });
 
       it("should encode quotes", () => {
+        // Arrange (no setup needed)
+
         // Act & Assert
         expect(htmlEncode("He said \"Hello\" and 'Goodbye'")).toBe(
           "He said &quot;Hello&quot; and &#39;Goodbye&#39;",
@@ -201,11 +209,15 @@ describe("remark-ogp-card utilities", () => {
 
     describe("Edge Cases", () => {
       it("should handle empty string", () => {
+        // Arrange (no setup needed)
+
         // Act & Assert
         expect(htmlEncode("")).toBe("");
       });
 
       it("should handle string with no special characters", () => {
+        // Arrange (no setup needed)
+
         // Act & Assert
         expect(htmlEncode("Regular text with no special chars")).toBe(
           "Regular text with no special chars",
@@ -213,6 +225,8 @@ describe("remark-ogp-card utilities", () => {
       });
 
       it("should handle unicode characters", () => {
+        // Arrange (no setup needed)
+
         // Act & Assert
         expect(htmlEncode("こんにちは & 世界")).toBe("こんにちは &amp; 世界");
       });
@@ -227,6 +241,8 @@ describe("remark-ogp-card utilities", () => {
 describe("createYouTubeFrameElement", () => {
   describe("Positive Cases", () => {
     it("should return iframe HTML for valid videoId", () => {
+      // Arrange (no setup needed)
+
       // Act
       const result = createYouTubeFrameElement("dQw4w9WgXcQ");
 
@@ -241,6 +257,8 @@ describe("createYouTubeFrameElement", () => {
 
   describe("Edge Cases", () => {
     it("should return empty string for empty videoId", () => {
+      // Arrange (no setup needed)
+
       // Act & Assert
       expect(createYouTubeFrameElement("")).toBe("");
     });
@@ -248,6 +266,8 @@ describe("createYouTubeFrameElement", () => {
 
   describe("Negative Cases", () => {
     it("should return empty string for null videoId", () => {
+      // Arrange (no setup needed)
+
       // Act & Assert
       expect(createYouTubeFrameElement(null)).toBe("");
     });
@@ -385,6 +405,8 @@ describe("ogpCardPlugin", () => {
     });
 
     it("should convert YouTube URL to iframe", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const tree = await processMarkdown(
         "https://www.youtube.com/watch?v=test123\n",
@@ -399,6 +421,8 @@ describe("ogpCardPlugin", () => {
 
   describe("Edge Cases", () => {
     it("should not convert URL embedded in text", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const tree = await processMarkdown(
         "Check out https://example.com for more\n",
@@ -410,6 +434,8 @@ describe("ogpCardPlugin", () => {
     });
 
     it("should not convert multiple URLs in paragraph", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const tree = await processMarkdown(
         "https://example.com https://example.org\n",
