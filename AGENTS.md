@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal blog built with Astro 5, deployed at https://blog.70-10.net. Uses pnpm workspace architecture with custom tools for post creation and OGP card generation.
+Personal blog built with Astro 7, deployed at https://blog.70-10.net. Uses pnpm workspace architecture with custom tools for post creation and OGP card generation.
 
 ## Development Commands
 
@@ -100,10 +100,18 @@ Note: Pre-commit hooks automatically run `lefthook` which applies ESLint, Pretti
 - Test files colocated with source (e.g., `src/lib/repositories/posts.test.ts`)
 - Coverage reports via `@vitest/coverage-v8`
 
-### Test Conventions
+## Rules and What Enforces Them
 
-- **AAA comments**: Always add `// Arrange`, `// Act`, `// Assert` comments to all test cases
-- **Type casts in tests**: Use `as unknown as T` instead of `as any`. Do not use `eslint-disable` for `@typescript-eslint/no-explicit-any`
+When a correction repeats, fix the mistake and add a row. If the rule is already here and nothing enforces it, add the enforcement in the same change. Drop a row once its mistake can no longer happen.
+
+| Rule                                                                                         | Enforced by                                                                                                |
+| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Every `it` / `test` body has `// Arrange`, `// Act`, `// Assert`                             | ESLint `local/require-aaa-comments` (`eslint-rules/`)                                                      |
+| No `as any`; cast with `as unknown as T`                                                     | ESLint `@typescript-eslint/no-explicit-any` and `local/no-disable-no-explicit-any`                         |
+| No stale `eslint-disable` comments                                                           | `linterOptions.reportUnusedDisableDirectives: "error"` in `eslint.config.mjs`                              |
+| Lint problems left after an agent's edit reach the agent                                     | `scripts/format-and-lint-hook.sh` (PostToolUse, exits 2), tested by `scripts/format-and-lint-hook.test.ts` |
+| Tools ignore other agents' worktrees in `.claude/worktrees/`                                 | `exclude` in `vitest.config.ts`, `ignores` in `eslint.config.mjs`, `.prettierignore`                       |
+| A lint exception sits on the offending line as `eslint-disable-next-line <rule> -- <reason>` | Not enforced (judgment call; the human approves it in review)                                              |
 
 ## Important Patterns
 
