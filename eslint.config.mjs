@@ -38,6 +38,7 @@ export default [
       "@typescript-eslint/no-explicit-any": "error",
     },
   },
+  typescriptEslint.configs["flat/eslint-recommended"],
   {
     files: ["**/*.astro"],
 

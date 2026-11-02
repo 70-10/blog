@@ -10,6 +10,7 @@ const gtagUrl = `https://www.googletagmanager.com/gtag/js?id=${id}`;
   <script is:inline define:vars={{ id }} type="text/partytown">
     window.dataLayer = window.dataLayer || [];
     function gtag() {
+      // eslint-disable-next-line prefer-rest-params -- gtag.js reads only real Arguments objects from dataLayer; a rest array is ignored
       window.dataLayer.push(arguments);
     }
     gtag("js", new Date());
