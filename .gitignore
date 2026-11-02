@@ -24,3 +24,5 @@ pnpm-debug.log*
 coverage/
 
 !.vscode/ 
+# leftovers from scripts/format-and-lint-hook.test.ts
+src/content/posts/.hook-test-*

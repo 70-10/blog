@@ -7,6 +7,8 @@ import Footer from "./Footer.astro";
 describe("Footer", () => {
   describe("Positive Cases", () => {
     it("should render footer element", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(Footer);
 
@@ -15,6 +17,8 @@ describe("Footer", () => {
     });
 
     it("should contain privacy policy link", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(Footer);
 
@@ -24,6 +28,8 @@ describe("Footer", () => {
     });
 
     it("should contain GitHub link", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const html = await renderComponent(Footer);
 

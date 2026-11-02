@@ -5,6 +5,7 @@ import * as astroParser from "astro-eslint-parser";
 import eslintConfigPrettier from "eslint-config-prettier";
 import astroPlugin from "eslint-plugin-astro";
 import globals from "globals";
+import localPlugin from "./eslint-rules/index.mjs";
 
 export default [
   {
@@ -14,13 +15,20 @@ export default [
       "**/*.d.ts",
       "**/dist/",
       "coverage/**",
+      ".claude/worktrees/",
     ],
+  },
+  {
+    linterOptions: {
+      reportUnusedDisableDirectives: "error",
+    },
   },
   eslint.configs.recommended,
   ...astroPlugin.configs.recommended,
   {
     plugins: {
       "@typescript-eslint": typescriptEslint,
+      local: localPlugin,
     },
 
     languageOptions: {
@@ -36,8 +44,10 @@ export default [
     rules: {
       ...typescriptEslint.configs.recommended.rules,
       "@typescript-eslint/no-explicit-any": "error",
+      "local/no-disable-no-explicit-any": "error",
     },
   },
+  typescriptEslint.configs["flat/eslint-recommended"],
   {
     files: ["**/*.astro"],
 
@@ -48,6 +58,12 @@ export default [
         parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
       },
+    },
+  },
+  {
+    files: ["**/*.test.ts", "**/*.test.tsx"],
+    rules: {
+      "local/require-aaa-comments": "error",
     },
   },
   eslintConfigPrettier,

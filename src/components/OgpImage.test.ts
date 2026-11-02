@@ -35,6 +35,8 @@ describe("getOgImage", () => {
 
   describe("Positive Cases", () => {
     it("should return a Buffer", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const result = await getOgImage("Test Title");
 
@@ -61,6 +63,8 @@ describe("getOgImage", () => {
     });
 
     it("should fetch Google Fonts API", async () => {
+      // Arrange (no setup needed)
+
       // Act
       await getOgImage("Test");
 
@@ -87,6 +91,8 @@ describe("getOgImage", () => {
 
   describe("Edge Cases", () => {
     it("should handle empty text", async () => {
+      // Arrange (no setup needed)
+
       // Act
       const result = await getOgImage("");
 
