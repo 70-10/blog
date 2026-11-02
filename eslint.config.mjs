@@ -5,7 +5,7 @@ import * as astroParser from "astro-eslint-parser";
 import eslintConfigPrettier from "eslint-config-prettier";
 import astroPlugin from "eslint-plugin-astro";
 import globals from "globals";
-import requireAaaComments from "./eslint-rules/require-aaa-comments.mjs";
+import localPlugin from "./eslint-rules/index.mjs";
 
 export default [
   {
@@ -17,11 +17,17 @@ export default [
       "coverage/**",
     ],
   },
+  {
+    linterOptions: {
+      reportUnusedDisableDirectives: "error",
+    },
+  },
   eslint.configs.recommended,
   ...astroPlugin.configs.recommended,
   {
     plugins: {
       "@typescript-eslint": typescriptEslint,
+      local: localPlugin,
     },
 
     languageOptions: {
@@ -37,6 +43,7 @@ export default [
     rules: {
       ...typescriptEslint.configs.recommended.rules,
       "@typescript-eslint/no-explicit-any": "error",
+      "local/no-disable-no-explicit-any": "error",
     },
   },
   typescriptEslint.configs["flat/eslint-recommended"],
@@ -54,9 +61,6 @@ export default [
   },
   {
     files: ["**/*.test.ts", "**/*.test.tsx"],
-    plugins: {
-      local: { rules: { "require-aaa-comments": requireAaaComments } },
-    },
     rules: {
       "local/require-aaa-comments": "error",
     },
